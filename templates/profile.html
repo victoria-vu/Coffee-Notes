@@ -1,0 +1,9 @@
+{% extends 'loggedinbase.html' %}
+
+{% block title %}Profile{% endblock %}
+
+{% block body %}
+    <h1>{{ user.fname }}'s Profile</h1>
+    <h3>Name: {{ user.fname }} {{ user.lname }}</h3>
+    <h3>Email: {{ user.email }}</h3>
+{% endblock %}

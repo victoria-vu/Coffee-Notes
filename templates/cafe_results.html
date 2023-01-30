@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+
+
+{% block title %}Search Results{% endblock %}
+
+
+{% block body %}
+    <h1>Search Results:</h1>
+        {% for shop in cafe %}
+            <h3>{{ shop.name }}</h3>
+            {{ shop.address }},<br>
+            {{ shop.city }},
+            {{ shop.state }}
+            {{ shop.zip_code }}<br>
+            {{ shop.phone }}
+            <br>
+            <br>
+        {% endfor %}
+
+{% endblock %}

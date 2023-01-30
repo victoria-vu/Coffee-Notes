@@ -1,0 +1,129 @@
+"""Cafe Finder Application Flask server."""
+
+from flask import Flask, render_template, request, flash, session, redirect
+from model import connect_to_db, db
+import crud
+from jinja2 import StrictUndefined
+import os
+import requests
+
+
+app = Flask(__name__)
+app.secret_key = "dev"
+app.jinja_env.undefined = StrictUndefined
+API_KEY = os.environ["YELP_KEY"]
+
+
+@app.route("/")
+def homepage():
+    """Show the homepage."""
+
+    if "user_userid" in session:
+        return redirect("/dashboard")
+
+    return render_template("homepage.html")
+
+
+@app.route("/login")
+def login_page():
+    """Show user the log in page."""
+    
+    return render_template("login.html")
+
+
+@app.route("/login", methods=["POST"])
+def login():
+    """Log in an existing user."""
+    
+    email = request.form.get("email")
+    password = request.form.get("password")
+    user = crud.get_user_by_email(email=email)
+    
+    if not user:
+        flash("The email you typed in does not exist. Please sign up for an account.")
+        return redirect("/login")
+    
+    elif user.password != password:
+        flash("Incorrect password. Please try again.")
+        return redirect("/login")
+    
+    else:
+        session["user_email"] = user.email
+        session["user_fname"] = user.fname
+        session["user_userid"] = user.user_id
+        return redirect("/dashboard")
+    
+    
+@app.route("/signup")
+def signup_page():
+    """Show user the sign up page."""
+
+    return render_template("signup.html")
+
+
+@app.route("/signup", methods=["POST"])
+def signup():
+    """Create a new user."""
+
+    email = request.form.get("email")
+    password = request.form.get("password")
+    fname = request.form.get("fname")
+    lname = request.form.get("lname")
+
+    user = crud.get_user_by_email(email)
+    
+    if user is not None:
+        flash("An account already exists with that email. Please try another one.")
+        return redirect("/signup")
+
+    else:
+        user = crud.create_user(email, password, fname, lname)
+        db.session.add(user)
+        db.session.commit()
+        flash("Account has been created successfully. Please log in.")
+        return redirect("/login")
+    
+    
+@app.route("/dashboard")
+def dashboard():
+    """Show user dashboard search form."""
+
+    return render_template("dashboard.html", name=session["user_fname"], user_id=session["user_userid"])
+
+
+@app.route("/profile/<user_id>")
+def profile(user_id):
+    """Shows a user's profile."""
+
+    user = crud.get_user_by_id(user_id)
+
+    return render_template("profile.html", user=user)
+
+
+@app.route("/cafe/search", methods=["POST"])
+def search_cafes():
+    """Search for cafes."""
+
+    cafe = request.form.get("location")
+    city = crud.get_cafe_by_city(cafe)
+
+    if city:
+        return render_template("cafe_results.html", cafe=city)
+    else:
+        flash("Sorry, we can't find a cafe with those keywords.")
+
+
+@app.route("/logout")
+def logout():
+    """Logs a user out."""
+
+    if "user_userid" in session:
+        session.pop("user_email", None)
+        session.pop("user_fname", None)
+        session.pop("user_userid", None)
+    return redirect("/")
+
+
+if __name__ == "__main__":
+    connect_to_db(app)
+    app.run(debug=True, host='0.0.0.0')
