@@ -41,7 +41,7 @@ def create_review(user, cafe, review):
 def create_bookmark(user, cafe):
     """Create and return a bookmark."""
 
-    bookmark = Bookmark(user, cafe)
+    bookmark = Bookmark(user=user, cafe=cafe)
 
     return bookmark
 

@@ -91,22 +91,45 @@ def dashboard():
     return render_template("dashboard.html", name=session["user_fname"], user_id=session["user_userid"])
 
 
-@app.route("/profile/<user_id>")
-def profile(user_id):
+@app.route("/profile")
+def profile():
     """Show a user's profile."""
 
-    user = crud.get_user_by_id(user_id)
+    logged_in_user = session["user_userid"]
+    user = crud.get_user_by_id(logged_in_user)
 
     return render_template("profile.html", user=user)
 
 
-@app.route("/bookmarks/<user_id>")
-def bookmarks(user_id):
+@app.route("/bookmarks")
+def bookmarks():
     """Show a user's bookmarks."""
 
-    user = crud.get_user_by_id(user_id)
+    logged_in_user = session["user_userid"]
+    user = crud.get_user_by_id(logged_in_user)
 
     return render_template("bookmarks.html", user=user)
+
+
+@app.route("/cafe/<cafe_id>/bookmark", methods=["POST"])
+def bookmark_cafe(cafe_id):
+    """Bookmark a cafe."""
+
+    user_id = session.get("user_userid")
+
+    if user_id is None:
+        flash("You must log in to bookmark this cafe.")
+    else:
+        cafe_id = crud.get_cafe_by_id(cafe_id)
+
+        bookmark = crud.create_review(user_id, cafe_id)
+        db.session.add(bookmark)
+        db.session.commit()
+
+        flash("You have successfully submitted a review.")
+
+    return redirect(f"/cafe/{cafe_id}")
+
 
 
 @app.route("/cafe/search", methods=["POST"])
