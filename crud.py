@@ -1,6 +1,6 @@
 """CRUD operations."""
 
-from model import db, User, Cafe, Bookmark, Rating, connect_to_db
+from model import db, User, Cafe, Bookmark, Review, connect_to_db
 
 # Create = Create new data
 # Read = Retrieve data the already exits
@@ -30,6 +30,21 @@ def create_cafe(name, address, city, state, zip_code, phone, img_url):
     return cafe
 
 
+def create_review(user, cafe, review):
+    """Create and return a review."""
+
+    user_review = Review(user=user, cafe=cafe, review=review)
+
+    return user_review
+
+
+def create_bookmark(user, cafe):
+    """Create and return a bookmark."""
+
+    bookmark = Bookmark(user, cafe)
+
+    return bookmark
+
 # FUNCTIONS THAT RETRIEVE DATA (READ)
 def get_user_by_id(user_id):
     """Return a user by user id."""
@@ -49,22 +64,12 @@ def get_cafe_by_id(cafe_id):
     return Cafe.query.get(cafe_id)
 
 
-def get_cafe_by_name(name):
-    """Return cafe by name."""
+def get_cafe(name, city, zip_code):
+    """Return cafes by name, city, or zipcode."""
 
-    return Cafe.query.filter(Cafe.name == name).all()
-
-
-def get_cafe_by_city(city):
-    """Return cafe by city."""
-
-    return Cafe.query.filter(Cafe.city == city).all()
-
-
-def get_cafe_by_zipcode(zipcode):
-    """Return cafe by zipcode."""
-
-    return Cafe.query.filter(Cafe.zipcode == zipcode).all()
+    return Cafe.query.filter((Cafe.name == name) | 
+                            (Cafe.city == city) | 
+                            (Cafe.zip_code == zip_code)).all()
 
 
 def get_bookmark_by_id(bookmark_id):
@@ -72,16 +77,22 @@ def get_bookmark_by_id(bookmark_id):
 
     return Bookmark.query.get(bookmark_id)
 
-def get_rating_by_id(rating_id):
-    """Return a rating by rating id."""
+def get_review_by_id(review_id):
+    """Return a review by review id."""
 
-    return Rating.query.get(rating_id)
+    return Review.query.get(review_id)
 
 
 def get_cafes():
     """Returns all cafes."""
 
     return Cafe.query.all()
+
+
+def get_user_bookmarks(user_id):
+    """Returns all of a user's bookmarks."""
+
+    return Bookmark.query.options(db.joinedload("users")).all()
 
 
 if __name__ == '__main__':

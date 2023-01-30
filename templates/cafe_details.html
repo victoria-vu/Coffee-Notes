@@ -1,0 +1,38 @@
+{% extends 'base.html' %}
+
+{% block title %}{{ cafe.name }}{% endblock title %}
+
+{% block body %}
+<h1>{{ cafe.name }}</h1>
+<img src="{{ cafe.img_url }}">
+
+<div>
+    <h4>Address:</h4>
+        <p>{{ cafe.address}} <br>
+        {{ cafe.city }} {{ cafe.state }} {{ cafe.zip_code}}</p>
+
+    <h4>Phone Number:</h4> 
+
+    <p>{{ cafe.phone }}</p>
+</div>
+
+<div>
+    <button id="bookmark">Bookmark This Cafe</button>
+</div>
+
+<br>
+
+<div>
+    <form action="/cafe/{{ cafe.cafe_id }}/reviews" method="POST">
+        <p>
+          <label for="review">Write a Review:</label><br>
+            <textarea name="review" id="review"></textarea>
+        </p>
+        <p><input type="submit"></p>
+      </form>
+    </form>
+</div>
+
+
+
+{% endblock body %}

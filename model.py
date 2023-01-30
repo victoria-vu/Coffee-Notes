@@ -17,7 +17,7 @@ class User(db.Model):
     fname = db.Column(db.String)
     lname = db.Column(db.String)
 
-    ratings = db.relationship("Rating", back_populates="user")
+    reviews = db.relationship("Review", back_populates="user")
     bookmark = db.relationship("Bookmark", back_populates="user")
 
     def __repr__(self):
@@ -40,29 +40,28 @@ class Cafe(db.Model):
     phone = db.Column(db.String(20))
     img_url = db.Column(db.String)
 
-    ratings = db.relationship("Rating", back_populates="cafe")
+    reviews = db.relationship("Review", back_populates="cafe")
     bookmark = db.relationship("Bookmark", back_populates="cafe")
 
     def __repr__(self):
         return f"<Cafe cafe_id={self.cafe_id} name={self.name}>"
 
     
-class Rating(db.Model):
-    """A cafe rating."""
+class Review(db.Model):
+    """A cafe review."""
 
-    __tablename__ = "ratings"
+    __tablename__ = "reviews"
 
-    rating_id = db.Column(db.Integer, autoincrement=True, primary_key=True)
-    score = db.Column(db.Integer)
-    date = db.Column(db.Date)
+    review_id = db.Column(db.Integer, autoincrement=True, primary_key=True)
+    review = db.Column(db.Text)
     user_id = db.Column(db.Integer, db.ForeignKey("users.user_id"))
     cafe_id = db.Column(db.Integer, db.ForeignKey("cafes.cafe_id"))
 
-    user = db.relationship("User", back_populates="ratings")
-    cafe = db.relationship("Cafe", back_populates="ratings")
+    user = db.relationship("User", back_populates="reviews")
+    cafe = db.relationship("Cafe", back_populates="reviews")
 
     def __repr__(self):
-        return f"<Rating rating_id={self.rating_id} score={self.score}>"
+        return f"<Review review_id={self.review_id}>"
 
 
 class Bookmark(db.Model):

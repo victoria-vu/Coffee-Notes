@@ -93,11 +93,20 @@ def dashboard():
 
 @app.route("/profile/<user_id>")
 def profile(user_id):
-    """Shows a user's profile."""
+    """Show a user's profile."""
 
     user = crud.get_user_by_id(user_id)
 
     return render_template("profile.html", user=user)
+
+
+@app.route("/bookmarks/<user_id>")
+def bookmarks(user_id):
+    """Show a user's bookmarks."""
+
+    user = crud.get_user_by_id(user_id)
+
+    return render_template("bookmarks.html", user=user)
 
 
 @app.route("/cafe/search", methods=["POST"])
@@ -105,12 +114,46 @@ def search_cafes():
     """Search for cafes."""
 
     cafe = request.form.get("location")
-    city = crud.get_cafe_by_city(cafe)
+    cafes = crud.get_cafe(cafe, cafe, cafe)
 
-    if city:
-        return render_template("cafe_results.html", cafe=city)
+    if cafes:
+        return render_template("cafe_results.html", cafes=cafes)
     else:
-        flash("Sorry, we can't find a cafe with those keywords.")
+        flash("Sorry, we can't find a cafe with those keywords. Try again")
+        return redirect("/dashboard")
+
+
+@app.route("/cafe/<cafe_id>")
+def show_cafe(cafe_id):
+    """Show details of a particular cafe."""
+
+    cafe = crud.get_cafe_by_id(cafe_id)
+
+    return render_template("cafe_details.html", cafe=cafe)
+
+
+@app.route("/cafe/<cafe_id>/reviews", methods=["POST"])
+def create_reviews(cafe_id):
+    """Create a new rating for a cafe."""
+
+    user_id = session.get("user_userid")
+    user_review = request.form.get("review")
+
+    if user_id is None:
+        flash("You must log in to review a cafe.")
+    elif not user_review:
+        flash("This field cannot be blank.")
+    else:
+        user = crud.get_user_by_id(session["user_userid"])
+        cafe = crud.get_cafe_by_id(cafe_id)
+
+        review = crud.create_review(user, cafe, str(user_review))
+        db.session.add(review)
+        db.session.commit()
+
+        flash("You have successfully submitted a review.")
+
+    return redirect(f"/cafe/{cafe_id}")
 
 
 @app.route("/logout")

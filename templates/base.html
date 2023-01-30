@@ -15,10 +15,10 @@
               <a class="nav-link" href="/">Home</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="/login" id="loginbutton">Log In</a>
+              <a class="nav-link" href="/login">Log In</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="/signup" id="signupbutton">Sign Up</a>
+              <a class="nav-link" href="/signup">Sign Up</a>
             </li>
           </ul>
         {% endif %}
@@ -29,10 +29,13 @@
             <a class="nav-link" href="/">Home</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="/profile/{{ session['user_userid']}}">My Profile</a>
+            <a class="nav-link" href="/profile/{{ session['user_userid'] }}">My Profile</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="/logout" id="signupbutton">Sign Out</a>
+            <a class="nav-link" href="/bookmarks/{{ session['user_userid'] }}">My Bookmarks</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/logout">Sign Out</a>
           </li>
         </ul>
         {% endif %}
