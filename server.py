@@ -1,6 +1,6 @@
 """Cafe Finder Application Flask server."""
 
-from flask import Flask, render_template, request, flash, session, redirect
+from flask import (Flask, render_template, request, flash, session, redirect, jsonify)
 from model import connect_to_db, db
 import crud
 from jinja2 import StrictUndefined
@@ -111,27 +111,6 @@ def bookmarks():
     return render_template("bookmarks.html", user=user)
 
 
-@app.route("/cafe/<cafe_id>/bookmark", methods=["POST"])
-def bookmark_cafe(cafe_id):
-    """Bookmark a cafe."""
-
-    user_id = session.get("user_userid")
-
-    if user_id is None:
-        flash("You must log in to bookmark this cafe.")
-    else:
-        cafe_id = crud.get_cafe_by_id(cafe_id)
-
-        bookmark = crud.create_review(user_id, cafe_id)
-        db.session.add(bookmark)
-        db.session.commit()
-
-        flash("You have successfully submitted a review.")
-
-    return redirect(f"/cafe/{cafe_id}")
-
-
-
 @app.route("/cafe/search", methods=["POST"])
 def search_cafes():
     """Search for cafes."""
@@ -155,11 +134,11 @@ def show_cafe(cafe_id):
     return render_template("cafe_details.html", cafe=cafe)
 
 
-@app.route("/cafe/<cafe_id>/reviews", methods=["POST"])
+@app.route("/cafe/<cafe_id>/review", methods=["POST"])
 def create_reviews(cafe_id):
     """Create a new rating for a cafe."""
 
-    user_id = session.get("user_userid")
+    user_id = session["user_userid"]
     user_review = request.form.get("review")
 
     if user_id is None:
@@ -167,7 +146,7 @@ def create_reviews(cafe_id):
     elif not user_review:
         flash("This field cannot be blank.")
     else:
-        user = crud.get_user_by_id(session["user_userid"])
+        user = crud.get_user_by_id(user_id)
         cafe = crud.get_cafe_by_id(cafe_id)
 
         review = crud.create_review(user, cafe, str(user_review))
@@ -179,14 +158,36 @@ def create_reviews(cafe_id):
     return redirect(f"/cafe/{cafe_id}")
 
 
+@app.route("/cafe/<cafe_id>/bookmark", methods=["POST"])
+def bookmark_cafe(cafe_id):
+    """Add cafe to user's bookmarks."""
+ 
+    user_id = session["user_userid"]
+    bookmark = crud.get_bookmark_by_userandcafeid(user_id, cafe_id)
+    print(bookmark)
+
+    if user_id is None:
+        flash("You must log in to bookmark this cafe.")
+    elif bookmark:
+        return "You already bookmarked this cafe!"
+    else:
+        user = crud.get_user_by_id(user_id)
+        cafe = crud.get_cafe_by_id(cafe_id)
+
+        bookmark = crud.create_bookmark(user, cafe)
+        db.session.add(bookmark)
+        db.session.commit()
+
+        return "You have successfully bookmarked this cafe." 
+    
+
 @app.route("/logout")
 def logout():
     """Logs a user out."""
 
     if "user_userid" in session:
-        session.pop("user_email", None)
-        session.pop("user_fname", None)
-        session.pop("user_userid", None)
+        session.clear()
+        
     return redirect("/")
 
 

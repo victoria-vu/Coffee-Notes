@@ -77,7 +77,7 @@ class Bookmark(db.Model):
     cafe = db.relationship("Cafe", back_populates="bookmark")
 
     def __repr__(self):
-        return f"<Bookmark bookmark_id={self.bookmark_id}"
+        return f"<Bookmark bookmark_id={self.bookmark_id}>"
     
 
 def connect_to_db(flask_app, db_uri="postgresql:///cafes", echo=True):

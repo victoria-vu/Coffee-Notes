@@ -72,10 +72,11 @@ def get_cafe(name, city, zip_code):
                             (Cafe.zip_code == zip_code)).all()
 
 
-def get_bookmark_by_id(bookmark_id):
-    """Return a bookmark by bookmark id."""
+def get_cafes():
+    """Returns all cafes."""
 
-    return Bookmark.query.get(bookmark_id)
+    return Cafe.query.all()
+
 
 def get_review_by_id(review_id):
     """Return a review by review id."""
@@ -83,16 +84,22 @@ def get_review_by_id(review_id):
     return Review.query.get(review_id)
 
 
-def get_cafes():
-    """Returns all cafes."""
+def get_bookmark_by_id(bookmark_id):
+    """Return a bookmark by bookmark id."""
 
-    return Cafe.query.all()
+    return Bookmark.query.get(bookmark_id)
 
 
-def get_user_bookmarks(user_id):
-    """Returns all of a user's bookmarks."""
+def get_bookmark_by_userandcafeid(user_id, cafe_id):
+    """Returns a bookmark for a particular cafe under a user."""
 
-    return Bookmark.query.options(db.joinedload("users")).all()
+    return Bookmark.query.filter(Bookmark.user_id == user_id, Bookmark.cafe_id == cafe_id).first()
+
+
+# def get_bookmarks():
+#     """Returns all of a user's bookmarks."""
+
+#     return Bookmark.query.options(db.joinedload("users")).all()
 
 
 if __name__ == '__main__':

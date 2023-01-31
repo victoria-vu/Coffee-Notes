@@ -16,16 +16,20 @@
     <p>{{ cafe.phone }}</p>
 </div>
 
-<div>
-    <form action="/cafe/{{ cafe.cafe_id }}/bookmark", method="POST">
-    <button id="bookmark">Bookmark This Cafe</button>
+
+<section id="bookmark">
+    <form id="bookmark-cafe">
+        <input type="hidden" id="cafe-id" value="{{ cafe.cafe_id }}">
+        <button type="submit" id="bookmark-button">Bookmark This Cafe</button>
     </form>
-</div>
+    <span id="bookmark-status"></span>
+</section>
+
 
 <br>
 
 <div>
-    <form action="/cafe/{{ cafe.cafe_id }}/reviews" method="POST">
+    <form action="/cafe/{{ cafe.cafe_id }}/review" method="POST">
         <p>
           <label for="review">Write a Review:</label><br>
             <textarea name="review" id="review"></textarea>
@@ -36,5 +40,6 @@
 </div>
 
 
+<script src="/static/js/bookmark.js"></script>
 
 {% endblock body %}
