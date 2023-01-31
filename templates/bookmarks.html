@@ -1,7 +1,23 @@
 {% extends 'base.html' %}
 
+{% block title %}Bookmarked Cafes{% endblock %}
+
+
 {% block body %}
 
-<h1>My Bookmarks</h1>
+    <h1> {{ user.fname }}'s Bookmarks</h1>
+
+    {% for bookmark in bookmarks %}
+        <div>
+            <h3>{{ bookmark.cafe.name }}</h3>
+            <h5>Address:</h5>
+                <p>{{ bookmark.cafe.address}} <br>
+                {{ bookmark.cafe.city }} {{ bookmark.cafe.state }} {{ bookmark.cafe.zip_code}}</p>
+            <h5>Phone Number:</h5> 
+                <p>{{ bookmark.cafe.phone }}<br>
+            <a href="/cafe/{{ bookmark.cafe.cafe_id }}">More Details</a></p>
+        </div>
+        <br>
+    {% endfor %}
 
 {% endblock %}

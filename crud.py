@@ -96,10 +96,10 @@ def get_bookmark_by_userandcafeid(user_id, cafe_id):
     return Bookmark.query.filter(Bookmark.user_id == user_id, Bookmark.cafe_id == cafe_id).first()
 
 
-# def get_bookmarks():
-#     """Returns all of a user's bookmarks."""
+def get_bookmarks_by_userid(user_id):
+    """Returns all of a user's bookmarks."""
 
-#     return Bookmark.query.options(db.joinedload("users")).all()
+    return Bookmark.query.filter(Bookmark.user_id == user_id).all()
 
 
 if __name__ == '__main__':

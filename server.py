@@ -107,8 +107,10 @@ def bookmarks():
 
     logged_in_user = session["user_userid"]
     user = crud.get_user_by_id(logged_in_user)
+    bookmarks = crud.get_bookmarks_by_userid(logged_in_user)
+    print(bookmarks)
 
-    return render_template("bookmarks.html", user=user)
+    return render_template("bookmarks.html", user=user, bookmarks=bookmarks)
 
 
 @app.route("/cafe/search", methods=["POST"])
@@ -187,7 +189,7 @@ def logout():
 
     if "user_userid" in session:
         session.clear()
-        
+
     return redirect("/")
 
 
