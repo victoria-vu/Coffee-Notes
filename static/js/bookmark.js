@@ -1,5 +1,6 @@
 'use strict';
 
+// Bookmark a Cafe 
 const bookmarkButton = document.querySelector('#bookmark-cafe');
 
 bookmarkButton.addEventListener('submit', (evt) => {
@@ -20,10 +21,12 @@ bookmarkButton.addEventListener('submit', (evt) => {
 
         .then((response) => response.text())
         .then((bookmarkStatus) => {
+            document.querySelector('#bookmark-button').innerHTML = 'Bookmarked';
             document.querySelector('#bookmark-status').innerHTML = bookmarkStatus;
             document.querySelector('#bookmark-button').disabled = true;
         })
 });
+
 
 //Changes HTML from "Bookmark This Cafe" to "Bookmarked"
 // bookmarkButton.addEventListener('click', () => {

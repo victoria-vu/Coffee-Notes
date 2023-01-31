@@ -8,7 +8,8 @@
     <h1> {{ user.fname }}'s Bookmarks</h1>
 
     {% for bookmark in bookmarks %}
-        <div>
+    
+        <section id="bookmarkcafe-info">
             <h3>{{ bookmark.cafe.name }}</h3>
             <h5>Address:</h5>
                 <p>{{ bookmark.cafe.address}} <br>
@@ -16,8 +17,18 @@
             <h5>Phone Number:</h5> 
                 <p>{{ bookmark.cafe.phone }}<br>
             <a href="/cafe/{{ bookmark.cafe.cafe_id }}">More Details</a></p>
-        </div>
+        </section>
+
+        <section id="remove-bookmark">
+            <form id="remove-bookmarkcafe">
+                <input type="hidden" id="bookmarkcafe-id" value="{{ bookmark.cafe.cafe_id }}">
+                <button type="submit" id="removebookmark-button">Remove Bookmark</button>
+            </form>
+        </section>
+        <span id="removebookmark-status"></span>
+
         <br>
     {% endfor %}
 
+    <script src="/static/js/removeBookmark.js"></script>
 {% endblock %}

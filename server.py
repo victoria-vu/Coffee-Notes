@@ -108,7 +108,6 @@ def bookmarks():
     logged_in_user = session["user_userid"]
     user = crud.get_user_by_id(logged_in_user)
     bookmarks = crud.get_bookmarks_by_userid(logged_in_user)
-    print(bookmarks)
 
     return render_template("bookmarks.html", user=user, bookmarks=bookmarks)
 
@@ -166,7 +165,6 @@ def bookmark_cafe(cafe_id):
  
     user_id = session["user_userid"]
     bookmark = crud.get_bookmark_by_userandcafeid(user_id, cafe_id)
-    print(bookmark)
 
     if user_id is None:
         flash("You must log in to bookmark this cafe.")
@@ -181,8 +179,18 @@ def bookmark_cafe(cafe_id):
         db.session.commit()
 
         return "You have successfully bookmarked this cafe." 
-    
 
+
+@app.route("/cafe/<cafe_id>/removebookmark", methods=["POST"])
+def remove_bookmark(cafe_id):
+    """Remove cafe from user's bookmarks."""
+
+    user_id = session["user_userid"]
+    crud.remove_bookmark_from_db(user_id, cafe_id)
+
+    return "You have successfully removed a bookmark."
+
+    
 @app.route("/logout")
 def logout():
     """Logs a user out."""

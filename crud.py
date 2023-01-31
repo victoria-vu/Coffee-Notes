@@ -102,6 +102,15 @@ def get_bookmarks_by_userid(user_id):
     return Bookmark.query.filter(Bookmark.user_id == user_id).all()
 
 
+# FUNCTIONS THAT DELETE DATA (DELETE)
+def remove_bookmark_from_db(user_id, cafe_id):
+    """Removes a bookmark from the datebase."""
+
+    bookmark = get_bookmark_by_userandcafeid(user_id, cafe_id)
+    db.session.delete(bookmark)
+    db.session.commit()
+
+
 if __name__ == '__main__':
     from server import app
     connect_to_db(app)
