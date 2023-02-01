@@ -130,10 +130,16 @@ def search_cafes():
 def show_cafe(cafe_id):
     """Show details of a particular cafe."""
 
+    logged_in_user = session["user_id"]
     cafe = crud.get_cafe_by_id(cafe_id)
     reviews = crud.get_all_cafe_reviews(cafe_id)
+    bookmarked = crud.get_bookmark_by_userandcafeid(logged_in_user, cafe_id)
 
-    return render_template("cafe_details.html", cafe=cafe, reviews=reviews)
+    # If a user already bookmarked the cafe:
+    if bookmarked:
+        return render_template("cafe_details.html", cafe=cafe, reviews=reviews, bookmarked=bookmarked)
+
+    return render_template("cafe_details.html", cafe=cafe, reviews=reviews, bookmarked=bookmarked)
 
 
 @app.route("/cafe/<cafe_id>/review", methods=["POST"])
@@ -170,7 +176,9 @@ def bookmark_cafe(cafe_id):
     if user_id is None:
         flash("You must log in to bookmark this cafe.")
     elif bookmark:
-        return "You already bookmarked this cafe!"
+        crud.remove_bookmark_from_db(user_id, cafe_id)
+        # return "You already bookmarked this cafe!"
+        return "You have successfully removed a bookmark."
     else:
         user = crud.get_user_by_id(user_id)
         cafe = crud.get_cafe_by_id(cafe_id)

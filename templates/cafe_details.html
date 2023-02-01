@@ -17,6 +17,7 @@
 </div>
 
 
+{% if not bookmarked %}
 <section id="bookmark">
     <form id="bookmark-cafe">
         <input type="hidden" id="cafe-id" value="{{ cafe.cafe_id }}">
@@ -24,6 +25,17 @@
     </form>
     <span id="bookmark-status"></span>
 </section>
+{% endif %}
+
+{% if bookmarked %}
+<section id="bookmark">
+    <form id="bookmark-cafe">
+        <input type="hidden" id="cafe-id" value="{{ bookmarked.cafe.cafe_id }}">
+        <button type="submit" id="bookmark-button">Remove Bookmark</button>
+    </form>
+    <span id="bookmark-status"></span>
+</section>
+{% endif %}
 
 
 <br>
