@@ -71,7 +71,7 @@ def signup():
     lname = request.form.get("lname")
 
     user = crud.get_user_by_email(email)
-    
+
     if user is not None:
         flash("An account already exists with that email. Please try another one.")
         return redirect("/signup")
