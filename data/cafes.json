@@ -411,5 +411,3046 @@
         "phone": "",
         "display_phone": "",
         "distance": 2430.9175173796834
+    },
+    {
+        "id": "Mia81gcJcKvamwpm-3uYkg",
+        "alias": "damo-los-angeles",
+        "name": "DAMO",
+        "image_url": "https://s3-media3.fl.yelpcdn.com/bphoto/trRbkvy1IzboN521cLdJtg/o.jpg",
+        "is_closed": false,
+        "url": "https://www.yelp.com/biz/damo-los-angeles?adjust_creative=L2po3o8W8GU-mSsLEFwWAA&utm_campaign=yelp_api_v3&utm_medium=api_v3_business_search&utm_source=L2po3o8W8GU-mSsLEFwWAA",
+        "review_count": 30,
+        "categories": [
+            {
+                "alias": "coffee",
+                "title": "Coffee & Tea"
+            },
+            {
+                "alias": "desserts",
+                "title": "Desserts"
+            }
+        ],
+        "rating": 5.0,
+        "coordinates": {
+            "latitude": 34.057296673775106,
+            "longitude": -118.3071684
+        },
+        "transactions": [],
+        "price": "$$",
+        "location": {
+            "address1": "3510 W 8th St",
+            "address2": null,
+            "address3": "",
+            "city": "Los Angeles",
+            "zip_code": "90005",
+            "country": "US",
+            "state": "CA",
+            "display_address": [
+                "3510 W 8th St",
+                "Los Angeles, CA 90005"
+            ]
+        },
+        "phone": "+12132771701",
+        "display_phone": "(213) 277-1701",
+        "distance": 1393.5363332133666
+    },
+    {
+        "id": "gnRQ4d8RdMpr0wbhVBjEng",
+        "alias": "coffee-mco-los-angeles",
+        "name": "Coffee MCO",
+        "image_url": "https://s3-media2.fl.yelpcdn.com/bphoto/w_MuU2gYysZXSoFb14mtJA/o.jpg",
+        "is_closed": false,
+        "url": "https://www.yelp.com/biz/coffee-mco-los-angeles?adjust_creative=L2po3o8W8GU-mSsLEFwWAA&utm_campaign=yelp_api_v3&utm_medium=api_v3_business_search&utm_source=L2po3o8W8GU-mSsLEFwWAA",
+        "review_count": 544,
+        "categories": [
+            {
+                "alias": "coffee",
+                "title": "Coffee & Tea"
+            },
+            {
+                "alias": "breakfast_brunch",
+                "title": "Breakfast & Brunch"
+            },
+            {
+                "alias": "beerbar",
+                "title": "Beer Bar"
+            }
+        ],
+        "rating": 4.5,
+        "coordinates": {
+            "latitude": 34.05218,
+            "longitude": -118.28737
+        },
+        "transactions": [
+            "delivery"
+        ],
+        "price": "$",
+        "location": {
+            "address1": "2580 W Olympic Blvd",
+            "address2": null,
+            "address3": "",
+            "city": "Los Angeles",
+            "zip_code": "90006",
+            "country": "US",
+            "state": "CA",
+            "display_address": [
+                "2580 W Olympic Blvd",
+                "Los Angeles, CA 90006"
+            ]
+        },
+        "phone": "+12136747381",
+        "display_phone": "(213) 674-7381",
+        "distance": 3290.917540762603
+    },
+    {
+        "id": "wtHwadHuKmCrJhBI6OGUew",
+        "alias": "coffee-connection-los-angeles-2",
+        "name": "Coffee Connection",
+        "image_url": "https://s3-media3.fl.yelpcdn.com/bphoto/Cp-n56ui3_O2e6OblcbTIw/o.jpg",
+        "is_closed": false,
+        "url": "https://www.yelp.com/biz/coffee-connection-los-angeles-2?adjust_creative=L2po3o8W8GU-mSsLEFwWAA&utm_campaign=yelp_api_v3&utm_medium=api_v3_business_search&utm_source=L2po3o8W8GU-mSsLEFwWAA",
+        "review_count": 744,
+        "categories": [
+            {
+                "alias": "coffee",
+                "title": "Coffee & Tea"
+            }
+        ],
+        "rating": 4.5,
+        "coordinates": {
+            "latitude": 34.0030848,
+            "longitude": -118.4327631
+        },
+        "transactions": [
+            "delivery"
+        ],
+        "price": "$$",
+        "location": {
+            "address1": "3838 S Centinela Ave",
+            "address2": "",
+            "address3": "",
+            "city": "Los Angeles",
+            "zip_code": "90066",
+            "country": "US",
+            "state": "CA",
+            "display_address": [
+                "3838 S Centinela Ave",
+                "Los Angeles, CA 90066"
+            ]
+        },
+        "phone": "+13103911380",
+        "display_phone": "(310) 391-1380",
+        "distance": 12151.833668308984
+    },
+    {
+        "id": "pviIh7uLtBVzOmWAmbfyxw",
+        "alias": "awesome-coffee-los-angeles-2",
+        "name": "Awesome Coffee",
+        "image_url": "https://s3-media3.fl.yelpcdn.com/bphoto/hhLLKHOUdVMp4YfFJHezzg/o.jpg",
+        "is_closed": false,
+        "url": "https://www.yelp.com/biz/awesome-coffee-los-angeles-2?adjust_creative=L2po3o8W8GU-mSsLEFwWAA&utm_campaign=yelp_api_v3&utm_medium=api_v3_business_search&utm_source=L2po3o8W8GU-mSsLEFwWAA",
+        "review_count": 742,
+        "categories": [
+            {
+                "alias": "icecream",
+                "title": "Ice Cream & Frozen Yogurt"
+            },
+            {
+                "alias": "coffee",
+                "title": "Coffee & Tea"
+            },
+            {
+                "alias": "cafes",
+                "title": "Cafes"
+            }
+        ],
+        "rating": 4.0,
+        "coordinates": {
+            "latitude": 34.0618732447896,
+            "longitude": -118.313547396959
+        },
+        "transactions": [
+            "pickup",
+            "delivery"
+        ],
+        "price": "$",
+        "location": {
+            "address1": "3959 Wilshire Blvd",
+            "address2": "Ste A21",
+            "address3": "",
+            "city": "Los Angeles",
+            "zip_code": "90010",
+            "country": "US",
+            "state": "CA",
+            "display_address": [
+                "3959 Wilshire Blvd",
+                "Ste A21",
+                "Los Angeles, CA 90010"
+            ]
+        },
+        "phone": "+12136747558",
+        "display_phone": "(213) 674-7558",
+        "distance": 722.2666884295038
+    },
+    {
+        "id": "E2TRhsk-edYNwlgwW7YI0Q",
+        "alias": "kopioso-coffee-los-angeles",
+        "name": "Kopioso Coffee",
+        "image_url": "https://s3-media1.fl.yelpcdn.com/bphoto/I0BV2MUz6NFK0Lg9-diOHg/o.jpg",
+        "is_closed": false,
+        "url": "https://www.yelp.com/biz/kopioso-coffee-los-angeles?adjust_creative=L2po3o8W8GU-mSsLEFwWAA&utm_campaign=yelp_api_v3&utm_medium=api_v3_business_search&utm_source=L2po3o8W8GU-mSsLEFwWAA",
+        "review_count": 16,
+        "categories": [
+            {
+                "alias": "coffee",
+                "title": "Coffee & Tea"
+            }
+        ],
+        "rating": 5.0,
+        "coordinates": {
+            "latitude": 34.0625,
+            "longitude": -118.343369
+        },
+        "transactions": [],
+        "location": {
+            "address1": "5209 Wilshire Blvd",
+            "address2": null,
+            "address3": "",
+            "city": "Los Angeles",
+            "zip_code": "90036",
+            "country": "US",
+            "state": "CA",
+            "display_address": [
+                "5209 Wilshire Blvd",
+                "Los Angeles, CA 90036"
+            ]
+        },
+        "phone": "",
+        "display_phone": "",
+        "distance": 2032.0471161332925
+    },
+    {
+        "id": "ZxFQnp-PidPRTf23Ss_ecA",
+        "alias": "alchemist-coffee-project-los-angeles-2",
+        "name": "Alchemist Coffee Project",
+        "image_url": "https://s3-media1.fl.yelpcdn.com/bphoto/xoJmbgm7HyvuQosT9nEo5w/o.jpg",
+        "is_closed": false,
+        "url": "https://www.yelp.com/biz/alchemist-coffee-project-los-angeles-2?adjust_creative=L2po3o8W8GU-mSsLEFwWAA&utm_campaign=yelp_api_v3&utm_medium=api_v3_business_search&utm_source=L2po3o8W8GU-mSsLEFwWAA",
+        "review_count": 1275,
+        "categories": [
+            {
+                "alias": "coffee",
+                "title": "Coffee & Tea"
+            },
+            {
+                "alias": "bakeries",
+                "title": "Bakeries"
+            },
+            {
+                "alias": "breakfast_brunch",
+                "title": "Breakfast & Brunch"
+            }
+        ],
+        "rating": 4.5,
+        "coordinates": {
+            "latitude": 34.06011,
+            "longitude": -118.29144
+        },
+        "transactions": [
+            "pickup",
+            "delivery"
+        ],
+        "price": "$",
+        "location": {
+            "address1": "698 S Vermont Ave",
+            "address2": "Ste 103",
+            "address3": "",
+            "city": "Los Angeles",
+            "zip_code": "90005",
+            "country": "US",
+            "state": "CA",
+            "display_address": [
+                "698 S Vermont Ave",
+                "Ste 103",
+                "Los Angeles, CA 90005"
+            ]
+        },
+        "phone": "+12133888767",
+        "display_phone": "(213) 388-8767",
+        "distance": 2745.5511138876927
+    },
+    {
+        "id": "J5gOynMH4A-Ho4seepYDpw",
+        "alias": "la-la-land-kind-cafe-los-angeles",
+        "name": "La La Land Kind Cafe",
+        "image_url": "https://s3-media2.fl.yelpcdn.com/bphoto/8ytWyywCKjRhcztnDbXLcQ/o.jpg",
+        "is_closed": false,
+        "url": "https://www.yelp.com/biz/la-la-land-kind-cafe-los-angeles?adjust_creative=L2po3o8W8GU-mSsLEFwWAA&utm_campaign=yelp_api_v3&utm_medium=api_v3_business_search&utm_source=L2po3o8W8GU-mSsLEFwWAA",
+        "review_count": 28,
+        "categories": [
+            {
+                "alias": "coffee",
+                "title": "Coffee & Tea"
+            },
+            {
+                "alias": "cafes",
+                "title": "Cafes"
+            }
+        ],
+        "rating": 4.5,
+        "coordinates": {
+            "latitude": 34.07207561066681,
+            "longitude": -118.3564743
+        },
+        "transactions": [],
+        "location": {
+            "address1": "189 The Grove Dr",
+            "address2": "Ste G1C",
+            "address3": "",
+            "city": "Los Angeles",
+            "zip_code": "90036",
+            "country": "US",
+            "state": "CA",
+            "display_address": [
+                "189 The Grove Dr",
+                "Ste G1C",
+                "Los Angeles, CA 90036"
+            ]
+        },
+        "phone": "+13238799132",
+        "display_phone": "(323) 879-9132",
+        "distance": 3436.413928230653
+    },
+    {
+        "id": "KWuSIrgx9fx2m8JuqknZPA",
+        "alias": "3thyme-coffee-and-herbs-los-angeles-2",
+        "name": "3THYME Coffee & Herbs",
+        "image_url": "https://s3-media2.fl.yelpcdn.com/bphoto/tO7wxh9k43OSi46l0dq77g/o.jpg",
+        "is_closed": false,
+        "url": "https://www.yelp.com/biz/3thyme-coffee-and-herbs-los-angeles-2?adjust_creative=L2po3o8W8GU-mSsLEFwWAA&utm_campaign=yelp_api_v3&utm_medium=api_v3_business_search&utm_source=L2po3o8W8GU-mSsLEFwWAA",
+        "review_count": 98,
+        "categories": [
+            {
+                "alias": "coffee",
+                "title": "Coffee & Tea"
+            }
+        ],
+        "rating": 4.5,
+        "coordinates": {
+            "latitude": 34.06322,
+            "longitude": -118.30393
+        },
+        "transactions": [],
+        "price": "$$",
+        "location": {
+            "address1": "600 S Harvard Blvd",
+            "address2": "Ste 100",
+            "address3": "",
+            "city": "Los Angeles",
+            "zip_code": "90005",
+            "country": "US",
+            "state": "CA",
+            "display_address": [
+                "600 S Harvard Blvd",
+                "Ste 100",
+                "Los Angeles, CA 90005"
+            ]
+        },
+        "phone": "+12135683435",
+        "display_phone": "(213) 568-3435",
+        "distance": 1628.4403793686552
+    },
+    {
+        "id": "pWzU4ikhUFnBC6rg9iq8_w",
+        "alias": "alibi-coffee-los-angeles-5",
+        "name": "Alibi Coffee",
+        "image_url": "https://s3-media4.fl.yelpcdn.com/bphoto/zatNnq61hv8U8aNWXOYojQ/o.jpg",
+        "is_closed": false,
+        "url": "https://www.yelp.com/biz/alibi-coffee-los-angeles-5?adjust_creative=L2po3o8W8GU-mSsLEFwWAA&utm_campaign=yelp_api_v3&utm_medium=api_v3_business_search&utm_source=L2po3o8W8GU-mSsLEFwWAA",
+        "review_count": 201,
+        "categories": [
+            {
+                "alias": "coffee",
+                "title": "Coffee & Tea"
+            }
+        ],
+        "rating": 4.5,
+        "coordinates": {
+            "latitude": 34.08325,
+            "longitude": -118.32566
+        },
+        "transactions": [
+            "delivery",
+            "pickup"
+        ],
+        "location": {
+            "address1": "5770 Melrose Ave",
+            "address2": "",
+            "address3": "",
+            "city": "Los Angeles",
+            "zip_code": "90038",
+            "country": "US",
+            "state": "CA",
+            "display_address": [
+                "5770 Melrose Ave",
+                "Los Angeles, CA 90038"
+            ]
+        },
+        "phone": "+13238484523",
+        "display_phone": "(323) 848-4523",
+        "distance": 2433.766398288948
+    },
+    {
+        "id": "3sBu25RsAszfk9-50tJoIQ",
+        "alias": "neighborhood-los-angeles-2",
+        "name": "Neighborhood",
+        "image_url": "https://s3-media2.fl.yelpcdn.com/bphoto/jbAJTyk6U-v7dMXbJxRTgQ/o.jpg",
+        "is_closed": false,
+        "url": "https://www.yelp.com/biz/neighborhood-los-angeles-2?adjust_creative=L2po3o8W8GU-mSsLEFwWAA&utm_campaign=yelp_api_v3&utm_medium=api_v3_business_search&utm_source=L2po3o8W8GU-mSsLEFwWAA",
+        "review_count": 129,
+        "categories": [
+            {
+                "alias": "coffee",
+                "title": "Coffee & Tea"
+            },
+            {
+                "alias": "icecream",
+                "title": "Ice Cream & Frozen Yogurt"
+            },
+            {
+                "alias": "juicebars",
+                "title": "Juice Bars & Smoothies"
+            }
+        ],
+        "rating": 4.5,
+        "coordinates": {
+            "latitude": 34.07258233,
+            "longitude": -118.344299
+        },
+        "transactions": [
+            "delivery"
+        ],
+        "location": {
+            "address1": "133 S La Brea Ave",
+            "address2": null,
+            "address3": "",
+            "city": "Los Angeles",
+            "zip_code": "90036",
+            "country": "US",
+            "state": "CA",
+            "display_address": [
+                "133 S La Brea Ave",
+                "Los Angeles, CA 90036"
+            ]
+        },
+        "phone": "+13234334152",
+        "display_phone": "(323) 433-4152",
+        "distance": 2433.029390612045
+    },
+    {
+        "id": "tblyNXdBnW2oDUNUseEsOA",
+        "alias": "the-coffee-movement-san-francisco-4",
+        "name": "The coffee movement",
+        "image_url": "https://s3-media1.fl.yelpcdn.com/bphoto/etgl2rj_5OqNbEIf-rSoBQ/o.jpg",
+        "is_closed": false,
+        "url": "https://www.yelp.com/biz/the-coffee-movement-san-francisco-4?adjust_creative=L2po3o8W8GU-mSsLEFwWAA&utm_campaign=yelp_api_v3&utm_medium=api_v3_business_search&utm_source=L2po3o8W8GU-mSsLEFwWAA",
+        "review_count": 39,
+        "categories": [
+            {
+                "alias": "coffee",
+                "title": "Coffee & Tea"
+            }
+        ],
+        "rating": 5.0,
+        "coordinates": {
+            "latitude": 37.776475,
+            "longitude": -122.477736
+        },
+        "transactions": [],
+        "location": {
+            "address1": "1737 Balboa",
+            "address2": null,
+            "address3": "",
+            "city": "San Francisco",
+            "zip_code": "94121",
+            "country": "US",
+            "state": "CA",
+            "display_address": [
+                "1737 Balboa",
+                "San Francisco, CA 94121"
+            ]
+        },
+        "phone": "",
+        "display_phone": "",
+        "distance": 4028.0216516700816
+    },
+    {
+        "id": "lL-3T2fZIP_oCYC-uc074w",
+        "alias": "flywheel-coffee-roasters-san-francisco",
+        "name": "Flywheel Coffee Roasters",
+        "image_url": "https://s3-media2.fl.yelpcdn.com/bphoto/hNFgdE_XYbZdH_ZcesWurg/o.jpg",
+        "is_closed": false,
+        "url": "https://www.yelp.com/biz/flywheel-coffee-roasters-san-francisco?adjust_creative=L2po3o8W8GU-mSsLEFwWAA&utm_campaign=yelp_api_v3&utm_medium=api_v3_business_search&utm_source=L2po3o8W8GU-mSsLEFwWAA",
+        "review_count": 566,
+        "categories": [
+            {
+                "alias": "coffee",
+                "title": "Coffee & Tea"
+            },
+            {
+                "alias": "coffeeroasteries",
+                "title": "Coffee Roasteries"
+            }
+        ],
+        "rating": 4.0,
+        "coordinates": {
+            "latitude": 37.769681598837636,
+            "longitude": -122.45350500151754
+        },
+        "transactions": [
+            "delivery"
+        ],
+        "price": "$$",
+        "location": {
+            "address1": "672 Stanyan St",
+            "address2": "",
+            "address3": "",
+            "city": "San Francisco",
+            "zip_code": "94117",
+            "country": "US",
+            "state": "CA",
+            "display_address": [
+                "672 Stanyan St",
+                "San Francisco, CA 94117"
+            ]
+        },
+        "phone": "+14156824023",
+        "display_phone": "(415) 682-4023",
+        "distance": 1789.386184315149
+    },
+    {
+        "id": "DaOQgNk4LjN2gbvYrLQGvA",
+        "alias": "rise-and-grind-coffee-and-tea-san-francisco-6",
+        "name": "Rise & Grind Coffee and Tea",
+        "image_url": "https://s3-media3.fl.yelpcdn.com/bphoto/P3nSiVthgTWO4zZJjMsdkg/o.jpg",
+        "is_closed": false,
+        "url": "https://www.yelp.com/biz/rise-and-grind-coffee-and-tea-san-francisco-6?adjust_creative=L2po3o8W8GU-mSsLEFwWAA&utm_campaign=yelp_api_v3&utm_medium=api_v3_business_search&utm_source=L2po3o8W8GU-mSsLEFwWAA",
+        "review_count": 387,
+        "categories": [
+            {
+                "alias": "coffee",
+                "title": "Coffee & Tea"
+            }
+        ],
+        "rating": 4.5,
+        "coordinates": {
+            "latitude": 37.7737156,
+            "longitude": -122.4660674
+        },
+        "transactions": [
+            "pickup",
+            "delivery"
+        ],
+        "price": "$$",
+        "location": {
+            "address1": "785 8th Ave",
+            "address2": null,
+            "address3": "",
+            "city": "San Francisco",
+            "zip_code": "94118",
+            "country": "US",
+            "state": "CA",
+            "display_address": [
+                "785 8th Ave",
+                "San Francisco, CA 94118"
+            ]
+        },
+        "phone": "+14157801579",
+        "display_phone": "(415) 780-1579",
+        "distance": 2974.448388088878
+    },
+    {
+        "id": "-NbDKVqG170J19MqSQ5q_A",
+        "alias": "the-mill-san-francisco",
+        "name": "The Mill",
+        "image_url": "https://s3-media2.fl.yelpcdn.com/bphoto/6786qcvbe2xBfBtoCQzm5g/o.jpg",
+        "is_closed": false,
+        "url": "https://www.yelp.com/biz/the-mill-san-francisco?adjust_creative=L2po3o8W8GU-mSsLEFwWAA&utm_campaign=yelp_api_v3&utm_medium=api_v3_business_search&utm_source=L2po3o8W8GU-mSsLEFwWAA",
+        "review_count": 1324,
+        "categories": [
+            {
+                "alias": "coffee",
+                "title": "Coffee & Tea"
+            },
+            {
+                "alias": "bakeries",
+                "title": "Bakeries"
+            },
+            {
+                "alias": "desserts",
+                "title": "Desserts"
+            }
+        ],
+        "rating": 4.0,
+        "coordinates": {
+            "latitude": 37.7764801534107,
+            "longitude": -122.437750024358
+        },
+        "transactions": [
+            "delivery"
+        ],
+        "price": "$$",
+        "location": {
+            "address1": "736 Divisadero St",
+            "address2": "",
+            "address3": "",
+            "city": "San Francisco",
+            "zip_code": "94117",
+            "country": "US",
+            "state": "CA",
+            "display_address": [
+                "736 Divisadero St",
+                "San Francisco, CA 94117"
+            ]
+        },
+        "phone": "+14153451953",
+        "display_phone": "(415) 345-1953",
+        "distance": 1736.2808394903705
+    },
+    {
+        "id": "aPi1qhP3sF7oOzyjxRLxuA",
+        "alias": "andytown-coffee-roasters-san-francisco-5",
+        "name": "Andytown Coffee Roasters",
+        "image_url": "https://s3-media1.fl.yelpcdn.com/bphoto/b2-axhNJCP5B1UsNg9-bxw/o.jpg",
+        "is_closed": false,
+        "url": "https://www.yelp.com/biz/andytown-coffee-roasters-san-francisco-5?adjust_creative=L2po3o8W8GU-mSsLEFwWAA&utm_campaign=yelp_api_v3&utm_medium=api_v3_business_search&utm_source=L2po3o8W8GU-mSsLEFwWAA",
+        "review_count": 17,
+        "categories": [
+            {
+                "alias": "coffee",
+                "title": "Coffee & Tea"
+            },
+            {
+                "alias": "cafes",
+                "title": "Cafes"
+            },
+            {
+                "alias": "sandwiches",
+                "title": "Sandwiches"
+            }
+        ],
+        "rating": 4.0,
+        "coordinates": {
+            "latitude": 37.77278965114084,
+            "longitude": -122.5107008844781
+        },
+        "transactions": [],
+        "location": {
+            "address1": "800 Great Hwy",
+            "address2": "",
+            "address3": null,
+            "city": "San Francisco",
+            "zip_code": "94121",
+            "country": "US",
+            "state": "CA",
+            "display_address": [
+                "800 Great Hwy",
+                "San Francisco, CA 94121"
+            ]
+        },
+        "phone": "",
+        "display_phone": "",
+        "distance": 6659.508223099677
+    },
+    {
+        "id": "t0MUKjSjCaQeXHTGQlfosg",
+        "alias": "home-coffee-roasters-san-francisco-7",
+        "name": "Home Coffee Roasters",
+        "image_url": "https://s3-media2.fl.yelpcdn.com/bphoto/xSxu5_iPtmB0sAwotBqLqQ/o.jpg",
+        "is_closed": false,
+        "url": "https://www.yelp.com/biz/home-coffee-roasters-san-francisco-7?adjust_creative=L2po3o8W8GU-mSsLEFwWAA&utm_campaign=yelp_api_v3&utm_medium=api_v3_business_search&utm_source=L2po3o8W8GU-mSsLEFwWAA",
+        "review_count": 1375,
+        "categories": [
+            {
+                "alias": "coffee",
+                "title": "Coffee & Tea"
+            }
+        ],
+        "rating": 4.5,
+        "coordinates": {
+            "latitude": 37.7544539255473,
+            "longitude": -122.477013878524
+        },
+        "transactions": [
+            "pickup",
+            "delivery"
+        ],
+        "price": "$$",
+        "location": {
+            "address1": "1222 Noriega St",
+            "address2": null,
+            "address3": null,
+            "city": "San Francisco",
+            "zip_code": "94122",
+            "country": "US",
+            "state": "CA",
+            "display_address": [
+                "1222 Noriega St",
+                "San Francisco, CA 94122"
+            ]
+        },
+        "phone": "+14156835943",
+        "display_phone": "(415) 683-5943",
+        "distance": 3637.584119729665
+    },
+    {
+        "id": "pjtNX6OJ6zRuIN_Pzr8IEw",
+        "alias": "contender-coffee-san-francisco-2",
+        "name": "Contender Coffee",
+        "image_url": "https://s3-media3.fl.yelpcdn.com/bphoto/mnTNa9MvCDu59b1ZA7OLaw/o.jpg",
+        "is_closed": false,
+        "url": "https://www.yelp.com/biz/contender-coffee-san-francisco-2?adjust_creative=L2po3o8W8GU-mSsLEFwWAA&utm_campaign=yelp_api_v3&utm_medium=api_v3_business_search&utm_source=L2po3o8W8GU-mSsLEFwWAA",
+        "review_count": 5,
+        "categories": [
+            {
+                "alias": "juicebars",
+                "title": "Juice Bars & Smoothies"
+            },
+            {
+                "alias": "coffee",
+                "title": "Coffee & Tea"
+            }
+        ],
+        "rating": 4.5,
+        "coordinates": {
+            "latitude": 37.78647059763038,
+            "longitude": -122.4403983
+        },
+        "transactions": [],
+        "location": {
+            "address1": "1823 Divisadero St",
+            "address2": null,
+            "address3": "",
+            "city": "San Francisco",
+            "zip_code": "94115",
+            "country": "US",
+            "state": "CA",
+            "display_address": [
+                "1823 Divisadero St",
+                "San Francisco, CA 94115"
+            ]
+        },
+        "phone": "+14159455654",
+        "display_phone": "(415) 945-5654",
+        "distance": 2864.5142363854447
+    },
+    {
+        "id": "24ym9XJUS2i9JlSFEJeZ2w",
+        "alias": "the-coffee-movement-san-francisco",
+        "name": "The Coffee Movement",
+        "image_url": "https://s3-media3.fl.yelpcdn.com/bphoto/CdAsP8spTc0hqqsarFxaYg/o.jpg",
+        "is_closed": false,
+        "url": "https://www.yelp.com/biz/the-coffee-movement-san-francisco?adjust_creative=L2po3o8W8GU-mSsLEFwWAA&utm_campaign=yelp_api_v3&utm_medium=api_v3_business_search&utm_source=L2po3o8W8GU-mSsLEFwWAA",
+        "review_count": 468,
+        "categories": [
+            {
+                "alias": "coffee",
+                "title": "Coffee & Tea"
+            }
+        ],
+        "rating": 4.5,
+        "coordinates": {
+            "latitude": 37.79483,
+            "longitude": -122.4103
+        },
+        "transactions": [
+            "delivery"
+        ],
+        "price": "$$",
+        "location": {
+            "address1": "1030 Washington St",
+            "address2": null,
+            "address3": "",
+            "city": "San Francisco",
+            "zip_code": "94108",
+            "country": "US",
+            "state": "CA",
+            "display_address": [
+                "1030 Washington St",
+                "San Francisco, CA 94108"
+            ]
+        },
+        "phone": "+14152373375",
+        "display_phone": "(415) 237-3375",
+        "distance": 4423.730078417434
+    },
+    {
+        "id": "nWYMTPZ1ss-tGOWQHmB0gw",
+        "alias": "sightglass-coffee-san-francisco-15",
+        "name": "Sightglass Coffee",
+        "image_url": "https://s3-media4.fl.yelpcdn.com/bphoto/-ucvzKODSzFZDpgpT42YLQ/o.jpg",
+        "is_closed": false,
+        "url": "https://www.yelp.com/biz/sightglass-coffee-san-francisco-15?adjust_creative=L2po3o8W8GU-mSsLEFwWAA&utm_campaign=yelp_api_v3&utm_medium=api_v3_business_search&utm_source=L2po3o8W8GU-mSsLEFwWAA",
+        "review_count": 148,
+        "categories": [
+            {
+                "alias": "coffee",
+                "title": "Coffee & Tea"
+            }
+        ],
+        "rating": 4.0,
+        "coordinates": {
+            "latitude": 37.772323,
+            "longitude": -122.437509
+        },
+        "transactions": [
+            "delivery"
+        ],
+        "price": "$$",
+        "location": {
+            "address1": "301 Divisadero St",
+            "address2": "",
+            "address3": null,
+            "city": "San Francisco",
+            "zip_code": "94117",
+            "country": "US",
+            "state": "CA",
+            "display_address": [
+                "301 Divisadero St",
+                "San Francisco, CA 94117"
+            ]
+        },
+        "phone": "+14155220112",
+        "display_phone": "(415) 522-0112",
+        "distance": 1273.670731453544
+    },
+    {
+        "id": "qZK7-7t-tK_Fc1CfcNZgqg",
+        "alias": "snowbird-coffee-san-francisco",
+        "name": "Snowbird Coffee",
+        "image_url": "https://s3-media3.fl.yelpcdn.com/bphoto/QVEPJ-9IwwGpkeYqx8QOcg/o.jpg",
+        "is_closed": false,
+        "url": "https://www.yelp.com/biz/snowbird-coffee-san-francisco?adjust_creative=L2po3o8W8GU-mSsLEFwWAA&utm_campaign=yelp_api_v3&utm_medium=api_v3_business_search&utm_source=L2po3o8W8GU-mSsLEFwWAA",
+        "review_count": 322,
+        "categories": [
+            {
+                "alias": "coffee",
+                "title": "Coffee & Tea"
+            },
+            {
+                "alias": "coffeeroasteries",
+                "title": "Coffee Roasteries"
+            }
+        ],
+        "rating": 4.0,
+        "coordinates": {
+            "latitude": 37.76308,
+            "longitude": -122.46591
+        },
+        "transactions": [
+            "delivery"
+        ],
+        "price": "$$",
+        "location": {
+            "address1": "1352 A 9th Ave",
+            "address2": "",
+            "address3": "",
+            "city": "San Francisco",
+            "zip_code": "94122",
+            "country": "US",
+            "state": "CA",
+            "display_address": [
+                "1352 A 9th Ave",
+                "San Francisco, CA 94122"
+            ]
+        },
+        "phone": "+14155737740",
+        "display_phone": "(415) 573-7740",
+        "distance": 2607.7488024994955
+    },
+    {
+        "id": "FVzl8rDPiTWEtrNEuCu-Xg",
+        "alias": "storyville-coffee-company-seattle-9",
+        "name": "Storyville Coffee Company",
+        "image_url": "https://s3-media3.fl.yelpcdn.com/bphoto/TecGMknBtZNXGSey2DnFyQ/o.jpg",
+        "is_closed": false,
+        "url": "https://www.yelp.com/biz/storyville-coffee-company-seattle-9?adjust_creative=L2po3o8W8GU-mSsLEFwWAA&utm_campaign=yelp_api_v3&utm_medium=api_v3_business_search&utm_source=L2po3o8W8GU-mSsLEFwWAA",
+        "review_count": 2153,
+        "categories": [
+            {
+                "alias": "coffee",
+                "title": "Coffee & Tea"
+            },
+            {
+                "alias": "bakeries",
+                "title": "Bakeries"
+            }
+        ],
+        "rating": 4.5,
+        "coordinates": {
+            "latitude": 47.60895949363687,
+            "longitude": -122.34043157053927
+        },
+        "transactions": [
+            "delivery",
+            "pickup"
+        ],
+        "price": "$$",
+        "location": {
+            "address1": "94 Pike St",
+            "address2": "Ste 34",
+            "address3": "",
+            "city": "Seattle",
+            "zip_code": "98101",
+            "country": "US",
+            "state": "WA",
+            "display_address": [
+                "94 Pike St",
+                "Ste 34",
+                "Seattle, WA 98101"
+            ]
+        },
+        "phone": "+12067805777",
+        "display_phone": "(206) 780-5777",
+        "distance": 981.6291569198944
+    },
+    {
+        "id": "K-X3rRAVbeMZ0VIDWuPX_Q",
+        "alias": "anchorhead-coffee-seattle",
+        "name": "Anchorhead Coffee",
+        "image_url": "https://s3-media2.fl.yelpcdn.com/bphoto/OITyX_psAil7QsbAw4YeFw/o.jpg",
+        "is_closed": false,
+        "url": "https://www.yelp.com/biz/anchorhead-coffee-seattle?adjust_creative=L2po3o8W8GU-mSsLEFwWAA&utm_campaign=yelp_api_v3&utm_medium=api_v3_business_search&utm_source=L2po3o8W8GU-mSsLEFwWAA",
+        "review_count": 720,
+        "categories": [
+            {
+                "alias": "coffee",
+                "title": "Coffee & Tea"
+            },
+            {
+                "alias": "bakeries",
+                "title": "Bakeries"
+            }
+        ],
+        "rating": 4.5,
+        "coordinates": {
+            "latitude": 47.6133808022766,
+            "longitude": -122.334691182469
+        },
+        "transactions": [
+            "delivery"
+        ],
+        "price": "$$",
+        "location": {
+            "address1": "1600 7th Ave",
+            "address2": "Ste 105",
+            "address3": null,
+            "city": "Seattle",
+            "zip_code": "98101",
+            "country": "US",
+            "state": "WA",
+            "display_address": [
+                "1600 7th Ave",
+                "Ste 105",
+                "Seattle, WA 98101"
+            ]
+        },
+        "phone": "+12062222222",
+        "display_phone": "(206) 222-2222",
+        "distance": 365.3186554767419
+    },
+    {
+        "id": "qKkHnsG-f4-BhdkR6yRrgw",
+        "alias": "moore-coffee-shop-seattle",
+        "name": "Moore Coffee Shop",
+        "image_url": "https://s3-media4.fl.yelpcdn.com/bphoto/FIBeRapGO06Oa0vgjfM_kw/o.jpg",
+        "is_closed": false,
+        "url": "https://www.yelp.com/biz/moore-coffee-shop-seattle?adjust_creative=L2po3o8W8GU-mSsLEFwWAA&utm_campaign=yelp_api_v3&utm_medium=api_v3_business_search&utm_source=L2po3o8W8GU-mSsLEFwWAA",
+        "review_count": 1227,
+        "categories": [
+            {
+                "alias": "coffee",
+                "title": "Coffee & Tea"
+            },
+            {
+                "alias": "sandwiches",
+                "title": "Sandwiches"
+            },
+            {
+                "alias": "waffles",
+                "title": "Waffles"
+            }
+        ],
+        "rating": 4.5,
+        "coordinates": {
+            "latitude": 47.61163752302497,
+            "longitude": -122.34122421375298
+        },
+        "transactions": [
+            "delivery"
+        ],
+        "price": "$",
+        "location": {
+            "address1": "1930 2nd Ave",
+            "address2": null,
+            "address3": "",
+            "city": "Seattle",
+            "zip_code": "98101",
+            "country": "US",
+            "state": "WA",
+            "display_address": [
+                "1930 2nd Ave",
+                "Seattle, WA 98101"
+            ]
+        },
+        "phone": "+12068837044",
+        "display_phone": "(206) 883-7044",
+        "distance": 891.141571773813
+    },
+    {
+        "id": "IG3coLN6LzPGp4EKOLCxDA",
+        "alias": "hood-famous-seattle",
+        "name": "Hood Famous",
+        "image_url": "https://s3-media4.fl.yelpcdn.com/bphoto/hovmu0dRX6-dudp9nlIbKg/o.jpg",
+        "is_closed": false,
+        "url": "https://www.yelp.com/biz/hood-famous-seattle?adjust_creative=L2po3o8W8GU-mSsLEFwWAA&utm_campaign=yelp_api_v3&utm_medium=api_v3_business_search&utm_source=L2po3o8W8GU-mSsLEFwWAA",
+        "review_count": 352,
+        "categories": [
+            {
+                "alias": "cafes",
+                "title": "Cafes"
+            },
+            {
+                "alias": "coffee",
+                "title": "Coffee & Tea"
+            },
+            {
+                "alias": "filipino",
+                "title": "Filipino"
+            }
+        ],
+        "rating": 4.5,
+        "coordinates": {
+            "latitude": 47.5982,
+            "longitude": -122.3274659
+        },
+        "transactions": [
+            "delivery"
+        ],
+        "price": "$$",
+        "location": {
+            "address1": "504 5th Ave S",
+            "address2": "Ste 107A",
+            "address3": null,
+            "city": "Seattle",
+            "zip_code": "98104",
+            "country": "US",
+            "state": "WA",
+            "display_address": [
+                "504 5th Ave S",
+                "Ste 107A",
+                "Seattle, WA 98104"
+            ]
+        },
+        "phone": "+12064857049",
+        "display_phone": "(206) 485-7049",
+        "distance": 1801.6558831445743
+    },
+    {
+        "id": "-FXhjmAhSxu0c7Yj1dS1LA",
+        "alias": "sugar-bakery-and-coffeehouse-seattle-2",
+        "name": "Sugar Bakery & Coffeehouse",
+        "image_url": "https://s3-media2.fl.yelpcdn.com/bphoto/Ls4Ul_RxDB-GrUuXsTqjrg/o.jpg",
+        "is_closed": false,
+        "url": "https://www.yelp.com/biz/sugar-bakery-and-coffeehouse-seattle-2?adjust_creative=L2po3o8W8GU-mSsLEFwWAA&utm_campaign=yelp_api_v3&utm_medium=api_v3_business_search&utm_source=L2po3o8W8GU-mSsLEFwWAA",
+        "review_count": 320,
+        "categories": [
+            {
+                "alias": "coffee",
+                "title": "Coffee & Tea"
+            },
+            {
+                "alias": "bakeries",
+                "title": "Bakeries"
+            },
+            {
+                "alias": "desserts",
+                "title": "Desserts"
+            }
+        ],
+        "rating": 4.5,
+        "coordinates": {
+            "latitude": 47.62343,
+            "longitude": -122.35486
+        },
+        "transactions": [
+            "delivery"
+        ],
+        "price": "$$",
+        "location": {
+            "address1": "110 Republican St",
+            "address2": null,
+            "address3": "",
+            "city": "Seattle",
+            "zip_code": "98109",
+            "country": "US",
+            "state": "WA",
+            "display_address": [
+                "110 Republican St",
+                "Seattle, WA 98109"
+            ]
+        },
+        "phone": "+12066952518",
+        "display_phone": "(206) 695-2518",
+        "distance": 2120.424690313078
+    },
+    {
+        "id": "9HF1TPMd7YD1KaMkMzm4CQ",
+        "alias": "ghost-note-coffee-seattle",
+        "name": "Ghost Note Coffee",
+        "image_url": "https://s3-media1.fl.yelpcdn.com/bphoto/WuMQkowQok_rCFJSOmFAdw/o.jpg",
+        "is_closed": false,
+        "url": "https://www.yelp.com/biz/ghost-note-coffee-seattle?adjust_creative=L2po3o8W8GU-mSsLEFwWAA&utm_campaign=yelp_api_v3&utm_medium=api_v3_business_search&utm_source=L2po3o8W8GU-mSsLEFwWAA",
+        "review_count": 160,
+        "categories": [
+            {
+                "alias": "coffee",
+                "title": "Coffee & Tea"
+            }
+        ],
+        "rating": 4.5,
+        "coordinates": {
+            "latitude": 47.61593,
+            "longitude": -122.32713
+        },
+        "transactions": [
+            "delivery"
+        ],
+        "price": "$$",
+        "location": {
+            "address1": "1623 Bellevue Ave",
+            "address2": "",
+            "address3": null,
+            "city": "Seattle",
+            "zip_code": "98122",
+            "country": "US",
+            "state": "WA",
+            "display_address": [
+                "1623 Bellevue Ave",
+                "Seattle, WA 98122"
+            ]
+        },
+        "phone": "",
+        "display_phone": "",
+        "distance": 282.41595718866057
+    },
+    {
+        "id": "3jrQdJz7YPGOi6KbDLmnTg",
+        "alias": "aroom-coffee-seattle",
+        "name": "Aroom Coffee",
+        "image_url": "https://s3-media3.fl.yelpcdn.com/bphoto/eUozLmT__qy3eTuEvrH9Ww/o.jpg",
+        "is_closed": false,
+        "url": "https://www.yelp.com/biz/aroom-coffee-seattle?adjust_creative=L2po3o8W8GU-mSsLEFwWAA&utm_campaign=yelp_api_v3&utm_medium=api_v3_business_search&utm_source=L2po3o8W8GU-mSsLEFwWAA",
+        "review_count": 115,
+        "categories": [
+            {
+                "alias": "coffee",
+                "title": "Coffee & Tea"
+            },
+            {
+                "alias": "vietnamese",
+                "title": "Vietnamese"
+            },
+            {
+                "alias": "juicebars",
+                "title": "Juice Bars & Smoothies"
+            }
+        ],
+        "rating": 4.5,
+        "coordinates": {
+            "latitude": 47.6532043,
+            "longitude": -122.3433421
+        },
+        "transactions": [],
+        "price": "$",
+        "location": {
+            "address1": "3801 Stone Way N",
+            "address2": "",
+            "address3": null,
+            "city": "Seattle",
+            "zip_code": "98103",
+            "country": "US",
+            "state": "WA",
+            "display_address": [
+                "3801 Stone Way N",
+                "Seattle, WA 98103"
+            ]
+        },
+        "phone": "",
+        "display_phone": "",
+        "distance": 4438.477505049598
+    },
+    {
+        "id": "mkwRHPi79H030WFv4B621Q",
+        "alias": "gemini-room-seattle",
+        "name": "Gemini Room",
+        "image_url": "https://s3-media2.fl.yelpcdn.com/bphoto/Qs6S3-VXISRYl2jynpuLXw/o.jpg",
+        "is_closed": false,
+        "url": "https://www.yelp.com/biz/gemini-room-seattle?adjust_creative=L2po3o8W8GU-mSsLEFwWAA&utm_campaign=yelp_api_v3&utm_medium=api_v3_business_search&utm_source=L2po3o8W8GU-mSsLEFwWAA",
+        "review_count": 10,
+        "categories": [
+            {
+                "alias": "coffee",
+                "title": "Coffee & Tea"
+            }
+        ],
+        "rating": 5.0,
+        "coordinates": {
+            "latitude": 47.61388,
+            "longitude": -122.31785
+        },
+        "transactions": [],
+        "location": {
+            "address1": "1101 E Pike St",
+            "address2": null,
+            "address3": "",
+            "city": "Seattle",
+            "zip_code": "98122",
+            "country": "US",
+            "state": "WA",
+            "display_address": [
+                "1101 E Pike St",
+                "Seattle, WA 98122"
+            ]
+        },
+        "phone": "",
+        "display_phone": "",
+        "distance": 915.1842864306806
+    },
+    {
+        "id": "h1dhP2ZRiMGE2RdpUtputg",
+        "alias": "coffeeholic-house-seattle",
+        "name": "Coffeeholic House",
+        "image_url": "https://s3-media2.fl.yelpcdn.com/bphoto/dVvN0GK6rTkr8lgf96EK2Q/o.jpg",
+        "is_closed": false,
+        "url": "https://www.yelp.com/biz/coffeeholic-house-seattle?adjust_creative=L2po3o8W8GU-mSsLEFwWAA&utm_campaign=yelp_api_v3&utm_medium=api_v3_business_search&utm_source=L2po3o8W8GU-mSsLEFwWAA",
+        "review_count": 631,
+        "categories": [
+            {
+                "alias": "coffee",
+                "title": "Coffee & Tea"
+            }
+        ],
+        "rating": 4.5,
+        "coordinates": {
+            "latitude": 47.55723,
+            "longitude": -122.28596
+        },
+        "transactions": [
+            "delivery"
+        ],
+        "price": "$$",
+        "location": {
+            "address1": "3700 S Hudson St",
+            "address2": null,
+            "address3": "",
+            "city": "Seattle",
+            "zip_code": "98118",
+            "country": "US",
+            "state": "WA",
+            "display_address": [
+                "3700 S Hudson St",
+                "Seattle, WA 98118"
+            ]
+        },
+        "phone": "+12067223327",
+        "display_phone": "(206) 722-3327",
+        "distance": 7148.904957901557
+    },
+    {
+        "id": "LZ_gbJDPijMArKBhq39sRg",
+        "alias": "grumpy-bean-seattle",
+        "name": "Grumpy Bean",
+        "image_url": "https://s3-media4.fl.yelpcdn.com/bphoto/jNW9a3DJGbyftSNKPVpV2Q/o.jpg",
+        "is_closed": false,
+        "url": "https://www.yelp.com/biz/grumpy-bean-seattle?adjust_creative=L2po3o8W8GU-mSsLEFwWAA&utm_campaign=yelp_api_v3&utm_medium=api_v3_business_search&utm_source=L2po3o8W8GU-mSsLEFwWAA",
+        "review_count": 13,
+        "categories": [
+            {
+                "alias": "coffee",
+                "title": "Coffee & Tea"
+            }
+        ],
+        "rating": 5.0,
+        "coordinates": {
+            "latitude": 47.616101335629246,
+            "longitude": -122.3344141
+        },
+        "transactions": [],
+        "location": {
+            "address1": "910 Stewart St",
+            "address2": "",
+            "address3": null,
+            "city": "Seattle",
+            "zip_code": "98101",
+            "country": "US",
+            "state": "WA",
+            "display_address": [
+                "910 Stewart St",
+                "Seattle, WA 98101"
+            ]
+        },
+        "phone": "+12062232173",
+        "display_phone": "(206) 223-2173",
+        "distance": 385.0361634070343
+    },
+    {
+        "id": "zSoZYT0PcBZYkG-jkKT-vw",
+        "alias": "a-cup-of-joe-chicago",
+        "name": "A Cup of Joe ",
+        "image_url": "https://s3-media1.fl.yelpcdn.com/bphoto/HDnjXWkg9ErjaqViE1tlcA/o.jpg",
+        "is_closed": false,
+        "url": "https://www.yelp.com/biz/a-cup-of-joe-chicago?adjust_creative=L2po3o8W8GU-mSsLEFwWAA&utm_campaign=yelp_api_v3&utm_medium=api_v3_business_search&utm_source=L2po3o8W8GU-mSsLEFwWAA",
+        "review_count": 93,
+        "categories": [
+            {
+                "alias": "coffee",
+                "title": "Coffee & Tea"
+            }
+        ],
+        "rating": 4.5,
+        "coordinates": {
+            "latitude": 41.7923651166731,
+            "longitude": -87.7919535711408
+        },
+        "transactions": [
+            "pickup",
+            "delivery"
+        ],
+        "price": "$",
+        "location": {
+            "address1": "6806 W Archer Ave",
+            "address2": "",
+            "address3": null,
+            "city": "Chicago",
+            "zip_code": "60638",
+            "country": "US",
+            "state": "IL",
+            "display_address": [
+                "6806 W Archer Ave",
+                "Chicago, IL 60638"
+            ]
+        },
+        "phone": "+17733060185",
+        "display_phone": "(773) 306-0185",
+        "distance": 6683.692992213431
+    },
+    {
+        "id": "-rPVLHP6BpZk4Zqz5yzRiA",
+        "alias": "junebug-café-chicago",
+        "name": "Junebug Café",
+        "image_url": "https://s3-media3.fl.yelpcdn.com/bphoto/xuFaltcHN4nYKhPwN5w9DA/o.jpg",
+        "is_closed": false,
+        "url": "https://www.yelp.com/biz/junebug-caf%C3%A9-chicago?adjust_creative=L2po3o8W8GU-mSsLEFwWAA&utm_campaign=yelp_api_v3&utm_medium=api_v3_business_search&utm_source=L2po3o8W8GU-mSsLEFwWAA",
+        "review_count": 81,
+        "categories": [
+            {
+                "alias": "coffee",
+                "title": "Coffee & Tea"
+            },
+            {
+                "alias": "cajun",
+                "title": "Cajun/Creole"
+            },
+            {
+                "alias": "desserts",
+                "title": "Desserts"
+            }
+        ],
+        "rating": 5.0,
+        "coordinates": {
+            "latitude": 41.953435,
+            "longitude": -87.75171667
+        },
+        "transactions": [
+            "pickup",
+            "delivery"
+        ],
+        "location": {
+            "address1": "4944 W Irving Park Rd",
+            "address2": "",
+            "address3": null,
+            "city": "Chicago",
+            "zip_code": "60641",
+            "country": "US",
+            "state": "IL",
+            "display_address": [
+                "4944 W Irving Park Rd",
+                "Chicago, IL 60641"
+            ]
+        },
+        "phone": "+17738530911",
+        "display_phone": "(773) 853-0911",
+        "distance": 13597.234227050489
+    },
+    {
+        "id": "byyWLMOHxfEiENT36Z3M8w",
+        "alias": "cafe-el-meson-chicago",
+        "name": "Cafe El Meson",
+        "image_url": "https://s3-media3.fl.yelpcdn.com/bphoto/c3E1OHYPcd9vkpzKDUePhw/o.jpg",
+        "is_closed": false,
+        "url": "https://www.yelp.com/biz/cafe-el-meson-chicago?adjust_creative=L2po3o8W8GU-mSsLEFwWAA&utm_campaign=yelp_api_v3&utm_medium=api_v3_business_search&utm_source=L2po3o8W8GU-mSsLEFwWAA",
+        "review_count": 117,
+        "categories": [
+            {
+                "alias": "sandwiches",
+                "title": "Sandwiches"
+            },
+            {
+                "alias": "coffee",
+                "title": "Coffee & Tea"
+            },
+            {
+                "alias": "juicebars",
+                "title": "Juice Bars & Smoothies"
+            }
+        ],
+        "rating": 5.0,
+        "coordinates": {
+            "latitude": 41.808998,
+            "longitude": -87.703643
+        },
+        "transactions": [
+            "pickup",
+            "delivery"
+        ],
+        "price": "$",
+        "location": {
+            "address1": "4631 S Kedzie Ave",
+            "address2": "",
+            "address3": "",
+            "city": "Chicago",
+            "zip_code": "60632",
+            "country": "US",
+            "state": "IL",
+            "display_address": [
+                "4631 S Kedzie Ave",
+                "Chicago, IL 60632"
+            ]
+        },
+        "phone": "+17736969691",
+        "display_phone": "(773) 696-9691",
+        "distance": 3427.9487100021147
+    },
+    {
+        "id": "atXFVwj5R0n5q_r0idse1Q",
+        "alias": "two-mile-coffee-bar-chicago-4",
+        "name": "Two Mile Coffee Bar",
+        "image_url": "https://s3-media1.fl.yelpcdn.com/bphoto/gzp2t0LuiaXltXDV4lDcnw/o.jpg",
+        "is_closed": false,
+        "url": "https://www.yelp.com/biz/two-mile-coffee-bar-chicago-4?adjust_creative=L2po3o8W8GU-mSsLEFwWAA&utm_campaign=yelp_api_v3&utm_medium=api_v3_business_search&utm_source=L2po3o8W8GU-mSsLEFwWAA",
+        "review_count": 11,
+        "categories": [
+            {
+                "alias": "coffee",
+                "title": "Coffee & Tea"
+            }
+        ],
+        "rating": 5.0,
+        "coordinates": {
+            "latitude": 41.713566,
+            "longitude": -87.667538
+        },
+        "transactions": [
+            "delivery"
+        ],
+        "location": {
+            "address1": "9907 S Walden Pkwy",
+            "address2": null,
+            "address3": "",
+            "city": "Chicago",
+            "zip_code": "60643",
+            "country": "US",
+            "state": "IL",
+            "display_address": [
+                "9907 S Walden Pkwy",
+                "Chicago, IL 60643"
+            ]
+        },
+        "phone": "+17736296001",
+        "display_phone": "(773) 629-6001",
+        "distance": 14189.328689616392
+    },
+    {
+        "id": "U5tVK8ChZPP_72ldZPmqAA",
+        "alias": "the-stockyard-coffeehouse-chicago",
+        "name": "The Stockyard Coffeehouse",
+        "image_url": "https://s3-media1.fl.yelpcdn.com/bphoto/J8lnaWGY8n6n7u8IRTFP-A/o.jpg",
+        "is_closed": false,
+        "url": "https://www.yelp.com/biz/the-stockyard-coffeehouse-chicago?adjust_creative=L2po3o8W8GU-mSsLEFwWAA&utm_campaign=yelp_api_v3&utm_medium=api_v3_business_search&utm_source=L2po3o8W8GU-mSsLEFwWAA",
+        "review_count": 65,
+        "categories": [
+            {
+                "alias": "coffee",
+                "title": "Coffee & Tea"
+            }
+        ],
+        "rating": 5.0,
+        "coordinates": {
+            "latitude": 41.82729,
+            "longitude": -87.6409818
+        },
+        "transactions": [
+            "delivery"
+        ],
+        "price": "$$",
+        "location": {
+            "address1": "558 W 37th St",
+            "address2": "",
+            "address3": null,
+            "city": "Chicago",
+            "zip_code": "60609",
+            "country": "US",
+            "state": "IL",
+            "display_address": [
+                "558 W 37th St",
+                "Chicago, IL 60609"
+            ]
+        },
+        "phone": "+13128665886",
+        "display_phone": "(312) 866-5886",
+        "distance": 7503.504630603781
+    },
+    {
+        "id": "c6OdRqy27yCotf6B5hSoww",
+        "alias": "nighthawk-chicago-chicago",
+        "name": "Nighthawk Chicago",
+        "image_url": "https://s3-media3.fl.yelpcdn.com/bphoto/RBjHDXD6lJj6T0UR37SiBg/o.jpg",
+        "is_closed": false,
+        "url": "https://www.yelp.com/biz/nighthawk-chicago-chicago?adjust_creative=L2po3o8W8GU-mSsLEFwWAA&utm_campaign=yelp_api_v3&utm_medium=api_v3_business_search&utm_source=L2po3o8W8GU-mSsLEFwWAA",
+        "review_count": 121,
+        "categories": [
+            {
+                "alias": "coffee",
+                "title": "Coffee & Tea"
+            },
+            {
+                "alias": "bars",
+                "title": "Bars"
+            }
+        ],
+        "rating": 4.5,
+        "coordinates": {
+            "latitude": 41.9677234,
+            "longitude": -87.7134997
+        },
+        "transactions": [
+            "delivery"
+        ],
+        "price": "$$",
+        "location": {
+            "address1": "4744 N Kimball Ave",
+            "address2": "",
+            "address3": null,
+            "city": "Chicago",
+            "zip_code": "60625",
+            "country": "US",
+            "state": "IL",
+            "display_address": [
+                "4744 N Kimball Ave",
+                "Chicago, IL 60625"
+            ]
+        },
+        "phone": "+18728888361",
+        "display_phone": "(872) 888-8361",
+        "distance": 15182.651929319656
+    },
+    {
+        "id": "JHiXtPjcaJ6xR0TLFIbB7A",
+        "alias": "espresso-palette-chicago-ridge",
+        "name": "Espresso Palette",
+        "image_url": "https://s3-media2.fl.yelpcdn.com/bphoto/qRVqIPcEuHEMW_mRvXkLhA/o.jpg",
+        "is_closed": false,
+        "url": "https://www.yelp.com/biz/espresso-palette-chicago-ridge?adjust_creative=L2po3o8W8GU-mSsLEFwWAA&utm_campaign=yelp_api_v3&utm_medium=api_v3_business_search&utm_source=L2po3o8W8GU-mSsLEFwWAA",
+        "review_count": 18,
+        "categories": [
+            {
+                "alias": "coffee",
+                "title": "Coffee & Tea"
+            },
+            {
+                "alias": "galleries",
+                "title": "Art Galleries"
+            }
+        ],
+        "rating": 4.5,
+        "coordinates": {
+            "latitude": 41.690825,
+            "longitude": -87.763548
+        },
+        "transactions": [
+            "pickup",
+            "delivery"
+        ],
+        "location": {
+            "address1": "5730 W 111th St",
+            "address2": null,
+            "address3": "",
+            "city": "Chicago Ridge",
+            "zip_code": "60415",
+            "country": "US",
+            "state": "IL",
+            "display_address": [
+                "5730 W 111th St",
+                "Chicago Ridge, IL 60415"
+            ]
+        },
+        "phone": "+17085815100",
+        "display_phone": "(708) 581-5100",
+        "distance": 15929.119956667333
+    },
+    {
+        "id": "TiN9NK_Nm-_6BWLpd9h42g",
+        "alias": "two-mile-coffee-bar-chicago",
+        "name": "Two Mile Coffee Bar",
+        "image_url": "https://s3-media1.fl.yelpcdn.com/bphoto/V7ZS3d3zcrjWfWVmcufUbQ/o.jpg",
+        "is_closed": false,
+        "url": "https://www.yelp.com/biz/two-mile-coffee-bar-chicago?adjust_creative=L2po3o8W8GU-mSsLEFwWAA&utm_campaign=yelp_api_v3&utm_medium=api_v3_business_search&utm_source=L2po3o8W8GU-mSsLEFwWAA",
+        "review_count": 17,
+        "categories": [
+            {
+                "alias": "coffee",
+                "title": "Coffee & Tea"
+            }
+        ],
+        "rating": 5.0,
+        "coordinates": {
+            "latitude": 41.721436,
+            "longitude": -87.6673199951297
+        },
+        "transactions": [
+            "delivery"
+        ],
+        "location": {
+            "address1": "1766 W 95th St",
+            "address2": "",
+            "address3": null,
+            "city": "Chicago",
+            "zip_code": "60643",
+            "country": "US",
+            "state": "IL",
+            "display_address": [
+                "1766 W 95th St",
+                "Chicago, IL 60643"
+            ]
+        },
+        "phone": "+17736148115",
+        "display_phone": "(773) 614-8115",
+        "distance": 13390.710318563695
+    },
+    {
+        "id": "czX4LTJ5Wyfwm3OPkx9JDw",
+        "alias": "cork-and-bean-oak-lawn",
+        "name": "Cork & Bean",
+        "image_url": "https://s3-media4.fl.yelpcdn.com/bphoto/N2jc5cdrmU1C3ux3_sewvQ/o.jpg",
+        "is_closed": false,
+        "url": "https://www.yelp.com/biz/cork-and-bean-oak-lawn?adjust_creative=L2po3o8W8GU-mSsLEFwWAA&utm_campaign=yelp_api_v3&utm_medium=api_v3_business_search&utm_source=L2po3o8W8GU-mSsLEFwWAA",
+        "review_count": 26,
+        "categories": [
+            {
+                "alias": "cafes",
+                "title": "Cafes"
+            },
+            {
+                "alias": "bars",
+                "title": "Bars"
+            }
+        ],
+        "rating": 4.0,
+        "coordinates": {
+            "latitude": 41.7198144,
+            "longitude": -87.7445194
+        },
+        "transactions": [],
+        "location": {
+            "address1": "4931 W 95th St",
+            "address2": "",
+            "address3": null,
+            "city": "Oak Lawn",
+            "zip_code": "60453",
+            "country": "US",
+            "state": "IL",
+            "display_address": [
+                "4931 W 95th St",
+                "Oak Lawn, IL 60453"
+            ]
+        },
+        "phone": "+17085293028",
+        "display_phone": "(708) 529-3028",
+        "distance": 12522.24781865661
+    },
+    {
+        "id": "Imy7MhrTq0z-GQ5RjN_USg",
+        "alias": "andysunflower-café-chicago-2",
+        "name": "AndySunflower Café",
+        "image_url": "https://s3-media4.fl.yelpcdn.com/bphoto/4CM3OSacjqy7GbeyQ6R4ag/o.jpg",
+        "is_closed": false,
+        "url": "https://www.yelp.com/biz/andysunflower-caf%C3%A9-chicago-2?adjust_creative=L2po3o8W8GU-mSsLEFwWAA&utm_campaign=yelp_api_v3&utm_medium=api_v3_business_search&utm_source=L2po3o8W8GU-mSsLEFwWAA",
+        "review_count": 12,
+        "categories": [
+            {
+                "alias": "coffee",
+                "title": "Coffee & Tea"
+            }
+        ],
+        "rating": 5.0,
+        "coordinates": {
+            "latitude": 41.713268,
+            "longitude": -87.682102
+        },
+        "transactions": [
+            "delivery"
+        ],
+        "location": {
+            "address1": "9920 S Western Ave",
+            "address2": "",
+            "address3": null,
+            "city": "Chicago",
+            "zip_code": "60643",
+            "country": "US",
+            "state": "IL",
+            "display_address": [
+                "9920 S Western Ave",
+                "Chicago, IL 60643"
+            ]
+        },
+        "phone": "+13129613171",
+        "display_phone": "(312) 961-3171",
+        "distance": 13833.610777706052
+    },
+    {
+        "id": "KUHLX4UpMCshU-tAEiuEiw",
+        "alias": "giant-leap-coffee-houston-3",
+        "name": "Giant Leap Coffee",
+        "image_url": "https://s3-media4.fl.yelpcdn.com/bphoto/7K5J9UoMAxhpMQbg_irI7Q/o.jpg",
+        "is_closed": false,
+        "url": "https://www.yelp.com/biz/giant-leap-coffee-houston-3?adjust_creative=L2po3o8W8GU-mSsLEFwWAA&utm_campaign=yelp_api_v3&utm_medium=api_v3_business_search&utm_source=L2po3o8W8GU-mSsLEFwWAA",
+        "review_count": 86,
+        "categories": [
+            {
+                "alias": "coffee",
+                "title": "Coffee & Tea"
+            }
+        ],
+        "rating": 4.0,
+        "coordinates": {
+            "latitude": 29.75576388140648,
+            "longitude": -95.45676177414511
+        },
+        "transactions": [
+            "delivery"
+        ],
+        "location": {
+            "address1": "1135 Uptown Park Blvd",
+            "address2": "",
+            "address3": null,
+            "city": "Houston",
+            "zip_code": "77056",
+            "country": "US",
+            "state": "TX",
+            "display_address": [
+                "1135 Uptown Park Blvd",
+                "Houston, TX 77056"
+            ]
+        },
+        "phone": "+18328343604",
+        "display_phone": "(832) 834-3604",
+        "distance": 1957.2215582526494
+    },
+    {
+        "id": "ObeklcM7ZXHLCutZi9EigQ",
+        "alias": "summer-moon-coffee-houston-2",
+        "name": "Summer Moon Coffee",
+        "image_url": "https://s3-media3.fl.yelpcdn.com/bphoto/Nk1uGWTCbXP8Rk-a1Zl5MA/o.jpg",
+        "is_closed": false,
+        "url": "https://www.yelp.com/biz/summer-moon-coffee-houston-2?adjust_creative=L2po3o8W8GU-mSsLEFwWAA&utm_campaign=yelp_api_v3&utm_medium=api_v3_business_search&utm_source=L2po3o8W8GU-mSsLEFwWAA",
+        "review_count": 166,
+        "categories": [
+            {
+                "alias": "coffee",
+                "title": "Coffee & Tea"
+            },
+            {
+                "alias": "coffeeroasteries",
+                "title": "Coffee Roasteries"
+            }
+        ],
+        "rating": 4.5,
+        "coordinates": {
+            "latitude": 29.774761,
+            "longitude": -95.718421
+        },
+        "transactions": [
+            "delivery"
+        ],
+        "price": "$",
+        "location": {
+            "address1": "19901 Kingsland Blvd",
+            "address2": "",
+            "address3": null,
+            "city": "Houston",
+            "zip_code": "77094",
+            "country": "US",
+            "state": "TX",
+            "display_address": [
+                "19901 Kingsland Blvd",
+                "Houston, TX 77094"
+            ]
+        },
+        "phone": "+12817174698",
+        "display_phone": "(281) 717-4698",
+        "distance": 25452.691930139586
+    },
+    {
+        "id": "131A0-iLLqY9H5s49dOT4g",
+        "alias": "tree-house-houston-3",
+        "name": "Tree House",
+        "image_url": "https://s3-media3.fl.yelpcdn.com/bphoto/nm_X2mMcevQ4qbginI33vg/o.jpg",
+        "is_closed": false,
+        "url": "https://www.yelp.com/biz/tree-house-houston-3?adjust_creative=L2po3o8W8GU-mSsLEFwWAA&utm_campaign=yelp_api_v3&utm_medium=api_v3_business_search&utm_source=L2po3o8W8GU-mSsLEFwWAA",
+        "review_count": 188,
+        "categories": [
+            {
+                "alias": "coffee",
+                "title": "Coffee & Tea"
+            },
+            {
+                "alias": "icecream",
+                "title": "Ice Cream & Frozen Yogurt"
+            }
+        ],
+        "rating": 4.5,
+        "coordinates": {
+            "latitude": 29.7716414381946,
+            "longitude": -95.5903487452933
+        },
+        "transactions": [
+            "delivery"
+        ],
+        "price": "$$",
+        "location": {
+            "address1": "14008 Memorial Dr",
+            "address2": "Ste B",
+            "address3": "",
+            "city": "Houston",
+            "zip_code": "77079",
+            "country": "US",
+            "state": "TX",
+            "display_address": [
+                "14008 Memorial Dr",
+                "Ste B",
+                "Houston, TX 77079"
+            ]
+        },
+        "phone": "+12817527711",
+        "display_phone": "(281) 752-7711",
+        "distance": 13092.596185097324
+    },
+    {
+        "id": "L8FZg19bhEH3WzocgUSkrg",
+        "alias": "pura-coffee-houston",
+        "name": "Pura Coffee",
+        "image_url": "https://s3-media2.fl.yelpcdn.com/bphoto/hHXfisDLrF3Gzx1RY-wT4w/o.jpg",
+        "is_closed": false,
+        "url": "https://www.yelp.com/biz/pura-coffee-houston?adjust_creative=L2po3o8W8GU-mSsLEFwWAA&utm_campaign=yelp_api_v3&utm_medium=api_v3_business_search&utm_source=L2po3o8W8GU-mSsLEFwWAA",
+        "review_count": 228,
+        "categories": [
+            {
+                "alias": "coffee",
+                "title": "Coffee & Tea"
+            },
+            {
+                "alias": "bakeries",
+                "title": "Bakeries"
+            },
+            {
+                "alias": "sandwiches",
+                "title": "Sandwiches"
+            }
+        ],
+        "rating": 4.0,
+        "coordinates": {
+            "latitude": 29.7827845387472,
+            "longitude": -95.4765529067459
+        },
+        "transactions": [
+            "delivery",
+            "pickup"
+        ],
+        "price": "$",
+        "location": {
+            "address1": "7925 Katy Fwy",
+            "address2": "Ste C",
+            "address3": "",
+            "city": "Houston",
+            "zip_code": "77024",
+            "country": "US",
+            "state": "TX",
+            "display_address": [
+                "7925 Katy Fwy",
+                "Ste C",
+                "Houston, TX 77024"
+            ]
+        },
+        "phone": "+18329400822",
+        "display_phone": "(832) 940-0822",
+        "distance": 2358.251515669591
+    },
+    {
+        "id": "-m2p8X4NUHYqjLlSBkmH6w",
+        "alias": "analogue-coffee-bar-houston",
+        "name": "Analogue Coffee Bar",
+        "image_url": "https://s3-media2.fl.yelpcdn.com/bphoto/DDRW-ql5z4N1OeFh050Xqg/o.jpg",
+        "is_closed": false,
+        "url": "https://www.yelp.com/biz/analogue-coffee-bar-houston?adjust_creative=L2po3o8W8GU-mSsLEFwWAA&utm_campaign=yelp_api_v3&utm_medium=api_v3_business_search&utm_source=L2po3o8W8GU-mSsLEFwWAA",
+        "review_count": 6,
+        "categories": [
+            {
+                "alias": "coffee",
+                "title": "Coffee & Tea"
+            }
+        ],
+        "rating": 4.0,
+        "coordinates": {
+            "latitude": 29.78295,
+            "longitude": -95.43611
+        },
+        "transactions": [],
+        "location": {
+            "address1": "8200 Washington Ave",
+            "address2": "Ste 100",
+            "address3": "",
+            "city": "Houston",
+            "zip_code": "77007",
+            "country": "US",
+            "state": "TX",
+            "display_address": [
+                "8200 Washington Ave",
+                "Ste 100",
+                "Houston, TX 77007"
+            ]
+        },
+        "phone": "+17138168042",
+        "display_phone": "(713) 816-8042",
+        "distance": 2095.439382960097
+    },
+    {
+        "id": "sxy66G5DGDID2OR5R2ni0w",
+        "alias": "the-yellow-cup-houston-2",
+        "name": "The Yellow Cup",
+        "image_url": "https://s3-media4.fl.yelpcdn.com/bphoto/QlqLOW6w1wH4ukTem0vGSA/o.jpg",
+        "is_closed": false,
+        "url": "https://www.yelp.com/biz/the-yellow-cup-houston-2?adjust_creative=L2po3o8W8GU-mSsLEFwWAA&utm_campaign=yelp_api_v3&utm_medium=api_v3_business_search&utm_source=L2po3o8W8GU-mSsLEFwWAA",
+        "review_count": 178,
+        "categories": [
+            {
+                "alias": "coffee",
+                "title": "Coffee & Tea"
+            }
+        ],
+        "rating": 4.5,
+        "coordinates": {
+            "latitude": 29.7710153,
+            "longitude": -95.4219629
+        },
+        "transactions": [
+            "delivery"
+        ],
+        "price": "$$",
+        "location": {
+            "address1": "6001 Washington Ave",
+            "address2": "Ste 100",
+            "address3": "Elan Memorial Park Luxury Apartments",
+            "city": "Houston",
+            "zip_code": "77007",
+            "country": "US",
+            "state": "TX",
+            "display_address": [
+                "6001 Washington Ave",
+                "Ste 100",
+                "Elan Memorial Park Luxury Apartments",
+                "Houston, TX 77007"
+            ]
+        },
+        "phone": "+18325169558",
+        "display_phone": "(832) 516-9558",
+        "distance": 3170.839992138572
+    },
+    {
+        "id": "wOU7W5uKOwon-QzkwfzNew",
+        "alias": "barbarossa-coffee-spring",
+        "name": "Barbarossa Coffee",
+        "image_url": "https://s3-media3.fl.yelpcdn.com/bphoto/UO0pkMPR4zc9WwdeqUVl8A/o.jpg",
+        "is_closed": false,
+        "url": "https://www.yelp.com/biz/barbarossa-coffee-spring?adjust_creative=L2po3o8W8GU-mSsLEFwWAA&utm_campaign=yelp_api_v3&utm_medium=api_v3_business_search&utm_source=L2po3o8W8GU-mSsLEFwWAA",
+        "review_count": 463,
+        "categories": [
+            {
+                "alias": "coffee",
+                "title": "Coffee & Tea"
+            }
+        ],
+        "rating": 4.5,
+        "coordinates": {
+            "latitude": 30.0065548,
+            "longitude": -95.551269
+        },
+        "transactions": [
+            "delivery",
+            "pickup"
+        ],
+        "price": "$$",
+        "location": {
+            "address1": "9222 Louetta Rd",
+            "address2": "Ste 106",
+            "address3": "",
+            "city": "Spring",
+            "zip_code": "77379",
+            "country": "US",
+            "state": "TX",
+            "display_address": [
+                "9222 Louetta Rd",
+                "Ste 106",
+                "Spring, TX 77379"
+            ]
+        },
+        "phone": "+18325597684",
+        "display_phone": "(832) 559-7684",
+        "distance": 27559.086014482622
+    },
+    {
+        "id": "BfiD_Ep5EimpVEEgh816tQ",
+        "alias": "luce-coffee-roasters-houston-2",
+        "name": "Luce Coffee Roasters",
+        "image_url": "https://s3-media4.fl.yelpcdn.com/bphoto/EidVeK0snV3Q1Pb5_SLWzA/o.jpg",
+        "is_closed": false,
+        "url": "https://www.yelp.com/biz/luce-coffee-roasters-houston-2?adjust_creative=L2po3o8W8GU-mSsLEFwWAA&utm_campaign=yelp_api_v3&utm_medium=api_v3_business_search&utm_source=L2po3o8W8GU-mSsLEFwWAA",
+        "review_count": 203,
+        "categories": [
+            {
+                "alias": "coffeeroasteries",
+                "title": "Coffee Roasteries"
+            },
+            {
+                "alias": "coffee",
+                "title": "Coffee & Tea"
+            }
+        ],
+        "rating": 4.5,
+        "coordinates": {
+            "latitude": 29.816998,
+            "longitude": -95.428644
+        },
+        "transactions": [],
+        "price": "$$",
+        "location": {
+            "address1": "1717 W 34th St",
+            "address2": "Ste 100",
+            "address3": null,
+            "city": "Houston",
+            "zip_code": "77018",
+            "country": "US",
+            "state": "TX",
+            "display_address": [
+                "1717 W 34th St",
+                "Ste 100",
+                "Houston, TX 77018"
+            ]
+        },
+        "phone": "+18329628902",
+        "display_phone": "(832) 962-8902",
+        "distance": 5476.971180344621
+    },
+    {
+        "id": "hOFjKcFMH7IBSCuJztijpg",
+        "alias": "bean-and-bottle-houston-2",
+        "name": "Bean & Bottle",
+        "image_url": "https://s3-media4.fl.yelpcdn.com/bphoto/-jB1NBvcZAGl7u1Ee5nLfg/o.jpg",
+        "is_closed": false,
+        "url": "https://www.yelp.com/biz/bean-and-bottle-houston-2?adjust_creative=L2po3o8W8GU-mSsLEFwWAA&utm_campaign=yelp_api_v3&utm_medium=api_v3_business_search&utm_source=L2po3o8W8GU-mSsLEFwWAA",
+        "review_count": 34,
+        "categories": [
+            {
+                "alias": "coffee",
+                "title": "Coffee & Tea"
+            },
+            {
+                "alias": "wine_bars",
+                "title": "Wine Bars"
+            },
+            {
+                "alias": "coffeeroasteries",
+                "title": "Coffee Roasteries"
+            }
+        ],
+        "rating": 4.5,
+        "coordinates": {
+            "latitude": 29.782812114842,
+            "longitude": -95.53047355851086
+        },
+        "transactions": [],
+        "location": {
+            "address1": "9655 Katy Fwy",
+            "address2": "Ste 100",
+            "address3": "",
+            "city": "Houston",
+            "zip_code": "77024",
+            "country": "US",
+            "state": "TX",
+            "display_address": [
+                "9655 Katy Fwy",
+                "Ste 100",
+                "Houston, TX 77024"
+            ]
+        },
+        "phone": "+12815012336",
+        "display_phone": "(281) 501-2336",
+        "distance": 7388.416614043071
+    },
+    {
+        "id": "_bQ_UEeJyHvZGILGJktOxw",
+        "alias": "luce-ave-coffee-roasters-houston-2",
+        "name": "Luce Ave Coffee Roasters",
+        "image_url": "https://s3-media1.fl.yelpcdn.com/bphoto/W8Anktm3h963FZ61ya1wsA/o.jpg",
+        "is_closed": false,
+        "url": "https://www.yelp.com/biz/luce-ave-coffee-roasters-houston-2?adjust_creative=L2po3o8W8GU-mSsLEFwWAA&utm_campaign=yelp_api_v3&utm_medium=api_v3_business_search&utm_source=L2po3o8W8GU-mSsLEFwWAA",
+        "review_count": 385,
+        "categories": [
+            {
+                "alias": "coffee",
+                "title": "Coffee & Tea"
+            },
+            {
+                "alias": "coffeeroasteries",
+                "title": "Coffee Roasteries"
+            }
+        ],
+        "rating": 4.5,
+        "coordinates": {
+            "latitude": 29.7321800545204,
+            "longitude": -95.4410584643483
+        },
+        "transactions": [
+            "delivery"
+        ],
+        "price": "$$",
+        "location": {
+            "address1": "3995 Richmond Ave",
+            "address2": "Ste A",
+            "address3": null,
+            "city": "Houston",
+            "zip_code": "77027",
+            "country": "US",
+            "state": "TX",
+            "display_address": [
+                "3995 Richmond Ave",
+                "Ste A",
+                "Houston, TX 77027"
+            ]
+        },
+        "phone": "+12819744588",
+        "display_phone": "(281) 974-4588",
+        "distance": 4755.886798425065
+    },
+    {
+        "id": "9uYa1bl3ajS0R9bRraNkbw",
+        "alias": "tradesman-coffee-shop-and-lounge-boston",
+        "name": "Tradesman Coffee Shop & Lounge",
+        "image_url": "https://s3-media2.fl.yelpcdn.com/bphoto/56thL9FjGoLWJSuJJIzZtw/o.jpg",
+        "is_closed": false,
+        "url": "https://www.yelp.com/biz/tradesman-coffee-shop-and-lounge-boston?adjust_creative=L2po3o8W8GU-mSsLEFwWAA&utm_campaign=yelp_api_v3&utm_medium=api_v3_business_search&utm_source=L2po3o8W8GU-mSsLEFwWAA",
+        "review_count": 258,
+        "categories": [
+            {
+                "alias": "coffee",
+                "title": "Coffee & Tea"
+            },
+            {
+                "alias": "lounges",
+                "title": "Lounges"
+            }
+        ],
+        "rating": 4.5,
+        "coordinates": {
+            "latitude": 42.35738,
+            "longitude": -71.05345
+        },
+        "transactions": [],
+        "price": "$$",
+        "location": {
+            "address1": "58 Batterymarch St",
+            "address2": "",
+            "address3": null,
+            "city": "Boston",
+            "zip_code": "02110",
+            "country": "US",
+            "state": "MA",
+            "display_address": [
+                "58 Batterymarch St",
+                "Boston, MA 02110"
+            ]
+        },
+        "phone": "+16173481230",
+        "display_phone": "(617) 348-1230",
+        "distance": 1802.193919175985
+    },
+    {
+        "id": "rXxC_ZH58EItO3m5PASzEA",
+        "alias": "render-coffee-boston",
+        "name": "Render Coffee",
+        "image_url": "https://s3-media4.fl.yelpcdn.com/bphoto/WCM6v1mrr8d5N_ql7OqRHg/o.jpg",
+        "is_closed": false,
+        "url": "https://www.yelp.com/biz/render-coffee-boston?adjust_creative=L2po3o8W8GU-mSsLEFwWAA&utm_campaign=yelp_api_v3&utm_medium=api_v3_business_search&utm_source=L2po3o8W8GU-mSsLEFwWAA",
+        "review_count": 538,
+        "categories": [
+            {
+                "alias": "cafes",
+                "title": "Cafes"
+            },
+            {
+                "alias": "coffee",
+                "title": "Coffee & Tea"
+            }
+        ],
+        "rating": 4.5,
+        "coordinates": {
+            "latitude": 42.34115,
+            "longitude": -71.08149
+        },
+        "transactions": [
+            "pickup",
+            "delivery"
+        ],
+        "price": "$",
+        "location": {
+            "address1": "563 Columbus Ave",
+            "address2": "",
+            "address3": "",
+            "city": "Boston",
+            "zip_code": "02118",
+            "country": "US",
+            "state": "MA",
+            "display_address": [
+                "563 Columbus Ave",
+                "Boston, MA 02118"
+            ]
+        },
+        "phone": "+16172624142",
+        "display_phone": "(617) 262-4142",
+        "distance": 1127.21705249792
+    },
+    {
+        "id": "943fBDjPbEE600gMhQH9og",
+        "alias": "gracenote-coffee-boston-6",
+        "name": "Gracenote Coffee",
+        "image_url": "https://s3-media1.fl.yelpcdn.com/bphoto/9C4s8u0pJvM7Af0wlWJQHA/o.jpg",
+        "is_closed": false,
+        "url": "https://www.yelp.com/biz/gracenote-coffee-boston-6?adjust_creative=L2po3o8W8GU-mSsLEFwWAA&utm_campaign=yelp_api_v3&utm_medium=api_v3_business_search&utm_source=L2po3o8W8GU-mSsLEFwWAA",
+        "review_count": 212,
+        "categories": [
+            {
+                "alias": "coffee",
+                "title": "Coffee & Tea"
+            }
+        ],
+        "rating": 4.5,
+        "coordinates": {
+            "latitude": 42.3515995758639,
+            "longitude": -71.0581312420251
+        },
+        "transactions": [
+            "delivery"
+        ],
+        "price": "$",
+        "location": {
+            "address1": "108 Lincoln St",
+            "address2": "",
+            "address3": "",
+            "city": "Boston",
+            "zip_code": "02111",
+            "country": "US",
+            "state": "MA",
+            "display_address": [
+                "108 Lincoln St",
+                "Boston, MA 02111"
+            ]
+        },
+        "phone": "",
+        "display_phone": "",
+        "distance": 1155.7082910555873
+    },
+    {
+        "id": "y5lCCZ4YZk4jLSmBaATOmw",
+        "alias": "polcaris-coffee-boston",
+        "name": "Polcari's Coffee",
+        "image_url": "https://s3-media4.fl.yelpcdn.com/bphoto/H2lpbW-KdsgFnjgKGsaSIg/o.jpg",
+        "is_closed": false,
+        "url": "https://www.yelp.com/biz/polcaris-coffee-boston?adjust_creative=L2po3o8W8GU-mSsLEFwWAA&utm_campaign=yelp_api_v3&utm_medium=api_v3_business_search&utm_source=L2po3o8W8GU-mSsLEFwWAA",
+        "review_count": 217,
+        "categories": [
+            {
+                "alias": "coffee",
+                "title": "Coffee & Tea"
+            },
+            {
+                "alias": "herbsandspices",
+                "title": "Herbs & Spices"
+            }
+        ],
+        "rating": 5.0,
+        "coordinates": {
+            "latitude": 42.36401,
+            "longitude": -71.0555
+        },
+        "transactions": [
+            "delivery"
+        ],
+        "price": "$$",
+        "location": {
+            "address1": "105 Salem St",
+            "address2": "",
+            "address3": "",
+            "city": "Boston",
+            "zip_code": "02113",
+            "country": "US",
+            "state": "MA",
+            "display_address": [
+                "105 Salem St",
+                "Boston, MA 02113"
+            ]
+        },
+        "phone": "+16172270786",
+        "display_phone": "(617) 227-0786",
+        "distance": 2215.1282437690415
+    },
+    {
+        "id": "-5gWvrcKOPmhlcZju3tpbw",
+        "alias": "flour-bakery-café-boston-4",
+        "name": "Flour Bakery + Café",
+        "image_url": "https://s3-media3.fl.yelpcdn.com/bphoto/fpfpdbHydLu1IizcNixUZg/o.jpg",
+        "is_closed": false,
+        "url": "https://www.yelp.com/biz/flour-bakery-caf%C3%A9-boston-4?adjust_creative=L2po3o8W8GU-mSsLEFwWAA&utm_campaign=yelp_api_v3&utm_medium=api_v3_business_search&utm_source=L2po3o8W8GU-mSsLEFwWAA",
+        "review_count": 1310,
+        "categories": [
+            {
+                "alias": "bakeries",
+                "title": "Bakeries"
+            },
+            {
+                "alias": "coffee",
+                "title": "Coffee & Tea"
+            },
+            {
+                "alias": "sandwiches",
+                "title": "Sandwiches"
+            }
+        ],
+        "rating": 4.5,
+        "coordinates": {
+            "latitude": 42.35137,
+            "longitude": -71.04881
+        },
+        "transactions": [
+            "pickup",
+            "delivery"
+        ],
+        "price": "$$",
+        "location": {
+            "address1": "12 Farnsworth St",
+            "address2": "",
+            "address3": "",
+            "city": "Boston",
+            "zip_code": "02210",
+            "country": "US",
+            "state": "MA",
+            "display_address": [
+                "12 Farnsworth St",
+                "Boston, MA 02210"
+            ]
+        },
+        "phone": "+16173384333",
+        "display_phone": "(617) 338-4333",
+        "distance": 1886.6887381554013
+    },
+    {
+        "id": "gD2Acs1fMMYWUK2UHTt5Kg",
+        "alias": "the-sipping-room-by-breeze-boston",
+        "name": "The Sipping Room by Breeze",
+        "image_url": "https://s3-media1.fl.yelpcdn.com/bphoto/axurVxvjihIS2bzZsBwlhA/o.jpg",
+        "is_closed": false,
+        "url": "https://www.yelp.com/biz/the-sipping-room-by-breeze-boston?adjust_creative=L2po3o8W8GU-mSsLEFwWAA&utm_campaign=yelp_api_v3&utm_medium=api_v3_business_search&utm_source=L2po3o8W8GU-mSsLEFwWAA",
+        "review_count": 29,
+        "categories": [
+            {
+                "alias": "coffee",
+                "title": "Coffee & Tea"
+            }
+        ],
+        "rating": 4.5,
+        "coordinates": {
+            "latitude": 42.3424200163374,
+            "longitude": -71.0965385288
+        },
+        "transactions": [
+            "pickup",
+            "delivery"
+        ],
+        "location": {
+            "address1": "132 Jersey St",
+            "address2": "",
+            "address3": null,
+            "city": "Boston",
+            "zip_code": "02215",
+            "country": "US",
+            "state": "MA",
+            "display_address": [
+                "132 Jersey St",
+                "Boston, MA 02215"
+            ]
+        },
+        "phone": "+16174126668",
+        "display_phone": "(617) 412-6668",
+        "distance": 2164.517631084919
+    },
+    {
+        "id": "5IAQj7uecoiNfdnyU3jyiQ",
+        "alias": "jonquils-cafe-and-bakery-boston",
+        "name": "Jonquils Cafe & Bakery",
+        "image_url": "https://s3-media4.fl.yelpcdn.com/bphoto/gb5-Wmf5RUBdW1E5u30dZg/o.jpg",
+        "is_closed": false,
+        "url": "https://www.yelp.com/biz/jonquils-cafe-and-bakery-boston?adjust_creative=L2po3o8W8GU-mSsLEFwWAA&utm_campaign=yelp_api_v3&utm_medium=api_v3_business_search&utm_source=L2po3o8W8GU-mSsLEFwWAA",
+        "review_count": 468,
+        "categories": [
+            {
+                "alias": "cafes",
+                "title": "Cafes"
+            },
+            {
+                "alias": "coffee",
+                "title": "Coffee & Tea"
+            },
+            {
+                "alias": "bakeries",
+                "title": "Bakeries"
+            }
+        ],
+        "rating": 4.5,
+        "coordinates": {
+            "latitude": 42.35143,
+            "longitude": -71.07664
+        },
+        "transactions": [
+            "delivery"
+        ],
+        "price": "$",
+        "location": {
+            "address1": "125 Newbury St",
+            "address2": "",
+            "address3": null,
+            "city": "Boston",
+            "zip_code": "02116",
+            "country": "US",
+            "state": "MA",
+            "display_address": [
+                "125 Newbury St",
+                "Boston, MA 02116"
+            ]
+        },
+        "phone": "+16179826117",
+        "display_phone": "(617) 982-6117",
+        "distance": 596.6907224047445
+    },
+    {
+        "id": "C6Ppu2IbmpOBAV9fsloE5A",
+        "alias": "café-susu-by-suitsupply-boston",
+        "name": "Café Susu by Suitsupply",
+        "image_url": "https://s3-media2.fl.yelpcdn.com/bphoto/fszyNOFwtHT7WUFsb0VT_g/o.jpg",
+        "is_closed": false,
+        "url": "https://www.yelp.com/biz/caf%C3%A9-susu-by-suitsupply-boston?adjust_creative=L2po3o8W8GU-mSsLEFwWAA&utm_campaign=yelp_api_v3&utm_medium=api_v3_business_search&utm_source=L2po3o8W8GU-mSsLEFwWAA",
+        "review_count": 107,
+        "categories": [
+            {
+                "alias": "coffee",
+                "title": "Coffee & Tea"
+            },
+            {
+                "alias": "sandwiches",
+                "title": "Sandwiches"
+            },
+            {
+                "alias": "desserts",
+                "title": "Desserts"
+            }
+        ],
+        "rating": 4.5,
+        "coordinates": {
+            "latitude": 42.34952,
+            "longitude": -71.08185
+        },
+        "transactions": [
+            "delivery"
+        ],
+        "location": {
+            "address1": "240A Newbury St",
+            "address2": null,
+            "address3": "",
+            "city": "Boston",
+            "zip_code": "02116",
+            "country": "US",
+            "state": "MA",
+            "display_address": [
+                "240A Newbury St",
+                "Boston, MA 02116"
+            ]
+        },
+        "phone": "+16172497821",
+        "display_phone": "(617) 249-7821",
+        "distance": 922.4829485497709
+    },
+    {
+        "id": "e4r0wRKY_iNdmDffnV0ntw",
+        "alias": "ogawa-coffee-boston-2",
+        "name": "Ogawa Coffee",
+        "image_url": "https://s3-media3.fl.yelpcdn.com/bphoto/k6oAprbPP8UiP4MEk-E1OA/o.jpg",
+        "is_closed": false,
+        "url": "https://www.yelp.com/biz/ogawa-coffee-boston-2?adjust_creative=L2po3o8W8GU-mSsLEFwWAA&utm_campaign=yelp_api_v3&utm_medium=api_v3_business_search&utm_source=L2po3o8W8GU-mSsLEFwWAA",
+        "review_count": 685,
+        "categories": [
+            {
+                "alias": "coffee",
+                "title": "Coffee & Tea"
+            },
+            {
+                "alias": "sandwiches",
+                "title": "Sandwiches"
+            },
+            {
+                "alias": "cafes",
+                "title": "Cafes"
+            }
+        ],
+        "rating": 4.0,
+        "coordinates": {
+            "latitude": 42.3568572843331,
+            "longitude": -71.0580796438568
+        },
+        "transactions": [
+            "pickup",
+            "delivery"
+        ],
+        "price": "$",
+        "location": {
+            "address1": "10 Milk St",
+            "address2": "",
+            "address3": "",
+            "city": "Boston",
+            "zip_code": "02108",
+            "country": "US",
+            "state": "MA",
+            "display_address": [
+                "10 Milk St",
+                "Boston, MA 02108"
+            ]
+        },
+        "phone": "+16177807139",
+        "display_phone": "(617) 780-7139",
+        "distance": 1474.8203139964023
+    },
+    {
+        "id": "8ziWlShyQE-L_EtqXYiHjw",
+        "alias": "cocorico-boulangerie-boston-2",
+        "name": "Cocorico Boulangerie",
+        "image_url": "https://s3-media1.fl.yelpcdn.com/bphoto/0kp7ieNkMWHbI-eQVeXS5w/o.jpg",
+        "is_closed": false,
+        "url": "https://www.yelp.com/biz/cocorico-boulangerie-boston-2?adjust_creative=L2po3o8W8GU-mSsLEFwWAA&utm_campaign=yelp_api_v3&utm_medium=api_v3_business_search&utm_source=L2po3o8W8GU-mSsLEFwWAA",
+        "review_count": 9,
+        "categories": [
+            {
+                "alias": "coffee",
+                "title": "Coffee & Tea"
+            },
+            {
+                "alias": "breakfast_brunch",
+                "title": "Breakfast & Brunch"
+            },
+            {
+                "alias": "cafes",
+                "title": "Cafes"
+            }
+        ],
+        "rating": 4.0,
+        "coordinates": {
+            "latitude": 42.3471767,
+            "longitude": -71.0429053
+        },
+        "transactions": [],
+        "location": {
+            "address1": "450 Summer Street",
+            "address2": "",
+            "address3": null,
+            "city": "Boston",
+            "zip_code": "02210",
+            "country": "US",
+            "state": "MA",
+            "display_address": [
+                "450 Summer Street",
+                "Boston, MA 02210"
+            ]
+        },
+        "phone": "+16174766664",
+        "display_phone": "(617) 476-6664",
+        "distance": 2330.0191392760935
+    },
+    {
+        "id": "mLZXUVABNG0TevySSm-gzA",
+        "alias": "chromatic-coffee-san-jose-4",
+        "name": "Chromatic Coffee",
+        "image_url": "https://s3-media2.fl.yelpcdn.com/bphoto/QzFGXEpn_P_5N7d3l6NyhQ/o.jpg",
+        "is_closed": false,
+        "url": "https://www.yelp.com/biz/chromatic-coffee-san-jose-4?adjust_creative=L2po3o8W8GU-mSsLEFwWAA&utm_campaign=yelp_api_v3&utm_medium=api_v3_business_search&utm_source=L2po3o8W8GU-mSsLEFwWAA",
+        "review_count": 265,
+        "categories": [
+            {
+                "alias": "coffeeroasteries",
+                "title": "Coffee Roasteries"
+            },
+            {
+                "alias": "coffee",
+                "title": "Coffee & Tea"
+            },
+            {
+                "alias": "cafes",
+                "title": "Cafes"
+            }
+        ],
+        "rating": 4.5,
+        "coordinates": {
+            "latitude": 37.32,
+            "longitude": -121.9082
+        },
+        "transactions": [],
+        "price": "$",
+        "location": {
+            "address1": "460 Lincoln Ave",
+            "address2": "Ste 10",
+            "address3": "",
+            "city": "San Jose",
+            "zip_code": "95126",
+            "country": "US",
+            "state": "CA",
+            "display_address": [
+                "460 Lincoln Ave",
+                "Ste 10",
+                "San Jose, CA 95126"
+            ]
+        },
+        "phone": "+14082178583",
+        "display_phone": "(408) 217-8583",
+        "distance": 2067.7310277470406
+    },
+    {
+        "id": "DuC42Y2rYaNMTRwRUCGzoA",
+        "alias": "nirvana-soul-san-jose-2",
+        "name": "Nirvana Soul",
+        "image_url": "https://s3-media1.fl.yelpcdn.com/bphoto/HBHHctuWDvEeV9ne0XNyOA/o.jpg",
+        "is_closed": false,
+        "url": "https://www.yelp.com/biz/nirvana-soul-san-jose-2?adjust_creative=L2po3o8W8GU-mSsLEFwWAA&utm_campaign=yelp_api_v3&utm_medium=api_v3_business_search&utm_source=L2po3o8W8GU-mSsLEFwWAA",
+        "review_count": 696,
+        "categories": [
+            {
+                "alias": "coffee",
+                "title": "Coffee & Tea"
+            }
+        ],
+        "rating": 4.5,
+        "coordinates": {
+            "latitude": 37.331167,
+            "longitude": -121.887016
+        },
+        "transactions": [],
+        "price": "$$",
+        "location": {
+            "address1": "315 S 1st St",
+            "address2": null,
+            "address3": "",
+            "city": "San Jose",
+            "zip_code": "95113",
+            "country": "US",
+            "state": "CA",
+            "display_address": [
+                "315 S 1st St",
+                "San Jose, CA 95113"
+            ]
+        },
+        "phone": "+14085646617",
+        "display_phone": "(408) 564-6617",
+        "distance": 1642.0233263502596
+    },
+    {
+        "id": "7IeNBZodKmN_4-2hqYP3dg",
+        "alias": "voltaire-coffee-roasters-san-jose-3",
+        "name": "Voltaire Coffee Roasters",
+        "image_url": "https://s3-media4.fl.yelpcdn.com/bphoto/0KVjGzNUN-IU-sSZYo4pxA/o.jpg",
+        "is_closed": false,
+        "url": "https://www.yelp.com/biz/voltaire-coffee-roasters-san-jose-3?adjust_creative=L2po3o8W8GU-mSsLEFwWAA&utm_campaign=yelp_api_v3&utm_medium=api_v3_business_search&utm_source=L2po3o8W8GU-mSsLEFwWAA",
+        "review_count": 439,
+        "categories": [
+            {
+                "alias": "coffee",
+                "title": "Coffee & Tea"
+            },
+            {
+                "alias": "coffeeroasteries",
+                "title": "Coffee Roasteries"
+            }
+        ],
+        "rating": 4.5,
+        "coordinates": {
+            "latitude": 37.32981,
+            "longitude": -121.88677
+        },
+        "transactions": [
+            "delivery"
+        ],
+        "price": "$$",
+        "location": {
+            "address1": "360 S Market St",
+            "address2": "Ste 80",
+            "address3": "",
+            "city": "San Jose",
+            "zip_code": "95113",
+            "country": "US",
+            "state": "CA",
+            "display_address": [
+                "360 S Market St",
+                "Ste 80",
+                "San Jose, CA 95113"
+            ]
+        },
+        "phone": "+14087479697",
+        "display_phone": "(408) 747-9697",
+        "distance": 1542.0970045788858
+    },
+    {
+        "id": "f4WbbgnN_oIFHssKRImfMA",
+        "alias": "voyager-craft-coffee-san-jose-2",
+        "name": "Voyager Craft Coffee",
+        "image_url": "https://s3-media3.fl.yelpcdn.com/bphoto/V7s8uPgQQp2OmhyHa9hRDw/o.jpg",
+        "is_closed": false,
+        "url": "https://www.yelp.com/biz/voyager-craft-coffee-san-jose-2?adjust_creative=L2po3o8W8GU-mSsLEFwWAA&utm_campaign=yelp_api_v3&utm_medium=api_v3_business_search&utm_source=L2po3o8W8GU-mSsLEFwWAA",
+        "review_count": 360,
+        "categories": [
+            {
+                "alias": "coffee",
+                "title": "Coffee & Tea"
+            },
+            {
+                "alias": "bakeries",
+                "title": "Bakeries"
+            }
+        ],
+        "rating": 4.5,
+        "coordinates": {
+            "latitude": 37.33651,
+            "longitude": -121.89432
+        },
+        "transactions": [
+            "delivery",
+            "pickup"
+        ],
+        "price": "$$",
+        "location": {
+            "address1": "87 N San Pedro St",
+            "address2": "",
+            "address3": null,
+            "city": "San Jose",
+            "zip_code": "95110",
+            "country": "US",
+            "state": "CA",
+            "display_address": [
+                "87 N San Pedro St",
+                "San Jose, CA 95110"
+            ]
+        },
+        "phone": "+14088996166",
+        "display_phone": "(408) 899-6166",
+        "distance": 2375.7859401127166
+    },
+    {
+        "id": "lD20F_0ZnlBKqNXhQr0KGQ",
+        "alias": "spectra-coffee-san-jose",
+        "name": "Spectra Coffee",
+        "image_url": "https://s3-media2.fl.yelpcdn.com/bphoto/FgNw9WibckZxBIVEruluGw/o.jpg",
+        "is_closed": false,
+        "url": "https://www.yelp.com/biz/spectra-coffee-san-jose?adjust_creative=L2po3o8W8GU-mSsLEFwWAA&utm_campaign=yelp_api_v3&utm_medium=api_v3_business_search&utm_source=L2po3o8W8GU-mSsLEFwWAA",
+        "review_count": 363,
+        "categories": [
+            {
+                "alias": "coffee",
+                "title": "Coffee & Tea"
+            }
+        ],
+        "rating": 4.5,
+        "coordinates": {
+            "latitude": 37.2520631222829,
+            "longitude": -121.8792867248634
+        },
+        "transactions": [
+            "delivery",
+            "pickup"
+        ],
+        "price": "$$",
+        "location": {
+            "address1": "5353 Almaden Expy",
+            "address2": "Ste 52",
+            "address3": null,
+            "city": "San Jose",
+            "zip_code": "95118",
+            "country": "US",
+            "state": "CA",
+            "display_address": [
+                "5353 Almaden Expy",
+                "Ste 52",
+                "San Jose, CA 95118"
+            ]
+        },
+        "phone": "+14089138965",
+        "display_phone": "(408) 913-8965",
+        "distance": 7181.205931266568
+    },
+    {
+        "id": "Z-_xTpkFMWukHIMpjcXB5A",
+        "alias": "coffee-and-water-lab-san-jose-2",
+        "name": "Coffee & Water Lab",
+        "image_url": "https://s3-media1.fl.yelpcdn.com/bphoto/uLOBdEBxxx-cTLBwkDaccg/o.jpg",
+        "is_closed": false,
+        "url": "https://www.yelp.com/biz/coffee-and-water-lab-san-jose-2?adjust_creative=L2po3o8W8GU-mSsLEFwWAA&utm_campaign=yelp_api_v3&utm_medium=api_v3_business_search&utm_source=L2po3o8W8GU-mSsLEFwWAA",
+        "review_count": 361,
+        "categories": [
+            {
+                "alias": "coffee",
+                "title": "Coffee & Tea"
+            },
+            {
+                "alias": "breakfast_brunch",
+                "title": "Breakfast & Brunch"
+            },
+            {
+                "alias": "coffeeroasteries",
+                "title": "Coffee Roasteries"
+            }
+        ],
+        "rating": 4.5,
+        "coordinates": {
+            "latitude": 37.31562,
+            "longitude": -121.97651
+        },
+        "transactions": [
+            "delivery",
+            "pickup"
+        ],
+        "price": "$",
+        "location": {
+            "address1": "603 Saratoga Ave",
+            "address2": "Ste 40",
+            "address3": "",
+            "city": "San Jose",
+            "zip_code": "95129",
+            "country": "US",
+            "state": "CA",
+            "display_address": [
+                "603 Saratoga Ave",
+                "Ste 40",
+                "San Jose, CA 95129"
+            ]
+        },
+        "phone": "+14088391378",
+        "display_phone": "(408) 839-1378",
+        "distance": 8092.3649924107485
+    },
+    {
+        "id": "CTsSHWs3Zhs4t4i_FArsHg",
+        "alias": "am-craft-san-jose",
+        "name": "AM Craft",
+        "image_url": "https://s3-media4.fl.yelpcdn.com/bphoto/foUysamyC3knhNqMVBTgsQ/o.jpg",
+        "is_closed": false,
+        "url": "https://www.yelp.com/biz/am-craft-san-jose?adjust_creative=L2po3o8W8GU-mSsLEFwWAA&utm_campaign=yelp_api_v3&utm_medium=api_v3_business_search&utm_source=L2po3o8W8GU-mSsLEFwWAA",
+        "review_count": 39,
+        "categories": [
+            {
+                "alias": "coffee",
+                "title": "Coffee & Tea"
+            }
+        ],
+        "rating": 5.0,
+        "coordinates": {
+            "latitude": 37.336437139468444,
+            "longitude": -121.87701271985449
+        },
+        "transactions": [],
+        "price": "$",
+        "location": {
+            "address1": "481 E San Carlos St",
+            "address2": null,
+            "address3": "",
+            "city": "San Jose",
+            "zip_code": "95112",
+            "country": "US",
+            "state": "CA",
+            "display_address": [
+                "481 E San Carlos St",
+                "San Jose, CA 95112"
+            ]
+        },
+        "phone": "+14088927998",
+        "display_phone": "(408) 892-7998",
+        "distance": 2330.5868505280214
+    },
+    {
+        "id": "4Nm3dZqHnp8UuCHZstwHhw",
+        "alias": "living-room-coffee-craft-campbell",
+        "name": "Living Room Coffee Craft",
+        "image_url": "https://s3-media2.fl.yelpcdn.com/bphoto/F3IxIdr3OY69SKMktRgwYg/o.jpg",
+        "is_closed": false,
+        "url": "https://www.yelp.com/biz/living-room-coffee-craft-campbell?adjust_creative=L2po3o8W8GU-mSsLEFwWAA&utm_campaign=yelp_api_v3&utm_medium=api_v3_business_search&utm_source=L2po3o8W8GU-mSsLEFwWAA",
+        "review_count": 298,
+        "categories": [
+            {
+                "alias": "coffee",
+                "title": "Coffee & Tea"
+            },
+            {
+                "alias": "bakeries",
+                "title": "Bakeries"
+            }
+        ],
+        "rating": 4.5,
+        "coordinates": {
+            "latitude": 37.2918190745639,
+            "longitude": -121.951279865436
+        },
+        "transactions": [],
+        "price": "$$",
+        "location": {
+            "address1": "1711 Winchester Blvd",
+            "address2": null,
+            "address3": "",
+            "city": "Campbell",
+            "zip_code": "95008",
+            "country": "US",
+            "state": "CA",
+            "display_address": [
+                "1711 Winchester Blvd",
+                "Campbell, CA 95008"
+            ]
+        },
+        "phone": "+14083704342",
+        "display_phone": "(408) 370-4342",
+        "distance": 6466.322647297925
+    },
+    {
+        "id": "X9_bLC143PtN1XT0K7P8iQ",
+        "alias": "voyager-craft-coffee-santa-clara",
+        "name": "Voyager Craft Coffee",
+        "image_url": "https://s3-media2.fl.yelpcdn.com/bphoto/7-Zqcj5mOSKUynbceAdPHA/o.jpg",
+        "is_closed": false,
+        "url": "https://www.yelp.com/biz/voyager-craft-coffee-santa-clara?adjust_creative=L2po3o8W8GU-mSsLEFwWAA&utm_campaign=yelp_api_v3&utm_medium=api_v3_business_search&utm_source=L2po3o8W8GU-mSsLEFwWAA",
+        "review_count": 1622,
+        "categories": [
+            {
+                "alias": "coffee",
+                "title": "Coffee & Tea"
+            },
+            {
+                "alias": "bakeries",
+                "title": "Bakeries"
+            }
+        ],
+        "rating": 4.5,
+        "coordinates": {
+            "latitude": 37.3236199,
+            "longitude": -121.9725281
+        },
+        "transactions": [
+            "delivery",
+            "pickup"
+        ],
+        "price": "$$",
+        "location": {
+            "address1": "3985 Stevens Creek Blvd",
+            "address2": null,
+            "address3": "",
+            "city": "Santa Clara",
+            "zip_code": "95051",
+            "country": "US",
+            "state": "CA",
+            "display_address": [
+                "3985 Stevens Creek Blvd",
+                "Santa Clara, CA 95051"
+            ]
+        },
+        "phone": "+14082160761",
+        "display_phone": "(408) 216-0761",
+        "distance": 7774.385807805602
+    },
+    {
+        "id": "tyr85X7PWdx54LOVzLzjAw",
+        "alias": "hannah-coffee-san-jose-2",
+        "name": "Hannah Coffee",
+        "image_url": "https://s3-media1.fl.yelpcdn.com/bphoto/UrG5-WU_DrEfeLWRRqcrEQ/o.jpg",
+        "is_closed": false,
+        "url": "https://www.yelp.com/biz/hannah-coffee-san-jose-2?adjust_creative=L2po3o8W8GU-mSsLEFwWAA&utm_campaign=yelp_api_v3&utm_medium=api_v3_business_search&utm_source=L2po3o8W8GU-mSsLEFwWAA",
+        "review_count": 1285,
+        "categories": [
+            {
+                "alias": "coffee",
+                "title": "Coffee & Tea"
+            },
+            {
+                "alias": "sandwiches",
+                "title": "Sandwiches"
+            },
+            {
+                "alias": "breakfast_brunch",
+                "title": "Breakfast & Brunch"
+            }
+        ],
+        "rating": 4.5,
+        "coordinates": {
+            "latitude": 37.33160866072895,
+            "longitude": -121.90553722829216
+        },
+        "transactions": [
+            "delivery",
+            "pickup"
+        ],
+        "price": "$$",
+        "location": {
+            "address1": "754 The Alameda",
+            "address2": "Ste 80",
+            "address3": "",
+            "city": "San Jose",
+            "zip_code": "95126",
+            "country": "US",
+            "state": "CA",
+            "display_address": [
+                "754 The Alameda",
+                "Ste 80",
+                "San Jose, CA 95126"
+            ]
+        },
+        "phone": "+14089711207",
+        "display_phone": "(408) 971-1207",
+        "distance": 2470.744141854884
     }
 ]

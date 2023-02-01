@@ -45,6 +45,7 @@ def create_bookmark(user, cafe):
 
     return bookmark
 
+
 # FUNCTIONS THAT RETRIEVE DATA (READ)
 def get_user_by_id(user_id):
     """Return a user by user id."""

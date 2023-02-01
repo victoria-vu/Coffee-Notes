@@ -28,7 +28,7 @@ for cafe in cafe_data:
                                                             cafe["location"]["city"],
                                                             cafe["location"]["state"],
                                                             cafe["location"]["zip_code"], 
-                                                            cafe["phone"], 
+                                                            cafe["display_phone"], 
                                                             cafe["image_url"])
 
     db_cafe = crud.create_cafe(name, address, city, state, zip_code, phone, img_url)

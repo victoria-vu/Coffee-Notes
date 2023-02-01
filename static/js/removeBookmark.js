@@ -29,6 +29,6 @@ unbookmarkButton.addEventListener('submit', (evt) => {
         document.querySelector('#removebookmark-status').innerHTML = bookmarkStatus;
         setTimeout(function() {
             window.location.reload();
-         }, 2000);
+         }, 4000);
     });
 })
