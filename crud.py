@@ -102,6 +102,12 @@ def get_bookmarks_by_userid(user_id):
     return Bookmark.query.filter(Bookmark.user_id == user_id).all()
 
 
+def get_all_cafe_reviews(cafe_id):
+    """Gets all reviews of a particular cafe by most recent review."""
+
+    return Review.query.filter(Review.cafe_id == cafe_id).order_by(Review.review_id.desc()).all()
+
+
 # FUNCTIONS THAT DELETE DATA (DELETE)
 def remove_bookmark_from_db(user_id, cafe_id):
     """Removes a bookmark from the datebase."""

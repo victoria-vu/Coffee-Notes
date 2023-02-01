@@ -131,8 +131,9 @@ def show_cafe(cafe_id):
     """Show details of a particular cafe."""
 
     cafe = crud.get_cafe_by_id(cafe_id)
+    reviews = crud.get_all_cafe_reviews(cafe_id)
 
-    return render_template("cafe_details.html", cafe=cafe)
+    return render_template("cafe_details.html", cafe=cafe, reviews=reviews)
 
 
 @app.route("/cafe/<cafe_id>/review", methods=["POST"])

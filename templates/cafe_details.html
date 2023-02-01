@@ -27,8 +27,7 @@
 
 
 <br>
-
-<div>
+<section id="review-cafe">
     <form action="/cafe/{{ cafe.cafe_id }}/review" method="POST">
         <p>
           <label for="review">Write a Review:</label><br>
@@ -37,9 +36,19 @@
         <p><input type="submit"></p>
       </form>
     </form>
-</div>
+</section>
+
+<br>
+<section id="customer-reviews">
+    <h3>Customer Reviews</h3>
+    {% for review in reviews %}
+    <p><b>{{ review.user.fname }} {{ review.user.lname }}:</b></br>
+    {{ review.review }}</p>
+    {% endfor %}
+</section>
 
 
 <script src="/static/js/bookmark.js"></script>
+
 
 {% endblock body %}
