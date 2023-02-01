@@ -18,7 +18,7 @@ API_KEY = os.environ["YELP_KEY"]
 def homepage():
     """Show the homepage."""
 
-    if "user_userid" in session:
+    if "user_id" in session:
         return redirect("/dashboard")
 
     return render_template("homepage.html")
@@ -50,7 +50,7 @@ def login():
     else:
         session["user_email"] = user.email
         session["user_fname"] = user.fname
-        session["user_userid"] = user.user_id
+        session["user_id"] = user.user_id
         return redirect("/dashboard")
     
     
@@ -88,14 +88,14 @@ def signup():
 def dashboard():
     """Show user dashboard search form."""
 
-    return render_template("dashboard.html", name=session["user_fname"], user_id=session["user_userid"])
+    return render_template("dashboard.html", name=session["user_fname"])
 
 
 @app.route("/profile")
 def profile():
     """Show a user's profile."""
 
-    logged_in_user = session["user_userid"]
+    logged_in_user = session["user_id"]
     user = crud.get_user_by_id(logged_in_user)
 
     return render_template("profile.html", user=user)
@@ -105,7 +105,7 @@ def profile():
 def bookmarks():
     """Show a user's bookmarks."""
 
-    logged_in_user = session["user_userid"]
+    logged_in_user = session["user_id"]
     user = crud.get_user_by_id(logged_in_user)
     bookmarks = crud.get_bookmarks_by_userid(logged_in_user)
 
@@ -140,7 +140,7 @@ def show_cafe(cafe_id):
 def create_reviews(cafe_id):
     """Create a new rating for a cafe."""
 
-    user_id = session["user_userid"]
+    user_id = session["user_id"]
     user_review = request.form.get("review")
 
     if user_id is None:
@@ -164,7 +164,7 @@ def create_reviews(cafe_id):
 def bookmark_cafe(cafe_id):
     """Add cafe to user's bookmarks."""
  
-    user_id = session["user_userid"]
+    user_id = session["user_id"]
     bookmark = crud.get_bookmark_by_userandcafeid(user_id, cafe_id)
 
     if user_id is None:
@@ -186,7 +186,7 @@ def bookmark_cafe(cafe_id):
 def remove_bookmark(cafe_id):
     """Remove cafe from user's bookmarks."""
 
-    user_id = session["user_userid"]
+    user_id = session["user_id"]
     crud.remove_bookmark_from_db(user_id, cafe_id)
 
     return "You have successfully removed a bookmark."
@@ -196,7 +196,7 @@ def remove_bookmark(cafe_id):
 def logout():
     """Logs a user out."""
 
-    if "user_userid" in session:
+    if "user_id" in session:
         session.clear()
 
     return redirect("/")
