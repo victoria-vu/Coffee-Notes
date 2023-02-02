@@ -109,6 +109,9 @@ def get_all_cafe_reviews(cafe_id):
     return Review.query.filter(Review.cafe_id == cafe_id).order_by(Review.review_id.desc()).all()
 
 
+# FUNCTIONS THAT UPDATE DATA (UPDATE)
+
+
 # FUNCTIONS THAT DELETE DATA (DELETE)
 def remove_bookmark_from_db(user_id, cafe_id):
     """Removes a bookmark from the datebase."""

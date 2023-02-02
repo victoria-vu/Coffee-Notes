@@ -1,13 +1,12 @@
 'use strict';
 
-// Delete a Bookmark from DB
+// Remove Bookmark on Bookmark Page
 // Select the form ID
 const unbookmarkButton = document.querySelector('#remove-bookmarkcafe');
 
 // Create an event listener that handles when the "Remove Bookmark" is pressed
 unbookmarkButton.addEventListener('submit', (evt) => {
     evt.preventDefault();
-    console.log('Form has been submitted.')
 
     // Selects the ID of the particular button and pulls the value from it, which is the cafe_id
     const formInput = {
