@@ -4,10 +4,10 @@
 
 {% block body %}
     
-    <h1>Create an Account</h1>
+<h1>Create an Account</h1>
+<h4>Good days start with a cup of coffee.</h4>
 
-    <h4>Good days start with a cup of coffee.</h4>
-
+<div>
     <form action="/signup" method="POST">
         <div>
             <label for="user-fname">First Name *</label><br>
@@ -33,7 +33,8 @@
             <button type="submit">Create Account</button>
         </div>
     </form>
-    
-    <p>Already have an account? <a href="/login">Click here to log in.</a></p>
+</div>
+
+<p>Already have an account? <a href="/login">Click here to log in.</a></p>
 
 {% endblock %}

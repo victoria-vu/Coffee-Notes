@@ -1,22 +1,20 @@
 {% extends 'base.html' %}
 
-
 {% block title %}Search Results{% endblock %}
 
-
 {% block body %}
-    <h1>Search Results:</h1>
-        {% for cafe in cafes %}
-            <h3>{{ cafe.name }}</h3>
-            {{ cafe.address }},<br>
-            {{ cafe.city }},
-            {{ cafe.state }}
-            {{ cafe.zip_code }}<br>
-            {{ cafe.phone }}
-            <br>
-            <a href="/cafe/{{ cafe.cafe_id }}">More Details</a>
-            <br>
-            <br>
-        {% endfor %}
+<h1>Search Results:</h1>
+    {% for cafe in cafes %}
+        <h3>{{ cafe.name }}</h3>
+        {{ cafe.address }},<br>
+        {{ cafe.city }},
+        {{ cafe.state }}
+        {{ cafe.zip_code }}<br>
+        {{ cafe.phone }}
+        <br>
+        <a href="/cafe/{{ cafe.cafe_id }}">More Details</a>
+        <br>
+        <br>
+    {% endfor %}
 
 {% endblock %}

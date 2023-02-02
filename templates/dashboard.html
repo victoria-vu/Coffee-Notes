@@ -2,16 +2,16 @@
 
 {% block title %}Dashboard{% endblock %}
 
-    {% block body %}
-        <h1>Welcome Back, {{ name }}!</h1>
-        <h4>Let's look for a coffee shop!</h4>
+{% block body %}
+<h1>Welcome Back, {{ name }}!</h1>
+<h4>Let's look for a coffee shop!</h4>
 
-    <div>
-      <form action="/cafe/search" method="POST">
-        <label for="location">Search for a coffee shop by name, city, or zipcode:</label><br>
-        <input type="text" name="location" placeholder="E.g. New York City">
-        <button type="submit">Search</button>
-      </form>
-    </div>
+<div>
+  <form action="/cafe/search" method="POST">
+      <label for="location">Search for a coffee shop by name, city, or zipcode:</label><br>
+      <input type="text" name="location" placeholder="E.g. New York City">
+      <button type="submit">Search</button>
+  </form>
+</div>
 
-    {% endblock %}
+{% endblock %}

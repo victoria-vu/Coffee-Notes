@@ -6,61 +6,53 @@
 <h1>{{ cafe.name }}</h1>
 <img src="{{ cafe.img_url }}">
 
-<div>
-    <h4>Address:</h4>
+    <div>
+        <h4>Address:</h4>
         <p>{{ cafe.address}} <br>
         {{ cafe.city }} {{ cafe.state }} {{ cafe.zip_code}}</p>
+        <h4>Phone Number:</h4> 
+        <p>{{ cafe.phone }}</p>
+    </div>
 
-    <h4>Phone Number:</h4> 
+    {% if not bookmarked %}
+        <section id="bookmark">
+            <form id="bookmark-cafe">
+                <input type="hidden" id="cafe-id" value="{{ cafe.cafe_id }}">
+                <button type="submit" id="bookmark-button">Bookmark This Cafe</button>
+            </form>
+            <span id="bookmark-status"></span>
+        </section>
+    {% endif %}
 
-    <p>{{ cafe.phone }}</p>
-</div>
+    {% if bookmarked %}
+        <section id="bookmark">
+            <form id="bookmark-cafe">
+                <input type="hidden" id="cafe-id" value="{{ bookmarked.cafe.cafe_id }}">
+                <button type="submit" id="bookmark-button">Remove Bookmark</button>
+            </form>
+            <span id="bookmark-status"></span>
+        </section>
+    {% endif %}
 
+    <br>
+    <section id="review-cafe">
+        <form action="/cafe/{{ cafe.cafe_id }}/review" method="POST">
+            <p>
+                <label for="review">Write a Review:</label><br>
+                <textarea name="review" id="review"></textarea>
+            </p>
+            <p><input type="submit"></p>
+        </form>
+    </section>
 
-{% if not bookmarked %}
-<section id="bookmark">
-    <form id="bookmark-cafe">
-        <input type="hidden" id="cafe-id" value="{{ cafe.cafe_id }}">
-        <button type="submit" id="bookmark-button">Bookmark This Cafe</button>
-    </form>
-    <span id="bookmark-status"></span>
-</section>
-{% endif %}
+    <section id="customer-reviews">
+        <h3>Customer Reviews</h3>
+        {% for review in reviews %}
+            <p><b>{{ review.user.fname }} {{ review.user.lname }}:</b></br>
+            {{ review.review }}</p>
+        {% endfor %}
+    </section>
 
-{% if bookmarked %}
-<section id="bookmark">
-    <form id="bookmark-cafe">
-        <input type="hidden" id="cafe-id" value="{{ bookmarked.cafe.cafe_id }}">
-        <button type="submit" id="bookmark-button">Remove Bookmark</button>
-    </form>
-    <span id="bookmark-status"></span>
-</section>
-{% endif %}
-
-
-<br>
-<section id="review-cafe">
-    <form action="/cafe/{{ cafe.cafe_id }}/review" method="POST">
-        <p>
-          <label for="review">Write a Review:</label><br>
-            <textarea name="review" id="review"></textarea>
-        </p>
-        <p><input type="submit"></p>
-      </form>
-    </form>
-</section>
-
-<br>
-<section id="customer-reviews">
-    <h3>Customer Reviews</h3>
-    {% for review in reviews %}
-    <p><b>{{ review.user.fname }} {{ review.user.lname }}:</b></br>
-    {{ review.review }}</p>
-    {% endfor %}
-</section>
-
-
-<script src="/static/js/bookmark.js"></script>
-
+    <script src="/static/js/bookmark.js"></script>
 
 {% endblock body %}
