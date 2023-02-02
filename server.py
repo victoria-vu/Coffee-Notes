@@ -230,7 +230,17 @@ def add_to_my_cafes(cafe_id):
         visit = crud.create_cafe_visit(user, cafe)
         db.session.add(visit)
         db.session.commit()
-        return "You have successfully added this cafe to My Cafes." 
+        return "You have successfully added this cafe to My Cafes."
+
+
+@app.route("/cafe/<cafe_id>/removecafevisit", methods=["POST"])
+def remove_cafevist(cafe_id):
+    """Remove a visited cafe from user's cafe page."""
+
+    user_id = session["user_id"]
+    crud.remove_visit_from_db(user_id, cafe_id)
+
+    return "You have successfully removed this cafe." 
 
 
 @app.route("/logout")
