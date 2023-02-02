@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+
+{% block title %}My Cafes{% endblock %}
+
+{% block body %}
+<h1> {{ user.fname }}'s Cafes</h1>
+    
+    {% for visit in visits %}
+        <div>
+            <section id="visitcafe-info">
+                <h3>{{ visit.cafe.name }}</h3>
+                <h5>Address:</h5>
+                <p>{{ visit.cafe.address}} <br>
+                {{ visit.cafe.city }} {{ visit.cafe.state }} {{ visit.cafe.zip_code}}</p>
+                <h5>Phone Number:</h5> 
+                <p>{{ visit.cafe.phone }}<br>
+                <a href="/cafe/{{ visit.cafe.cafe_id }}">More Details</a></p>
+            </section>
+        </div>
+        <br>
+    {% endfor %}
+
+{% endblock %}

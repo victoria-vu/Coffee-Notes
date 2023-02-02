@@ -112,6 +112,17 @@ def bookmarks():
     return render_template("bookmarks.html", user=user, bookmarks=bookmarks)
 
 
+@app.route("/mycafes")
+def mycafes():
+    """Show a user's list of already visited cafes."""
+
+    logged_in_user = session["user_id"]
+    user = crud.get_user_by_id(logged_in_user)
+    visits = crud.get_visit_cafes(logged_in_user)
+
+    return render_template("mycafes.html", user=user, visits=visits)
+
+
 @app.route("/cafe/search", methods=["POST"])
 def search_cafes():
     """Search for cafes."""
@@ -134,12 +145,12 @@ def show_cafe(cafe_id):
     cafe = crud.get_cafe_by_id(cafe_id)
     reviews = crud.get_all_cafe_reviews(cafe_id)
     bookmarked = crud.get_bookmark_by_userandcafeid(logged_in_user, cafe_id)
+    visited = crud.get_cafe_visit_by_userandcafeid(logged_in_user, cafe_id)
 
-    # If a user already bookmarked the cafe:
-    if bookmarked:
-        return render_template("cafe_details.html", cafe=cafe, reviews=reviews, bookmarked=bookmarked)
+    if bookmarked or visited:
+        return render_template("cafe_details.html", cafe=cafe, reviews=reviews, bookmarked=bookmarked, visited=visited)
 
-    return render_template("cafe_details.html", cafe=cafe, reviews=reviews, bookmarked=bookmarked)
+    return render_template("cafe_details.html", cafe=cafe, reviews=reviews, bookmarked=bookmarked, visited=visited)
 
 
 @app.route("/cafe/<cafe_id>/review", methods=["POST"])
@@ -199,7 +210,29 @@ def remove_bookmark(cafe_id):
 
     return "You have successfully removed a bookmark."
 
-    
+
+@app.route("/cafe/<cafe_id>/mycafes", methods=["POST"])
+def add_to_my_cafes(cafe_id):
+    """Add cafe to user's visited cafe list."""
+
+    user_id = session["user_id"]
+    visit = crud.get_cafe_visit_by_userandcafeid(user_id, cafe_id)
+
+    if user_id is None:
+        flash("You must log in to add this cafe.")
+    elif visit:
+        crud.remove_visit_from_db(user_id, cafe_id)
+        return "You have successfully removed this cafe from My Cafes."
+    else:
+        user = crud.get_user_by_id(user_id)
+        cafe = crud.get_cafe_by_id(cafe_id)
+
+        visit = crud.create_cafe_visit(user, cafe)
+        db.session.add(visit)
+        db.session.commit()
+        return "You have successfully added this cafe to My Cafes." 
+
+
 @app.route("/logout")
 def logout():
     """Logs a user out."""

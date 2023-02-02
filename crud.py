@@ -1,6 +1,6 @@
 """CRUD operations."""
 
-from model import db, User, Cafe, Bookmark, Review, connect_to_db
+from model import db, User, Cafe, Review, Bookmark, Visit, Note, connect_to_db
 
 # Create = Create new data
 # Read = Retrieve data the already exits
@@ -46,6 +46,14 @@ def create_bookmark(user, cafe):
     return bookmark
 
 
+def create_cafe_visit(user, cafe):
+    """Create and return a visited cafe."""
+
+    visit = Visit(user=user, cafe=cafe)
+
+    return visit
+
+
 # FUNCTIONS THAT RETRIEVE DATA (READ)
 def get_user_by_id(user_id):
     """Return a user by user id."""
@@ -79,6 +87,12 @@ def get_cafes():
     return Cafe.query.all()
 
 
+def get_visit_cafes(user_id):
+    """Returns all of user's visited cafes."""
+
+    return Visit.query.filter(Visit.user_id == user_id).all()
+
+
 def get_review_by_id(review_id):
     """Return a review by review id."""
 
@@ -109,6 +123,12 @@ def get_all_cafe_reviews(cafe_id):
     return Review.query.filter(Review.cafe_id == cafe_id).order_by(Review.review_id.desc()).all()
 
 
+def get_cafe_visit_by_userandcafeid(user_id, cafe_id):
+    """Returns a cafe visit for particular cafe under a user."""
+
+    return Visit.query.filter(Visit.user_id == user_id, Visit.cafe_id == cafe_id).first()
+
+
 # FUNCTIONS THAT UPDATE DATA (UPDATE)
 
 
@@ -118,6 +138,14 @@ def remove_bookmark_from_db(user_id, cafe_id):
 
     bookmark = get_bookmark_by_userandcafeid(user_id, cafe_id)
     db.session.delete(bookmark)
+    db.session.commit()
+
+
+def remove_visit_from_db(user_id, cafe_id):
+    """Removes a cafe visit from the database."""
+
+    visit = get_cafe_visit_by_userandcafeid(user_id, cafe_id)
+    db.session.delete(visit)
     db.session.commit()
 
 

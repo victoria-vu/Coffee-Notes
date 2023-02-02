@@ -35,6 +35,29 @@
     {% endif %}
 
     <br>
+
+    {% if not visited %}
+    <section id="cafe-visit">
+        <form id="cafe-visit">
+            <input type="hidden" id="cafe-id" value="{{ cafe.cafe_id }}">
+            <button type="submit" id="visit-button">Add to My Cafes</button>
+        </form>
+        <span id="cafe-visit-status"></span>
+    </section>
+    {% endif %}
+
+
+    {% if visited %}
+    <section id="cafe-visit">
+        <form id="cafe-visit">
+            <input type="hidden" id="cafe-id" value="{{ visited.cafe.cafe_id }}">
+            <button type="submit" id="visit-button">Remove from My Cafes</button>
+        </form>
+        <span id="cafe-visit-status"></span>
+    </section>
+    {% endif %}
+
+    <br>
     <section id="review-cafe">
         <form action="/cafe/{{ cafe.cafe_id }}/review" method="POST">
             <p>
@@ -54,5 +77,6 @@
     </section>
 
     <script src="/static/js/bookmark.js"></script>
+    <script src="/static/js/cafeVisit.js"></script>
 
 {% endblock body %}

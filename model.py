@@ -105,7 +105,7 @@ class Note(db.Model):
     note_id = db.Column(db.Integer, autoincrement=True, primary_key=True)
     note = db.Column(db.Text)
     user_id = db.Column(db.Integer, db.ForeignKey("users.user_id"))
-    visit_id = db.Column(db.Integer, db.ForeignKey("visits.user_id"))
+    visit_id = db.Column(db.Integer, db.ForeignKey("visits.visit_id"))
 
     user = db.relationship("User", back_populates="note")
     visit = db.relationship("Visit", back_populates="note")
