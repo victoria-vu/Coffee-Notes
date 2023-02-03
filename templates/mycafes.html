@@ -3,7 +3,9 @@
 {% block title %}My Cafes{% endblock %}
 
 {% block body %}
-<h1> {{ user.fname }}'s Already Visited Cafes</h1>
+<h1> {{ user.fname }}'s Cafes</h1>
+<h5>Keep track of all the cafes you already visited.</h5>
+<br>
     
     {% for visit in visits %}
         <div>
@@ -17,6 +19,17 @@
                 <a href="/cafe/{{ visit.cafe.cafe_id }}">More Details</a></p>
             </section>
 
+            <section id="cafe-note">
+                <form action="/mycafes/{{ visit.visit_id }}/addnote" method="POST">
+                    <label for="cafe-note">Write a Note:</label>
+                    <br>
+                    <textarea name="cafe-note" id="cafe-note"></textarea>
+                    <br>
+                    <button type="submit" id="add-cafe-note-button">Submit</button>
+                </form>
+            </section>
+
+            <br>
             <section id="remove-visitcafe">
                 <form id="remove-visitcafe">
                     <input type="hidden" id="visitcafe-id" value="{{ visit.cafe.cafe_id }}">

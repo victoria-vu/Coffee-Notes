@@ -22,6 +22,7 @@ removeVisitButton.addEventListener('submit', (evt) => {
     .then((response) => response.text())
     .then((visitStatus) => {
         document.querySelector('#visitcafe-info').remove()
+        document.querySelector('#cafe-note').remove()
         document.querySelector('#remove-visitcafe').remove()
         document.querySelector('#remove-visit-status').innerHTML = visitStatus;
         setTimeout(function() {

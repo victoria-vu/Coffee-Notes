@@ -54,6 +54,14 @@ def create_cafe_visit(user, cafe):
     return visit
 
 
+def create_cafe_note(user, visit, note):
+    """Create and retunr a note for a visited cafe."""
+
+    note = Note(user=user, visit=visit, note=note)
+
+    return note
+
+
 # FUNCTIONS THAT RETRIEVE DATA (READ)
 def get_user_by_id(user_id):
     """Return a user by user id."""
@@ -91,6 +99,12 @@ def get_visit_cafes(user_id):
     """Returns all of user's visited cafes."""
 
     return Visit.query.filter(Visit.user_id == user_id).all()
+
+
+def get_visit_by_id(visit_id):
+    """Return a cafe visit by id."""
+
+    return Visit.query.get(visit_id)
 
 
 def get_review_by_id(review_id):

@@ -95,8 +95,8 @@ def dashboard():
 def profile():
     """Show a user's profile."""
 
-    logged_in_user = session["user_id"]
-    user = crud.get_user_by_id(logged_in_user)
+    # logged_in_user = session["user_id"]
+    user = crud.get_user_by_id(session["user_id"])
 
     return render_template("profile.html", user=user)
 
@@ -105,9 +105,9 @@ def profile():
 def bookmarks():
     """Show a user's bookmarks."""
 
-    logged_in_user = session["user_id"]
-    user = crud.get_user_by_id(logged_in_user)
-    bookmarks = crud.get_bookmarks_by_userid(logged_in_user)
+    # logged_in_user = session["user_id"]
+    user = crud.get_user_by_id(session["user_id"])
+    bookmarks = crud.get_bookmarks_by_userid(session["user_id"])
 
     return render_template("bookmarks.html", user=user, bookmarks=bookmarks)
 
@@ -116,18 +116,40 @@ def bookmarks():
 def mycafes():
     """Show a user's list of already visited cafes."""
 
-    logged_in_user = session["user_id"]
-    user = crud.get_user_by_id(logged_in_user)
-    visits = crud.get_visit_cafes(logged_in_user)
+    # logged_in_user = session["user_id"]
+    user = crud.get_user_by_id(session["user_id"])
+    visits = crud.get_visit_cafes(session["user_id"])
 
     return render_template("mycafes.html", user=user, visits=visits)
 
 
-@app.route("/cafe/search", methods=["POST"])
+@app.route("/mycafes/<visit_id>/addnote", methods=["POST"])
+def create_note(visit_id):
+    """Create a note for a particular cafe."""
+
+    user_id = session["user_id"]
+    note = request.form.get("cafe-note")
+
+    if not note:
+        flash("This field cannot be blank.")
+    else:
+        user = crud.get_user_by_id(user_id)
+        visit = crud.get_visit_by_id(visit_id)
+
+        cafe_note = crud.create_cafe_note(user, visit, note)
+        db.session.add(cafe_note)
+        db.session.commit()
+
+        flash(f"You have successfully created a note for {visit.cafe.name}.")
+
+    return redirect("/mycafes")
+
+
+@app.route("/cafe/search")
 def search_cafes():
     """Search for cafes."""
 
-    cafe = request.form.get("location")
+    cafe = request.args.get("location")
     cafes = crud.get_cafe(cafe, cafe, cafe)
 
     if cafes:
@@ -141,11 +163,11 @@ def search_cafes():
 def show_cafe(cafe_id):
     """Show details of a particular cafe."""
 
-    logged_in_user = session["user_id"]
+    # logged_in_user = session["user_id"]
     cafe = crud.get_cafe_by_id(cafe_id)
     reviews = crud.get_all_cafe_reviews(cafe_id)
-    bookmarked = crud.get_bookmark_by_userandcafeid(logged_in_user, cafe_id)
-    visited = crud.get_cafe_visit_by_userandcafeid(logged_in_user, cafe_id)
+    bookmarked = crud.get_bookmark_by_userandcafeid(session["user_id"], cafe_id)
+    visited = crud.get_cafe_visit_by_userandcafeid(session["user_id"], cafe_id)
 
     if bookmarked or visited:
         return render_template("cafe_details.html", cafe=cafe, reviews=reviews, bookmarked=bookmarked, visited=visited)
@@ -205,8 +227,8 @@ def bookmark_cafe(cafe_id):
 def remove_bookmark(cafe_id):
     """Remove cafe from user's bookmarks."""
 
-    user_id = session["user_id"]
-    crud.remove_bookmark_from_db(user_id, cafe_id)
+    # user_id = session["user_id"]
+    crud.remove_bookmark_from_db(session["user_id"], cafe_id)
 
     return "You have successfully removed a bookmark."
 
@@ -237,8 +259,8 @@ def add_to_my_cafes(cafe_id):
 def remove_cafevist(cafe_id):
     """Remove a visited cafe from user's cafe page."""
 
-    user_id = session["user_id"]
-    crud.remove_visit_from_db(user_id, cafe_id)
+    # user_id = session["user_id"]
+    crud.remove_visit_from_db(session["user_id"], cafe_id)
 
     return "You have successfully removed this cafe." 
 
