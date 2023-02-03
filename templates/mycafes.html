@@ -19,11 +19,24 @@
                 <a href="/cafe/{{ visit.cafe.cafe_id }}">More Details</a></p>
             </section>
 
+            {% if visit.note %}
+                <section id="my-cafe-notes">
+                    <h5>My Notes:</h5>
+                {% for note in visit.note %}
+                    <li>{{ note.note }} 
+                        <form action="/mycafes/{{ note.note_id }}/removenote" method="POST">
+                            <button type="submit" id="removenote">Delete Note</button>
+                        </form>
+                    </li>
+                {% endfor %}
+                </section>
+            {% endif %}
+
             <section id="cafe-note">
                 <form action="/mycafes/{{ visit.visit_id }}/addnote" method="POST">
                     <label for="cafe-note">Write a Note:</label>
                     <br>
-                    <textarea name="cafe-note" id="cafe-note"></textarea>
+                    <textarea name="cafe-note" id="cafe-note" required=""></textarea>
                     <br>
                     <button type="submit" id="add-cafe-note-button">Submit</button>
                 </form>

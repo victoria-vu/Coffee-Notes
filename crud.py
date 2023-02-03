@@ -55,7 +55,7 @@ def create_cafe_visit(user, cafe):
 
 
 def create_cafe_note(user, visit, note):
-    """Create and retunr a note for a visited cafe."""
+    """Create and return a note for a visited cafe."""
 
     note = Note(user=user, visit=visit, note=note)
 
@@ -143,6 +143,12 @@ def get_cafe_visit_by_userandcafeid(user_id, cafe_id):
     return Visit.query.filter(Visit.user_id == user_id, Visit.cafe_id == cafe_id).first()
 
 
+def get_note_by_noteid(note_id):
+    """Returns a cafe note by id."""
+
+    return Note.query.get(note_id)
+
+
 # FUNCTIONS THAT UPDATE DATA (UPDATE)
 
 
@@ -160,6 +166,14 @@ def remove_visit_from_db(user_id, cafe_id):
 
     visit = get_cafe_visit_by_userandcafeid(user_id, cafe_id)
     db.session.delete(visit)
+    db.session.commit()
+
+
+def remove_note_from_db(note_id):
+    """Removes a note for a cafe visit from the database."""
+
+    note = get_note_by_noteid(note_id)
+    db.session.delete(note)
     db.session.commit()
 
 
