@@ -3,7 +3,9 @@
 {% block title %}Search Results{% endblock %}
 
 {% block body %}
-<h1>Search Results:</h1>
+
+<section id="cafe-results" class="cafe-results">
+    <h1>Search Results:</h1>
     {% for cafe in cafes %}
         <h3>{{ cafe.name }}</h3>
         {{ cafe.address }},<br>
@@ -16,5 +18,5 @@
         <br>
         <br>
     {% endfor %}
-
+</section>
 {% endblock %}

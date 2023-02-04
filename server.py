@@ -98,8 +98,9 @@ def profile(user_id):
     """Show a user's profile."""
 
     user = crud.get_user_by_id(user_id)
+    reviews = crud.get_all_user_cafe_reviews(user_id)
 
-    return render_template("profile.html", user=user)
+    return render_template("profile.html", user=user, reviews=reviews)
 
 
 @app.route("/bookmarks")

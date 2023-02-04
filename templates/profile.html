@@ -6,4 +6,13 @@
 <h1>{{ user.fname }}'s Profile</h1>
 <h3>Name: {{ user.fname }} {{ user.lname }}</h3>
 <h3>Email: {{ user.email }}</h3>
+
+<br>
+
+<h3>Jane's Cafe Reviews:</h3>
+{% for review in reviews %}
+<b><a href="/cafe/{{ review.cafe.cafe_id }}">{{ review.cafe.name }}</a></b>
+<p>"{{ review.review }}"</p>
+{% endfor %}
+
 {% endblock %}

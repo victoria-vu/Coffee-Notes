@@ -132,9 +132,15 @@ def get_bookmarks_by_userid(user_id):
 
 
 def get_all_cafe_reviews(cafe_id):
-    """Gets all reviews of a particular cafe by most recent review."""
+    """Returns all reviews of a particular cafe by most recent review."""
 
     return Review.query.filter(Review.cafe_id == cafe_id).order_by(Review.review_id.desc()).all()
+
+
+def get_all_user_cafe_reviews(user_id):
+    """Returns all user cafe reviews by user ID."""
+
+    return Review.query.filter(Review.user_id == user_id).all()
 
 
 def get_cafe_visit_by_userandcafeid(user_id, cafe_id):
