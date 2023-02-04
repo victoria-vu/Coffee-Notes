@@ -92,6 +92,7 @@ def dashboard():
         return render_template("dashboard.html", name=session["user_fname"])
     return redirect("/")
 
+
 @app.route("/profile/<user_id>")
 def profile(user_id):
     """Show a user's profile."""
@@ -124,6 +125,7 @@ def mycafes():
         return render_template("mycafes.html", user=user, visits=visits)
     return redirect("/")
 
+
 @app.route("/mycafes/<visit_id>/addnote", methods=["POST"])
 def create_note(visit_id):
     """Create a note for a particular cafe."""
@@ -155,7 +157,6 @@ def remove_note(note_id):
     return redirect("/mycafes")
 
 
-# Need to fix so non-users can also search for cafes.
 @app.route("/cafe/search")
 def search_cafes():
     """Search for cafes."""
@@ -181,11 +182,7 @@ def show_cafe(cafe_id):
         bookmarked = crud.get_bookmark_by_userandcafeid(session["user_id"], cafe_id)
         visited = crud.get_cafe_visit_by_userandcafeid(session["user_id"], cafe_id)
 
-        if bookmarked or visited:
-            return render_template("cafe_details.html", cafe=cafe, reviews=reviews, bookmarked=bookmarked, visited=visited)
-        else:
-            return render_template("cafe_details.html", cafe=cafe, reviews=reviews, bookmarked=bookmarked, visited=visited)
-
+        return render_template("cafe_details.html", cafe=cafe, reviews=reviews, bookmarked=bookmarked, visited=visited)
 
     return render_template("cafe_details.html", cafe=cafe, reviews=reviews)
 
