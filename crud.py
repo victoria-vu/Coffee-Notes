@@ -167,6 +167,14 @@ def remove_bookmark_from_db(user_id, cafe_id):
     db.session.commit()
 
 
+def remove_review_from_db(review_id):
+    """Removes a review from the database."""
+
+    review = get_review_by_id(review_id)
+    db.session.delete(review)
+    db.session.commit()
+
+
 def remove_visit_from_db(user_id, cafe_id):
     """Removes a cafe visit from the database."""
 

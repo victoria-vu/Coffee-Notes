@@ -103,6 +103,18 @@ def profile(user_id):
     return render_template("profile.html", user=user, reviews=reviews)
 
 
+@app.route("/profile/<review_id>/removereview", methods=["POST"])
+def remove_review(review_id):
+    """Remove a user's review."""
+
+    user = session["user_id"]
+    crud.remove_review_from_db(review_id)
+
+    flash(f"You have successfully deleted the review.")
+
+    return redirect(f"/profile/{user}")
+
+
 @app.route("/bookmarks")
 def bookmarks():
     """Show a user's bookmarks."""
