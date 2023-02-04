@@ -74,7 +74,7 @@
     <section id="customer-reviews">
         <h3>Customer Reviews</h3>
         {% for review in reviews %}
-            <p><b>{{ review.user.fname }} {{ review.user.lname }}:</b></br>
+            <p><b><a href="/profile/{{ review.user.user_id }}">{{ review.user.fname }} {{ review.user.lname }}</a>:</b></br>
             {{ review.review }}</p>
         {% endfor %}
     </section>

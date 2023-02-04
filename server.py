@@ -88,14 +88,15 @@ def signup():
 def dashboard():
     """Show user dashboard search form."""
 
-    return render_template("dashboard.html", name=session["user_fname"])
+    if "user_id" in session:
+        return render_template("dashboard.html", name=session["user_fname"])
+    return redirect("/")
 
-# Need to fix to let non-users be able to see profiles.
-@app.route("/profile")
-def profile():
+@app.route("/profile/<user_id>")
+def profile(user_id):
     """Show a user's profile."""
 
-    user = crud.get_user_by_id(session["user_id"])
+    user = crud.get_user_by_id(user_id)
 
     return render_template("profile.html", user=user)
 
@@ -104,21 +105,24 @@ def profile():
 def bookmarks():
     """Show a user's bookmarks."""
 
-    user = crud.get_user_by_id(session["user_id"])
-    bookmarks = crud.get_bookmarks_by_userid(session["user_id"])
+    if "user_id" in session:
+        user = crud.get_user_by_id(session["user_id"])
+        bookmarks = crud.get_bookmarks_by_userid(session["user_id"])
 
-    return render_template("bookmarks.html", user=user, bookmarks=bookmarks)
+        return render_template("bookmarks.html", user=user, bookmarks=bookmarks)
+    return redirect("/")
 
 
 @app.route("/mycafes")
 def mycafes():
     """Show a user's list of already visited cafes."""
 
-    user = crud.get_user_by_id(session["user_id"])
-    visits = crud.get_visit_cafes(session["user_id"])
+    if "user_id" in session:
+        user = crud.get_user_by_id(session["user_id"])
+        visits = crud.get_visit_cafes(session["user_id"])
 
-    return render_template("mycafes.html", user=user, visits=visits)
-
+        return render_template("mycafes.html", user=user, visits=visits)
+    return redirect("/")
 
 @app.route("/mycafes/<visit_id>/addnote", methods=["POST"])
 def create_note(visit_id):

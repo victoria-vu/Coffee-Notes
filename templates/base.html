@@ -18,7 +18,7 @@
       {% if 'user_id' in session.keys() %}
         <ul class="nav justify-content-end">
           <li class="nav-item"><a class="nav-link" href="/">Home</a></li>
-          <li class="nav-item"><a class="nav-link" href="/profile">My Profile</a></li>
+          <li class="nav-item"><a class="nav-link" href="/profile/{{ session['user_id'] }}">My Profile</a></li>
           <li class="nav-item"><a class="nav-link" href="/bookmarks">My Bookmarks</a></li>
           <li class="nav-item"><a class="nav-link" href="/mycafes">My Cafes</a></li>
           <li class="nav-item"><a class="nav-link" href="/logout">Sign Out</a></li>
