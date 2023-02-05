@@ -3,9 +3,22 @@
 {% block title %}Search Results{% endblock %}
 
 {% block body %}
+<h1>Search Results:</h1>
+
+<br>
+<center>
+<section id="cafe-search-bar">
+    <form action="/cafe/search">
+        <label for="location">Search for a coffee shop by name, city, or zipcode:</label><br>
+        <input type="text" name="location" placeholder="E.g. New York City">
+        <button type="submit">Search</button>
+    </form>
+  </div>
+</section>
+</center>
+<br>
 
 <section id="cafe-results" class="cafe-results">
-    <h1>Search Results:</h1>
     {% for cafe in cafes %}
         <h3>{{ cafe.name }}</h3>
         {{ cafe.address }},<br>
