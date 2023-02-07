@@ -2,10 +2,32 @@
 
 {% block title %}My Cafes{% endblock %}
 
+{% block head %}
+<style>
+    html, body {
+    margin: 0;
+    width: 100%;
+    height: 100%;
+    }
+
+    .map,
+    #map {
+    width: 100%;
+    height: 100%;
+    }
+
+</style>
+{% endblock %}
+
 {% block body %}
 <h1> {{ user.fname }}'s Cafes</h1>
 <h5>Keep track of all the cafes you already visited.</h5>
 <br>
+
+<section class="map">
+    <div id="map"></div>
+</section>
+
     
     {% for visit in visits %}
         <div>
@@ -38,7 +60,7 @@
                     <br>
                     <textarea name="cafe-note" id="cafe-note" required=""></textarea>
                     <br>
-                    <button type="submit" id="add-cafe-note-button">Submit</button>
+                    <button type="submit" id="add-cafe-note-button">Add Note</button>
                 </form>
             </section>
 
@@ -56,5 +78,9 @@
     {% endfor %}
 
     <script src="/static/js/myCafes.js"></script>
+    <script async
+      src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDQPR_vJE_b_gHiQdzfz5M-IK84PYPASCg&libraries=places&callback=initMap">
+    </script>
+
 
 {% endblock %}

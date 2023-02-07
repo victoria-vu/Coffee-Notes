@@ -39,6 +39,8 @@ class Cafe(db.Model):
     city = db.Column(db.String(20))
     state = db.Column(db.String(20))
     zip_code = db.Column(db.String(20))
+    latitude = db.Column(db.Float)
+    longitude = db.Column(db.Float)
     phone = db.Column(db.String(20))
     img_url = db.Column(db.String)
 

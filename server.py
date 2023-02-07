@@ -139,6 +139,28 @@ def mycafes():
     return redirect("/")
 
 
+@app.route("/api/mycafes")
+def get_mycafes():
+    """JSON information about cafes."""
+
+    cafes = crud.get_visit_cafes(session["user_id"])
+    markers = []
+
+    for cafe in cafes:
+        markers.append({
+                "name": cafe.cafe.name, 
+                "lat": cafe.cafe.latitude, 
+                "lng": cafe.cafe.longitude,
+                "address": cafe.cafe.address,
+                "city": cafe.cafe.city,
+                "state": cafe.cafe.state,
+                "zip_code": cafe.cafe.zip_code,
+                "phone": cafe.cafe.phone,
+                })
+       
+    return jsonify(markers)
+
+
 @app.route("/mycafes/<visit_id>/addnote", methods=["POST"])
 def create_note(visit_id):
     """Create a note for a particular cafe."""

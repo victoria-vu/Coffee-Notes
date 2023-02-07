@@ -16,7 +16,7 @@ def create_user(email, password, fname, lname):
     return user    
 
 
-def create_cafe(name, address, city, state, zip_code, phone, img_url):
+def create_cafe(name, address, city, state, zip_code, latitude, longitude, phone, img_url):
     """Create and return a cafe."""
 
     cafe = Cafe(name=name, 
@@ -24,6 +24,8 @@ def create_cafe(name, address, city, state, zip_code, phone, img_url):
                 city=city, 
                 state=state, 
                 zip_code=zip_code, 
+                latitude=latitude,
+                longitude=longitude,
                 phone=phone, 
                 img_url=img_url)
 
