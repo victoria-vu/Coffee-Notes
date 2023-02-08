@@ -1,6 +1,7 @@
 """Models for coffee finder app."""
 
 from flask_sqlalchemy import SQLAlchemy
+from datetime import datetime
 
 
 db = SQLAlchemy()
@@ -59,14 +60,16 @@ class Review(db.Model):
 
     review_id = db.Column(db.Integer, autoincrement=True, primary_key=True)
     review = db.Column(db.Text)
+    rating = db.Column(db.Integer)
     user_id = db.Column(db.Integer, db.ForeignKey("users.user_id"))
     cafe_id = db.Column(db.Integer, db.ForeignKey("cafes.cafe_id"))
+    time_created = db.Column(db.DateTime, default=datetime.now, nullable=False)
 
     user = db.relationship("User", back_populates="reviews")
     cafe = db.relationship("Cafe", back_populates="reviews")
 
     def __repr__(self):
-        return f"<Review review_id={self.review_id}>"
+        return f"<Review review_id={self.review_id} rating={self.rating} time_created={self.time_created}>"
 
 
 class Bookmark(db.Model):
@@ -98,6 +101,9 @@ class Visit(db.Model):
     cafe = db.relationship("Cafe", back_populates="visit")
     note = db.relationship("Note", back_populates="visit")
 
+    def __repr__(self):
+        return f"<Visit visit_id={self.visit_id} user_id={self.user_id}>"
+
 
 class Note(db.Model):
     """A note about a visited cafe."""
@@ -111,6 +117,9 @@ class Note(db.Model):
 
     user = db.relationship("User", back_populates="note")
     visit = db.relationship("Visit", back_populates="note")
+
+    def __repr__(self):
+        return f"<Note note_id={self.note_id} user_id={self.user_id}"
 
 
 def connect_to_db(flask_app, db_uri="postgresql:///cafes", echo=True):

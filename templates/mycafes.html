@@ -27,7 +27,6 @@
 <section class="map">
     <div id="map"></div>
 </section>
-
     
     {% for visit in visits %}
         <div>
@@ -41,19 +40,17 @@
                 <a href="/cafe/{{ visit.cafe.cafe_id }}">More Details</a></p>
             </section>
 
-            {% if visit.note %}
                 <section id="my-cafe-notes">
+                    {% for note in visit.note %}
                     <h5>My Notes:</h5>
-                {% for note in visit.note %}
                     <li>{{ note.note }} 
                         <form action="/mycafes/{{ note.note_id }}/removenote" method="POST">
                             <button type="submit" id="removenote">Delete Note</button>
                         </form>
                     </li>
-                {% endfor %}
+                    {% endfor %}
                 </section>
-            {% endif %}
-
+        
             <section id="cafe-note">
                 <form action="/mycafes/{{ visit.visit_id }}/addnote" method="POST">
                     <label for="cafe-note">Write a Note:</label>
@@ -81,6 +78,5 @@
     <script async
       src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDQPR_vJE_b_gHiQdzfz5M-IK84PYPASCg&libraries=places&callback=initMap">
     </script>
-
 
 {% endblock %}

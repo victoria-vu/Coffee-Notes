@@ -32,10 +32,10 @@ def create_cafe(name, address, city, state, zip_code, latitude, longitude, phone
     return cafe
 
 
-def create_review(user, cafe, review):
+def create_review(user, cafe, review, rating):
     """Create and return a review."""
 
-    user_review = Review(user=user, cafe=cafe, review=review)
+    user_review = Review(user=user, cafe=cafe, review=review, rating=rating)
 
     return user_review
 

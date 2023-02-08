@@ -10,7 +10,7 @@
 <br>
 <h3>{{ user.fname }}'s Cafe Reviews:</h3>
 {% for review in reviews %}
-<b><a href="/cafe/{{ review.cafe.cafe_id }}">{{ review.cafe.name }}</a></b>
+<b><a href="/cafe/{{ review.cafe.cafe_id }}">{{ review.cafe.name }}</a>:</b>
 <p>"{{ review.review }}"</p>
     {% if user.user_id == session['user_id'] %}
     <form action="/profile/{{ review.review_id }}/removereview" method="POST">

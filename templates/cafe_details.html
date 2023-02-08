@@ -60,11 +60,15 @@
 
         <br>
         <section id="review-cafe">
+            <h3>Add a Review</h3>
             <form action="/cafe/{{ cafe.cafe_id }}/review" method="POST">
-                <p>
+                {% for n in range(1,6) %}
+                    <input type="radio" name="rating" value="{{n}}" id="{{n}}">
+                    <label for="{{n}}">{{ n }} Stars </label>
+                {% endfor %}
+                    <br>
                     <label for="review">Write a Review:</label><br>
-                    <textarea name="review" id="review" required=""></textarea>
-                </p>
+                    <textarea name="review" id="review" required="" placeholder="Describe your experience..."></textarea>
                 <p><input type="submit"></p>
             </form>
         </section>
@@ -74,8 +78,9 @@
     <section id="customer-reviews">
         <h3>Customer Reviews</h3>
         {% for review in reviews %}
-            <p><b><a href="/profile/{{ review.user.user_id }}">{{ review.user.fname }} {{ review.user.lname }}</a>:</b></br>
-            {{ review.review }}</p>
+            <p><b><a href="/profile/{{ review[2] }}">{{ review[0] }} {{ review[1] }}</a>:</b></br>
+            {{ review[5] }} Stars, {{ review[4] }}<br>
+            {{ review[3] }}</p>
         {% endfor %}
     </section>
 
