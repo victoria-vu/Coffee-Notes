@@ -16,45 +16,22 @@
 
     {% if 'user_id' in session.keys() %}
         {% if not bookmarked %}
-            <section id="bookmark">
-                <form id="bookmark-cafe">
-                    <input type="hidden" id="cafe-id" value="{{ cafe.cafe_id }}">
-                    <button type="submit" id="bookmark-button">Bookmark This Cafe</button>
-                </form>
-                <span id="bookmark-status"></span>
-            </section>
-        {% endif %}
-
-        {% if bookmarked %}
-            <section id="bookmark">
-                <form id="bookmark-cafe">
-                    <input type="hidden" id="cafe-id" value="{{ bookmarked.cafe.cafe_id }}">
-                    <button type="submit" id="bookmark-button">Remove Bookmark</button>
-                </form>
-                <span id="bookmark-status"></span>
-            </section>
-        {% endif %}
-
-        <br>
-
-        {% if not visited %}
-        <section id="cafe-visit">
-            <form id="cafe-visit">
+        <section id="bookmark-cafe">
+            <form id="bookmark-cafe">
                 <input type="hidden" id="cafe-id" value="{{ cafe.cafe_id }}">
-                <button type="submit" id="visit-button">Add to My Cafes</button>
+                <button type="submit" id="bookmark-button">Add to My Cafes</button>
             </form>
-            <span id="cafe-visit-status"></span>
+            <span id="bookmark-status"></span>
         </section>
         {% endif %}
 
-
-        {% if visited %}
-        <section id="cafe-visit">
-            <form id="cafe-visit">
-                <input type="hidden" id="cafe-id" value="{{ visited.cafe.cafe_id }}">
-                <button type="submit" id="visit-button">Remove from My Cafes</button>
+        {% if bookmarked %}
+        <section id="bookmark-cafe">
+            <form id="bookmark-cafe">
+                <input type="hidden" id="cafe-id" value="{{ bookmarked.cafe.cafe_id }}">
+                <button type="submit" id="bookmark-button">Remove from My Cafes</button>
             </form>
-            <span id="cafe-visit-status"></span>
+            <span id="bookmark-status"></span>
         </section>
         {% endif %}
 

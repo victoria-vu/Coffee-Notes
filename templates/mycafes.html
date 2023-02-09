@@ -21,55 +21,54 @@
 
 {% block body %}
 <h1> {{ user.fname }}'s Cafes</h1>
-<h5>Keep track of all the cafes you already visited.</h5>
+<h5>Keep track of your bookmarked cafes.</h5>
 <br>
 
 <section class="map">
     <div id="map"></div>
 </section>
     
-    {% for visit in visits %}
+    {% for bookmark in bookmarks %}
         <div>
-            <section id="visitcafe-info">
-                <h3>{{ visit.cafe.name }}</h3>
+            <section id="bookmark-cafe-info">
+                <h3>{{ bookmark.cafe.name }}</h3>
                 <h5>Address:</h5>
-                <p>{{ visit.cafe.address}} <br>
-                {{ visit.cafe.city }} {{ visit.cafe.state }} {{ visit.cafe.zip_code}}</p>
+                <p>{{ bookmark.cafe.address}} <br>
+                {{ bookmark.cafe.city }} {{ bookmark.cafe.state }} {{ bookmark.cafe.zip_code}}</p>
                 <h5>Phone Number:</h5> 
-                <p>{{ visit.cafe.phone }}<br>
-                <a href="/cafe/{{ visit.cafe.cafe_id }}">More Details</a></p>
+                <p>{{ bookmark.cafe.phone }}<br>
+                <a href="/cafe/{{ bookmark.cafe.cafe_id }}">More Details</a></p>
             </section>
 
-                <section id="my-cafe-notes">
-                    {% for note in visit.note %}
-                    <h5>My Notes:</h5>
-                    <li>{{ note.note }} 
-                        <form action="/mycafes/{{ note.note_id }}/removenote" method="POST">
-                            <button type="submit" id="removenote">Delete Note</button>
-                        </form>
-                    </li>
-                    {% endfor %}
-                </section>
+            <section id="remove-notes">
+                <h5>My Notes:</h5>
+                {% for note in bookmark.note %}
+                <li>{{ note.note }} 
+                    <form action="/mycafes/{{ note.note_id }}/removenote" method="POST">
+                        <button type="submit" id="remove-note-button">Delete Note</button>
+                    </form>
+                </li>
+                {% endfor %}
+            </section>
         
-            <section id="cafe-note">
-                <form action="/mycafes/{{ visit.visit_id }}/addnote" method="POST">
-                    <label for="cafe-note">Write a Note:</label>
+            <section id="add-notes">
+                <form action="/mycafes/{{ bookmark.bookmark_id }}/addnote" method="POST">
+                    <label for="add-note">Write a Note:</label>
                     <br>
-                    <textarea name="cafe-note" id="cafe-note" required=""></textarea>
+                    <textarea name="add-cafe-note" id="add-cafe-note" required=""></textarea>
                     <br>
-                    <button type="submit" id="add-cafe-note-button">Add Note</button>
+                    <button type="submit" id="add-note-button">Add Note</button>
                 </form>
             </section>
 
-            <br>
-            <section id="remove-visitcafe">
-                <form id="remove-visitcafe">
-                    <input type="hidden" id="visitcafe-id" value="{{ visit.cafe.cafe_id }}">
-                    <button type="submit" id="remove-visit-button">Remove Cafe</button>
+            <section id="remove-bookmark">
+                <form id="remove-bookmark">
+                    <input type="hidden" id="remove-bookmark-id" value="{{ bookmark.cafe.cafe_id }}">
+                    <button type="submit" id="remove-bookmark-button">Remove Cafe</button>
                 </form>
             </section>
             
-            <span id="remove-visit-status"></span>
+            <span id="remove-bookmark-status"></span>
         </div>
         <br>
     {% endfor %}

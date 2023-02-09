@@ -99,8 +99,10 @@ def profile(user_id):
 
     user = crud.get_user_by_id(user_id)
     reviews = crud.get_all_user_cafe_reviews(user_id)
+    bookmarks = crud.get_bookmarked_cafes(user_id)
 
-    return render_template("profile.html", user=user, reviews=reviews)
+
+    return render_template("profile.html", user=user, reviews=reviews, bookmarks=bookmarks)
 
 
 @app.route("/profile/<review_id>/removereview", methods=["POST"])
@@ -115,27 +117,15 @@ def remove_review(review_id):
     return redirect(f"/profile/{user}")
 
 
-@app.route("/bookmarks")
-def bookmarks():
-    """Show a user's bookmarks."""
-
-    if "user_id" in session:
-        user = crud.get_user_by_id(session["user_id"])
-        bookmarks = crud.get_bookmarks_by_userid(session["user_id"])
-
-        return render_template("bookmarks.html", user=user, bookmarks=bookmarks)
-    return redirect("/")
-
-
 @app.route("/mycafes")
 def mycafes():
-    """Show a user's list of already visited cafes."""
+    """Show a user's list of bookmarked cafes."""
 
     if "user_id" in session:
         user = crud.get_user_by_id(session["user_id"])
-        visits = crud.get_visit_cafes(session["user_id"])
+        bookmarks = crud.get_bookmarked_cafes(session["user_id"])
 
-        return render_template("mycafes.html", user=user, visits=visits)
+        return render_template("mycafes.html", user=user, bookmarks=bookmarks)
     return redirect("/")
 
 
@@ -143,7 +133,7 @@ def mycafes():
 def get_mycafes():
     """JSON information about cafes."""
 
-    cafes = crud.get_visit_cafes(session["user_id"])
+    cafes = crud.get_bookmarked_cafes(session["user_id"])
     markers = []
 
     for cafe in cafes:
@@ -161,33 +151,35 @@ def get_mycafes():
     return jsonify(markers)
 
 
-@app.route("/mycafes/<visit_id>/addnote", methods=["POST"])
-def create_note(visit_id):
+@app.route("/mycafes/<bookmark_id>/addnote", methods=["POST"])
+def create_note(bookmark_id):
     """Create a note for a particular cafe."""
 
     user_id = session["user_id"]
-    note = request.form.get("cafe-note")
+    note = request.form.get("add-cafe-note")
 
     if not note:
         flash("This field cannot be blank.")
     else:
         user = crud.get_user_by_id(user_id)
-        visit = crud.get_visit_by_id(visit_id)
+        bookmark = crud.get_bookmark_by_id(bookmark_id)
 
-        cafe_note = crud.create_cafe_note(user, visit, note)
+        cafe_note = crud.create_cafe_note(user, bookmark, note)
+        print(cafe_note)
         db.session.add(cafe_note)
         db.session.commit()
 
-        flash(f"You have successfully created a note for {visit.cafe.name}.")
+        flash(f"You have successfully created a note for {bookmark.cafe.name}.")
 
     return redirect("/mycafes")
 
 
 @app.route("/mycafes/<note_id>/removenote", methods=["POST"])
 def remove_note(note_id):
-    """Remove a note from user's already visited cafes page."""
+    """Remove a note from user's bookmarks page."""
 
     crud.remove_note_from_db(note_id)
+    flash(f"You have successfully deleted a note.")
 
     return redirect("/mycafes")
 
@@ -219,10 +211,9 @@ def show_cafe(cafe_id):
         all_reviews.append([review.user.fname, review.user.lname, review.user.user_id, review.review, date_time, review.rating])
 
     if "user_id" in session:
-        bookmarked = crud.get_bookmark_by_userandcafeid(session["user_id"], cafe_id)
-        visited = crud.get_cafe_visit_by_userandcafeid(session["user_id"], cafe_id)
+        bookmarked = crud.get_cafe_bookmark_by_userandcafeid(session["user_id"], cafe_id)
 
-        return render_template("cafe_details.html", cafe=cafe, reviews=all_reviews, bookmarked=bookmarked, visited=visited)
+        return render_template("cafe_details.html", cafe=cafe, reviews=all_reviews, bookmarked=bookmarked)
 
     return render_template("cafe_details.html", cafe=cafe, reviews=all_reviews)
 
@@ -245,61 +236,30 @@ def create_reviews(cafe_id):
     return redirect(f"/cafe/{cafe_id}")
 
 
-@app.route("/cafe/<cafe_id>/bookmark", methods=["POST"])
-def bookmark_cafe(cafe_id):
-    """Add a cafe to user's bookmarks."""
- 
-    bookmark = crud.get_bookmark_by_userandcafeid(session["user_id"], cafe_id)
-
-    # If a user already bookmarked the cafe, this route will remove the bookmark.
-    if bookmark:
-        crud.remove_bookmark_from_db(session["user_id"], cafe_id)
-        return "You have successfully removed a bookmark."
-    # If a user hasn't bookmarked the cafe, this route will add a bookmark.
-    else:
-        user = crud.get_user_by_id(session["user_id"])
-        cafe = crud.get_cafe_by_id(cafe_id)
-
-        bookmark = crud.create_bookmark(user, cafe)
-        db.session.add(bookmark)
-        db.session.commit()
-        return "You have successfully bookmarked this cafe." 
-
-
-@app.route("/cafe/<cafe_id>/removebookmark", methods=["POST"])
-def remove_bookmark(cafe_id):
-    """Remove a cafe bookmark from user's bookmarks page."""
-
-    # This will remove a cafe bookmark from the user's bookmarks page.
-    crud.remove_bookmark_from_db(session["user_id"], cafe_id)
-
-    return "You have successfully removed a bookmark."
-
-
 @app.route("/cafe/<cafe_id>/mycafes", methods=["POST"])
 def add_to_my_cafes(cafe_id):
-    """Add a cafe to user's visited cafe list."""
+    """Add a cafe to user's bookmark list."""
 
-    visit = crud.get_cafe_visit_by_userandcafeid(session["user_id"], cafe_id)
+    bookmark = crud.get_cafe_bookmark_by_userandcafeid(session["user_id"], cafe_id)
 
-    if visit:
-        crud.remove_visit_from_db(session["user_id"], cafe_id)
+    if bookmark:
+        crud.remove_bookmark_from_db(session["user_id"], cafe_id)
         return "You have successfully removed this cafe from My Cafes."
     else:
         user = crud.get_user_by_id(session["user_id"])
         cafe = crud.get_cafe_by_id(cafe_id)
 
-        visit = crud.create_cafe_visit(user, cafe)
-        db.session.add(visit)
+        bookmark = crud.create_cafe_bookmark(user, cafe)
+        db.session.add(bookmark)
         db.session.commit()
         return "You have successfully added this cafe to My Cafes."
 
 
-@app.route("/cafe/<cafe_id>/removecafevisit", methods=["POST"])
-def remove_cafevist(cafe_id):
-    """Remove a visited cafe from user's cafe page."""
+@app.route("/cafe/<cafe_id>/removecafebookmark", methods=["POST"])
+def remove_cafe_bookmark(cafe_id):
+    """Remove a bookmarked cafe from a cafe page."""
 
-    crud.remove_visit_from_db(session["user_id"], cafe_id)
+    crud.remove_bookmark_from_db(session["user_id"], cafe_id)
 
     return "You have successfully removed this cafe." 
 

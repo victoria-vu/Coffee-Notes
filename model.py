@@ -19,8 +19,7 @@ class User(db.Model):
     lname = db.Column(db.String)
 
     reviews = db.relationship("Review", back_populates="user")
-    bookmark = db.relationship("Bookmark", back_populates="user")
-    visit = db.relationship("Visit", back_populates="user")
+    bookmarks = db.relationship("Bookmark", back_populates="user")
     note = db.relationship("Note", back_populates="user")
 
     def __repr__(self):
@@ -46,8 +45,7 @@ class Cafe(db.Model):
     img_url = db.Column(db.String)
 
     reviews = db.relationship("Review", back_populates="cafe")
-    bookmark = db.relationship("Bookmark", back_populates="cafe")
-    visit = db.relationship("Visit", back_populates="cafe")
+    bookmarks = db.relationship("Bookmark", back_populates="cafe")
 
     def __repr__(self):
         return f"<Cafe cafe_id={self.cafe_id} name={self.name}>"
@@ -75,52 +73,39 @@ class Review(db.Model):
 class Bookmark(db.Model):
     """A cafe bookmark."""
 
-    __tablename__ = "bookmarks"
+    __tablename__= "bookmarks"
 
     bookmark_id = db.Column(db.Integer, autoincrement=True, primary_key=True)
     user_id = db.Column(db.Integer, db.ForeignKey("users.user_id"))
     cafe_id = db.Column(db.Integer, db.ForeignKey("cafes.cafe_id"))
 
-    user = db.relationship("User", back_populates="bookmark")
-    cafe = db.relationship("Cafe", back_populates="bookmark")
+    user = db.relationship("User", back_populates="bookmarks")
+    cafe = db.relationship("Cafe", back_populates="bookmarks")
+    note = db.relationship("Note", back_populates="bookmarks")
 
     def __repr__(self):
-        return f"<Bookmark bookmark_id={self.bookmark_id}>"
-
-
-class Visit(db.Model):
-    """A visited cafe."""
-
-    __tablename__= "visits"
-
-    visit_id = db.Column(db.Integer, autoincrement=True, primary_key=True)
-    user_id = db.Column(db.Integer, db.ForeignKey("users.user_id"))
-    cafe_id = db.Column(db.Integer, db.ForeignKey("cafes.cafe_id"))
-
-    user = db.relationship("User", back_populates="visit")
-    cafe = db.relationship("Cafe", back_populates="visit")
-    note = db.relationship("Note", back_populates="visit")
-
-    def __repr__(self):
-        return f"<Visit visit_id={self.visit_id} user_id={self.user_id}>"
+        return f"<Bookmark bookmark_id={self.bookmark_id} user_id={self.user_id}>"
 
 
 class Note(db.Model):
-    """A note about a visited cafe."""
+    """A note about a bookmarked cafe."""
 
     __tablename__ = "notes"
 
     note_id = db.Column(db.Integer, autoincrement=True, primary_key=True)
     note = db.Column(db.Text)
     user_id = db.Column(db.Integer, db.ForeignKey("users.user_id"))
-    visit_id = db.Column(db.Integer, db.ForeignKey("visits.visit_id"))
+    bookmark_id = db.Column(db.Integer, db.ForeignKey("bookmarks.bookmark_id"))
 
     user = db.relationship("User", back_populates="note")
-    visit = db.relationship("Visit", back_populates="note")
+    bookmarks = db.relationship("Bookmark", back_populates="note")
 
     def __repr__(self):
         return f"<Note note_id={self.note_id} user_id={self.user_id}"
 
+# Recommendation Table
+# Foreign Key for User
+# Foreign Key for Cafe 
 
 def connect_to_db(flask_app, db_uri="postgresql:///cafes", echo=True):
     flask_app.config["SQLALCHEMY_DATABASE_URI"] = db_uri

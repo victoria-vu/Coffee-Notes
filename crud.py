@@ -1,6 +1,6 @@
 """CRUD operations."""
 
-from model import db, User, Cafe, Review, Bookmark, Visit, Note, connect_to_db
+from model import db, User, Cafe, Review, Bookmark, Note, connect_to_db
 
 # Create = Create new data
 # Read = Retrieve data the already exits
@@ -40,28 +40,27 @@ def create_review(user, cafe, review, rating):
     return user_review
 
 
-def create_bookmark(user, cafe):
-    """Create and return a bookmark."""
+def create_cafe_bookmark(user, cafe):
+    """Create and return a cafe bookmark."""
 
     bookmark = Bookmark(user=user, cafe=cafe)
 
     return bookmark
 
 
-def create_cafe_visit(user, cafe):
-    """Create and return a visited cafe."""
+def create_cafe_note(user, bookmark, note):
+    """Create and return a note for a bookmarked caefe."""
 
-    visit = Visit(user=user, cafe=cafe)
-
-    return visit
-
-
-def create_cafe_note(user, visit, note):
-    """Create and return a note for a visited cafe."""
-
-    note = Note(user=user, visit=visit, note=note)
+    note = Note(user=user, bookmarks=bookmark, note=note)
 
     return note
+
+# def create_cafe_note(user, bookmark, note):
+#     """Create and return a note for a bookmarked cafe."""
+
+#     note = Note(user=user, bookmark=bookmark, note=note)
+
+#     return note
 
 
 # FUNCTIONS THAT RETRIEVE DATA (READ)
@@ -97,40 +96,22 @@ def get_cafes():
     return Cafe.query.all()
 
 
-def get_visit_cafes(user_id):
-    """Returns all of user's visited cafes."""
+def get_bookmarked_cafes(user_id):
+    """Returns all of user's bookmarked cafes by user ID."""
 
-    return Visit.query.filter(Visit.user_id == user_id).all()
+    return Bookmark.query.filter(Bookmark.user_id == user_id).all()
 
 
-def get_visit_by_id(visit_id):
-    """Return a cafe visit by id."""
+def get_bookmark_by_id(bookmark_id):
+    """Return a cafe bookmark by bookmark ID."""
 
-    return Visit.query.get(visit_id)
+    return Bookmark.query.get(bookmark_id)
 
 
 def get_review_by_id(review_id):
     """Return a review by review id."""
 
     return Review.query.get(review_id)
-
-
-def get_bookmark_by_id(bookmark_id):
-    """Return a bookmark by bookmark id."""
-
-    return Bookmark.query.get(bookmark_id)
-
-
-def get_bookmark_by_userandcafeid(user_id, cafe_id):
-    """Returns a bookmark for a particular cafe under a user."""
-
-    return Bookmark.query.filter(Bookmark.user_id == user_id, Bookmark.cafe_id == cafe_id).first()
-
-
-def get_bookmarks_by_userid(user_id):
-    """Returns all of a user's bookmarks."""
-
-    return Bookmark.query.filter(Bookmark.user_id == user_id).all()
 
 
 def get_all_cafe_reviews(cafe_id):
@@ -145,10 +126,10 @@ def get_all_user_cafe_reviews(user_id):
     return Review.query.filter(Review.user_id == user_id).all()
 
 
-def get_cafe_visit_by_userandcafeid(user_id, cafe_id):
-    """Returns a cafe visit for particular cafe under a user."""
+def get_cafe_bookmark_by_userandcafeid(user_id, cafe_id):
+    """Returns a cafe bookmark for particular cafe under a user."""
 
-    return Visit.query.filter(Visit.user_id == user_id, Visit.cafe_id == cafe_id).first()
+    return Bookmark.query.filter(Bookmark.user_id == user_id, Bookmark.cafe_id == cafe_id).first()
 
 
 def get_note_by_noteid(note_id):
@@ -161,14 +142,6 @@ def get_note_by_noteid(note_id):
 
 
 # FUNCTIONS THAT DELETE DATA (DELETE)
-def remove_bookmark_from_db(user_id, cafe_id):
-    """Removes a bookmark from the datebase."""
-
-    bookmark = get_bookmark_by_userandcafeid(user_id, cafe_id)
-    db.session.delete(bookmark)
-    db.session.commit()
-
-
 def remove_review_from_db(review_id):
     """Removes a review from the database."""
 
@@ -177,16 +150,16 @@ def remove_review_from_db(review_id):
     db.session.commit()
 
 
-def remove_visit_from_db(user_id, cafe_id):
-    """Removes a cafe visit from the database."""
+def remove_bookmark_from_db(user_id, cafe_id):
+    """Removes a cafe bookmark from the database."""
 
-    visit = get_cafe_visit_by_userandcafeid(user_id, cafe_id)
-    db.session.delete(visit)
+    bookmark = get_cafe_bookmark_by_userandcafeid(user_id, cafe_id)
+    db.session.delete(bookmark)
     db.session.commit()
 
 
 def remove_note_from_db(note_id):
-    """Removes a note for a cafe visit from the database."""
+    """Removes a note for a cafe bookmark from the database."""
 
     note = get_note_by_noteid(note_id)
     db.session.delete(note)
