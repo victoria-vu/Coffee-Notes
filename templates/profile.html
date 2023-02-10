@@ -6,34 +6,32 @@
 <section id="user-information">
     <h1>{{ user.fname }}'s Profile</h1>
     <h3>Name: {{ user.fname }} {{ user.lname }}</h3>
-    <h3>Email: {{ user.email }}</h3>
 </section>
 
 <br>
 
 <section id="add-user-recommendation">
     <h3>{{ user.fname }}'s Cafe Recommendation:</h3>
-
     {% if user.user_id == session['user_id'] %}
-    <form action="/profile/{{ user.user_id }}/addrecommendation">
-        <label for="cafe-select">Choose a cafe from your bookmarks:</label><br>
-        <select name="recommendation" id="cafe-recommendation">
-            {% for bookmark in bookmarks  %}
-          <option value="{{ bookmark.cafe.cafe_id }}">{{ bookmark.cafe.name }}</option>
-            {% endfor %}
-        </select>
-        <button type="submit" id="add-recommendation-button">Submit</button>
-    </form>
+        <form action="/profile/{{ user.user_id }}/addrecommendation">
+            <label for="cafe-select">Choose a cafe from your bookmarks:</label><br>
+                <select name="recommendation" id="cafe-recommendation">
+                    {% for bookmark in bookmarks  %}
+                        <option value="{{ bookmark.cafe.cafe_id }}">{{ bookmark.cafe.name }}</option>
+                    {% endfor %}
+                </select>
+            <button type="submit" id="add-recommendation-button">Submit</button>
+        </form>
     {% endif %}
 
     {% if recommendation %}
-    <section id="display-recc">
-        <h4><a href="/cafe/{{ recommendation.cafe.cafe_id }}">{{ recommendation.cafe.name}}</a></h4>
-        <form id="remove-recc">
-            <input type="hidden" id="remove-recc-id" value="{{ recommendation.recommendation_id }}">
-            <button type="submit" id="remove-reccbutton">Remove Recommendation</button>
-        </form>
-    </section>
+        <section id="display-recc">
+            <h4><a href="/cafe/{{ recommendation.cafe.cafe_id }}">{{ recommendation.cafe.name}}</a></h4>
+            <form id="remove-recc">
+                <input type="hidden" id="remove-recc-id" value="{{ recommendation.recommendation_id }}">
+                <button type="submit" id="remove-recc-button">Remove Recommendation</button>
+            </form>
+        </section>
     {% endif %}
     <span id="remove-recc-status"></span>
 </section>
@@ -43,13 +41,17 @@
 <section id="user-reviews">
     <h3>{{ user.fname }}'s Cafe Reviews:</h3>
     {% for review in reviews %}
+        <section id="customer-review">
         <b><a href="/cafe/{{ review.cafe.cafe_id }}">{{ review.cafe.name }}</a>:</b>
         <p>"{{ review.review }}"</p>
-            {% if user.user_id == session['user_id'] %}
-                <form action="/profile/{{ review.cafe.cafe_id }}/removereview" method="POST">
-                    <button type="submit" id="remove-review-button">Delete Review</button>
-                </form>
-            {% endif %}
+        {% if user.user_id == session['user_id'] %}
+            <form id="delete-review">
+                <input type="hidden" id="cafe-id" value="{{ review.cafe.cafe_id }}">
+                <button type="submit" id="delete-review-button">Delete Review</button>
+            </form>
+        </section>
+        <span id="remove-review-status"></span>
+        {% endif %}
     {% endfor %}
 </section>
 

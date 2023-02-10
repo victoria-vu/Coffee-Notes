@@ -41,17 +41,14 @@ def login():
     
     if not user:
         flash("The email you typed in does not exist. Please sign up for an account.")
-        return redirect("/login")
-    
     elif user.password != password:
         flash("Incorrect password. Please try again.")
-        return redirect("/login")
-    
     else:
         session["user_email"] = user.email
         session["user_fname"] = user.fname
         session["user_id"] = user.user_id
         return redirect("/dashboard")
+    return redirect("/login")
     
     
 @app.route("/signup")
@@ -72,10 +69,9 @@ def signup():
 
     user = crud.get_user_by_email(email)
 
-    if user is not None:
+    if user:
         flash("An account already exists with that email. Please try another one.")
         return redirect("/signup")
-
     else:
         user = crud.create_user(email, password, fname, lname)
         db.session.add(user)
@@ -101,7 +97,6 @@ def profile(user_id):
     reviews = crud.get_all_user_cafe_reviews(user_id)
     bookmarks = crud.get_bookmarked_cafes(user_id)
     recommendation = crud.get_recommendation_by_userid(user_id)
-
 
     return render_template("profile.html", user=user, reviews=reviews, bookmarks=bookmarks, recommendation=recommendation)
 
@@ -134,12 +129,9 @@ def remove_recommendation(recommendation_id):
 def remove_review(cafe_id):
     """Remove a user's review through profile page."""
 
-    user = session["user_id"]
-    crud.remove_review_from_db(user, cafe_id)
+    crud.remove_review_from_db(session["user_id"], cafe_id)
 
-    flash(f"You have successfully deleted the review.")
-
-    return redirect(f"/profile/{user}")
+    return "You have successfully deleted your review."
 
 
 @app.route("/mycafes")
@@ -232,14 +224,12 @@ def show_cafe(cafe_id):
 
     all_reviews = []
     for review in reviews: 
-        date_time = review.time_created.strftime("%d/%m/%y")
+        date_time = review.time_created.strftime("%m/%d/%y")
         all_reviews.append([review.user.fname, review.user.lname, review.user.user_id, review.review, date_time, review.rating])
 
     if "user_id" in session:
         bookmarked = crud.get_cafe_bookmark_by_userandcafeid(session["user_id"], cafe_id)
-
         return render_template("cafe_details.html", cafe=cafe, reviews=all_reviews, bookmarked=bookmarked)
-
     return render_template("cafe_details.html", cafe=cafe, reviews=all_reviews)
 
 

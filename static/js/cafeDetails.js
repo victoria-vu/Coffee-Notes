@@ -21,15 +21,15 @@ myCafeSubmitButton.addEventListener('submit', (evt) => {
             },
         })
 
-            .then((response) => response.text())
-            .then((myCafeStatus) => {
-                document.querySelector('#bookmark-button').innerHTML = 'Remove from My Cafes';
-                document.querySelector('#bookmark-status').innerHTML = myCafeStatus;
-                document.querySelector('#bookmark-button').disabled = true;
-                setTimeout(function() {
-                    window.location.reload();
-                }, 2000);
-            }) 
+        .then((response) => response.text())
+        .then((myCafeStatus) => {
+            document.querySelector('#bookmark-button').innerHTML = 'Remove from My Cafes';
+            document.querySelector('#bookmark-status').innerHTML = myCafeStatus;
+            document.querySelector('#bookmark-button').disabled = true;
+            setTimeout(function() {
+                window.location.reload();
+            }, 2000);
+        }) 
 
     } else if (myCafeButton.innerHTML === 'Remove from My Cafes') {
             const formInput = {
@@ -44,14 +44,14 @@ myCafeSubmitButton.addEventListener('submit', (evt) => {
             },
         })
     
-            .then((response) => response.text())
-            .then((myCafeStatus) => {
-                document.querySelector('#bookmark-button').innerHTML = 'Add to My Cafes';
-                document.querySelector('#bookmark-status').innerHTML = myCafeStatus;
-                document.querySelector('#bookmark-button').disabled = true;
-                setTimeout(function() {
-                    window.location.reload();
-                }, 2000);
+        .then((response) => response.text())
+        .then((myCafeStatus) => {
+            document.querySelector('#bookmark-button').innerHTML = 'Add to My Cafes';
+            document.querySelector('#bookmark-status').innerHTML = myCafeStatus;
+            document.querySelector('#bookmark-button').disabled = true;
+            setTimeout(function() {
+                window.location.reload();
+            }, 2000);
         });
     }
 });
@@ -62,7 +62,6 @@ const deleteReview = document.querySelector('#delete-review');
 deleteReview.addEventListener('submit', (evt) => {
     evt.preventDefault();
 
-    // Selects the ID of the particular button and pulls the value from it, which is the cafe_id
     const formInput = {
         cafe_id: document.querySelector('#cafe-id').value
     };
