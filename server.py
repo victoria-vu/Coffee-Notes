@@ -193,9 +193,8 @@ def remove_note(note_id):
     """Remove a note from user's bookmarks page."""
 
     crud.remove_note_from_db(note_id)
-    flash(f"You have successfully deleted a note.")
 
-    return redirect("/mycafes")
+    return "You have successfully deleted a note."
 
 
 @app.route("/cafe/search")

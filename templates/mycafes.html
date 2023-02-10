@@ -33,21 +33,24 @@
             <section id="bookmark-cafe-info">
                 <h3>{{ bookmark.cafe.name }}</h3>
                 <h5>Address:</h5>
-                <p>{{ bookmark.cafe.address}} <br>
-                {{ bookmark.cafe.city }} {{ bookmark.cafe.state }} {{ bookmark.cafe.zip_code}}</p>
+                    <p>{{ bookmark.cafe.address}} <br>
+                    {{ bookmark.cafe.city }} {{ bookmark.cafe.state }} {{ bookmark.cafe.zip_code}}</p>
                 <h5>Phone Number:</h5> 
-                <p>{{ bookmark.cafe.phone }}<br>
+                    <p>{{ bookmark.cafe.phone }}<br>
                 <a href="/cafe/{{ bookmark.cafe.cafe_id }}">More Details</a></p>
             </section>
 
-            <section id="remove-notes">
+            <section id="notes">
                 <h5>My Notes:</h5>
                 {% for note in bookmark.note %}
-                <li>{{ note.note }} 
-                    <form action="/mycafes/{{ note.note_id }}/removenote" method="POST">
-                        <button type="submit" id="remove-note-button">Delete Note</button>
-                    </form>
-                </li>
+                    <section id="remove-notes">
+                    <li>{{ note.note }}</li>
+                        <form id="remove-note" method="POST">
+                            <input type="hidden" id="remove-note-id" value="{{ note.note_id }}">
+                            <button type="submit" id="remove-note-button">Delete Note</button>
+                        </form>
+                    </section>
+                    <span id="remove-note-status"></span>
                 {% endfor %}
             </section>
         
@@ -67,7 +70,6 @@
                     <button type="submit" id="remove-bookmark-button">Remove Cafe</button>
                 </form>
             </section>
-            
             <span id="remove-bookmark-status"></span>
         </div>
         <br>
