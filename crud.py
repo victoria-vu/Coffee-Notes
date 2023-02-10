@@ -1,6 +1,6 @@
 """CRUD operations."""
 
-from model import db, User, Cafe, Review, Bookmark, Note, connect_to_db
+from model import db, User, Cafe, Review, Bookmark, Note, Recommendation, connect_to_db
 
 # Create = Create new data
 # Read = Retrieve data the already exits
@@ -55,12 +55,13 @@ def create_cafe_note(user, bookmark, note):
 
     return note
 
-# def create_cafe_note(user, bookmark, note):
-#     """Create and return a note for a bookmarked cafe."""
 
-#     note = Note(user=user, bookmark=bookmark, note=note)
+def create_recommendation(user, cafe):
+    """Create and return a recommended cafe."""
 
-#     return note
+    recommendation = Recommendation(user=user, cafe=cafe)
+
+    return recommendation
 
 
 # FUNCTIONS THAT RETRIEVE DATA (READ)
@@ -126,6 +127,12 @@ def get_all_user_cafe_reviews(user_id):
     return Review.query.filter(Review.user_id == user_id).all()
 
 
+def get_cafe_review_by_userandcafeid(user_id, cafe_id):
+    """Returns a cafe bookmark for particular cafe under a user."""
+
+    return Review.query.filter(Review.user_id == user_id, Review.cafe_id == cafe_id).first()
+
+
 def get_cafe_bookmark_by_userandcafeid(user_id, cafe_id):
     """Returns a cafe bookmark for particular cafe under a user."""
 
@@ -133,19 +140,30 @@ def get_cafe_bookmark_by_userandcafeid(user_id, cafe_id):
 
 
 def get_note_by_noteid(note_id):
-    """Returns a cafe note by id."""
+    """Returns a cafe note by ID."""
 
     return Note.query.get(note_id)
 
+
+def get_recommendation_by_userid(user_id):
+    """Returns a user's cafe recommendation."""
+
+    return Recommendation.query.filter(Recommendation.user_id == user_id).first()
+
+
+def get_recommendation_by_id(recommendation_id):
+    """Returns a recommendation by ID."""
+
+    return Recommendation.query.get(recommendation_id)
 
 # FUNCTIONS THAT UPDATE DATA (UPDATE)
 
 
 # FUNCTIONS THAT DELETE DATA (DELETE)
-def remove_review_from_db(review_id):
+def remove_review_from_db(user_id, cafe_id):
     """Removes a review from the database."""
 
-    review = get_review_by_id(review_id)
+    review = get_cafe_review_by_userandcafeid(user_id, cafe_id)
     db.session.delete(review)
     db.session.commit()
 
@@ -163,6 +181,14 @@ def remove_note_from_db(note_id):
 
     note = get_note_by_noteid(note_id)
     db.session.delete(note)
+    db.session.commit()
+
+
+def remove_recommendation_from_db(recommendation_id):
+    """Removes a recommendation for a cafe from the database."""
+
+    recommendation = get_recommendation_by_id(recommendation_id)
+    db.session.delete(recommendation)
     db.session.commit()
 
 

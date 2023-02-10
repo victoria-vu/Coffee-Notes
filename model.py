@@ -21,6 +21,7 @@ class User(db.Model):
     reviews = db.relationship("Review", back_populates="user")
     bookmarks = db.relationship("Bookmark", back_populates="user")
     note = db.relationship("Note", back_populates="user")
+    recommendation = db.relationship("Recommendation", back_populates="user")
 
     def __repr__(self):
         return f"<User user_id={self.user_id} email={self.email} fname={self.fname}>"
@@ -46,6 +47,7 @@ class Cafe(db.Model):
 
     reviews = db.relationship("Review", back_populates="cafe")
     bookmarks = db.relationship("Bookmark", back_populates="cafe")
+    recommendation = db.relationship("Recommendation", back_populates="cafe")
 
     def __repr__(self):
         return f"<Cafe cafe_id={self.cafe_id} name={self.name}>"
@@ -101,11 +103,24 @@ class Note(db.Model):
     bookmarks = db.relationship("Bookmark", back_populates="note")
 
     def __repr__(self):
-        return f"<Note note_id={self.note_id} user_id={self.user_id}"
+        return f"<Note note_id={self.note_id} user_id={self.user_id}>"
 
-# Recommendation Table
-# Foreign Key for User
-# Foreign Key for Cafe 
+
+class Recommendation(db.Model):
+    """A user's cafe recommendation."""
+
+    __tablename__ = "recommendations"
+
+    recommendation_id = db.Column(db.Integer, autoincrement=True, primary_key=True)
+    user_id = db.Column(db.Integer, db.ForeignKey("users.user_id"))
+    cafe_id = db.Column(db.Integer, db.ForeignKey("cafes.cafe_id"))
+
+    user = db.relationship("User", back_populates="recommendation")
+    cafe = db.relationship("Cafe", back_populates="recommendation")
+
+    def __repr__(self):
+        return f"<Recommendation recommendation_id={self.recommendation_id} user_id={self.user_id}>"
+
 
 def connect_to_db(flask_app, db_uri="postgresql:///cafes", echo=True):
     flask_app.config["SQLALCHEMY_DATABASE_URI"] = db_uri

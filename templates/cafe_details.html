@@ -40,7 +40,7 @@
             <h3>Add a Review</h3>
             <form action="/cafe/{{ cafe.cafe_id }}/review" method="POST">
                 {% for n in range(1,6) %}
-                    <input type="radio" name="rating" value="{{n}}" id="{{n}}">
+                    <input type="radio" name="rating" value="{{n}}" id="{{n}}" required="">
                     <label for="{{n}}">{{ n }} Stars </label>
                 {% endfor %}
                     <br>
@@ -55,12 +55,23 @@
     <section id="customer-reviews">
         <h3>Customer Reviews</h3>
         {% for review in reviews %}
+            <section id="customer-review">
             <p><b><a href="/profile/{{ review[2] }}">{{ review[0] }} {{ review[1] }}</a>:</b></br>
             {{ review[5] }} Stars, {{ review[4] }}<br>
             {{ review[3] }}</p>
+
+            {% if review[2] == session['user_id'] %}
+            <form id="delete-review">
+                <input type="hidden" id="cafe-id" value="{{ cafe.cafe_id }}">
+                <button type="submit" id="delete-review-button">Delete Review</button>
+            </form>
+            </section>
+            <span id="remove-review-status"></span>
+            {% endif %}
+
         {% endfor %}
     </section>
 
-    <script src="/static/js/cafeDetails.js"></script>
+<script src="/static/js/cafeDetails.js"></script>
 
 {% endblock body %}

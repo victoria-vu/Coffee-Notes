@@ -55,3 +55,32 @@ myCafeSubmitButton.addEventListener('submit', (evt) => {
         });
     }
 });
+
+// Delete Review from Cafe Details Page
+const deleteReview = document.querySelector('#delete-review');
+
+deleteReview.addEventListener('submit', (evt) => {
+    evt.preventDefault();
+
+    // Selects the ID of the particular button and pulls the value from it, which is the cafe_id
+    const formInput = {
+        cafe_id: document.querySelector('#cafe-id').value
+    };
+
+    fetch(`/cafe/${formInput.cafe_id}/removereview`, {
+        method: 'POST',
+        body: JSON.stringify(formInput),
+        headers: {
+            'Content-Type': 'application/json',
+        },
+    })
+
+    .then((response) => response.text())
+    .then((reviewStatus) => {
+        document.querySelector('#customer-review').remove()
+        document.querySelector('#remove-review-status').innerHTML = reviewStatus;
+        setTimeout(function() {
+            window.location.reload();
+            }, 4000);
+    });
+});

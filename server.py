@@ -100,17 +100,42 @@ def profile(user_id):
     user = crud.get_user_by_id(user_id)
     reviews = crud.get_all_user_cafe_reviews(user_id)
     bookmarks = crud.get_bookmarked_cafes(user_id)
+    recommendation = crud.get_recommendation_by_userid(user_id)
 
 
-    return render_template("profile.html", user=user, reviews=reviews, bookmarks=bookmarks)
+    return render_template("profile.html", user=user, reviews=reviews, bookmarks=bookmarks, recommendation=recommendation)
 
 
-@app.route("/profile/<review_id>/removereview", methods=["POST"])
-def remove_review(review_id):
-    """Remove a user's review."""
+@app.route("/profile/<user_id>/addrecommendation")
+def add_recommendation(user_id):
+    """Create a cafe recommendation."""
+
+    cafe_id = request.args.get("recommendation")
+    user = crud.get_user_by_id(user_id)
+    cafe = crud.get_cafe_by_id(cafe_id)
+    
+    recommendation = crud.create_recommendation(user, cafe)
+    db.session.add(recommendation)
+    db.session.commit()
+
+    return redirect(f"/profile/{user_id}")
+
+
+@app.route("/profile/<recommendation_id>/removerecommendation", methods=["POST"])
+def remove_recommendation(recommendation_id):
+    """Remove a user's recommendation on profile page."""
+
+    crud.remove_recommendation_from_db(recommendation_id)
+
+    return "You have successfully removed the recommendation from your page."
+
+
+@app.route("/profile/<cafe_id>/removereview", methods=["POST"])
+def remove_review(cafe_id):
+    """Remove a user's review through profile page."""
 
     user = session["user_id"]
-    crud.remove_review_from_db(review_id)
+    crud.remove_review_from_db(user, cafe_id)
 
     flash(f"You have successfully deleted the review.")
 
@@ -234,6 +259,15 @@ def create_reviews(cafe_id):
     flash("You have successfully submitted a review.")
 
     return redirect(f"/cafe/{cafe_id}")
+
+
+@app.route("/cafe/<cafe_id>/removereview", methods=["POST"])
+def remove_cafe_review(cafe_id):
+    """Remove a user's review from a cafe page."""
+
+    crud.remove_review_from_db(session["user_id"], cafe_id)
+
+    return "You have successfully deleted your review."
 
 
 @app.route("/cafe/<cafe_id>/mycafes", methods=["POST"])
