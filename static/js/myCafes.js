@@ -3,6 +3,7 @@
 // Remove Cafe Visit on My Cafes Page
 const removeBookmarkButton = document.querySelector('#remove-bookmark');
 
+if (removeBookmarkButton) {
 removeBookmarkButton.addEventListener('submit', (evt) => {
     evt.preventDefault();
 
@@ -29,8 +30,9 @@ removeBookmarkButton.addEventListener('submit', (evt) => {
         setTimeout(function() {
             window.location.reload();
          }, 4000);
+        });
     });
-});
+};
 
 
 // Google Maps API

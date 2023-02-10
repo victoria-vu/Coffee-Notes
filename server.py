@@ -175,18 +175,15 @@ def create_note(bookmark_id):
     user_id = session["user_id"]
     note = request.form.get("add-cafe-note")
 
-    if not note:
-        flash("This field cannot be blank.")
-    else:
-        user = crud.get_user_by_id(user_id)
-        bookmark = crud.get_bookmark_by_id(bookmark_id)
+    user = crud.get_user_by_id(user_id)
+    bookmark = crud.get_bookmark_by_id(bookmark_id)
 
-        cafe_note = crud.create_cafe_note(user, bookmark, note)
-        print(cafe_note)
-        db.session.add(cafe_note)
-        db.session.commit()
+    cafe_note = crud.create_cafe_note(user, bookmark, note)
+    print(cafe_note)
+    db.session.add(cafe_note)
+    db.session.commit()
 
-        flash(f"You have successfully created a note for {bookmark.cafe.name}.")
+    flash(f"You have successfully created a note for {bookmark.cafe.name}.")
 
     return redirect("/mycafes")
 

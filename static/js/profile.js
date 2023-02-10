@@ -3,6 +3,7 @@
 
 const removeRecommendationButton = document.querySelector('#remove-recc');
 
+if (removeRecommendationButton) {
 removeRecommendationButton.addEventListener('submit', (evt) => {
     evt.preventDefault();
 
@@ -24,14 +25,16 @@ removeRecommendationButton.addEventListener('submit', (evt) => {
         document.querySelector('#remove-recc-status').innerHTML = recommendationStatus;
         setTimeout(function() {
             window.location.reload();
-         }, 4000);
-    })
-});
+            }, 4000);
+        });
+    });
+}
 
 // Delete Review from Profile Page
-const deleteReview = document.querySelector('#delete-review');
+const deleteReviewButton = document.querySelector('#delete-review');
 
-deleteReview.addEventListener('submit', (evt) => {
+if (deleteReviewButton) {
+deleteReviewButton.addEventListener('submit', (evt) => {
     evt.preventDefault();
 
     const formInput = {
@@ -55,3 +58,4 @@ deleteReview.addEventListener('submit', (evt) => {
             }, 4000);
         });
     });
+}

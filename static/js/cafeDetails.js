@@ -53,13 +53,14 @@ myCafeSubmitButton.addEventListener('submit', (evt) => {
                 window.location.reload();
             }, 2000);
         });
-    }
-});
+    }}
+);
 
 // Delete Review from Cafe Details Page
-const deleteReview = document.querySelector('#delete-review');
+const deleteReviewButton = document.querySelector('#delete-review');
 
-deleteReview.addEventListener('submit', (evt) => {
+if (deleteReviewButton) {
+deleteReviewButton.addEventListener('submit', (evt) => {
     evt.preventDefault();
 
     const formInput = {
@@ -81,5 +82,6 @@ deleteReview.addEventListener('submit', (evt) => {
         setTimeout(function() {
             window.location.reload();
             }, 4000);
+         });
     });
-});
+};
