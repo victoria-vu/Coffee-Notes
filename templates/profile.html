@@ -27,10 +27,12 @@
     {% if recommendation %}
         <section id="display-recc">
             <h4><a href="/cafe/{{ recommendation.cafe.cafe_id }}">{{ recommendation.cafe.name}}</a></h4>
+            {% if user.user_id == session['user_id'] %}
             <form id="remove-recc">
                 <input type="hidden" id="remove-recc-id" value="{{ recommendation.recommendation_id }}">
                 <button type="submit" id="remove-recc-button">Remove Recommendation</button>
             </form>
+            {% endif %}
         </section>
     {% endif %}
     <span id="remove-recc-status"></span>
@@ -40,12 +42,13 @@
 
 <section id="user-reviews">
     <h3>{{ user.fname }}'s Cafe Reviews:</h3>
+    
     {% for review in reviews %}
         <section id="customer-review">
         <b><a href="/cafe/{{ review.cafe.cafe_id }}">{{ review.cafe.name }}</a>:</b>
         <p>"{{ review.review }}"</p>
         {% if user.user_id == session['user_id'] %}
-            <form id="delete-review">
+            <form id="delete-review" class="remove-review">
                 <input type="hidden" id="cafe-id" value="{{ review.cafe.cafe_id }}">
                 <button type="submit" id="delete-review-button">Delete Review</button>
             </form>

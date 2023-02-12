@@ -29,7 +29,7 @@
 </section>
     
     {% for bookmark in bookmarks %}
-        <div>
+        <section id="bookmark">
             <section id="bookmark-cafe-info">
                 <h3>{{ bookmark.cafe.name }}</h3>
                 <h5>Address:</h5>
@@ -43,23 +43,20 @@
             <section id="notes">
                 <h5>My Notes:</h5>
                 {% for note in bookmark.note %}
-                    <section id="remove-notes">
-                    <li>{{ note.note }}</li>
-                        <form id="remove-note" method="POST">
-                            <input type="hidden" id="remove-note-id" value="{{ note.note_id }}">
-                            <button type="submit" id="remove-note-button">Delete Note</button>
+                    <section id="remove-notes-{{ note.note_id }}">
+                    {{ note.note }}<br>
+                        <form id="{{ note.note_id }}" class="remove-note" method="POST">
+                            <input type="hidden" id="remove-note-id-{{ note.note_id }}" value="{{ note.note_id }}">
+                            <button type="submit">Delete Note</button>
                         </form>
                     </section>
-                    <span id="remove-note-status"></span>
                 {% endfor %}
             </section>
         
             <section id="add-notes">
                 <form action="/mycafes/{{ bookmark.bookmark_id }}/addnote" method="POST">
-                    <label for="add-note">Write a Note:</label>
-                    <br>
-                    <textarea name="add-cafe-note" id="add-cafe-note" required=""></textarea>
-                    <br>
+                    <label for="add-note">Write a Note:</label><br>
+                    <textarea name="add-cafe-note" id="add-cafe-note" required=""></textarea><br>
                     <button type="submit" id="add-note-button">Add Note</button>
                 </form>
             </section>
@@ -70,10 +67,11 @@
                     <button type="submit" id="remove-bookmark-button">Remove Cafe</button>
                 </form>
             </section>
-            <span id="remove-bookmark-status"></span>
-        </div>
-        <br>
+
+        </section>
+        <span id="remove-bookmark-status"></span>
     {% endfor %}
+    <br>
 
     <script src="/static/js/myCafes.js"></script>
     <script async

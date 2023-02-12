@@ -105,10 +105,15 @@ def profile(user_id):
 def add_recommendation(user_id):
     """Create a cafe recommendation."""
 
-    cafe_id = request.args.get("recommendation")
     user = crud.get_user_by_id(user_id)
+    existing_recommendation = crud.get_recommendation_by_userid(user_id)
+
+    if existing_recommendation:
+        crud.remove_recommendation_from_db(existing_recommendation.recommendation_id)
+
+    cafe_id = request.args.get("recommendation")
     cafe = crud.get_cafe_by_id(cafe_id)
-    
+
     recommendation = crud.create_recommendation(user, cafe)
     db.session.add(recommendation)
     db.session.commit()
@@ -218,15 +223,10 @@ def show_cafe(cafe_id):
     cafe = crud.get_cafe_by_id(cafe_id)
     reviews = crud.get_all_cafe_reviews(cafe_id) 
 
-    all_reviews = []
-    for review in reviews: 
-        date_time = review.time_created.strftime("%m/%d/%y")
-        all_reviews.append([review.user.fname, review.user.lname, review.user.user_id, review.review, date_time, review.rating])
-
     if "user_id" in session:
         bookmarked = crud.get_cafe_bookmark_by_userandcafeid(session["user_id"], cafe_id)
-        return render_template("cafe_details.html", cafe=cafe, reviews=all_reviews, bookmarked=bookmarked)
-    return render_template("cafe_details.html", cafe=cafe, reviews=all_reviews)
+        return render_template("cafe_details.html", cafe=cafe, reviews=reviews, bookmarked=bookmarked)
+    return render_template("cafe_details.html", cafe=cafe, reviews=reviews)
 
 
 @app.route("/cafe/<cafe_id>/review", methods=["POST"])
@@ -237,7 +237,11 @@ def create_reviews(cafe_id):
     user_rating = request.form.get("rating")
     user = crud.get_user_by_id(session["user_id"])
     cafe = crud.get_cafe_by_id(cafe_id)
-    
+
+    existing_review = crud.get_cafe_review_by_userandcafeid(session["user_id"], cafe_id)
+
+    if existing_review:
+        crud.remove_review_from_db(session["user_id"], cafe_id)
     review = crud.create_review(user, cafe, user_review, user_rating)
     db.session.add(review)
     db.session.commit()

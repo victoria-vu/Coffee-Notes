@@ -21,27 +21,24 @@ if (removeBookmarkButton) {
 
         .then((response) => response.text())
         .then((visitStatus) => {
-            document.querySelector('#bookmark-cafe-info').remove()
-            document.querySelector('#remove-notes').remove()
-            document.querySelector('#add-notes').remove()
-            document.querySelector('#remove-bookmark').remove()
+            document.querySelector('#bookmark').remove()
             document.querySelector('#remove-bookmark-status').innerHTML = visitStatus;
             setTimeout(function() {
-                window.location.reload();
-            }, 4000);
+                document.querySelector('#remove-bookmark-status').innerHTML = '';
+            }, 3000);
         });
     });
 };
 
 // Remove a Cafe Note on My Cafes Page
-const removeNoteButton = document.querySelector('#remove-note');
+const removeNoteButtons = document.querySelectorAll('.remove-note');
 
-if (removeNoteButton) {
-    removeNoteButton.addEventListener('submit', (evt) => {
+for (const button of removeNoteButtons) {
+    button.addEventListener('submit', (evt) => {
         evt.preventDefault();
 
         const formInput = {
-            note_id: document.querySelector('#remove-note-id').value
+            note_id: button.id
         };
 
         fetch(`/mycafes/${formInput.note_id}/removenote`, {
@@ -54,11 +51,7 @@ if (removeNoteButton) {
 
         .then((response) => response.text())
         .then((noteStatus) => {
-            document.querySelector('#remove-notes').remove()
-            document.querySelector('#remove-note-status').innerHTML = noteStatus;
-            setTimeout(function() {
-                window.location.reload();
-            }, 4000);
+            document.querySelector(`#remove-notes-${formInput.note_id}`).remove()
         });
     });
 };

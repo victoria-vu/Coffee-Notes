@@ -24,8 +24,8 @@ if (removeRecommendationButton) {
             document.querySelector('#display-recc').remove()
             document.querySelector('#remove-recc-status').innerHTML = recommendationStatus;
             setTimeout(function() {
-                window.location.reload();
-            }, 4000);
+                document.querySelector('#remove-recc-status').innerHTML = '';
+            }, 3000);
         });
     });
 };
@@ -54,8 +54,8 @@ if (deleteReviewButton) {
             document.querySelector('#customer-review').remove()
             document.querySelector('#remove-review-status').innerHTML = reviewStatus;
             setTimeout(function() {
-                window.location.reload();
-            }, 4000);
+                document.querySelector('#remove-review-status').innerHTML = '';
+            }, 3000);
         });
     });
 };
