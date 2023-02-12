@@ -29,7 +29,7 @@
 </section>
     
     {% for bookmark in bookmarks %}
-        <section id="bookmark">
+        <section id="bookmark-{{ bookmark.cafe.cafe_id }}">
             <section id="bookmark-cafe-info">
                 <h3>{{ bookmark.cafe.name }}</h3>
                 <h5>Address:</h5>
@@ -61,17 +61,17 @@
                 </form>
             </section>
 
-            <section id="remove-bookmark">
-                <form id="remove-bookmark">
-                    <input type="hidden" id="remove-bookmark-id" value="{{ bookmark.cafe.cafe_id }}">
-                    <button type="submit" id="remove-bookmark-button">Remove Cafe</button>
+            <section id="remove-bookmark-{{ bookmark.cafe.cafe_id }}">
+                <form id="{{ bookmark.cafe.cafe_id }}" class="remove-bookmark">
+                    <input type="hidden" id="remove-bookmark-id-{{ bookmark.cafe.cafe_id }}" value="{{ bookmark.cafe.cafe_id }}">
+                    <button type="submit">Remove Cafe</button>
                 </form>
             </section>
 
         </section>
+
         <span id="remove-bookmark-status"></span>
     {% endfor %}
-    <br>
 
     <script src="/static/js/myCafes.js"></script>
     <script async

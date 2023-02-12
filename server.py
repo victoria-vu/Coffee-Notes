@@ -173,6 +173,15 @@ def get_mycafes():
     return jsonify(markers)
 
 
+@app.route("/mycafes/<cafe_id>/removecafebookmark", methods=["POST"])
+def remove_mycafe_bookmark(cafe_id):
+    """Remove a bookmarked cafe from user's bookmarks page."""
+
+    crud.remove_bookmark_from_db(session["user_id"], cafe_id)
+
+    return "You have successfully removed this cafe." 
+
+
 @app.route("/mycafes/<bookmark_id>/addnote", methods=["POST"])
 def create_note(bookmark_id):
     """Create a note for a particular cafe."""

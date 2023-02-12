@@ -1,59 +1,63 @@
 'use strict';
 
 // Remove Cafe Visit on My Cafes Page
-const removeBookmarkButton = document.querySelector('#remove-bookmark');
+const removeBookmarkButtons = document.querySelectorAll('.remove-bookmark');
 
-if (removeBookmarkButton) {
-    removeBookmarkButton.addEventListener('submit', (evt) => {
-        evt.preventDefault();
+if (removeBookmarkButtons) {
+    for (const button of removeBookmarkButtons) {
+        button.addEventListener('submit', (evt) => {
+            evt.preventDefault();
 
-        const formInput = {
-            cafe_id: document.querySelector('#remove-bookmark-id').value
-        };
+            const formInput = {
+                cafe_id: button.id
+            };
 
-        fetch(`/cafe/${formInput.cafe_id}/removecafebookmark`, {
-            method: 'POST',
-            body: JSON.stringify(formInput),
-            headers: {
-                'Content-Type': 'application/json',
-            },
-        })
+            fetch(`/mycafes/${formInput.cafe_id}/removecafebookmark`, {
+                method: 'POST',
+                body: JSON.stringify(formInput),
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+            })
 
-        .then((response) => response.text())
-        .then((visitStatus) => {
-            document.querySelector('#bookmark').remove()
-            document.querySelector('#remove-bookmark-status').innerHTML = visitStatus;
-            setTimeout(function() {
-                document.querySelector('#remove-bookmark-status').innerHTML = '';
-            }, 3000);
+            .then((response) => response.text())
+            .then((visitStatus) => {
+                document.querySelector(`#bookmark-${formInput.cafe_id}`).remove()
+                document.querySelector('#remove-bookmark-status').innerHTML = visitStatus;
+                setTimeout(function() {
+                    document.querySelector('#remove-bookmark-status').innerHTML = '';
+                }, 3000);
+            });
         });
-    });
+    };
 };
 
 // Remove a Cafe Note on My Cafes Page
 const removeNoteButtons = document.querySelectorAll('.remove-note');
 
-for (const button of removeNoteButtons) {
-    button.addEventListener('submit', (evt) => {
-        evt.preventDefault();
+if (removeNoteButtons) {
+    for (const button of removeNoteButtons) {
+        button.addEventListener('submit', (evt) => {
+            evt.preventDefault();
 
-        const formInput = {
-            note_id: button.id
-        };
+            const formInput = {
+                note_id: button.id
+            };
 
-        fetch(`/mycafes/${formInput.note_id}/removenote`, {
-            method: 'POST',
-            body: JSON.stringify(formInput),
-            headers: {
-                'Content-Type': 'application/json',
-            },
-        })
+            fetch(`/mycafes/${formInput.note_id}/removenote`, {
+                method: 'POST',
+                body: JSON.stringify(formInput),
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+            })
 
-        .then((response) => response.text())
-        .then((noteStatus) => {
-            document.querySelector(`#remove-notes-${formInput.note_id}`).remove()
+            .then((response) => response.text())
+            .then((noteStatus) => {
+                document.querySelector(`#remove-notes-${formInput.note_id}`).remove()
+            });
         });
-    });
+    };
 };
 
 

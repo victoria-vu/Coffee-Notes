@@ -15,7 +15,8 @@
     {% if user.user_id == session['user_id'] %}
         <form action="/profile/{{ user.user_id }}/addrecommendation">
             <label for="cafe-select">Choose a cafe from your bookmarks:</label><br>
-                <select name="recommendation" id="cafe-recommendation">
+                <select name="recommendation" id="cafe-recommendation" required="">
+                    <option value="">Select a Cafe</option>
                     {% for bookmark in bookmarks  %}
                         <option value="{{ bookmark.cafe.cafe_id }}">{{ bookmark.cafe.name }}</option>
                     {% endfor %}
@@ -44,7 +45,7 @@
     <h3>{{ user.fname }}'s Cafe Reviews:</h3>
     
     {% for review in reviews %}
-        <section id="user-review-{{ review.cafe.cafe_id }}">
+        <section id="user-review-{{ review.cafe.cafe_id}}">
         <b><a href="/cafe/{{ review.cafe.cafe_id }}">{{ review.cafe.name }}</a>:</b>
         <p>"{{ review.review }}"</p>
         {% if user.user_id == session['user_id'] %}
