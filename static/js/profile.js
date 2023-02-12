@@ -31,31 +31,33 @@ if (removeRecommendationButton) {
 };
 
 // Remove Review from Profile Page
-const deleteReviewButton = document.querySelector('#delete-review');
+const removeReviewButtons = document.querySelectorAll('.remove-review');
 
-if (deleteReviewButton) {
-    deleteReviewButton.addEventListener('submit', (evt) => {
-        evt.preventDefault();
+if (removeReviewButtons) {
+    for (const button of removeReviewButtons) {
+        button.addEventListener('submit', (evt) => {
+            evt.preventDefault();
 
-        const formInput = {
-            cafe_id: document.querySelector('#cafe-id').value
-        };
+            const formInput = {
+                cafe_id: button.id
+            };
 
-        fetch(`/profile/${formInput.cafe_id}/removereview`, {
-            method: 'POST',
-            body: JSON.stringify(formInput),
-            headers: {
-                'Content-Type': 'application/json',
-            },
-        })
+            fetch(`/profile/${formInput.cafe_id}/removereview`, {
+                method: 'POST',
+                body: JSON.stringify(formInput),
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+            })
 
-        .then((response) => response.text())
-        .then((reviewStatus) => {
-            document.querySelector('#customer-review').remove()
-            document.querySelector('#remove-review-status').innerHTML = reviewStatus;
-            setTimeout(function() {
-                document.querySelector('#remove-review-status').innerHTML = '';
-            }, 3000);
+            .then((response) => response.text())
+            .then((reviewStatus) => {
+                document.querySelector(`#user-review-${formInput.cafe_id}`).remove()
+                document.querySelector('#remove-review-status').innerHTML = reviewStatus;
+                setTimeout(function() {
+                    document.querySelector('#remove-review-status').innerHTML = '';
+                }, 3000);
+            });
         });
-    });
+    }
 };

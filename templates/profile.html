@@ -44,17 +44,18 @@
     <h3>{{ user.fname }}'s Cafe Reviews:</h3>
     
     {% for review in reviews %}
-        <section id="customer-review">
+        <section id="user-review-{{ review.cafe.cafe_id }}">
         <b><a href="/cafe/{{ review.cafe.cafe_id }}">{{ review.cafe.name }}</a>:</b>
         <p>"{{ review.review }}"</p>
         {% if user.user_id == session['user_id'] %}
-            <form id="delete-review" class="remove-review">
-                <input type="hidden" id="cafe-id" value="{{ review.cafe.cafe_id }}">
-                <button type="submit" id="delete-review-button">Delete Review</button>
+            <form id="{{ review.cafe.cafe_id }}" class="remove-review">
+                <input type="hidden" id="remove-review-id-{{ review.cafe.cafe_id }}" value="{{ review.cafe.cafe_id }}">
+                <button type="submit">Delete Review</button>
             </form>
+        
+        {% endif %}
         </section>
         <span id="remove-review-status"></span>
-        {% endif %}
     {% endfor %}
 </section>
 
