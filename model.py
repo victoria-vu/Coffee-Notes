@@ -33,7 +33,8 @@ class Cafe(db.Model):
     __tablename__ = "cafes"
 
     cafe_id = db.Column(db.Integer, autoincrement=True, primary_key=True)
-    
+    id = db.Column(db.String)
+     
     # Cafe details
     name = db.Column(db.String)
     address = db.Column(db.String(100))

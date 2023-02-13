@@ -16,10 +16,11 @@ def create_user(email, password, fname, lname):
     return user    
 
 
-def create_cafe(name, address, city, state, zip_code, latitude, longitude, phone, img_url):
+def create_cafe(id, name, address, city, state, zip_code, latitude, longitude, phone, img_url):
     """Create and return a cafe."""
 
-    cafe = Cafe(name=name, 
+    cafe = Cafe(id=id,
+                name=name, 
                 address=address, 
                 city=city, 
                 state=state, 
@@ -81,6 +82,12 @@ def get_cafe_by_id(cafe_id):
     """Return a cafe by cafe id."""
 
     return Cafe.query.get(cafe_id)
+
+
+def get_cafe_by_yelpid(id):
+    """Returns a cafe by the Yelp business ID."""
+
+    return Cafe.query.filter(Cafe.id == id).first()
 
 
 def get_cafe(name, city, zip_code):

@@ -26,8 +26,9 @@ myCafeSubmitButton.addEventListener('submit', (evt) => {
             document.querySelector('#bookmark-status').innerHTML = myCafeStatus;
             document.querySelector('#bookmark-button').disabled = true;
             setTimeout(function() {
-                window.location.reload();
-            }, 2000);
+                document.querySelector('#bookmark-status').innerHTML = '';
+                document.querySelector('#bookmark-button').disabled = false;
+            }, 3000);
         }) 
 
     } else if (myCafeButton.innerHTML === 'Remove from My Cafes') {
@@ -49,8 +50,9 @@ myCafeSubmitButton.addEventListener('submit', (evt) => {
             document.querySelector('#bookmark-status').innerHTML = myCafeStatus;
             document.querySelector('#bookmark-button').disabled = true;
             setTimeout(function() {
-                window.location.reload();
-            }, 2000);
+                document.querySelector('#bookmark-status').innerHTML = '';
+                document.querySelector('#bookmark-button').disabled = false;
+            }, 3000);
         });
     }}
 );
