@@ -5,20 +5,20 @@
 {% block body %}
 <h1>Search Results:</h1>
 
-<section id="cafe-results" class="cafe-results">
-    {% if cafes %}
-        {% for cafe in cafes %}
-            <h3>{{ cafe.name }}</h3>
-            {{ cafe.address }},<br>
-            {{ cafe.city }},
-            {{ cafe.state }}
-            {{ cafe.zip_code }}<br>
-            {{ cafe.phone }}
-            <a href="/cafe/{{ cafe.cafe_id }}">More Details</a>
-            <br>
-            <br>
-        {% endfor %}
-    {% endif %}
 
+<section id="cafe-results" class="cafe-results">
+{% if cafes %}
+    {% for cafe in cafes %}
+    <h3>{{ cafe.name }}</h3>
+        {{ cafe.address }},<br>
+        {{ cafe.city }},
+        {{ cafe.state }}
+        {{ cafe.zip_code }}<br>
+        {{ cafe.phone }}
+        <a href="/cafe/{{ cafe.cafe_id }}">More Details</a>
+        <br>
+        <br>
+    {% endfor %}
+{% endif %}
 </section>
 {% endblock %}

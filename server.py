@@ -211,36 +211,27 @@ def remove_note(note_id):
     return "You have successfully deleted a note."
 
 
-# @app.route("/cafe/search")
-# def search_cafes():
-#     """Search for cafes."""
-
-#     cafe = request.args.get("location")
-#     cafes = crud.get_cafe(cafe, cafe, cafe)
-
-#     if cafes:
-#         return render_template("cafe_results.html", cafes=cafes)
-#     else:
-#         flash("Sorry, we can't find a cafe with those keywords. Please try again.")
-#         return redirect("/dashboard")
-
-
 @app.route("/cafe/search")
 def search_cafes():
     """Search for cafes on Yelp."""
 
-    # term = request.args.get("term")
+    user_input = request.args.get("term")
     location = request.args.get("location")
+
+    if user_input == "":
+        term = "coffee shop"
+    else: 
+        term = user_input
 
     url = "https://api.yelp.com/v3/businesses/search?"
 
     # Dropdown menu options to look by cafe name, keyword, etc. 
     payload = {
-        "term": "coffee shop",
+        "term": term,
         "location": location,
         "categories": "coffee",
         "sort_by": "best_match",
-        "limit": 15,
+        "limit": 25,
         "unit": "miles",
         }
 
@@ -252,42 +243,49 @@ def search_cafes():
     response = requests.get(url, params=payload, headers=headers)
     data = response.json()
 
-    if "businesses" in data:
-        cafes = data["businesses"]
-    else:
-        cafes = []
-
     # Tuck new/existing cafe data into data base   
     cafe_results = []
+    
 
-    # Iterate through all cafes in the response data.
-    for cafe in cafes:
+    if "businesses" in data:
+        cafes = data["businesses"]
 
-        # Check to see if cafe already exists in the database. If it does, add it to the list.
-        existing_cafe = crud.get_cafe_by_yelpid(cafe["id"])
-        cafe_results.append(existing_cafe)
+        # Iterate through all cafes in the response data.
+        for cafe in cafes:
 
-        # If cafe does not exist in the database, create new cafe and save it to database.
-        if not existing_cafe:
-            id, name, address, city, state, zip_code, latitude, longitude, phone, img_url = (
-                                                                cafe["id"],
-                                                                cafe["name"], 
-                                                                cafe["location"]["address1"],
-                                                                cafe["location"]["city"],
-                                                                cafe["location"]["state"],
-                                                                cafe["location"]["zip_code"], 
-                                                                cafe["coordinates"]["latitude"],
-                                                                cafe["coordinates"]["longitude"],
-                                                                cafe["display_phone"], 
-                                                                cafe["image_url"])
+        # Check to see if cafe already exists in the database. If it does, add it to the cafe results list.
+            existing_cafe = crud.get_cafe_by_yelpid(cafe["id"])
 
-            db_cafe = crud.create_cafe(id, name, address, city, state, zip_code, latitude, longitude, phone, img_url)
-            db.session.add(db_cafe)
-            db.session.commit()
+            # If cafe does not exist in the database, create new cafe and save it to database.
+            if not existing_cafe:
+                id, name, address, city, state, zip_code, latitude, longitude, phone, img_url = (
+                                                                    cafe["id"],
+                                                                    cafe["name"], 
+                                                                    cafe["location"]["address1"],
+                                                                    cafe["location"]["city"],
+                                                                    cafe["location"]["state"],
+                                                                    cafe["location"]["zip_code"], 
+                                                                    cafe["coordinates"]["latitude"],
+                                                                    cafe["coordinates"]["longitude"],
+                                                                    cafe["display_phone"], 
+                                                                    cafe["image_url"])
 
-            # Check to see if new cafe exists in the database. If it does, add it to the list.
-            new_cafe = crud.get_cafe_by_yelpid(cafe["id"])
-            cafe_results.append(new_cafe)
+                db_cafe = crud.create_cafe(id, name, address, city, state, zip_code, latitude, longitude, phone, img_url)
+                db.session.add(db_cafe)
+                db.session.commit()
+
+                # Check again to see if new cafe exists in the database. If it does, add it to the list.
+                new_cafe = crud.get_cafe_by_yelpid(cafe["id"])
+
+                if new_cafe:
+                    cafe_results.append(new_cafe)
+
+            else:
+                cafe_results.append(existing_cafe)
+
+    else:
+        cafes = []
+        return render_template("cafe_results.html", cafes=cafes)
 
     return render_template("cafe_results.html", cafes=cafe_results)
 
