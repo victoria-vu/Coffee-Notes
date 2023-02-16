@@ -42,14 +42,31 @@
 
             <section id="notes">
                 <h5>My Notes:</h5>
-                {% for note in bookmark.note %}
+                {% for note in bookmark.note|sort(attribute='time_created') %}
+                    <p id="note-{{ note.note_id }}">{{ note.note }}</p>
+
+                    <!-- Edit Notes Section -->
+                    <section id="edit-notes-{{ note.note_id }}">
+
+                        <!-- When button is clicked, will show the form -->
+                        <button id="edit-btn-{{ note.note_id}}" class="edit-btn">Edit Note</button>
+
+                        <!-- Form for each note -->
+                        <form action="/mycafes/{{ note.note_id }}/editnote" id="edit-note-{{ note.note_id }}" class="edit-form" method="POST">
+                            <label for="edit-note">Edit Your Note:</label><br>
+                            <textarea name="edit-note" id="edit-note" required="">{{ note.note }}</textarea><br>
+                            <button type="submit">Submit Note</button>
+                        </form>
+                    </section>
+                    <!-- End Edit Notes Section -->
+
                     <section id="remove-notes-{{ note.note_id }}">
-                    {{ note.note }}<br>
                         <form id="{{ note.note_id }}" class="remove-note" method="POST">
                             <input type="hidden" id="remove-note-id-{{ note.note_id }}" value="{{ note.note_id }}">
                             <button type="submit">Delete Note</button>
                         </form>
                     </section>
+                    <br>
                 {% endfor %}
             </section>
         
@@ -71,6 +88,7 @@
         </section>
 
         <span id="remove-bookmark-status"></span>
+        <br>
     {% endfor %}
 
     <script src="/static/js/myCafes.js"></script>

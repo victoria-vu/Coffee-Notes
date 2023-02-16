@@ -131,6 +131,29 @@ def remove_recommendation(recommendation_id):
     return "You have successfully removed the recommendation from your page."
 
 
+@app.route("/profile/<review_id>/editreview", methods=["POST"])
+def edit_cafe_review_profile(review_id):
+    """Edit a user's review from profile page."""
+
+    try:
+        new_rating = request.form.get("edit-rating")
+        new_review = request.form.get("edit-review")
+        old_review = crud.get_review_by_id(review_id)
+        old_review.review = new_review
+        old_review.rating= int(new_rating)
+        old_review.time_updated = datetime.now()
+        db.session.add(old_review)
+        db.session.commit()
+        flash("You have successfully edited your review.")
+
+    except Exception as e:
+        flash("Sorry, we couldn't update your review.")
+        print(e)
+
+    user_id = session["user_id"]
+    return redirect(f"/profile/{user_id}")
+
+
 @app.route("/profile/<cafe_id>/removereview", methods=["POST"])
 def remove_review(cafe_id):
     """Remove a user's review through profile page."""
@@ -199,6 +222,24 @@ def create_note(bookmark_id):
     db.session.commit()
 
     flash(f"You have successfully created a note for {bookmark.cafe.name}.")
+
+    return redirect("/mycafes")
+
+
+@app.route("/mycafes/<note_id>/editnote", methods=["POST"])
+def edit_note(note_id):
+    """Edit a note for a particular cafe."""
+
+    try:
+        new_note = request.form.get("edit-note")
+        old_note = crud.get_note_by_noteid(note_id)
+        old_note.note = new_note
+        db.session.add(old_note)
+        db.session.commit()
+        flash("You have successfully edited your note.")
+    except Exception as e:
+        flash("Sorry, we couldn't update your note.")
+        print(e)
 
     return redirect("/mycafes")
 
@@ -331,17 +372,22 @@ def edit_cafe_review(review_id):
     """Edit a user's review from cafe page."""
 
     try:
-        new_review = request.json.get("new_review")
+        new_rating = request.form.get("edit-rating")
+        new_review = request.form.get("edit-review")
         old_review = crud.get_review_by_id(review_id)
         old_review.review = new_review
+        old_review.rating= int(new_rating)
         old_review.time_updated = datetime.now()
         db.session.add(old_review)
         db.session.commit()
+        flash("You have successfully edited your review.")
+
     except Exception as e:
-        print("Couldn't update review.")
+        flash("Sorry, we couldn't update your review.")
         print(e)
 
-    return "You have successfully edited your review."
+    review = crud.get_review_by_id(review_id)
+    return redirect(f"/cafe/{review.cafe.cafe_id}")
 
 
 @app.route("/cafe/<cafe_id>/removereview", methods=["POST"])

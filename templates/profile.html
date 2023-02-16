@@ -27,6 +27,7 @@
 
     {% if recommendation %}
         <section id="display-recc">
+            <!-- <img src="{{ recommendation.cafe.img_url }}" alt=""> -->
             <h4><a href="/cafe/{{ recommendation.cafe.cafe_id }}">{{ recommendation.cafe.name}}</a></h4>
             {% if user.user_id == session['user_id'] %}
             <form id="remove-recc">
@@ -44,19 +45,49 @@
 <section id="user-reviews">
     <h3>{{ user.fname }}'s Cafe Reviews:</h3>
     
-    {% for review in reviews %}
+    {% for review in reviews|sort(attribute='time_created', reverse = True) %}
         <section id="user-review-{{ review.cafe.cafe_id}}">
-        <b><a href="/cafe/{{ review.cafe.cafe_id }}">{{ review.cafe.name }}</a>:</b>
-        <p>"{{ review.review }}"</p>
+        <b><a href="/cafe/{{ review.cafe.cafe_id }}">{{ review.cafe.name }}</a>:</b><br>
+        {{ review.rating }} Stars, {{ review.time_created.strftime("%m/%d/%y") }}<br>
+        "{{ review.review }}"
         {% if user.user_id == session['user_id'] %}
+
+            <!-- Edit Review Section -->
+            <section id="edit-review">
+
+                <!-- When button is clicked, will show the form -->
+                <button id="edit-btn-{{ review.review_id }}" class="edit-btn">Edit Review</button>
+
+                <!-- Form for each note -->
+                <form action="/profile/{{ review.review_id }}/editreview" id="edit-review-{{ review.review_id }}" class="edit-form" method="POST">
+                    <label for="edit-form">Edit Your Review:</label><br>
+                    {% for n in range(1,6) %}
+                        {% if n == review.rating %}
+                        <input type="radio" name="edit-rating" value="{{n}}" id="edit-rating" checked />
+                        {% else %}
+                        <input type="radio" name="edit-rating" value="{{n}}" id="edit-rating" required="">
+                        {% endif %}
+                        
+                        <label for="{{n}}">{{ n }} Stars</label>
+                    {% endfor %}<br>
+
+                    <textarea name="edit-review" id="edit-review" required="">{{ review.review }}</textarea><br>
+                    <button type="submit">Submit Edit</button>
+                </form>
+            </section>
+            <!-- End Edit Notes Section -->
+            
+            <section id="remove-review">
             <form id="{{ review.cafe.cafe_id }}" class="remove-review">
                 <input type="hidden" id="remove-review-id-{{ review.cafe.cafe_id }}" value="{{ review.cafe.cafe_id }}">
                 <button type="submit">Delete Review</button>
             </form>
+            </section>
         
         {% endif %}
         </section>
         <span id="remove-review-status"></span>
+        <br>
     {% endfor %}
 </section>
 

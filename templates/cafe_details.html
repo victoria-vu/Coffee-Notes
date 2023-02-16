@@ -66,7 +66,7 @@
             <h4>Add a Review:</h4>
             <form action="/cafe/{{ cafe.cafe_id }}/review" method="POST">
                 {% for n in range(1,6) %}
-                    <input type="radio" name="rating" value="{{n}}" id="{{n}}" required="">
+                    <input type="radio" name="rating" value="{{n}}" id="rating" required="">
                     <label for="{{n}}">{{ n }} Stars </label>
                 {% endfor %}
                     <br>
@@ -83,20 +83,45 @@
         {% for review in reviews %}
             <section id="customer-review">
                 <p><b><a href="/profile/{{ review.user.user_id }}">{{ review.user.fname }} {{ review.user.lname }}</a>:</b></br>
-                {{ review.rating }} Stars, {{ review.time_created.strftime("%m/%d/%y") }}
-                <p id="review-text-{{ review.review_id }}">{{ review.review }}</p>
+                {{ review.rating }} Stars, {{ review.time_created.strftime("%m/%d/%y") }}</br>
+                {{ review.review }}<br>
+                <!-- <p id="review-text-{{ review.review_id }}">{{ review.review }}</p> -->
 
                 {% if review.user.user_id == session['user_id'] %}
 
-                <!-- Edit Review Form -->
-                <button id="edit-btn">Edit Review</button>
+                <!-- Edit Review Form JS -->
+                <!-- <button id="edit-btn">Edit Review</button>
                 <form id="edit-form">
                     <label for="edit-form">Edit Your Review:</label><br>
+
+                    {% for n in range(1,6) %}
+                        <input type="radio" name="edit-rating" value="{{n}}" id="edit-rating" required="">
+                        <label for="{{n}}">{{ n }} Stars </label>
+                    {% endfor %}<br>
+
                     <input type="hidden" id="review-id" value="{{ review.review_id }}">
                     <input type="text" id="new-review" required="">
                 <button type="submit">Submit</button>
                 </form>
-                <span id="edit-review-status"></span>
+                <span id="edit-review-status"></span> -->
+
+                <!-- Edit Review From POST Request -->
+                <button id="edit-btn">Edit Review</button>
+                <form action="/cafe/{{ review.review_id }}/editreview" id="edit-form" method="POST">
+                    <label for="edit-form">Edit Your Review:</label><br>
+                    {% for n in range(1,6) %}
+                        {% if n == review.rating %}
+                        <input type="radio" name="edit-rating" value="{{n}}" id="edit-rating" checked />
+                        {% else %}
+                        <input type="radio" name="edit-rating" value="{{n}}" id="edit-rating" required="">
+                        {% endif %}
+                        
+                        <label for="{{n}}">{{ n }} Stars</label>
+                    {% endfor %}<br>
+
+                    <textarea name="edit-review" id="edit-review" required="">{{ review.review }}</textarea><br>
+                    <button type="submit">Submit Edit</button>
+                </form>
 
                 <form id="delete-review">
                     <input type="hidden" id="cafe-id" value="{{ cafe.cafe_id }}">

@@ -32,6 +32,39 @@ if (removeBookmarkButtons) {
     };
 };
 
+// Edit Notes on My Cafes Page
+const editButtons = document.querySelectorAll('.edit-btn');
+
+const forms = document.querySelectorAll('.edit-form');
+
+// Hides all forms
+if (forms) {
+    for (const form of forms) { 
+    form.hidden = true;
+    }
+}
+
+if (editButtons) {
+    for (const editButton of editButtons) {
+     
+        editButton.addEventListener('click', () => {
+            // formID = edit-note-{{ note.note_id }}
+            const formID = editButton.id.replace('btn', 'note');
+            // Selects the correct form
+            const form = document.querySelector(`#${formID}`)
+
+                if (form.hidden === true) {
+                    form.hidden = false;
+                    editButton.innerHTML = "Close Edit Note";
+                } else if (form.hidden === false) {
+                        form.hidden = true;
+                        editButton.innerHTML = "Edit Note";
+                }
+        });
+    }
+}
+
+
 // Remove a Cafe Note on My Cafes Page
 const removeNoteButtons = document.querySelectorAll('.remove-note');
 
@@ -54,6 +87,8 @@ if (removeNoteButtons) {
 
             .then((response) => response.text())
             .then((noteStatus) => {
+                document.querySelector(`#note-${formInput.note_id}`).remove()
+                document.querySelector(`#edit-notes-${formInput.note_id}`).remove()
                 document.querySelector(`#remove-notes-${formInput.note_id}`).remove()
             });
         });

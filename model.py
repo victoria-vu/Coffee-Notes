@@ -100,6 +100,7 @@ class Note(db.Model):
     note = db.Column(db.Text)
     user_id = db.Column(db.Integer, db.ForeignKey("users.user_id"))
     bookmark_id = db.Column(db.Integer, db.ForeignKey("bookmarks.bookmark_id"))
+    time_created = db.Column(db.DateTime, default=datetime.now, nullable=False)
 
     user = db.relationship("User", back_populates="note")
     bookmarks = db.relationship("Bookmark", back_populates="note")
