@@ -6,6 +6,7 @@ import crud
 from jinja2 import StrictUndefined
 import os
 import requests
+from datetime import datetime
 
 
 app = Flask(__name__)
@@ -323,6 +324,24 @@ def create_reviews(cafe_id):
     flash("You have successfully submitted a review.")
 
     return redirect(f"/cafe/{cafe_id}")
+
+
+@app.route("/cafe/<review_id>/editreview", methods=["POST"])
+def edit_cafe_review(review_id):
+    """Edit a user's review from cafe page."""
+
+    try:
+        new_review = request.json.get("new_review")
+        old_review = crud.get_review_by_id(review_id)
+        old_review.review = new_review
+        old_review.time_updated = datetime.now()
+        db.session.add(old_review)
+        db.session.commit()
+    except Exception as e:
+        print("Couldn't update review.")
+        print(e)
+
+    return "You have successfully edited your review."
 
 
 @app.route("/cafe/<cafe_id>/removereview", methods=["POST"])

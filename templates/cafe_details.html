@@ -83,10 +83,21 @@
         {% for review in reviews %}
             <section id="customer-review">
                 <p><b><a href="/profile/{{ review.user.user_id }}">{{ review.user.fname }} {{ review.user.lname }}</a>:</b></br>
-                {{ review.rating }} Stars, {{ review.time_created.strftime("%m/%d/%y") }}<br>
-                {{ review.review }}</p>
+                {{ review.rating }} Stars, {{ review.time_created.strftime("%m/%d/%y") }}
+                <p id="review-text-{{ review.review_id }}">{{ review.review }}</p>
 
                 {% if review.user.user_id == session['user_id'] %}
+
+                <!-- Edit Review Form -->
+                <button id="edit-btn">Edit Review</button>
+                <form id="edit-form">
+                    <label for="edit-form">Edit Your Review:</label><br>
+                    <input type="hidden" id="review-id" value="{{ review.review_id }}">
+                    <input type="text" id="new-review" required="">
+                <button type="submit">Submit</button>
+                </form>
+                <span id="edit-review-status"></span>
+
                 <form id="delete-review">
                     <input type="hidden" id="cafe-id" value="{{ cafe.cafe_id }}">
                     <button type="submit" id="delete-review-button">Delete Review</button>

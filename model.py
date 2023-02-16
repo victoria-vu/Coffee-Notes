@@ -65,6 +65,7 @@ class Review(db.Model):
     user_id = db.Column(db.Integer, db.ForeignKey("users.user_id"))
     cafe_id = db.Column(db.Integer, db.ForeignKey("cafes.cafe_id"))
     time_created = db.Column(db.DateTime, default=datetime.now, nullable=False)
+    time_updated = db.Column(db.DateTime)
 
     user = db.relationship("User", back_populates="reviews")
     cafe = db.relationship("Cafe", back_populates="reviews")
