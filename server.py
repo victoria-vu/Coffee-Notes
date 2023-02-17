@@ -7,6 +7,7 @@ from jinja2 import StrictUndefined
 import os
 import requests
 from datetime import datetime
+from werkzeug.security import generate_password_hash, check_password_hash
 
 
 app = Flask(__name__)
@@ -42,13 +43,16 @@ def login():
     
     if not user:
         flash("The email you typed in does not exist. Please sign up for an account.")
-    elif user.password != password:
-        flash("Incorrect password. Please try again.")
-    else:
-        session["user_email"] = user.email
-        session["user_fname"] = user.fname
-        session["user_id"] = user.user_id
-        return redirect("/dashboard")
+    # elif user.password != password:
+    #     flash("Incorrect password. Please try again.")
+    elif user:
+        if not check_password_hash(user.password, password):
+            flash("Incorrect password. Please try again.")
+        else:
+            session["user_email"] = user.email
+            session["user_fname"] = user.fname
+            session["user_id"] = user.user_id
+            return redirect("/dashboard")
     return redirect("/login")
     
     
@@ -100,6 +104,41 @@ def profile(user_id):
     recommendation = crud.get_recommendation_by_userid(user_id)
 
     return render_template("profile.html", user=user, reviews=reviews, bookmarks=bookmarks, recommendation=recommendation)
+
+
+@app.route("/profile/<user_id>/editinformation", methods=["POST"])
+def update_information(user_id):
+    """Update user account information."""
+
+    try:
+        user = crud.get_user_by_id(user_id)
+        
+        fname = request.form.get("fname")
+        lname = request.form.get("lname")
+        about_me = request.form.get("about-me")
+        email = request.form.get("email")
+        new_password = request.form.get("password")
+
+        if new_password == "":
+            user_password = user.password
+        else: 
+            user_password=generate_password_hash(new_password, method="sha256")
+
+
+        user.fname = fname
+        user.lname = lname
+        user.about_me = about_me
+        user.email = email
+        user.password = user_password
+        db.session.add(user)
+        db.session.commit()
+        flash("You have successfully updated your information.")
+
+    except Exception as e:
+        flash("Sorry, we couldn't update your information.")
+        print(e)
+
+    return redirect(f"/profile/{user_id}")
 
 
 @app.route("/profile/<user_id>/addrecommendation")

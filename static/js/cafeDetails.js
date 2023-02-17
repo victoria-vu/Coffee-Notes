@@ -242,42 +242,6 @@ function initMap() {
 
 };  
 
-// Edit Review with AJAX
-// if (form) {
-//     form.hidden = true;
-
-//     form.addEventListener('submit', (evt) => {
-//         evt.preventDefault();
-    
-//         const formInputs = {
-//             review_id: document.querySelector('#review-id').value,
-//             new_review: document.querySelector('#new-review').value,
-//             new_rating: document.querySelector('#new-rating').value
-//         };
-    
-//         fetch(`/cafe/${formInputs.review_id}/editreview`, {
-//             method: 'POST',
-//             body: JSON.stringify(formInputs),
-//             headers: {
-//                 'Content-Type': 'application/json',
-//             },
-//         })
-//         .then((response) => response.text())
-//         .then((responseText) => {
-//             document.querySelector(`#review-text-${formInputs.review_id}`).innerHTML = formInputs.new_review
-//             document.querySelector('#edit-review-status').innerHTML = responseText;
-//             setTimeout(function() {
-//                 form.hidden = true;
-//                 editButton.innerHTML = "Edit Review";
-//             }, 1);
-//             setTimeout(function() {
-//                 document.querySelector('#edit-review-status').innerHTML = '';
-//             }, 3000);
-//         })
-
-//     });
-// }
-
 // Edit Review on Details Page
 const editButton = document.querySelector('#edit-btn');
 

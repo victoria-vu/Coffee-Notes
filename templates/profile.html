@@ -5,8 +5,39 @@
 {% block body %}
 <section id="user-information">
     <h1>{{ user.fname }}'s Profile</h1>
-    <h3>Name: {{ user.fname }} {{ user.lname }}</h3>
+    <h4>Name:</h4> {{ user.fname }} {{ user.lname }}
+    <h4>About Me:</h4> 
+    {% if user.about_me %}
+    {{ user.about_me }}
+    {% endif %}
+
+    {% if user.user_id == session['user_id'] %}
+    <section id="edit-user-info"><br>
+        <button id="edit-info-btn">Edit User Information</button>
+        <form action="/profile/{{ user.user_id }}/editinformation" id="edit-info" method="POST">
+            <label for="fname">First Name*:</label>
+            <input type="text" name="fname" value="{{ user.fname }}" required="">
+            <label for="lname">Last Name*:</label>
+            <input type="text" name="lname" value="{{ user.lname }}" required=""><br>
+            <label for="lname">About Me:</label>
+                {% if user.about_me %}
+                    <textarea name="about-me">{{ user.about_me }}</textarea><br>
+                {% else %}
+                    <textarea name="about-me"></textarea><br>
+                {% endif %}
+
+            <label for="email">Email*:</label>
+            <input type="text" name="email" value="{{ user.email }}" required=""><br>
+            <label for="password">Password:</label>
+            <input type="password" name="password" default="{{ user.password }}"><br>
+            <button type="submit">Update Information</button>
+        </form>
+    </section>
+    {% endif %}
+
 </section>
+
+
 
 <br>
 
@@ -58,7 +89,7 @@
                 <!-- When button is clicked, will show the form -->
                 <button id="edit-btn-{{ review.review_id }}" class="edit-btn">Edit Review</button>
 
-                <!-- Form for each note -->
+                <!-- Form for each review -->
                 <form action="/profile/{{ review.review_id }}/editreview" id="edit-review-{{ review.review_id }}" class="edit-form" method="POST">
                     <label for="edit-form">Edit Your Review:</label><br>
                     {% for n in range(1,6) %}
@@ -75,7 +106,7 @@
                     <button type="submit">Submit Edit</button>
                 </form>
             </section>
-            <!-- End Edit Notes Section -->
+            <!-- End Edit Review Section -->
             
             <section id="remove-review">
             <form id="{{ review.cafe.cafe_id }}" class="remove-review">

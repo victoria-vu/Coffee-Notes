@@ -1,6 +1,7 @@
 """CRUD operations."""
 
 from model import db, User, Cafe, Review, Bookmark, Note, Recommendation, connect_to_db
+from werkzeug.security import generate_password_hash, check_password_hash
 
 # Create = Create new data
 # Read = Retrieve data the already exits
@@ -11,7 +12,10 @@ from model import db, User, Cafe, Review, Bookmark, Note, Recommendation, connec
 def create_user(email, password, fname, lname):
     """Create and return a new user."""
     
-    user = User(email=email, password=password, fname=fname, lname=lname)
+    user = User(email=email, 
+                password=generate_password_hash(password, method="sha256"),
+                fname=fname, 
+                lname=lname)
 
     return user    
 

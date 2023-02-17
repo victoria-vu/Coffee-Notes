@@ -17,6 +17,7 @@ class User(db.Model):
     password = db.Column(db.String)
     fname = db.Column(db.String)
     lname = db.Column(db.String)
+    about_me = db.Column(db.Text)
 
     reviews = db.relationship("Review", back_populates="user")
     bookmarks = db.relationship("Bookmark", back_populates="user")

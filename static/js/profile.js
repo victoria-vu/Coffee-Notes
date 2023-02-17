@@ -1,5 +1,22 @@
 'use strict';
 
+// Edit User Information
+const editInfoButton = document.querySelector('#edit-info-btn');
+const userForm = document.querySelector('#edit-info');
+
+userForm.hidden = true;
+
+editInfoButton.addEventListener('click', () => {
+    if (userForm.hidden === true) {
+        userForm.hidden = false;
+        editInfoButton.innerHTML = "Close Edit User Information";
+    } else if (userForm.hidden === false) {
+        userForm.hidden = true;
+        editInfoButton.innerHTML = "Edit User Information";
+    }
+});
+
+
 // Remove Recommendation from Profile Page
 const removeRecommendationButton = document.querySelector('#remove-recc');
 
