@@ -43,8 +43,6 @@ def login():
     
     if not user:
         flash("The email you typed in does not exist. Please sign up for an account.")
-    # elif user.password != password:
-    #     flash("Incorrect password. Please try again.")
     elif user:
         if not check_password_hash(user.password, password):
             flash("Incorrect password. Please try again.")
@@ -306,7 +304,6 @@ def search_cafes():
 
     url = "https://api.yelp.com/v3/businesses/search?"
 
-    # Dropdown menu options to look by cafe name, keyword, etc. 
     payload = {
         "term": term,
         "location": location,
@@ -324,16 +321,12 @@ def search_cafes():
     response = requests.get(url, params=payload, headers=headers)
     data = response.json()
 
-    # Tuck new/existing cafe data into data base   
-    cafe_results = []
-    
+    cafe_results = []    
 
     if "businesses" in data:
         cafes = data["businesses"]
 
-        # Iterate through all cafes in the response data.
         for cafe in cafes:
-
         # Check to see if cafe already exists in the database. If it does, add it to the cafe results list.
             existing_cafe = crud.get_cafe_by_yelpid(cafe["id"])
 
