@@ -100,10 +100,10 @@ if (removeNoteButtons) {
 function initMap() {
     const map = new google.maps.Map(document.querySelector('#map'), {
         center: {
-            lat: 37.601773,
-            lng: -122.20287,
+            lat: 37.0902,
+            lng: -95.7129,
         },
-        zoom: 11,
+        zoom: 4.5,
         styles: [
             {
                 "featureType": "administrative.land_parcel",
