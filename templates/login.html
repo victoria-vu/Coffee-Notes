@@ -2,29 +2,73 @@
 
 {% block title %}Log In{% endblock %}
 
+{% block head %}
+<style>
+  body {
+    background-image: url("static/img/homepage-bg.jpg");
+    background-position: 35% 35%;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+  }
+
+  .details {
+    font-family: Gloock;
+  }
+
+  .container {
+    padding: 25x 30px;
+    border-radius: 5px;
+    margin-top: 10%;
+  }
+
+  .container .title {
+    font-size: 40px;
+    font-family: Gloock;
+    position: relative;
+  }
+  
+  .input-box {
+    margin-top: 1.5%;
+    margin-bottom: 1.5%;
+  }
+
+  input {
+    background-color: #FFF6F1;
+    border-radius: 10px;
+    height: 42px;
+    width: 450px;
+    border: 0px;
+  }
+
+  p {
+    margin-top: 1%;
+  }
+
+</style>
+{% endblock %}
+
 {% block body %}
+<div class="container">
+    <div class="title">Log In</div>
+    <h4>The best days start with a cup of coffee.</h4>
 
-<h1>Welcome!</h1>
-<h4>Log in to your account.</h4>
-
-<div>
     <form action="/login" method="POST">
-        <div>
-            <label for="user-email">Email Address</label><br>
-            <input type="text" name="email" id="user-email" placeholder="Enter email">
+        <div class="input-box">
+            <span class="details">Email*</span><br>
+            <input type="text" name="email" id="user-email" placeholder=" Enter your email">
         </div>
         
-        <div>
-            <label for="user-email">Password</label><br>
-            <input type="password" name="password" id="user-password" placeholder="Enter password">
+        <div class="input-box">
+            <span class="details">Password*</span><br>
+            <input type="password" name="password" id="user-password" placeholder=" Enter your password">
         </div>
 
-        <div>
-            <button type="submit" class="btn btn-dark">Log In</button>
+        <div class="button">
+            <button type="submit" class="submit-btn">Log In</button>
         </div>
     </form>
+
+    <p>Don't have an account? <a href="/signup">Click here to sign up.</a></p>
+
 </div>
-
-<p>Don't have an account? <a href="/signup">Click here to sign up.</a></p>
-
 {% endblock %}

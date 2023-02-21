@@ -2,14 +2,41 @@
 
 {% block title %}Homepage{% endblock %}
 
+
+{% block head %}
+
+<style>
+  /* body {
+    background-image: url("static/img/search-bg.jpg");
+    background-position: 35% 40%;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+  } */
+  
+  .header {
+    position: center;
+  }
+
+  input {
+    background-color: #FFF6F1;
+    border-radius: 5px;
+    height: 40px;
+    width: 300px;
+    border: 0px;
+  }
+  
+</style>
+
+{% endblock %}
+
 {% block body %}
-<center><h1>Welcome Back, {{ name }}!</h1>
-<h4>Let's look for a coffee shop.</h4>
+<!-- <h1>Welcome Back, {{ name }}!</h1>
+<h4>Let's look for a coffee shop. Search by keyword or location.</h4>
 
 <div>
       <form action="/cafe/search" method="GET">
         <div>
-          <label for="search-term">Cafe Name or Keyword</label><br>
+          <label for="search-term">Name or Keyword</label><br>
           <input type="text" name="term" placeholder="Cafe Name" id="search-term">
         </div>
 
@@ -22,7 +49,18 @@
             <button type="submit">Search</button>
         </div>
       </form>
+</div> -->
+
+<div class="px-4 py-5 my-5 text-center">
+  <h1>Welcome Back, {{ name }}!</h1>
+  <h4>Let's look for a coffee shop. Search by keyword or location.</h4>
+  <form action="/cafe/search" method="GET">
+    <div class="input-box">
+      <input type="text" name="term" placeholder=" Cafe Name or Keyword" id="search-term">
+      <input type="text" name="location" id="search-location" placeholder=" E.g. New York" required="">
+      <button type="submit" class="submit-btn">Search</button>
+    </div>
+  </form>
 </div>
-</center>
 
 {% endblock %}

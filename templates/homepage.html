@@ -2,17 +2,33 @@
 
 {% block title %}Homepage{% endblock %}
 
+{% block head %}
+
+<style>
+  body {
+    background-image: url("static/img/homepage-bg.jpg");
+    background-position: 35% 35%;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+  }
+  
+  
+</style>
+
+{% endblock %}
+
+
+
 {% block body %}
 
 <main>
  <div class="px-4 py-5 my-5 text-center">
-    <img class="d-block mx-auto mb-4" src="/static/img/coffee.png" alt="" width="72" height="72">
-    <h1 class="display-5 fw-bold">Welcome to Coffee Notes!</h1>
+    <h1 class="display-5 fw-bold">Coffee Notes</h1>
     <div class="col-lg-6 mx-auto">
       <p class="lead mb-4">Keep track of your favorite spots and save cafes you would like to visit in the future, all in one place. Let's find your favorite coffee note!</p>
       <div class="d-grid gap-2 d-sm-flex justify-content-sm-center">
         <a href="/signup">
-        <button type="button" class="btn btn-dark btn-lg px-4 gap-3">Get Started</button>
+        <button type="button" class="submit-btn">Get Started</button>
         </a>
       </div>
     </div>

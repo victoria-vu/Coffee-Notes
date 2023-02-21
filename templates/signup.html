@@ -2,39 +2,85 @@
 
 {% block title %}Sign Up{% endblock %}
 
+{% block head %}
+<style>
+  body {
+    background-image: url("static/img/homepage-bg.jpg");
+    background-position: 35% 35%;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+  }
+
+  .details {
+    font-family: Gloock;
+  }
+
+  .container {
+    padding: 25x 30px;
+    border-radius: 5px;
+    margin-top: 6%;
+  }
+
+  .container .title {
+    font-size: 40px;
+    font-family: Gloock;
+    position: relative;
+  }
+  
+  .input-box {
+    margin-top: 1.5%;
+    margin-bottom: 1.5%;
+  }
+
+  input {
+    background-color: #FFF6F1;
+    border-radius: 10px;
+    height: 42px;
+    width: 450px;
+    border: 0px;
+  }
+
+  p {
+    margin-top: 1%;
+  }
+
+
+  
+</style>
+{% endblock %}
+
 {% block body %}
-    
-<h1>Create an Account</h1>
-<h4>Good days start with a cup of coffee.</h4>
+<div class="container">
+    <div class="title">Create an Account</div>
+    <h4>The best days start with a cup of coffee.</h4>
 
-<div>
     <form action="/signup" method="POST">
-        <div>
-            <label for="user-fname">First Name *</label><br>
-            <input type="text" name="fname" id="user-fname" required="" placeholder="Enter first name">
+        <div class="input-box">
+            <span class="details">First Name *</span><br>
+            <input type="text" name="fname" id="user-fname" required="" placeholder=" Enter first name">
         </div>
 
-        <div>
-            <label for="user-lname">Last Name *</label><br>
-            <input type="text" name="lname" id="user-lname" required="" placeholder="Enter last name">
+        <div class="input-box">
+            <span class="details">Last Name *</span><br>
+            <input type="text" name="lname" id="user-lname" required="" placeholder=" Enter last name">
         </div>
 
-        <div>
-            <label for="user-email">Email Address *</label><br>
-            <input type="text" name="email" id="user-email" required="" placeholder="Enter email address">
+        <div class="input-box">
+            <span class="details">Email *</span><br>
+            <input type="text" name="email" id="user-email" required="" placeholder=" Enter email address">
         </div>
 
-        <div>
-            <label for="user-password">Password *</label><br>
-            <input type="password" name="password" id="user-password" pattern=".{8,}" title="Password must be at least 8 characters." required="" placeholder="Enter password">
+        <div class="input-box">
+            <span class="details">Password *</span><br>
+            <input type="password" name="password" id="user-password" pattern=".{8,}" title="Password must be at least 8 characters." required="" placeholder=" Enter password">
         </div>
 
-        <div>
-            <button type="submit" class="btn btn-dark">Create Account</button>
+        <div class="button">
+            <button type="submit" class="submit-btn">Sign Up</button>
         </div>
     </form>
-</div>
 
-<p>Already have an account? <a href="/login">Click here to log in.</a></p>
+    <p>Already have an account? <a href="/login">Click here to log in.</a></p>
 
+  </div>
 {% endblock %}

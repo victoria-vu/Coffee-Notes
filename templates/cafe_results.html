@@ -2,6 +2,17 @@
 
 {% block title %}Search Results{% endblock %}
 
+{% block head %}
+<style>
+  img {
+    height: auto; 
+    width: auto; 
+    max-width: 300px; 
+    max-height: 300px;
+  }
+</style>
+{% endblock %}
+
 {% block body %}
 <center>
 <div>
@@ -23,23 +34,49 @@
 </div>
 </center>
 
-<h2>Search Results:</h2>
-
-
-<section id="cafe-results" class="cafe-results">
+<!-- <section id="cafe-results" class="cafe-results">
 {% if cafes %}
-    {% for cafe in cafes %}
-    <h3>{{ cafe.name }}</h3>
-        {{ cafe.address }},<br>
-        {{ cafe.city }},
-        {{ cafe.state }}
-        {{ cafe.zip_code }}<br>
-        {{ cafe.phone }}<br>
-        <a href="/cafe/{{ cafe.cafe_id }}">More Details</a>
-        <br>
-        <br>
-    {% endfor %}
+      <div class="col-12 col-lg-4">
+        {% for cafe in cafes %}
+          <div class="card h-80 text-center box-shadow mb-3 mx-auto my-5" style="width: 25rem;">
+            <img src="{{ cafe.img_url }}" class="card-img-top">
+            <div class="card-body">
+              <h4>{{ cafe.name }}</h4>
+              <hr>
+              <p>{{ cafe.address }},</p>
+              <p>{{ cafe.city }}, {{ cafe.state }} {{ cafe.zip_code }}</p>
+              <p>{{ cafe.phone }}</p>
+              <a href="/cafe/{{ cafe.cafe_id }}">
+                <button type="button" class="btn btn-dark btn-sm px-4 gap-3">More Details</button>
+              </a>
+            </div>
+          </div>
+        {% endfor %}
+      </div>
 {% endif %}
-</section>
+</section> -->
+<br>
+{% if cafes %}
+<div class="container">
+  <div class="row gy-3">
+    {% for cafe in cafes %}
+    <div class="col-md-3">
+      <div class="card" style="width:18rem;">
+        <img src="{{ cafe.img_url }}" class="card-img-top" alt="">
+          <div class="card-body">
+            <h4 class="card-title">{{ cafe.name }}</h4>
+              <p class="card-text">
+                {{ cafe.address }},<br>
+                {{ cafe.city }}, {{ cafe.state }} {{ cafe.zip_code }}<br>
+                {{ cafe.phone }}
+              </p>
+            <button type="button" class="btn btn-dark btn-sm px-4 gap-3">More Details</button>
+        </div>
+      </div>
+    </div>
+    {% endfor %}
+  </div>
+</div>
+{% endif %}
 
 {% endblock %}
