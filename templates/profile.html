@@ -13,9 +13,17 @@ body {
     background-attachment: fixed;
 }
 
+img {
+    margin: 3%;
+    padding: 5px;
+}
+
 h1 {
     text-align: center;
-    padding: 5px;
+}
+
+h4 {
+    font-style: normal;
 }
 
 .details {
@@ -64,6 +72,7 @@ input {
 
 <div class="container">
     <div class="px-4 py-4 my-4 text-center">
+        <img src="/static/img/coffee-bean.jpeg" height="100" width="100">
         <h1>{{ user.fname }} {{ user.lname }}</h1> 
     <div class="row">
         {% if user.user_id == session['user_id'] %}
@@ -122,7 +131,7 @@ input {
             {% if recommendation %}
                 <section id="display-recc">
                     <br>
-                    <h4><a href="/cafe/{{ recommendation.cafe.cafe_id }}">{{ recommendation.cafe.name}}</a></h4>
+                    <h4><a href="/cafe/{{ recommendation.cafe.cafe_id }}"><u>{{ recommendation.cafe.name}}</u></a></h4>
                     {% if user.user_id == session['user_id'] %}
 
                     <br>
@@ -145,7 +154,7 @@ input {
             
             {% for review in reviews|sort(attribute='time_created', reverse = True) %}
                 <section id="user-review-{{ review.cafe.cafe_id}}">
-                    <b><a href="/cafe/{{ review.cafe.cafe_id }}">{{ review.cafe.name }}</a>:</b><br>
+                    <h5><b><a href="/cafe/{{ review.cafe.cafe_id }}">{{ review.cafe.name }}</a>:</b></h5>
                     {{ review.rating }} Stars, {{ review.time_created.strftime("%m/%d/%y") }}<br>
                     "{{ review.review }}"
                     {% if user.user_id == session['user_id'] %}

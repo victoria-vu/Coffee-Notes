@@ -4,6 +4,7 @@ h1 {
 
 h3 {
     font-family:  "Larsseit", sans-serif;
+    font-style: italic;
 }
 
 h4 {
@@ -11,8 +12,13 @@ h4 {
     font-style: italic;
 }
 
+h5 {
+  font-family: "Larsseit", sans-serif;
+  font-style: italic;
+}
+
 p {
-    font-style: italic;
+    font-family: sans-serif;
 }
 
 #nav-logo {
