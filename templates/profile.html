@@ -27,7 +27,6 @@ h1 {
     height: auto;
     width: 775px;
     margin-top: 2%;
-    padding: 5px;
     border-radius: 10px;
     background-color: rgba(231, 218, 199, 1);
 }
@@ -52,6 +51,9 @@ input {
     margin-top: 0%;
 }
 
+#edit-recommendation {
+    margin-top: 4%;
+}
 
 </style>
 
@@ -83,8 +85,23 @@ input {
                     <input type="text" name="email" value="{{ user.email }}" required=""><br>
                     <span class="details">Password:</span><br>
                     <input type="password" name="password" default="{{ user.password }}"><br>
-                    <center><button type="submit" class="submit-btn">Save Changes</button></center>
+                    <button type="submit" class="submit-btn">Save Changes</button>
                 </form>
+            
+                {% if user.user_id == session['user_id'] %}
+                <form action="/profile/{{ user.user_id }}/addrecommendation" id="edit-recommendation">
+                    <span class="details">Choose your favorite cafe from your bookmarks:</span><br>
+                        <select name="recommendation" id="cafe-recommendation" required="">
+                            <option value="">Select a Cafe</option>
+                            {% for bookmark in bookmarks  %}
+                                <option value="{{ bookmark.cafe.cafe_id }}">{{ bookmark.cafe.name }}</option>
+                            {% endfor %}
+                        </select><br>
+                    <button type="submit" id="add-recommendation-button" class="submit-btn">Submit</button>
+                </form>
+
+            {% endif %}
+
             </section>
         {% endif %}
 
@@ -100,21 +117,8 @@ input {
     <hr>
 
     <div class="row">
+        <h3>My Favorite Coffee Spot:</h3>
         <section id="add-user-recommendation">
-            <h3>My Favorite Coffee Spot:</h3>
-            {% if user.user_id == session['user_id'] %}
-                <form action="/profile/{{ user.user_id }}/addrecommendation">
-                    <label for="cafe-select">Choose a cafe from your bookmarks:</label><br>
-                        <select name="recommendation" id="cafe-recommendation" required="">
-                            <option value="">Select a Cafe</option>
-                            {% for bookmark in bookmarks  %}
-                                <option value="{{ bookmark.cafe.cafe_id }}">{{ bookmark.cafe.name }}</option>
-                            {% endfor %}
-                        </select>
-                    <button type="submit" id="add-recommendation-button" class="submit-btn">Submit</button>
-                </form>
-            {% endif %}
-        
             {% if recommendation %}
                 <section id="display-recc">
                     <br>

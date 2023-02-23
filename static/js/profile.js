@@ -3,16 +3,20 @@
 // Edit User Information
 const editInfoButton = document.querySelector('#edit-info-btn');
 const userForm = document.querySelector('#edit-info');
+const userRecc = document.querySelector('#edit-recommendation');
 
 userForm.hidden = true;
+userRecc.hidden = true;
 
 editInfoButton.addEventListener('click', () => {
     if (userForm.hidden === true) {
         userForm.hidden = false;
+        userRecc.hidden = false;
         editInfoButton.innerHTML = "Close Edit Profile";
         document.querySelector('#user-information').hidden = true;
     } else if (userForm.hidden === false) {
         userForm.hidden = true;
+        userRecc.hidden = true;
         editInfoButton.innerHTML = "Edit Profile";
         document.querySelector('#user-information').hidden = false;
     }
