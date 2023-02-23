@@ -5,14 +5,23 @@
 {% block head %}
 
 <style>
-  body {
-    background-image: url("static/img/homepage-bg.jpg");
-    background-position: 35% 35%;
-    background-repeat: no-repeat;
-    background-attachment: fixed;
-  }
   
-  
+body {
+  background-image: url("/static/img/homepage-bg.jpg");
+  background-position: 35% 35%;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+}
+
+.container {
+  padding: 25x 30px;
+  margin-top: 15%;
+}
+
+h1 {
+  font-size: 60px;
+}
+
 </style>
 
 {% endblock %}
@@ -22,17 +31,15 @@
 {% block body %}
 
 <main>
- <div class="px-4 py-5 my-5 text-center">
-    <h1 class="display-5 fw-bold">Coffee Notes</h1>
-    <div class="col-lg-6 mx-auto">
-      <p class="lead mb-4">Keep track of your favorite spots and save cafes you would like to visit in the future, all in one place. Let's find your favorite coffee note!</p>
-      <div class="d-grid gap-2 d-sm-flex justify-content-sm-center">
-        <a href="/signup">
-        <button type="button" class="submit-btn">Get Started</button>
-        </a>
-      </div>
-    </div>
+<div class="container">
+  <div class="col-lg-6">
+    <h1>Coffee Notes</h1>
+    <p class="lead">Keep track of your favorite spots and save cafes you would like to visit in the future, all in one place. Let's find your favorite coffee note.</p>
+    <a href="/signup">
+      <button type="button" class="submit-btn">Get Started</button>
+    </a>
   </div>
+</div>
 </main>
 
 {% endblock %}

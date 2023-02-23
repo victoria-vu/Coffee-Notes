@@ -233,7 +233,7 @@ function initMap() {
 
     const cafeInfo = new google.maps.InfoWindow();
 
-    const cafeInfoContent = `<h4>${cafeName}<h/h4>`
+    const cafeInfoContent = `<h4>${cafeName}</h4>`
 
     cafeMarker.addListener('click', () => {
         cafeInfo.setContent(cafeInfoContent)
@@ -256,10 +256,10 @@ if (editButton) {
         
         if (form.hidden === true) {
             form.hidden = false;
-            editButton.innerHTML = "Close Edit Review";
+            // editButton.innerHTML = "Close Edit Review";
         } else if (form.hidden === false) {
                 form.hidden = true;
-                editButton.innerHTML = "Edit Review";
+                // editButton.innerHTML = "Edit Review";
         }
     });
 }

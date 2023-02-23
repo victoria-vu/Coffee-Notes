@@ -3,97 +3,183 @@
 {% block title %}My Cafes{% endblock %}
 
 {% block head %}
+
 <style>
-    html, body {
+    
+body {
+    background-image: url("/static/img/user-bg.jpg");
+    background-color: #FFF6F1;
+    background-position: 34% 65%;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+}
+
+html, body {
     margin: 0;
     width: 100%;
     height: 100%;
-    }
+}
 
-    .map,
-    #map {
+.title {
+    text-align: center;
+    margin-top: 2%;
+}
+
+.map, #map {
     width: 100%;
     height: 100%;
-    }
+    padding: 70px;
+}
+
+.container-fluid {
+    width: 82%;
+}
+
+
+h3.card-title {
+    text-align: center;
+    padding: 10px;
+}
+
+.card { 
+    height: auto;
+    width: 95%;
+    margin-top: 5%;
+
+}
+
+.card-body {
+    padding: 30px;
+}
+
+form.remove-bookmark {
+    text-align: center;
+    margin-bottom: 5%;
+}
+
+textarea {
+    background-color: #FFF6F1;
+    border-radius: 10px;
+    height: auto;
+    width: 100%;
+    border: 0px;
+}
+
+section {
+    padding: 5px;
+}
+
+.note-btn {
+    margin: 4px;
+    padding: 1px;
+}
+
+.note-spacing {
+    margin-bottom: 0px;
+}
 
 </style>
+
 {% endblock %}
 
 {% block body %}
-<h1> {{ user.fname }}'s Cafes</h1>
-<h5>Keep track of your bookmarked cafes.</h5>
-<br>
+
+<div class="title">
+    <h1> {{ user.fname }}'s Cafes</h1>
+    <h4>View your bookmarked cafes.</h4>
+</div>
+
+<div class="container-fluid">
+    <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-3">
+        {% for bookmark in bookmarks %}
+            <section id="bookmark-{{ bookmark.cafe.cafe_id }}">
+                <div class="col">
+                    <div class="card">
+                        <div class="card-body">
+                            <h3 class="card-title"><a href="/cafe/{{ bookmark.cafe.cafe_id }}">{{ bookmark.cafe.name }}</a></h3>
+
+                            <section id="remove-bookmark-{{ bookmark.cafe.cafe_id }}">
+                                <form id="{{ bookmark.cafe.cafe_id }}" class="remove-bookmark">
+                                    <input type="hidden" id="remove-bookmark-id-{{ bookmark.cafe.cafe_id }}" value="{{ bookmark.cafe.cafe_id }}">
+                                    <button type="submit" class="submit-btn">Remove Cafe</button>
+                                </form>
+                            </section>
+
+                            <section id="bookmark-cafe-info">
+                                <h5>Address:</h5>
+                                    <p>{{ bookmark.cafe.address}} <br>
+                                    {{ bookmark.cafe.city }} {{ bookmark.cafe.state }} {{ bookmark.cafe.zip_code}}</p>
+                                <h5>Phone Number:</h5> 
+                                    <p>{{ bookmark.cafe.phone }}<br>
+                            </section>
+
+                            <hr>
+
+                            
+                            <section id="notes">
+                                <h5>My Notes:</h5>
+                                {% for note in bookmark.note|sort(attribute='time_created') %}
+                                    <p id="note-{{ note.note_id }}" class="note-spacing">{{ note.note }}</p>
+                
+
+                                    <div class="row">
+                                        <div class="col-1 note-btn">
+                                            <section id="edit-notes-{{ note.note_id }}">
+                                                <button id="edit-btn-{{ note.note_id}}" class="edit-btn" ><i class="fa-solid fa-pen-to-square"></i></button>
+                                            </section>
+                                        </div>
+                                        
+                    
+                                        <div class="col-1 note-btn">
+                                            <section id="remove-notes-{{ note.note_id }}">
+                                                <form id="{{ note.note_id }}" class="remove-note" method="POST">
+                                                    <input type="hidden" id="remove-note-id-{{ note.note_id }}" value="{{ note.note_id }}">
+                                                    <button type="submit" class="action-btn"><i class="fa-solid fa-trash-can"></i></button>
+                                                </form>
+                                            </section>
+                                        </div>
+                                        
+                                        <form action="/mycafes/{{ note.note_id }}/editnote" id="edit-note-{{ note.note_id }}" class="edit-form" method="POST">
+                                            <label for="edit-note">Edit Your Note:</label><br>
+                                            <textarea name="edit-note" id="edit-note" required="">{{ note.note }}</textarea><br>
+                                            <button type="submit" class="submit-btn">Save Changes</button>
+                                        </form>
+
+                                    </div>
+
+                                    <br>
+                                {% endfor %}
+                            </section>
+                        
+                            <section id="add-notes">
+                                <form action="/mycafes/{{ bookmark.bookmark_id }}/addnote" method="POST">
+                                    <label for="add-note">Write a Note:</label><br>
+                                    <textarea name="add-cafe-note" id="add-cafe-note" required=""></textarea><br>
+                                    <button type="submit" id="add-note-button" class="submit-btn">Add Note</button>
+                                </form>
+                            </section>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        {% endfor %}
+    </div>
+</div>
 
 <section class="map">
+    <h1 class="title">Bookmarks Map</h1>
     <div id="map"></div>
 </section>
-    
-    {% for bookmark in bookmarks %}
-        <section id="bookmark-{{ bookmark.cafe.cafe_id }}">
-            <section id="bookmark-cafe-info">
-                <h3>{{ bookmark.cafe.name }}</h3>
-                <h5>Address:</h5>
-                    <p>{{ bookmark.cafe.address}} <br>
-                    {{ bookmark.cafe.city }} {{ bookmark.cafe.state }} {{ bookmark.cafe.zip_code}}</p>
-                <h5>Phone Number:</h5> 
-                    <p>{{ bookmark.cafe.phone }}<br>
-                <a href="/cafe/{{ bookmark.cafe.cafe_id }}">More Details</a></p>
-            </section>
 
-            <section id="notes">
-                <h5>My Notes:</h5>
-                {% for note in bookmark.note|sort(attribute='time_created') %}
-                    <p id="note-{{ note.note_id }}">{{ note.note }}</p>
-
-                    <!-- Edit Notes Section -->
-                    <section id="edit-notes-{{ note.note_id }}">
-
-                        <!-- When button is clicked, will show the form -->
-                        <button id="edit-btn-{{ note.note_id}}" class="edit-btn">Edit Note</button>
-
-                        <!-- Form for each note -->
-                        <form action="/mycafes/{{ note.note_id }}/editnote" id="edit-note-{{ note.note_id }}" class="edit-form" method="POST">
-                            <label for="edit-note">Edit Your Note:</label><br>
-                            <textarea name="edit-note" id="edit-note" required="">{{ note.note }}</textarea><br>
-                            <button type="submit">Submit Note</button>
-                        </form>
-                    </section>
-                    <!-- End Edit Notes Section -->
-
-                    <section id="remove-notes-{{ note.note_id }}">
-                        <form id="{{ note.note_id }}" class="remove-note" method="POST">
-                            <input type="hidden" id="remove-note-id-{{ note.note_id }}" value="{{ note.note_id }}">
-                            <button type="submit">Delete Note</button>
-                        </form>
-                    </section>
-                    <br>
-                {% endfor %}
-            </section>
-        
-            <section id="add-notes">
-                <form action="/mycafes/{{ bookmark.bookmark_id }}/addnote" method="POST">
-                    <label for="add-note">Write a Note:</label><br>
-                    <textarea name="add-cafe-note" id="add-cafe-note" required=""></textarea><br>
-                    <button type="submit" id="add-note-button">Add Note</button>
-                </form>
-            </section>
-
-            <section id="remove-bookmark-{{ bookmark.cafe.cafe_id }}">
-                <form id="{{ bookmark.cafe.cafe_id }}" class="remove-bookmark">
-                    <input type="hidden" id="remove-bookmark-id-{{ bookmark.cafe.cafe_id }}" value="{{ bookmark.cafe.cafe_id }}">
-                    <button type="submit">Remove Cafe</button>
-                </form>
-            </section>
-
-        </section>
-
-        <span id="remove-bookmark-status"></span>
-        <br>
-    {% endfor %}
-
-    <script src="/static/js/myCafes.js"></script>
-    <script async
-      src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDQPR_vJE_b_gHiQdzfz5M-IK84PYPASCg&libraries=places&callback=initMap">
-    </script>
+<script src="/static/js/myCafes.js"></script>
+<script async
+    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDQPR_vJE_b_gHiQdzfz5M-IK84PYPASCg&libraries=places&callback=initMap">
+</script>
 
 {% endblock %}
+
+
+
+
+
+

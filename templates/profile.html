@@ -2,125 +2,200 @@
 
 {% block title %}Profile{% endblock %}
 
+{% block head %}
+<style>
+
+body {
+    background-image: url("/static/img/user-bg.jpg");
+    background-color: #FFF6F1;
+    background-position: 34% 65%;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+}
+
+h1 {
+    text-align: center;
+    padding: 5px;
+}
+
+.details {
+    font-family: Gloock;
+  }
+
+
+.container {
+    height: auto;
+    width: 775px;
+    margin-top: 2%;
+    padding: 5px;
+    border-radius: 10px;
+    background-color: rgba(231, 218, 199, 1);
+}
+
+.row {
+    margin-top: 5%;
+    margin-bottom: 5%;
+    margin-left: 3%;
+    margin-right: 3%;
+    text-align: left;
+}
+
+input {
+    background-color: #FFF6F1;
+    border-radius: 10px;
+    height: 42px;
+    width: 450px;
+    border: 0px;
+  }
+
+#edit-user-info {
+    margin-top: 0%;
+}
+
+
+</style>
+
+{% endblock %}
+
+
 {% block body %}
-<section id="user-information">
-    <h1>{{ user.fname }}'s Profile</h1>
-    <h4>Name:</h4> {{ user.fname }} {{ user.lname }}
-    <h4>About Me:</h4> 
-    {% if user.about_me %}
-    {{ user.about_me }}
-    {% endif %}
 
-    {% if user.user_id == session['user_id'] %}
-    <section id="edit-user-info"><br>
-        <button id="edit-info-btn">Edit User Information</button>
-        <form action="/profile/{{ user.user_id }}/editinformation" id="edit-info" method="POST">
-            <label for="fname">First Name*:</label>
-            <input type="text" name="fname" value="{{ user.fname }}" required="">
-            <label for="lname">Last Name*:</label>
-            <input type="text" name="lname" value="{{ user.lname }}" required=""><br>
-            <label for="lname">About Me:</label>
-                {% if user.about_me %}
-                    <textarea name="about-me">{{ user.about_me }}</textarea><br>
-                {% else %}
-                    <textarea name="about-me"></textarea><br>
-                {% endif %}
-
-            <label for="email">Email*:</label>
-            <input type="text" name="email" value="{{ user.email }}" required=""><br>
-            <label for="password">Password:</label>
-            <input type="password" name="password" default="{{ user.password }}"><br>
-            <button type="submit">Update Information</button>
-        </form>
-    </section>
-    {% endif %}
-
-</section>
-
-
-
-<br>
-
-<section id="add-user-recommendation">
-    <h3>{{ user.fname }}'s Cafe Recommendation:</h3>
-    {% if user.user_id == session['user_id'] %}
-        <form action="/profile/{{ user.user_id }}/addrecommendation">
-            <label for="cafe-select">Choose a cafe from your bookmarks:</label><br>
-                <select name="recommendation" id="cafe-recommendation" required="">
-                    <option value="">Select a Cafe</option>
-                    {% for bookmark in bookmarks  %}
-                        <option value="{{ bookmark.cafe.cafe_id }}">{{ bookmark.cafe.name }}</option>
-                    {% endfor %}
-                </select>
-            <button type="submit" id="add-recommendation-button">Submit</button>
-        </form>
-    {% endif %}
-
-    {% if recommendation %}
-        <section id="display-recc">
-            <!-- <img src="{{ recommendation.cafe.img_url }}" alt=""> -->
-            <h4><a href="/cafe/{{ recommendation.cafe.cafe_id }}">{{ recommendation.cafe.name}}</a></h4>
-            {% if user.user_id == session['user_id'] %}
-            <form id="remove-recc">
-                <input type="hidden" id="remove-recc-id" value="{{ recommendation.recommendation_id }}">
-                <button type="submit" id="remove-recc-button">Remove Recommendation</button>
-            </form>
-            {% endif %}
-        </section>
-    {% endif %}
-    <span id="remove-recc-status"></span>
-</section>
-
-<br>
-
-<section id="user-reviews">
-    <h3>{{ user.fname }}'s Cafe Reviews:</h3>
-    
-    {% for review in reviews|sort(attribute='time_created', reverse = True) %}
-        <section id="user-review-{{ review.cafe.cafe_id}}">
-        <b><a href="/cafe/{{ review.cafe.cafe_id }}">{{ review.cafe.name }}</a>:</b><br>
-        {{ review.rating }} Stars, {{ review.time_created.strftime("%m/%d/%y") }}<br>
-        "{{ review.review }}"
+<div class="container">
+    <div class="px-4 py-4 my-4 text-center">
+        <h1>{{ user.fname }} {{ user.lname }}</h1> 
+    <div class="row">
         {% if user.user_id == session['user_id'] %}
-
-            <!-- Edit Review Section -->
-            <section id="edit-review">
-
-                <!-- When button is clicked, will show the form -->
-                <button id="edit-btn-{{ review.review_id }}" class="edit-btn">Edit Review</button>
-
-                <!-- Form for each review -->
-                <form action="/profile/{{ review.review_id }}/editreview" id="edit-review-{{ review.review_id }}" class="edit-form" method="POST">
-                    <label for="edit-form">Edit Your Review:</label><br>
-                    {% for n in range(1,6) %}
-                        {% if n == review.rating %}
-                        <input type="radio" name="edit-rating" value="{{n}}" id="edit-rating" checked />
+            <section id="edit-user-info">
+                <center><button id="edit-info-btn" class="submit-btn">Edit Profile</button></center>
+                <form action="/profile/{{ user.user_id }}/editinformation" id="edit-info" method="POST">
+                    <span class="details">First Name*:</span><br>
+                    <input type="text" name="fname" value="{{ user.fname }}" required=""><br>
+                    <span class="details">Last Name*:</span><br>
+                    <input type="text" name="lname" value="{{ user.lname }}" required=""><br>
+                    <span class="details">About Me:</span><br>
+                        {% if user.about_me %}
+                            <textarea name="about-me">{{ user.about_me }}</textarea><br>
                         {% else %}
-                        <input type="radio" name="edit-rating" value="{{n}}" id="edit-rating" required="">
+                            <textarea name="about-me"></textarea><br>
                         {% endif %}
-                        
-                        <label for="{{n}}">{{ n }} Stars</label>
-                    {% endfor %}<br>
 
-                    <textarea name="edit-review" id="edit-review" required="">{{ review.review }}</textarea><br>
-                    <button type="submit">Submit Edit</button>
+                    <span class="details">Email*:</span><br>
+                    <input type="text" name="email" value="{{ user.email }}" required=""><br>
+                    <span class="details">Password:</span><br>
+                    <input type="password" name="password" default="{{ user.password }}"><br>
+                    <center><button type="submit" class="submit-btn">Save Changes</button></center>
                 </form>
             </section>
-            <!-- End Edit Review Section -->
-            
-            <section id="remove-review">
-            <form id="{{ review.cafe.cafe_id }}" class="remove-review">
-                <input type="hidden" id="remove-review-id-{{ review.cafe.cafe_id }}" value="{{ review.cafe.cafe_id }}">
-                <button type="submit">Delete Review</button>
-            </form>
-            </section>
-        
         {% endif %}
-        </section>
-        <span id="remove-review-status"></span>
+
         <br>
-    {% endfor %}
-</section>
+        <section id="user-information">
+            <h3>About Me:</h3> 
+            {% if user.about_me %}
+            {{ user.about_me }}
+            {% endif %}
+        </section>
+    </div>
+
+    <hr>
+
+    <div class="row">
+        <section id="add-user-recommendation">
+            <h3>My Favorite Coffee Spot:</h3>
+            {% if user.user_id == session['user_id'] %}
+                <form action="/profile/{{ user.user_id }}/addrecommendation">
+                    <label for="cafe-select">Choose a cafe from your bookmarks:</label><br>
+                        <select name="recommendation" id="cafe-recommendation" required="">
+                            <option value="">Select a Cafe</option>
+                            {% for bookmark in bookmarks  %}
+                                <option value="{{ bookmark.cafe.cafe_id }}">{{ bookmark.cafe.name }}</option>
+                            {% endfor %}
+                        </select>
+                    <button type="submit" id="add-recommendation-button" class="submit-btn">Submit</button>
+                </form>
+            {% endif %}
+        
+            {% if recommendation %}
+                <section id="display-recc">
+                    <br>
+                    <h4><a href="/cafe/{{ recommendation.cafe.cafe_id }}">{{ recommendation.cafe.name}}</a></h4>
+                    {% if user.user_id == session['user_id'] %}
+
+                    <br>
+                    <form id="remove-recc">
+                        <input type="hidden" id="remove-recc-id" value="{{ recommendation.recommendation_id }}">
+                        <button type="submit" class="submit-btn">Remove Recommendation</button>
+                    </form>
+                    {% endif %}
+                </section>
+            {% endif %}
+            <span id="remove-recc-status"></span>
+        </section>
+    </div>
+
+    <hr>
+
+    <div class="row">
+        <section id="user-reviews">
+            <h3>{{ user.fname }}'s Cafe Reviews:</h3>
+            
+            {% for review in reviews|sort(attribute='time_created', reverse = True) %}
+                <section id="user-review-{{ review.cafe.cafe_id}}">
+                <b><a href="/cafe/{{ review.cafe.cafe_id }}">{{ review.cafe.name }}</a>:</b><br>
+                {{ review.rating }} Stars, {{ review.time_created.strftime("%m/%d/%y") }}<br>
+                "{{ review.review }}"
+                {% if user.user_id == session['user_id'] %}
+        
+                  
+                    <!-- <section id="edit-review">
+        
+                      
+                        <button id="edit-btn-{{ review.review_id }}" class="edit-btn"><i class="fa-solid fa-pen-to-square"></i></button>
+        
+                      
+                        <form action="/profile/{{ review.review_id }}/editreview" id="edit-review-{{ review.review_id }}" class="edit-form" method="POST">
+                            <label for="edit-form">Edit Your Review:</label><br>
+                            
+                          
+                            <div class="star-container" id="edit-star">
+                                <div class="star-widget">
+    
+                                {% for n in range(1,6)|reverse %}
+                                {% if n == review.rating %}
+                                <input type="radio" name="edit-rating" id="edit-rate-{{ n }}" value="{{ n }}" checked />
+                                <label for="edit-rate-{{ n }}" class="fa-solid fa-star"></label>
+                                {% else %}
+                                <input type="radio" name="edit-rating" id="edit-rate-{{ n }}" value="{{ n }}" required="">
+                                <label for="edit-rate-{{ n }}" class="fa-solid fa-star"></label>
+                                {% endif %}
+                                {% endfor %}
+                                </div>
+                            </div>
+
+        
+                            <textarea name="edit-review" id="edit-review" required="">{{ review.review }}</textarea><br>
+                            <button type="submit" class="submit-btn">Submit Edit</button>
+                        </form>
+                    </section> -->
+                   
+                    
+                    <section id="remove-review">
+                    <form id="{{ review.cafe.cafe_id }}" class="remove-review">
+                        <input type="hidden" id="remove-review-id-{{ review.cafe.cafe_id }}" value="{{ review.cafe.cafe_id }}">
+                        <button type="submit" class="action-btn"><i class="fa-solid fa-trash-can"></i></button>
+                    </form>
+                    </section>
+                
+                {% endif %}
+                </section>
+                <span id="remove-review-status"></span>
+                <br>
+
+            {% endfor %}
+        </section>
+    </div>
+</div>
+</div>
 
 <script src="/static/js/profile.js"></script>
 {% endblock %}

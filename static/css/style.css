@@ -3,11 +3,11 @@ h1 {
 }
 
 h3 {
-    font-family:  "Larsseit";
+    font-family:  "Larsseit", sans-serif;
 }
 
 h4 {
-    font-family: "Larsseit";
+    font-family: "Larsseit", sans-serif;
     font-style: italic;
 }
 
@@ -15,15 +15,20 @@ p {
     font-style: italic;
 }
 
+#nav-logo {
+  font-family:  "Gloock", sans-serif;
+}
+
 .nav-link {
-    font-family:  "Larsseit";
+    font-family:  "Larsseit", sans-serif;
     font-style: italic;
+    font-size: 18px;
     font-weight: 500;
     color: #383230;
 }
 
 .submit-btn {
-    font-family:  "Larsseit";
+    font-family:  "Larsseit", sans-serif;
     font-style: italic;
     font-weight: 500;
     font-size: 18px;
@@ -33,11 +38,52 @@ p {
     border-radius: 10px;
     padding: 6px 35px;
     box-shadow: 3px 3px;
+    text-align: center;
+    transition: 0.3s;
+}
+
+.submit-btn:hover {
+  color: #fff;
+  background-color:#383230;
+}
+
+.action-btn {
+  color: #383230;
+  background-color: #DCA471;
+  border-width: 0px;
+  border-radius: 10px;
+  box-shadow: 2px 2px;
+  text-align: center;
+  transition: 0.3s;
+}
+
+.action-btn:hover {
+  color: #fff;
+  background-color:#383230;
+}
+
+.edit-btn {
+  color: #383230;
+  background-color: #DCA471;
+  border-width: 0px;
+  border-radius: 10px;
+  box-shadow: 2px 2px;
+  text-align: center;
+  transition: 0.3s;
+}
+
+.edit-btn:hover {
+  color: #fff;
+  background-color:#383230;
 }
 
 ::placeholder {
-    font-family:  "Larsseit";
+    font-family:  "Larsseit", sans-serif;
     font-style: italic;
+}
+
+#logo {
+  padding: 5px;
 }
 
 a:link {
@@ -46,27 +92,74 @@ a:link {
     text-decoration: none;
   }
   
-  a:visited {
-    color: #383230;
-    background-color: transparent;
-    text-decoration: none;
-  }
-  
-  a:hover {
-    color: #DCA471;
-    background-color: transparent;
-    text-decoration: underline;
-  }
-  
-  a.nav-link:active {
-    color: #DCA471;
-    background-color: transparent;
-    text-decoration: underline;
-  }
+a:visited {
+  color: #383230;
+  background-color: transparent;
+  text-decoration: none;
+}
 
-  a.nav-link:hover {
-    color: #DCA471;
-    background-color: transparent;
-    text-decoration: underline;
-  }
+a:hover {
+  color: #DCA471;
+  background-color: transparent;
+  text-decoration: underline;
+  transition: 0.2s;
+}
 
+a.nav-link:active {
+  color: #DCA471;
+  background-color: transparent;
+  text-decoration: underline;
+}
+
+a.nav-link:hover {
+  color: #DCA471;
+  background-color: transparent;
+  text-decoration: underline;
+}
+
+input:focus {
+  background-color: #FFF;
+  transition: 0.5s;
+}
+
+textarea {
+  background-color: #FFF6F1;
+  border-radius: 10px;
+  height: 70px;
+  width: 450px;
+  border: 0px;
+}
+
+textarea:focus {
+  background-color: #FFF;
+  transition: 0.5s;
+}
+
+.star-container {
+  padding: 8px 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.star-container .star-widget input{
+  display: none;
+}
+
+.star-widget label{
+  font-size: 25px;
+  color: #383230;
+  padding: 1px;
+  transition: all 0.2s ease;
+  float: right;
+}
+
+input:not(:checked) ~ label:hover,
+input:not(:checked) ~ label:hover ~ label{
+  color: #DCA471;
+}
+
+input:checked ~ label{
+  color: #DCA471;
+}

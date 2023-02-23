@@ -9,10 +9,12 @@ userForm.hidden = true;
 editInfoButton.addEventListener('click', () => {
     if (userForm.hidden === true) {
         userForm.hidden = false;
-        editInfoButton.innerHTML = "Close Edit User Information";
+        editInfoButton.innerHTML = "Close Edit Profile";
+        document.querySelector('#user-information').hidden = true;
     } else if (userForm.hidden === false) {
         userForm.hidden = true;
-        editInfoButton.innerHTML = "Edit User Information";
+        editInfoButton.innerHTML = "Edit Profile";
+        document.querySelector('#user-information').hidden = false;
     }
 });
 
@@ -81,33 +83,33 @@ if (removeReviewButtons) {
 
 
 // Edit Review on My Cafes Page
-const editButtons = document.querySelectorAll('.edit-btn');
+// const editButtons = document.querySelectorAll('.edit-btn');
 
-const forms = document.querySelectorAll('.edit-form');
+// const forms = document.querySelectorAll('.edit-form');
 
-// Hides all forms
-if (forms) {
-    for (const form of forms) { 
-    form.hidden = true;
-    }
-}
+// // Hides all forms
+// if (forms) {
+//     for (const form of forms) { 
+//     form.hidden = true;
+//     }
+// }
 
-if (editButtons) {
-    for (const editButton of editButtons) {
+// if (editButtons) {
+//     for (const editButton of editButtons) {
      
-        editButton.addEventListener('click', () => {
-            // formID = edit-note-{{ review.review_id }}
-            const formID = editButton.id.replace('btn', 'review');
-            // Selects the correct form
-            const form = document.querySelector(`#${formID}`)
+//         editButton.addEventListener('click', () => {
+//             // formID = edit-note-{{ review.review_id }}
+//             const formID = editButton.id.replace('btn', 'review');
+//             // Selects the correct form
+//             const form = document.querySelector(`#${formID}`)
 
-                if (form.hidden === true) {
-                    form.hidden = false;
-                    editButton.innerHTML = "Close Edit Review";
-                } else if (form.hidden === false) {
-                        form.hidden = true;
-                        editButton.innerHTML = "Edit Review";
-                }
-        });
-    }
-}
+//                 if (form.hidden === true) {
+//                     form.hidden = false;
+//                     // editButton.innerHTML = "Close Edit Review";
+//                 } else if (form.hidden === false) {
+//                         form.hidden = true;
+//                         // editButton.innerHTML = "Edit Review";
+//                 }
+//         });
+//     }
+// }

@@ -6,61 +6,63 @@
 {% block head %}
 
 <style>
-  /* body {
-    background-image: url("static/img/search-bg.jpg");
-    background-position: 35% 40%;
-    background-repeat: no-repeat;
-    background-attachment: fixed;
-  } */
-  
-  .header {
-    position: center;
-  }
 
-  input {
-    background-color: #FFF6F1;
-    border-radius: 5px;
-    height: 40px;
-    width: 300px;
-    border: 0px;
-  }
-  
+body {
+  background-image: url("/static/img/dashboard-bg.jpg");
+  background-position: 34% 72%;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+}
+
+.header {
+  position: center;
+}
+
+input {
+  background-color: #FFF6F1;
+  border-radius: 5px;
+  height: 40px;
+  width: 300px;
+  border: 0px;
+}
+
+.container {
+  padding: 5px 5px;
+  margin-top: 12%;
+  background-color: rgba(231, 218, 199, 0.6);
+  border-radius: 10px;
+  height: 300px;
+  width: 1000px;
+}
+
+h1 {
+  margin-top: 1.5%;
+  margin-bottom: 1.5%;
+}
+
+h4 {
+  margin-top: 1.5%;
+  margin-bottom: 1.5%;
+}
+
 </style>
 
 {% endblock %}
 
 {% block body %}
-<!-- <h1>Welcome Back, {{ name }}!</h1>
-<h4>Let's look for a coffee shop. Search by keyword or location.</h4>
 
-<div>
-      <form action="/cafe/search" method="GET">
-        <div>
-          <label for="search-term">Name or Keyword</label><br>
-          <input type="text" name="term" placeholder="Cafe Name" id="search-term">
-        </div>
-
-        <div>
-          <label for="search-location">Location</label><br>
-          <input type="text" name="location" id="search-location" placeholder="E.g. New York" required="">
-        </div>  
-
-        <div>
-            <button type="submit">Search</button>
-        </div>
-      </form>
-</div> -->
-
-<div class="px-4 py-5 my-5 text-center">
-  <h1>Welcome Back, {{ name }}!</h1>
-  <h4>Let's look for a coffee shop. Search by keyword or location.</h4>
-  <form action="/cafe/search" method="GET">
-    <div class="input-box">
-      <input type="text" name="term" placeholder=" Cafe Name or Keyword" id="search-term">
-      <input type="text" name="location" id="search-location" placeholder=" E.g. New York" required="">
-      <button type="submit" class="submit-btn">Search</button>
-    </div>
-  </form>
+<div class="container">
+  <div class="px-4 py-4 my-4 text-center">
+    <h1>Welcome Back, {{ name }}!</h1>
+    <h4>Let's look for a coffee shop. Search by keyword or location.</h4>
+    <form action="/cafe/search" method="GET">
+      <div class="input-box">
+        <input type="text" name="term" placeholder=" Cafe Name or Keyword" id="search-term">
+        <input type="text" name="location" id="search-location" placeholder=" E.g. New York" required="">
+        <button type="submit" class="submit-btn">Search</button>
+      </div>
+    </form>
+  </div>
 </div>
 
 {% endblock %}

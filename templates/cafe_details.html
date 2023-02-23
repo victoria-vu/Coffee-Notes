@@ -4,121 +4,224 @@
 
 {% block head %}
 <style>
-    html, body {
+
+body {
+    background-image: url("/static/img/user-bg.jpg");
+    background-color: #FFF6F1;
+    background-position: 34% 65%;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+}
+
+html, body {
     margin: 0;
     width: 100%;
     height: 100%;
-    }
+}
 
-    .map,
-    #map {
-    width: 67%;
+.map, #map {
+    margin-left: auto;
+    margin-right: auto;
+    width: 80%;
     height: 70%;
-    }
+}
+
+img {
+    height: 500px;
+    width: 400px;
+}
+
+.container {
+    padding: 5px;
+    margin-top: 2%;
+}
+
+.map {
+    padding: 5px;
+    margin-top: 8%;
+}
+
+.row {
+    background-color: #EBDECB;
+    margin-top: 2%;
+    margin-bottom: 2%;
+    margin-left: 10%;
+    margin-right: 10%;
+    border-radius: 10px;
+    padding: 40px;
+}
+
+#cafe-information {
+    margin-top: 15%;
+}
+
+#review-cafe {
+    text-align: center;
+}
+
+h1.title {
+    text-align: center;
+}
+
+#edit-row{
+    margin: -36px;
+}
+
+.note-btn {
+    margin: -15px;
+    padding: 10px;
+}
+
+textarea {
+    background-color: #FFF6F1;
+    border-radius: 10px;
+    height: auto;
+    width: 50%;
+    border: 0px;
+}
+
+#edit-form {
+    text-align: center;
+}
 
 </style>
 {% endblock %}
 
 {% block body %}
-<h1>{{ cafe.name }}</h1>
-    <img src="{{ cafe.img_url }}" alt="">
 
-    <section id="cafe-information">
-        <h4>Address:</h4>
-        <p>{{ cafe.address}} <br>
-            {{ cafe.city }} {{ cafe.state }} {{ cafe.zip_code}}</p>
-        <h4>Phone Number:</h4> 
-        <p>{{ cafe.phone }}</p>
-    </section>
+<div class="container">
 
-    <section class="map">
-        <div id="map">
-            <input type="hidden" id="map-lat" name="map-lat" value={{ cafe.latitude }}>
-            <input type="hidden" id="map-lng" name="map-lng" value={{ cafe.longitude }}>
+    <div class="row g-3">
+
+        <div class="col-sm-3 col-xs-6" style="width:50%">
+            <img src="{{ cafe.img_url }}" alt="">
         </div>
-    </section>
 
-    <p hidden id="cafe-name">{{ cafe.name }}</p>
-
-    {% if 'user_id' in session.keys() %}
-        {% if not bookmarked %}
-        <section id="bookmark-cafe">
-            <form id="bookmark-cafe">
-                <input type="hidden" id="cafe-id" value="{{ cafe.cafe_id }}">
-                <button type="submit" id="bookmark-button">Add to My Cafes</button>
-            </form>
-            <span id="bookmark-status"></span>
-        </section>
-        {% endif %}
-
-        {% if bookmarked %}
-        <section id="bookmark-cafe">
-            <form id="bookmark-cafe">
-                <input type="hidden" id="cafe-id" value="{{ bookmarked.cafe.cafe_id }}">
-                <button type="submit" id="bookmark-button">Remove from My Cafes</button>
-            </form>
-            <span id="bookmark-status"></span>
-        </section>
-        {% endif %}
-
-        <br>
-        <section id="review-cafe">
-            <h4>Add a Review:</h4>
-            <form action="/cafe/{{ cafe.cafe_id }}/review" method="POST">
-                {% for n in range(1,6) %}
-                    <input type="radio" name="rating" value="{{n}}" id="rating" required="">
-                    <label for="{{n}}">{{ n }} Stars </label>
-                {% endfor %}
-                    <br>
-                    <label for="review">Write a Review:</label><br>
-                    <textarea name="review" id="review" required="" placeholder="Describe your experience..."></textarea>
-                <p><input type="submit"></p>
-            </form>
-        </section>
-    
-    {% endif %}
-
-    <section id="customer-reviews">
-        <h4>User Reviews:</h4>
-        {% for review in reviews %}
-            <section id="customer-review">
-                <p><b><a href="/profile/{{ review.user.user_id }}">{{ review.user.fname }} {{ review.user.lname }}</a>:</b></br>
-                {{ review.rating }} Stars, {{ review.time_created.strftime("%m/%d/%y") }}</br>
-                {{ review.review }}<br>
-
-                {% if review.user.user_id == session['user_id'] %}
-
-                <section>
-                <button id="edit-btn">Edit Review</button>
-                <form action="/cafe/{{ review.review_id }}/editreview" id="edit-form" method="POST">
-                    <label for="edit-form">Edit Your Review:</label><br>
-                    {% for n in range(1,6) %}
-                        {% if n == review.rating %}
-                        <input type="radio" name="edit-rating" value="{{n}}" id="edit-rating" checked />
-                        {% else %}
-                        <input type="radio" name="edit-rating" value="{{n}}" id="edit-rating" required="">
-                        {% endif %}
-                        <label for="{{n}}">{{ n }} Stars</label>
-                    {% endfor %}<br>
-
-                    <textarea name="edit-review" id="edit-review" required="">{{ review.review }}</textarea><br>
-                    <button type="submit">Submit Edit</button>
-                </form>
-                </section>
-
-                <section>
-                <form id="delete-review">
-                    <input type="hidden" id="cafe-id" value="{{ cafe.cafe_id }}">
-                    <button type="submit" id="delete-review-button">Delete Review</button>
-                </form>
-                </section>
-
+        <div class="col-sm-3 col-xs-6" style="width:50%">
+            <section id="cafe-information">
+                <h1>{{ cafe.name }}</h1>
+                <h4>Address:</h4>
+                <p>{{ cafe.address}} <br>
+                    {{ cafe.city }} {{ cafe.state }} {{ cafe.zip_code}}</p>
+                <h4>Phone Number:</h4> 
+                <p>{{ cafe.phone }}</p>
             </section>
-            <span id="remove-review-status"></span>
-                {% endif %}
 
-        {% endfor %}
-    </section>
+            {% if 'user_id' in session.keys() %}
+                {% if not bookmarked %}
+                <section id="bookmark-cafe">
+                    <form id="bookmark-cafe">
+                        <input type="hidden" id="cafe-id" value="{{ cafe.cafe_id }}">
+                        <button type="submit" id="bookmark-button" class="submit-btn">Add to My Cafes</button>
+                    </form>
+                    <span id="bookmark-status"></span>
+                </section>
+                {% endif %}
+        
+                {% if bookmarked %}
+                <section id="bookmark-cafe">
+                    <form id="bookmark-cafe">
+                        <input type="hidden" id="cafe-id" value="{{ bookmarked.cafe.cafe_id }}">
+                        <button type="submit" id="bookmark-button" class="submit-btn">Remove from My Cafes</button>
+                    </form>
+                    <span id="bookmark-status"></span>
+                </section>
+                {% endif %}
+            {% endif %}
+        </div>
+    </div>  
+
+    <div class="row">
+        <h1 class="title">Review</h1>
+        {% if 'user_id' in session.keys() %}
+            <section id="review-cafe">
+                <h4>Write a Review:</h4>
+                <form action="/cafe/{{ cafe.cafe_id }}/review" method="POST">
+                    <div class="star-container">
+                        <div class="star-widget">
+                            <input type="radio" name="rating" id="rate-5" value="5" required="">
+                            <label for="rate-5" class="fa-solid fa-star"></label>
+                            <input type="radio" name="rating" id="rate-4" value="4" required="">
+                            <label for="rate-4" class="fa-solid fa-star"></label>
+                            <input type="radio" name="rating" id="rate-3" value="3" required="">
+                            <label for="rate-3" class="fa-solid fa-star"></label>
+                            <input type="radio" name="rating" id="rate-2" value="2" required="">
+                            <label for="rate-2" class="fa-solid fa-star"></label>
+                            <input type="radio" name="rating" id="rate-1" value="1" required="">
+                            <label for="rate-1" class="fa-solid fa-star"></label>
+                        </div>
+                    </div>
+                    <textarea name="review" id="review" required="" placeholder="Describe your experience..."></textarea><br>
+                    <button type="submit" class="submit-btn">Submit Review</button>
+                </form>
+            </section>
+        {% endif %}
+    </div>
+
+    <div class="row">
+        <section id="customer-reviews">
+            <h1 class="title">User Reviews</h1>
+            {% for review in reviews %}
+                <section id="customer-review">
+                    <h4><b><a href="/profile/{{ review.user.user_id }}">{{ review.user.fname }} {{ review.user.lname }}</a>:</b></h4>
+                    {{ review.rating }} Stars, {{ review.time_created.strftime("%m/%d/%y") }}</br>
+                    {{ review.review }}<br>
+    
+                    {% if review.user.user_id == session['user_id'] %}
+    
+                    <div class="row" id="edit-row">
+                        <div class="col-1 note-btn">        
+                            <button id="edit-btn" class="action-btn"><i class="fa-solid fa-pen-to-square"></i></button>
+                        </div>
+
+                        <div class="col-1 note-btn">
+                            <form id="delete-review">
+                                <input type="hidden" id="cafe-id" value="{{ cafe.cafe_id }}">
+                                <button type="submit" class="action-btn"><i class="fa-solid fa-trash-can"></i></button>
+                            </form>
+                        </div>
+                    </div>
+
+                    <form action="/cafe/{{ review.review_id }}/editreview" id="edit-form" method="POST">
+                        <label for="edit-form">Edit Your Review:</label><br>
+                        
+                        <div class="star-container" id="edit-star">
+                            <div class="star-widget">
+
+                            {% for n in range(1,6)|reverse %}
+                            {% if n == review.rating %}
+                            <input type="radio" name="edit-rating" id="edit-rate-{{ n }}" value="{{ n }}" checked />
+                            <label for="edit-rate-{{ n }}" class="fa-solid fa-star"></label>
+                            {% else %}
+                            <input type="radio" name="edit-rating" id="edit-rate-{{ n }}" value="{{ n }}" required="">
+                            <label for="edit-rate-{{ n }}" class="fa-solid fa-star"></label>
+                            {% endif %}
+                            {% endfor %}
+                            </div>
+                        </div>
+
+                        <textarea name="edit-review" id="edit-review" required="">{{ review.review }}</textarea><br>
+                        <button type="submit" class="submit-btn">Submit Edit</button>
+                    </form>
+            
+                </section>
+                <span id="remove-review-status"></span>
+                    {% endif %}
+            <hr>
+            {% endfor %}
+        </section>    
+    </div>
+</div>
+
+<section class="map">
+    <h1 class="title">Location</h1>
+    <div id="map">
+        <input type="hidden" id="map-lat" name="map-lat" value={{ cafe.latitude }}>
+        <input type="hidden" id="map-lng" name="map-lng" value={{ cafe.longitude }}>
+    </div>
+</section>
+
+<p hidden id="cafe-name">{{ cafe.name }}</p>
 
 <script src="/static/js/cafeDetails.js"></script>
 <script async

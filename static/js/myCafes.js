@@ -55,10 +55,10 @@ if (editButtons) {
 
                 if (form.hidden === true) {
                     form.hidden = false;
-                    editButton.innerHTML = "Close Edit Note";
+                    // editButton.innerHTML = "Close Edit Note";
                 } else if (form.hidden === false) {
                         form.hidden = true;
-                        editButton.innerHTML = "Edit Note";
+                        // editButton.innerHTML = "Edit Note";
                 }
         });
     }

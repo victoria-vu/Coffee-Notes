@@ -3,50 +3,51 @@
 {% block title %}Sign Up{% endblock %}
 
 {% block head %}
+
 <style>
-  body {
-    background-image: url("static/img/homepage-bg.jpg");
-    background-position: 35% 35%;
-    background-repeat: no-repeat;
-    background-attachment: fixed;
-  }
-
-  .details {
-    font-family: Gloock;
-  }
-
-  .container {
-    padding: 25x 30px;
-    border-radius: 5px;
-    margin-top: 6%;
-  }
-
-  .container .title {
-    font-size: 40px;
-    font-family: Gloock;
-    position: relative;
-  }
   
-  .input-box {
-    margin-top: 1.5%;
-    margin-bottom: 1.5%;
-  }
+body {
+  background-image: url("/static/img/homepage-bg.jpg");
+  background-position: 35% 35%;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+}
 
-  input {
-    background-color: #FFF6F1;
-    border-radius: 10px;
-    height: 42px;
-    width: 450px;
-    border: 0px;
-  }
+.details {
+  font-family: Gloock;
+}
 
-  p {
-    margin-top: 1%;
-  }
+.container {
+  padding: 25x 30px;
+  border-radius: 5px;
+  margin-top: 6%;
+}
 
+.container .title {
+  font-size: 40px;
+  font-family: Gloock;
+  position: relative;
+}
 
+.input-box {
+  margin-top: 1.5%;
+  margin-bottom: 1.5%;
+}
+
+input {
+  background-color: #FFF6F1;
+  border-radius: 10px;
+  height: 42px;
+  width: 450px;
+  border: 0px;
+}
+
+p {
+  margin-top: 1%;
+}
   
 </style>
+
 {% endblock %}
 
 {% block body %}
@@ -80,7 +81,7 @@
         </div>
     </form>
 
-    <p>Already have an account? <a href="/login">Click here to log in.</a></p>
+    <p>Already have an account? <a href="/login"><u>Click here to log in.</u></a></p>
 
   </div>
 {% endblock %}
