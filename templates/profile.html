@@ -141,52 +141,19 @@ input {
             
             {% for review in reviews|sort(attribute='time_created', reverse = True) %}
                 <section id="user-review-{{ review.cafe.cafe_id}}">
-                <b><a href="/cafe/{{ review.cafe.cafe_id }}">{{ review.cafe.name }}</a>:</b><br>
-                {{ review.rating }} Stars, {{ review.time_created.strftime("%m/%d/%y") }}<br>
-                "{{ review.review }}"
-                {% if user.user_id == session['user_id'] %}
-        
-                  
-                    <!-- <section id="edit-review">
-        
-                      
-                        <button id="edit-btn-{{ review.review_id }}" class="edit-btn"><i class="fa-solid fa-pen-to-square"></i></button>
-        
-                      
-                        <form action="/profile/{{ review.review_id }}/editreview" id="edit-review-{{ review.review_id }}" class="edit-form" method="POST">
-                            <label for="edit-form">Edit Your Review:</label><br>
-                            
-                          
-                            <div class="star-container" id="edit-star">
-                                <div class="star-widget">
-    
-                                {% for n in range(1,6)|reverse %}
-                                {% if n == review.rating %}
-                                <input type="radio" name="edit-rating" id="edit-rate-{{ n }}" value="{{ n }}" checked />
-                                <label for="edit-rate-{{ n }}" class="fa-solid fa-star"></label>
-                                {% else %}
-                                <input type="radio" name="edit-rating" id="edit-rate-{{ n }}" value="{{ n }}" required="">
-                                <label for="edit-rate-{{ n }}" class="fa-solid fa-star"></label>
-                                {% endif %}
-                                {% endfor %}
-                                </div>
-                            </div>
-
-        
-                            <textarea name="edit-review" id="edit-review" required="">{{ review.review }}</textarea><br>
-                            <button type="submit" class="submit-btn">Submit Edit</button>
+                    <b><a href="/cafe/{{ review.cafe.cafe_id }}">{{ review.cafe.name }}</a>:</b><br>
+                    {{ review.rating }} Stars, {{ review.time_created.strftime("%m/%d/%y") }}<br>
+                    "{{ review.review }}"
+                    {% if user.user_id == session['user_id'] %}
+            
+                        <section id="remove-review">
+                        <form id="{{ review.cafe.cafe_id }}" class="remove-review">
+                            <input type="hidden" id="remove-review-id-{{ review.cafe.cafe_id }}" value="{{ review.cafe.cafe_id }}">
+                            <button type="submit" class="action-btn"><i class="fa-solid fa-trash-can"></i></button>
                         </form>
-                    </section> -->
-                   
+                        </section>
                     
-                    <section id="remove-review">
-                    <form id="{{ review.cafe.cafe_id }}" class="remove-review">
-                        <input type="hidden" id="remove-review-id-{{ review.cafe.cafe_id }}" value="{{ review.cafe.cafe_id }}">
-                        <button type="submit" class="action-btn"><i class="fa-solid fa-trash-can"></i></button>
-                    </form>
-                    </section>
-                
-                {% endif %}
+                    {% endif %}
                 </section>
                 <span id="remove-review-status"></span>
                 <br>

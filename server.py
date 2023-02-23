@@ -167,29 +167,6 @@ def remove_recommendation(recommendation_id):
     return "You have successfully removed the recommendation from your page."
 
 
-# @app.route("/profile/<review_id>/editreview", methods=["POST"])
-# def edit_cafe_review_profile(review_id):
-#     """Edit a user's review from profile page."""
-
-#     try:
-#         new_rating = request.form.get("edit-rating")
-#         new_review = request.form.get("edit-review")
-#         old_review = crud.get_review_by_id(review_id)
-#         old_review.review = new_review
-#         old_review.rating= int(new_rating)
-#         old_review.time_updated = datetime.now()
-#         db.session.add(old_review)
-#         db.session.commit()
-#         flash("You have successfully edited your review.")
-
-#     except Exception as e:
-#         flash("Sorry, we couldn't update your review.")
-#         print(e)
-
-#     user_id = session["user_id"]
-#     return redirect(f"/profile/{user_id}")
-
-
 @app.route("/profile/<cafe_id>/removereview", methods=["POST"])
 def remove_review(cafe_id):
     """Remove a user's review through profile page."""
