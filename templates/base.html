@@ -13,8 +13,9 @@
 
       <!-- Bootstrap Header -->
       <nav class="navbar">
-        <a href="/" class="nav-link" id="nav-logo">Coffee Note</a>
-
+        <a href="/" class="nav-link" id="nav-logo">
+          <img class="logo" src="/static/img/coffeenotes-logo.svg">Coffee Notes
+          </a>
           <ul class="nav justify-content-end">
             {% if not 'user_id' in session.keys() %}
               <li class="nav-item"><a class="nav-link" href="/login">Log In</a></li>

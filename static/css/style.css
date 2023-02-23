@@ -22,7 +22,23 @@ p {
 }
 
 #nav-logo {
-  font-family:  "Gloock", sans-serif;
+  font-family: "Gloock", sans-serif;
+  font-style: normal;
+}
+
+.logo {
+  width: 30px;
+  height: 30px;
+  transform: translateY(-6px);
+  padding: 1px;
+  margin: 5px;
+  filter: invert(32%) sepia(5%) saturate(3562%) hue-rotate(332deg) brightness(92%) contrast(90%);
+}
+
+.logo:hover {
+  filter: invert(96%) sepia(29%) saturate(6992%) hue-rotate(303deg) brightness(91%) contrast(88%);
+  background-color: transparent;
+  transition: 0.2s;
 }
 
 .nav-link {
