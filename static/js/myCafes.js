@@ -32,6 +32,7 @@ if (removeBookmarkButtons) {
     };
 };
 
+
 // Edit Notes on My Cafes Page
 const editButtons = document.querySelectorAll('.edit-btn');
 
@@ -55,10 +56,8 @@ if (editButtons) {
 
                 if (form.hidden === true) {
                     form.hidden = false;
-                    // editButton.innerHTML = "Close Edit Note";
                 } else if (form.hidden === false) {
                         form.hidden = true;
-                        // editButton.innerHTML = "Edit Note";
                 }
         });
     }

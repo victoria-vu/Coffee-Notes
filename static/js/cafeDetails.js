@@ -57,6 +57,7 @@ myCafeSubmitButton.addEventListener('submit', (evt) => {
     }}
 );
 
+
 // Remove Review from Cafe Details Page
 const deleteReviewButton = document.querySelector('#delete-review');
 
@@ -86,6 +87,7 @@ if (deleteReviewButton) {
         });
     });
 };
+
 
 // Google Maps API
 function initMap() {
@@ -242,6 +244,7 @@ function initMap() {
 
 };  
 
+
 // Edit Review on Details Page
 const editButton = document.querySelector('#edit-btn');
 
@@ -256,10 +259,8 @@ if (editButton) {
         
         if (form.hidden === true) {
             form.hidden = false;
-            // editButton.innerHTML = "Close Edit Review";
         } else if (form.hidden === false) {
                 form.hidden = true;
-                // editButton.innerHTML = "Edit Review";
         }
     });
 }

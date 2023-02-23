@@ -53,6 +53,7 @@ if (removeRecommendationButton) {
     });
 };
 
+
 // Remove Review from Profile Page
 const removeReviewButtons = document.querySelectorAll('.remove-review');
 
