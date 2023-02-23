@@ -114,13 +114,11 @@ section {
                             </section>
 
                             <hr>
-
                             
                             <section id="notes">
                                 <h5>My Notes:</h5>
                                 {% for note in bookmark.note|sort(attribute='time_created') %}
                                     <p id="note-{{ note.note_id }}" class="note-spacing">{{ note.note }}</p>
-                
 
                                     <div class="row">
                                         <div class="col-1 note-btn">
@@ -128,7 +126,6 @@ section {
                                                 <button id="edit-btn-{{ note.note_id}}" class="edit-btn" ><i class="fa-solid fa-pen-to-square"></i></button>
                                             </section>
                                         </div>
-                                        
                     
                                         <div class="col-1 note-btn">
                                             <section id="remove-notes-{{ note.note_id }}">
@@ -144,7 +141,6 @@ section {
                                             <textarea name="edit-note" id="edit-note" required="">{{ note.note }}</textarea><br>
                                             <button type="submit" class="submit-btn">Save Changes</button>
                                         </form>
-
                                     </div>
 
                                     <br>
@@ -158,6 +154,7 @@ section {
                                     <button type="submit" id="add-note-button" class="submit-btn">Add Note</button>
                                 </form>
                             </section>
+                            
                         </div>
                     </div>
                 </div>
