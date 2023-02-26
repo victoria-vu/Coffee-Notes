@@ -88,7 +88,9 @@ if (removeNoteButtons) {
             .then((noteStatus) => {
                 document.querySelector(`#note-${formInput.note_id}`).remove()
                 document.querySelector(`#edit-notes-${formInput.note_id}`).remove()
+                document.querySelector(`#edit-note-${formInput.note_id}`).remove()
                 document.querySelector(`#remove-notes-${formInput.note_id}`).remove()
+
             });
         });
     };
