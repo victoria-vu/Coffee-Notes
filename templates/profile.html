@@ -89,6 +89,7 @@ input {
         
             <section id="edit-user-info">
                 <center><button id="edit-info-btn" class="submit-btn">Edit Profile</button></center>
+                
                 <form action="/profile/{{ user.user_id }}/editinformation" id="edit-info" method="POST">
                     <span class="details">First Name*:</span><br>
                     <input type="text" name="fname" value="{{ user.fname }}" required=""><br>
@@ -100,7 +101,6 @@ input {
                         {% else %}
                             <textarea name="about-me"></textarea><br>
                         {% endif %}
-
                     <span class="details">Email*:</span><br>
                     <input type="text" name="email" value="{{ user.email }}" required=""><br>
                     <span class="details">Password:</span><br>
@@ -138,13 +138,14 @@ input {
 
     <div class="row">
         <h3>My Favorite Coffee Spot:</h3>
+
         <section id="add-user-recommendation">
+
             {% if recommendation %}
                 <section id="display-recc">
                     <br>
                     <h4><a href="/cafe/{{ recommendation.cafe.cafe_id }}"><u>{{ recommendation.cafe.name}}</u></a></h4>
                     {% if user.user_id == session['user_id'] %}
-
                     <br>
                     <form id="remove-recc">
                         <input type="hidden" id="remove-recc-id" value="{{ recommendation.recommendation_id }}">
@@ -152,8 +153,10 @@ input {
                     </form>
                     {% endif %}
                 </section>
+                
             {% endif %}
             <span id="remove-recc-status"></span>
+
         </section>
     </div>
 

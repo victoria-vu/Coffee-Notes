@@ -165,7 +165,8 @@ textarea {
         <section id="customer-reviews">
             <h1 class="title">User Reviews</h1>
             {% for review in reviews %}
-                <section id="customer-review">
+
+                <section id="customer-review-{{ review.review_id }}">
                     <h4><b><a href="/profile/{{ review.user.user_id }}">{{ review.user.fname }} {{ review.user.lname }}</a>:</b></h4>
                     {{ review.rating }} Stars, {{ review.time_created.strftime("%m/%d/%y") }}</br>
                     {{ review.review }}<br>
@@ -180,6 +181,7 @@ textarea {
                         <div class="col-1 note-btn">
                             <form id="delete-review">
                                 <input type="hidden" id="cafe-id" value="{{ cafe.cafe_id }}">
+                                <input type="hidden" id="review-id" value="{{ review.review_id }}">
                                 <button type="submit" class="action-btn"><i class="fa-solid fa-trash-can"></i></button>
                             </form>
                         </div>
@@ -208,6 +210,7 @@ textarea {
                     </form>
             
                 </section>
+
                 <span id="remove-review-status"></span>
                     {% endif %}
             <hr>

@@ -66,7 +66,8 @@ if (deleteReviewButton) {
         evt.preventDefault();
 
         const formInput = {
-            cafe_id: document.querySelector('#cafe-id').value
+            cafe_id: document.querySelector('#cafe-id').value,
+            review_id: document.querySelector('#review-id').value
         };
 
         fetch(`/cafe/${formInput.cafe_id}/removereview`, {
@@ -79,7 +80,7 @@ if (deleteReviewButton) {
 
         .then((response) => response.text())
         .then((reviewStatus) => {
-            document.querySelector('#customer-review').remove()
+            document.querySelector(`#customer-review-${formInput.review_id}`).remove()
             document.querySelector('#remove-review-status').innerHTML = reviewStatus;
             setTimeout(function() {
                 window.location.reload();
