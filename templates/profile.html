@@ -63,6 +63,16 @@ input {
     margin-top: 4%;
 }
 
+#edit-row{
+    margin: 6px;
+    width: 400px;
+    margin-left: -12px;
+}
+
+.edit-form {
+    text-align: center;
+}
+
 </style>
 
 {% endblock %}
@@ -76,6 +86,7 @@ input {
         <h1>{{ user.fname }} {{ user.lname }}</h1> 
     <div class="row">
         {% if user.user_id == session['user_id'] %}
+        
             <section id="edit-user-info">
                 <center><button id="edit-info-btn" class="submit-btn">Edit Profile</button></center>
                 <form action="/profile/{{ user.user_id }}/editinformation" id="edit-info" method="POST">
@@ -158,16 +169,46 @@ input {
                     {{ review.rating }} Stars, {{ review.time_created.strftime("%m/%d/%y") }}<br>
                     "{{ review.review }}"
                     {% if user.user_id == session['user_id'] %}
-            
-                        <section id="remove-review">
-                        <form id="{{ review.cafe.cafe_id }}" class="remove-review">
-                            <input type="hidden" id="remove-review-id-{{ review.cafe.cafe_id }}" value="{{ review.cafe.cafe_id }}">
-                            <button type="submit" class="action-btn"><i class="fa-solid fa-trash-can"></i></button>
-                        </form>
+
+                    <div class="row" id="edit-row">
+                        <div class="col-1 note-btn">
+                            <button id="edit-btn-{{ review.review_id }}" class="edit-btn"><i class="fa-solid fa-pen-to-square"></i></button>
+                        </div>
+
+                        <div class="col-1 note-btn">
+                            <section id="remove-review">
+                                <form id="{{ review.cafe.cafe_id }}" class="remove-review">
+                                    <input type="hidden" id="remove-review-id-{{ review.cafe.cafe_id }}" value="{{ review.cafe.cafe_id }}">
+                                    <button type="submit" class="action-btn"><i class="fa-solid fa-trash-can"></i></button>
+                                </form>
+                                </section>
+                        </div>
+                    </div>
+
+                        <section id="edit-review">
+                            <form action="/profile/{{ review.review_id }}/editreview" id="edit-review-{{ review.review_id }}" class="edit-form" method="POST">
+                                <label for="edit-form">Edit Your Review:</label><br>
+                                <div class="star-container" id="edit-star">
+                                    <div class="star-widget">
+                                    {% for n in range(1,6)|reverse %}
+                                        {% if n == review.rating %}
+                                        <input type="radio" name="edit-rating" id="edit-rate-{{ n }}-{{ review.review_id }}" value="{{ n }}" checked />
+                                        <label for="edit-rate-{{ n }}-{{ review.review_id }}" class="fa-solid fa-star"></label>
+                                        {% else %}
+                                        <input type="radio" name="edit-rating" id="edit-rate-{{ n }}-{{ review.review_id }}" value="{{ n }}" required="">
+                                        <label for="edit-rate-{{ n }}-{{ review.review_id }}" class="fa-solid fa-star"></label>
+                                        {% endif %}
+                                    {% endfor %}
+                                    </div>
+                                </div>
+                                <textarea name="edit-review" id="edit-review" required="">{{ review.review }}</textarea><br>
+                                <button type="submit" class="submit-btn">Submit Edit</button>
+                            </form>
                         </section>
-                    
+
                     {% endif %}
                 </section>
+                <br>
                 <span id="remove-review-status"></span>
                 <br>
 
