@@ -1,4 +1,4 @@
-# Coffee Notes
+# Coffee Notes ☕️
 
 Coffee Notes is a full-stack web development application designed for users to discover coffee shops and make notes on places they have already visited. Integration of the Yelp Fusion API allows users to search for coffee shops by name or keyword and location. When a user clicks on a coffee shop for more details, they are redirected to the coffee shop details page which displays information about the coffee shop and allows users to bookmark, review, and view the location with Google Maps API. User reviews are displayed on their profile page so they can keep track of coffee shops they have already reviewed. Users can also visit their bookmark pages and make notes on coffee shops they have previously visited or would like to visit in the future. 
 
