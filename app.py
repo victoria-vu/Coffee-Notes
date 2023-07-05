@@ -77,6 +77,17 @@ def login_user():
     return redirect("/login")
 
 
+@app.route("/logout")
+def logout_user():
+    """Log a user out of the session."""
+
+    if "user_id" in session:
+        session.clear()
+        flash("You have signed out.")
+
+    return redirect("/")
+
+
 if __name__ == "__main__":
     connect_to_db(app)
     app.run(debug=True, host="0.0.0.0")
