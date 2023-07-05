@@ -10,6 +10,22 @@
     {% block head %}{% endblock %}
 </head>
 <body>
+    <nav>
+        <ul>
+            <a href="/"><li>Home</li></a>
+            {% if not 'user_id' in session.keys() %}
+                <a href="/login"><li>Log In</li></a>
+                <a href="/signup"><li>Sign Up</li></a>
+            {% endif %}
+
+            {% if 'user_id' in session.keys() %}
+                <li>Profile</li>
+                <li>Bookmarks</li>
+                <a href="/logout"><li>Sign Out</li></a>
+            {% endif %}
+        </ul>
+    </nav>
+
     {% for msg in get_flashed_messages() %}
         <p class="flash-msg">
             {{ msg }}
