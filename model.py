@@ -49,10 +49,11 @@ class Bookmark(db.Model):
     """A cafe bookmark."""
 
     __tablename__ = "bookmarks"
+    __table_args__ = (db.UniqueConstraint("user_id", "cafe_id"),)
 
     bookmark_id = db.Column(db.Integer, primary_key=True, autoincrement=True)
-    user_id = db.Column(db.Integer, db.ForeignKey("users.user_id"))
-    cafe_id = db.Column(db.Integer, db.ForeignKey("cafes.cafe_id"))
+    user_id = db.Column(db.Integer, db.ForeignKey("users.user_id"), nullable=False)
+    cafe_id = db.Column(db.Integer, db.ForeignKey("cafes.cafe_id"), nullable=False)
 
     user = db.relationship("User", back_populates="bookmarks")
     cafe = db.relationship("Cafe", back_populates="bookmarks")
@@ -65,14 +66,15 @@ class Bookmark(db.Model):
     
 
 class Note(db.Model):
-    """A note for a bookmarked cafe."""
+    """A note for a bookmarked cafe by a user."""
 
     __tablename__ = "notes"
+    __table_args__ = (db.UniqueConstraint("user_id", "bookmark_id"),)
 
     note_id = db.Column(db.Integer, primary_key=True, autoincrement=True)
-    note = db.Column(db.Text, nullable=True)
-    user_id = db.Column(db.Integer, db.ForeignKey("users.user_id"))
-    bookmark_id = db.Column(db.Integer, db.ForeignKey("bookmarks.bookmark_id"))
+    user_id = db.Column(db.Integer, db.ForeignKey("users.user_id"), nullable=False)
+    bookmark_id = db.Column(db.Integer, db.ForeignKey("bookmarks.bookmark_id"), nullable=False)
+    note = db.Column(db.Text, nullable=False)
 
     user = db.relationship("User", back_populates="notes")
     bookmark = db.relationship("Bookmark", back_populates="note")
