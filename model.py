@@ -46,7 +46,7 @@ class Cafe(db.Model):
     
 
 class Bookmark(db.Model):
-    """A cafe bookmark."""
+    """A bookmark for a cafe by a user."""
 
     __tablename__ = "bookmarks"
     __table_args__ = (db.UniqueConstraint("user_id", "cafe_id"),)
