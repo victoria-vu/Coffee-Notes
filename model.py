@@ -96,5 +96,4 @@ def connect_to_db(flask_app, db_uri="postgresql:///cafes_db", echo=True):
 
 if __name__ == "__main__":
     from app import app
-    app.app_context().push()
-    connect_to_db(app, echo=False)
+    connect_to_db(app)
