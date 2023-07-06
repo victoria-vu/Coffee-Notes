@@ -17,7 +17,7 @@ def homepage():
     """View homepage."""
 
     if "user_id" in session:
-        redirect("/dashboard")
+        return redirect("/dashboard")
 
     return render_template("homepage.html")
 
@@ -107,6 +107,15 @@ def profile_page(user_id):
     user = crud.get_user_by_id(user_id)
 
     return render_template("profile.html", user=user)
+
+
+@app.route("/cafe/<cafe_id>")
+def cafe_page(cafe_id):
+    """View details of a cafe."""
+
+    cafe = crud.get_cafe_by_id(cafe_id)
+
+    return render_template("cafe_details.html", cafe=cafe)
 
 
 if __name__ == "__main__":
