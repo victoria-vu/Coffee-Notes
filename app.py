@@ -16,6 +16,9 @@ app.jinja_env.undefined = StrictUndefined
 def homepage(): 
     """View homepage."""
 
+    if "user_id" in session:
+        redirect("/dashboard")
+
     return render_template("homepage.html")
 
 
@@ -73,7 +76,7 @@ def login_user():
             session["name"]= user.fname
             session["email"] = user.email
             flash("Logged in successfully.")
-            return redirect("/")
+            return redirect("/dashboard")
     return redirect("/login")
 
 
@@ -86,6 +89,24 @@ def logout_user():
         flash("You have signed out.")
 
     return redirect("/")
+
+
+@app.route("/dashboard")
+def dashboard_page():
+    """View user dashboard."""
+
+    if "user_id" in session:
+        return render_template("dashboard.html", name=session["name"])
+    return redirect("/")
+
+
+@app.route("/profile/<user_id>")
+def profile_page(user_id):
+    """View user profile page."""
+
+    user = crud.get_user_by_id(user_id)
+
+    return render_template("profile.html", user=user)
 
 
 if __name__ == "__main__":
