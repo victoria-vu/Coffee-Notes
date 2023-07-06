@@ -1,0 +1,19 @@
+{% extends "base.html" %}
+
+{% block title %}{{ cafe.name }}{% endblock %}
+
+{% block body %}
+<img src="{{ cafe.img_url }}" alt="Image from {{ cafe.name }}">
+
+<h1>{{ cafe.name }}</h1>
+
+<h4>{{ cafe.name }} is a coffee shop located in {{ cafe.city }}, {{ cafe.state }}.</h4>
+
+<h4>Address:</h4>
+<p>{{ cafe.address }}</p>
+<h4>Phone:</h4>
+<p>{{ cafe.phone }}</p>
+
+<button>Add to Bookmarks</button>
+
+{% endblock %}
