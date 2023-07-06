@@ -14,10 +14,10 @@ def create_user(email, password, fname, lname):
     return user
 
 
-def create_cafe(name, address, phone, latitude, longitude, img_url):
+def create_cafe(name, address, city, state, phone, latitude, longitude, img_url):
     """Create and return a cafe."""
 
-    cafe = Cafe(name=name, address=address, phone=phone, latitude=latitude, longitude=longitude, img_url=img_url)
+    cafe = Cafe(name=name, address=address, city=city , state=state, phone=phone, latitude=latitude, longitude=longitude, img_url=img_url)
 
     return cafe
 
@@ -56,7 +56,7 @@ def get_user_by_email(email):
 def get_cafe_by_id(cafe_id):
     """Return a cafe by cafe id."""
 
-    pass
+    return Cafe.query.get(cafe_id)
 
 
 def get_all_user_bookmarks(user_id):
