@@ -4,4 +4,12 @@
 
 {% block body %}
 <h1>Welcome Back to Coffee Notes, {{ name }}!</h1>
+<h4>Search for a coffee shop.</h4>
+<form action="/cafe/search">
+    <label for="term">Enter cafe name or keyword:</label>
+    <input type="text" name="term" id="term">
+    <label for="location">Enter a location:</label>
+    <input type="text" name="location" id="location" required="">
+    <button type="submit">Search for Cafe</button>
+</form>
 {% endblock %}
