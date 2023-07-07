@@ -132,7 +132,7 @@ def search_cafes():
     }
     headers = {
         "accept": "application/json",
-        "Authorization": "Bearer cuThBfR9LHe-8lxqSHEY2upIs_Xo6wrk2N_-JYLWnTFKQUhYUGb6mTicSXSD64J20jSNWumHKNMCkn8XPhnLJ7ejilvjwAULrCN486fe_sxlfI4TLNkkEXFgpB_XY3Yx"
+        "Authorization": API_KEY
     }
 
     res = requests.get(url, params=payload, headers=headers)
@@ -147,11 +147,37 @@ def search_cafes():
         return redirect("/dashboard")
 
 
-@app.route("/cafe/<cafe_id>")
-def cafe_page(cafe_id):
+@app.route("/cafe/<id>")
+def cafe_page(id):
     """View details of a cafe."""
 
-    cafe = crud.get_cafe_by_id(cafe_id)
+    url = f"https://api.yelp.com/v3/businesses/{id}"
+    headers = {
+        "accept": "application/json",
+        "Authorization": API_KEY
+    }
+
+    res = requests.get(url, headers=headers)
+    data = res.json()
+
+    cafe_in_db = crud.get_cafe_by_id(id)
+
+    if not cafe_in_db:
+        new_cafe = crud.create_cafe(id,
+                    data["name"], 
+                    data["location"]["address1"] + ", " + data["location"]["city"] + "," + data["location"]["state"] + " " + data["location"]["zip_code"],
+                    data["location"]["city"],
+                    data["location"]["state"],
+                    data["display_phone"], 
+                    data["coordinates"]["latitude"], 
+                    data["coordinates"]["longitude"], 
+                    data["image_url"]
+                    )
+        
+        db.session.add(new_cafe)
+        db.session.commit()
+
+    cafe = crud.get_cafe_by_id(id)
 
     return render_template("cafe_details.html", cafe=cafe)
 
