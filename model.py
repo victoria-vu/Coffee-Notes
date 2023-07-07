@@ -29,7 +29,7 @@ class Cafe(db.Model):
 
     __tablename__ = "cafes"
 
-    cafe_id = db.Column(db.Integer, primary_key=True, autoincrement=True)
+    cafe_id = db.Column(db.String, primary_key=True)
     name = db.Column(db.String, nullable=False)
     address = db.Column(db.String, nullable=False)
     city = db.Column(db.String, nullable=False)
@@ -55,7 +55,7 @@ class Bookmark(db.Model):
 
     bookmark_id = db.Column(db.Integer, primary_key=True, autoincrement=True)
     user_id = db.Column(db.Integer, db.ForeignKey("users.user_id"), nullable=False)
-    cafe_id = db.Column(db.Integer, db.ForeignKey("cafes.cafe_id"), nullable=False)
+    cafe_id = db.Column(db.String, db.ForeignKey("cafes.cafe_id"), nullable=False)
 
     user = db.relationship("User", back_populates="bookmarks")
     cafe = db.relationship("Cafe", back_populates="bookmarks")
