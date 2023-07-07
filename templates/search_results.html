@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+
+{% block title %}Cafe Search Results{% endblock %}
+
+{% block body %}
+{% if term %}
+    Your search for "{{ term }}" has {{ total }} matches.  
+{% else %}
+    Your search has {{ total }} matches.
+{% endif %}
+
+{% for cafe in results %}
+    <h2>{{ cafe["name"] }}</h2>
+    <p>{{ cafe["location"]["display_address"][0] }}</p>
+{% endfor %}
+{% endblock %}
