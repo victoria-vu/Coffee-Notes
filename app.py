@@ -132,7 +132,7 @@ def search_cafes():
     }
     headers = {
         "accept": "application/json",
-        "Authorization": "Bearer cuThBfR9LHe-8lxqSHEY2upIs_Xo6wrk2N_-JYLWnTFKQUhYUGb6mTicSXSD64J20jSNWumHKNMCkn8XPhnLJ7ejilvjwAULrCN486fe_sxlfI4TLNkkEXFgpB_XY3Yx"
+        "Authorization": API_KEY
     }
 
     res = requests.get(url, params=payload, headers=headers)
