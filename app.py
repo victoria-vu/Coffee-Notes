@@ -114,7 +114,7 @@ def profile_page(user_id):
     return render_template("profile.html", user=user)
 
 
-### ROUTES FOR CAFE DETAILS ###
+### ROUTES FOR CAFE SEARCH/DETAILS ###
 @app.route("/cafe/search")
 def search_cafes():
     """Search for cafes via Yelp API."""

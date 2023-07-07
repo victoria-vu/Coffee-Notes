@@ -10,7 +10,7 @@
 {% endif %}
 
 {% for cafe in results %}
-    <a href="/cafe/{{ cafe['id'] }}"><h2>{{ cafe['name'] }}</h2></a>
-    <p>{{ cafe['location']['display_address'][0] }}</p>
+    <h2><a href="/cafe/{{ cafe['id'] }}">{{ cafe['name'] }}</a></h2>
+    <p>{{ cafe['location']['address1'] }},  {{ cafe['location']['city'] }}, {{ cafe['location']['state'] }}  {{ cafe['location']['zip_code'] }}</p>
 {% endfor %}
 {% endblock %}
