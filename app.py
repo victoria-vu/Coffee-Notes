@@ -4,14 +4,18 @@ from flask import (Flask, render_template, request, flash, session, redirect)
 from jinja2 import StrictUndefined
 from model import connect_to_db, db
 import crud
+import requests
+import os
 
 
 app = Flask(__name__)
 app.app_context().push()
 app.secret_key = "dev"
 app.jinja_env.undefined = StrictUndefined
+API_KEY = os.environ["YELP_KEY"]
 
 
+### ROUTES FOR HOMEPAGE AND LOGIN ###
 @app.route("/")
 def homepage(): 
     """View homepage."""
@@ -91,9 +95,10 @@ def logout_user():
     return redirect("/")
 
 
+### ROUTES FOR USER DASHBOARD AND PROFILE ###
 @app.route("/dashboard")
 def dashboard_page():
-    """View user dashboard."""
+    """View user dashboard and search form."""
 
     if "user_id" in session:
         return render_template("dashboard.html", name=session["name"])
@@ -107,6 +112,39 @@ def profile_page(user_id):
     user = crud.get_user_by_id(user_id)
 
     return render_template("profile.html", user=user)
+
+
+### ROUTES FOR CAFE DETAILS ###
+@app.route("/cafe/search")
+def search_cafes():
+    """Search for cafes via Yelp API."""
+
+    term = request.args.get("term", "coffee shop")
+    location = request.args.get("location")
+
+    url = "https://api.yelp.com/v3/businesses/search"
+    payload = {
+        "term": term,
+        "location": location,
+        "radius": 40000,
+        "categories": "coffee",
+        "limit": 50
+    }
+    headers = {
+        "accept": "application/json",
+        "Authorization": "Bearer cuThBfR9LHe-8lxqSHEY2upIs_Xo6wrk2N_-JYLWnTFKQUhYUGb6mTicSXSD64J20jSNWumHKNMCkn8XPhnLJ7ejilvjwAULrCN486fe_sxlfI4TLNkkEXFgpB_XY3Yx"
+    }
+
+    res = requests.get(url, params=payload, headers=headers)
+    data = res.json()
+
+    if "businesses" in data:
+        cafes = data["businesses"]
+        total = len(data["businesses"])
+        return render_template("search_results.html", term=term, total=total, results=cafes)
+    else:
+        flash("Sorry, but nothing matched your search criteria. Please try again.")
+        return redirect("/dashboard")
 
 
 @app.route("/cafe/<cafe_id>")
