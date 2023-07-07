@@ -14,10 +14,10 @@ def create_user(email, password, fname, lname):
     return user
 
 
-def create_cafe(name, address, city, state, phone, latitude, longitude, img_url):
+def create_cafe(id, name, address, city, state, phone, latitude, longitude, img_url):
     """Create and return a cafe."""
 
-    cafe = Cafe(name=name, address=address, city=city , state=state, phone=phone, latitude=latitude, longitude=longitude, img_url=img_url)
+    cafe = Cafe(cafe_id=id, name=name, address=address, city=city , state=state, phone=phone, latitude=latitude, longitude=longitude, img_url=img_url)
 
     return cafe
 
@@ -25,7 +25,7 @@ def create_cafe(name, address, city, state, phone, latitude, longitude, img_url)
 def create_bookmark(user, cafe): 
     """Create and return a bookmark."""
 
-    bookmark = Bookmark(user=user, cafe=cafe)
+    bookmark = Bookmark(user_id=user, cafe_id=cafe)
 
     return bookmark
 
@@ -33,7 +33,7 @@ def create_bookmark(user, cafe):
 def create_note(user, bookmark, note):
     """Create and return a note for a bookmark."""
 
-    note = Note(user=user, bookmark=bookmark, note=note)
+    note = Note(user_id=user, bookmark_id=bookmark, note=note)
 
     return note
 
