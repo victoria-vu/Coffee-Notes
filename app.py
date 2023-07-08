@@ -182,6 +182,21 @@ def cafe_page(id):
     return render_template("cafe_details.html", cafe=cafe)
 
 
+@app.route("/bookmark", methods=["POST"])
+def add_bookmark():
+    """Create a bookmark."""
+
+    user_id = session["user_id"]
+    cafe_id = request.form.get("cafe-id")
+
+    bookmark = crud.create_bookmark(user_id, cafe_id)
+    db.session.add(bookmark)
+    db.session.commit()
+
+    flash("You have successfully added the cafe to My Bookmarks.")
+    return redirect(f"/cafe/{cafe_id}")
+
+
 if __name__ == "__main__":
     connect_to_db(app)
     app.run(debug=True, host="0.0.0.0")
