@@ -182,6 +182,7 @@ def cafe_page(id):
     return render_template("cafe_details.html", cafe=cafe)
 
 
+### ROUTES FOR BOOKMARKS ###
 @app.route("/bookmark", methods=["POST"])
 def add_bookmark():
     """Create a bookmark."""
@@ -195,6 +196,17 @@ def add_bookmark():
 
     flash("You have successfully added the cafe to My Bookmarks.")
     return redirect(f"/cafe/{cafe_id}")
+
+
+@app.route("/mybookmarks")
+def bookmarks_page():
+    """View all user bookmarks."""
+
+    user_id = session["user_id"]
+    user = crud.get_user_by_id(user_id)
+    bookmarks = crud.get_all_user_bookmarks(user_id)
+
+    return render_template("bookmarks.html", user=user, bookmarks=bookmarks)
 
 
 if __name__ == "__main__":
