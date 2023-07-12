@@ -60,9 +60,9 @@ def get_cafe_by_id(cafe_id):
 
 
 def get_all_user_bookmarks(user_id):
-    """Returns all bookmarks for a user."""
+    """Returns all bookmarks for a user by user id."""
 
-    pass
+    return Bookmark.query.filter(Bookmark.user_id == user_id).all()
 
 
 def get_note_by_bookmark_id(bookmark_id):
