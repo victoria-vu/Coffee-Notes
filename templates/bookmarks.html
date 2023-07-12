@@ -1,0 +1,11 @@
+{% extends "base.html" %}
+
+{% block title %}{{ user.fname }}'s Bookmarks{% endblock %}
+
+{% block body %}
+{% for bookmark in bookmarks %}
+    <a href="/cafe/{{ bookmark.cafe_id }}"><h4>{{ bookmark.cafe.name }}</h4></a>
+    <p>{{ bookmark.cafe.city }}, {{ bookmark.cafe.state }}</p>
+    <p>Add Note</p>
+{% endfor %}
+{% endblock %}
