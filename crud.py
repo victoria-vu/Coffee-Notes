@@ -60,13 +60,19 @@ def get_cafe_by_id(cafe_id):
 
 
 def get_all_user_bookmarks(user_id):
-    """Returns all bookmarks for a user by user id."""
+    """Return all bookmarks for a user by user id."""
 
     return Bookmark.query.filter(Bookmark.user_id == user_id).all()
 
 
+def get_bookmark_by_user_and_cafe_id(user_id, cafe_id):
+    """Return a bookmark for a user by user and cafe id."""
+
+    return Bookmark.query.filter(Bookmark.user_id == user_id, Bookmark.cafe_id == cafe_id).first()
+
+
 def get_note_by_bookmark_id(bookmark_id):
-    """Returns a note by bookmark id."""
+    """Return a note by bookmark id."""
 
     pass
 
