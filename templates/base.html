@@ -21,7 +21,7 @@
             {% if 'user_id' in session.keys() %}
                 <a href="/dashboard"><li>Home</li></a>
                 <a href="/profile/{{ session['user_id'] }}"><li>Profile</li></a>
-                <li>My Bookmarks</li>
+                <a href="/mybookmarks"><li>My Bookmarks</li></a>
                 <a href="/logout"><li>Sign Out</li></a>
             {% endif %}
         </ul>
