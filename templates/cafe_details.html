@@ -14,10 +14,17 @@
 <h4>Phone:</h4>
 <p>{{ cafe.phone }}</p>
 
-<form action="/bookmark" method="POST">
-    <input type="hidden" name="cafe-id" value="{{ cafe.cafe_id }}">
-    <button type="submit">Add to Bookmarks</button>
-</form>
+{% if bookmarked %}
+    <form action="/removebookmark" method="POST">
+        <input type="hidden" name="cafe-id" value="{{ cafe.cafe_id }}">
+        <button type="submit">Remove From Bookmarks</button>
+    </form>
+{% else %}
+    <form action="/bookmark" method="POST">
+        <input type="hidden" name="cafe-id" value="{{ cafe.cafe_id }}">
+        <button type="submit">Add to Bookmarks</button>
+    </form>
+{% endif %}
 
 
 {% endblock %}
