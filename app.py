@@ -178,8 +178,10 @@ def cafe_page(id):
         db.session.commit()
 
     cafe = crud.get_cafe_by_id(id)
+    user_id = session["user_id"]
+    bookmarked = crud.get_bookmark_by_user_and_cafe_id(user_id, id)
 
-    return render_template("cafe_details.html", cafe=cafe)
+    return render_template("cafe_details.html", cafe=cafe, bookmarked=bookmarked)
 
 
 ### ROUTES FOR BOOKMARKS ###
@@ -195,6 +197,21 @@ def add_bookmark():
     db.session.commit()
 
     flash("You have successfully added the cafe to My Bookmarks.")
+    return redirect(f"/cafe/{cafe_id}")
+
+
+@app.route("/removebookmark", methods=["POST"])
+def remove_bookmark():
+    """Remove a bookmark."""
+
+    user_id = session["user_id"]
+    cafe_id = request.form.get("cafe-id")
+
+    bookmark = crud.get_bookmark_by_user_and_cafe_id(user_id, cafe_id)
+    db.session.delete(bookmark)
+    db.session.commit()
+
+    flash("You have successfully removed the cafe from My Bookmarks.")
     return redirect(f"/cafe/{cafe_id}")
 
 
