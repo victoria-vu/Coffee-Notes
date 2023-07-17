@@ -226,6 +226,20 @@ def bookmarks_page():
     return render_template("bookmarks.html", user=user, bookmarks=bookmarks)
 
 
+### ROUTES FOR NOTES ###
+@app.route("/addnote", methods=["POST"])
+def add_note():
+    """Create a note for a bookmark."""
+
+    user_id = session["user_id"]
+    bookmark_id = request.form.get("#")
+    note = request.form.get("#")
+
+    new_note = crud.create_note(user_id, bookmark_id, note)
+    db.session.add(new_note)
+    db.session.commit()
+
+
 if __name__ == "__main__":
     connect_to_db(app)
     app.run(debug=True, host="0.0.0.0")

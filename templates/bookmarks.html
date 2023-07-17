@@ -4,8 +4,20 @@
 
 {% block body %}
 {% for bookmark in bookmarks %}
-    <a href="/cafe/{{ bookmark.cafe_id }}"><h4>{{ bookmark.cafe.name }}</h4></a>
+    <h4><a href="/cafe/{{ bookmark.cafe_id }}">{{ bookmark.cafe.name }}</a></h4>
     <p>{{ bookmark.cafe.city }}, {{ bookmark.cafe.state }}</p>
-    <p>Add Note</p>
+
+    <button class="show-textbox" id="show-{{ bookmark.bookmark_id }}">Add Note</button>
+    <form action="#" class="notes-textbox" id="notes-{{ bookmark.bookmark_id }}" methods="POST">
+        {% if bookmark.note %}
+        <textarea>{{ bookmark.note.note }}</textarea><br>
+        {% else %}
+        <textarea></textarea><br>
+        {% endif %}
+        <button type="submit">Update Note</button>
+        <button class="close-textbox" id="close-{{ bookmark.bookmark_id }}">Cancel</button>
+    </form>
 {% endfor %}
+
+<script src="/static/js/bookmarks.js"></script>
 {% endblock %}
