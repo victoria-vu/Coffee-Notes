@@ -1,6 +1,7 @@
 """CRUD Operations: Functions to create, retrieve, update, or delete data from the database."""
 
 from model import db, User, Cafe, Bookmark, Note, connect_to_db
+from flask import flash
 
 
 ### FUNCTIONS TO CREATE ####
@@ -59,6 +60,14 @@ def get_cafe_by_id(cafe_id):
     return Cafe.query.get(cafe_id)
 
 
+def get_cafe_by_bookmark_id(bookmark_id):
+    """Return a cafe by bookmark id."""
+
+    bookmark = Bookmark.query.filter(Bookmark.bookmark_id == bookmark_id).first()
+
+    return bookmark.cafe
+
+
 def get_all_user_bookmarks(user_id):
     """Return all bookmarks for a user by user id."""
 
@@ -75,6 +84,31 @@ def get_note_by_bookmark_id(bookmark_id):
     """Return a note by bookmark id."""
 
     return Note.query.filter(Note.bookmark_id == bookmark_id).first()
+
+
+### FUNCTIONS TO UPDATE ###
+
+
+def update_note(existing_note, new_note):
+    """Update an existing note."""
+
+    try:
+        existing_note.note = new_note
+        db.session.add(existing_note)
+        db.session.commit()
+    except Exception as e:
+        flash("Sorry, we couldn't update your note.")
+        print(e)
+
+
+### FUNCTIONS TO DELETE ###
+
+
+def delete_note(existing_note):
+    """Delete an existing note."""
+
+    db.session.delete(existing_note)
+    db.session.commit()
 
 
 if __name__ == "__main__":
