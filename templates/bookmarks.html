@@ -7,16 +7,32 @@
     <h4><a href="/cafe/{{ bookmark.cafe_id }}">{{ bookmark.cafe.name }}</a></h4>
     <p>{{ bookmark.cafe.city }}, {{ bookmark.cafe.state }}</p>
 
-    <button class="show-textbox" id="show-{{ bookmark.bookmark_id }}">Add Note</button>
-    <form action="#" class="notes-textbox" id="notes-{{ bookmark.bookmark_id }}" methods="POST">
-        {% if bookmark.note %}
-        <textarea>{{ bookmark.note.note }}</textarea><br>
-        {% else %}
-        <textarea></textarea><br>
-        {% endif %}
-        <button type="submit">Update Note</button>
-        <button class="close-textbox" id="close-{{ bookmark.bookmark_id }}">Cancel</button>
+    <!-- Add Notes -->
+    {% if bookmark.note %}
+        {% for note in bookmark.note %}
+            <p>{{ note.note }}</p>
+            <button class="show-textbox" id="show-{{ bookmark.bookmark_id }}">Edit Note</button>
+            <form action="/note/{{ bookmark.bookmark_id }}" class="notes-textbox" id="notes-{{ bookmark.bookmark_id }}" method="POST">
+                <textarea name="cafe-note">{{ note.note }}</textarea><br>
+                <button type="submit">Update Note</button>
+                <button class="close-textbox" id="close-{{ bookmark.bookmark_id }}">Cancel</button>
+            </form>
+        {% endfor %}
+    {% else %}
+        <button class="show-textbox" id="show-{{ bookmark.bookmark_id }}">Add Note</button>
+        <form action="/note/{{ bookmark.bookmark_id }}" class="notes-textbox" id="notes-{{ bookmark.bookmark_id }}" method="POST">
+            <textarea name="cafe-note"></textarea><br>
+            <button type="submit">Update Note</button>
+            <button class="close-textbox" id="close-{{ bookmark.bookmark_id }}">Cancel</button>
+        </form>
+    {% endif %}
+
+    <!-- Remove Bookmark -->
+    <form action="/mybookmarks/removebookmark" method="POST">
+        <input type="hidden" name="cafe-id" value="{{ bookmark.cafe.cafe_id }}">
+        <button type="submit">Remove From Bookmarks</button>
     </form>
+
 {% endfor %}
 
 <script src="/static/js/bookmarks.js"></script>
