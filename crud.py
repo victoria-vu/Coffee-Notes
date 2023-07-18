@@ -74,7 +74,7 @@ def get_bookmark_by_user_and_cafe_id(user_id, cafe_id):
 def get_note_by_bookmark_id(bookmark_id):
     """Return a note by bookmark id."""
 
-    pass
+    return Note.query.filter(Note.bookmark_id == bookmark_id).first()
 
 
 if __name__ == "__main__":
