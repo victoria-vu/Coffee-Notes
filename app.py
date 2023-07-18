@@ -191,27 +191,29 @@ def add_bookmark():
 
     user_id = session["user_id"]
     cafe_id = request.form.get("cafe-id")
+    cafe = crud.get_cafe_by_id(cafe_id)
 
     bookmark = crud.create_bookmark(user_id, cafe_id)
     db.session.add(bookmark)
     db.session.commit()
 
-    flash("You have successfully added the cafe to My Bookmarks.")
+    flash(f"You have successfully added {cafe.name} to My Bookmarks.")
     return redirect(f"/cafe/{cafe_id}")
 
 
 @app.route("/removebookmark", methods=["POST"])
-def remove_bookmark():
-    """Remove a bookmark."""
+def remove_bookmark_in_cafe_details():
+    """Remove a bookmark in cafe details page."""
 
     user_id = session["user_id"]
     cafe_id = request.form.get("cafe-id")
+    cafe = crud.get_cafe_by_id(cafe_id)
 
     bookmark = crud.get_bookmark_by_user_and_cafe_id(user_id, cafe_id)
     db.session.delete(bookmark)
     db.session.commit()
 
-    flash("You have successfully removed the cafe from My Bookmarks.")
+    flash(f"You have successfully removed {cafe.name} from My Bookmarks.")
     return redirect(f"/cafe/{cafe_id}")
 
 
@@ -226,19 +228,56 @@ def bookmarks_page():
     return render_template("bookmarks.html", user=user, bookmarks=bookmarks)
 
 
-### ROUTES FOR NOTES ###
-@app.route("/addnote", methods=["POST"])
-def add_note():
-    """Create a note for a bookmark."""
+@app.route("/mybookmarks/removebookmark", methods=["POST"])
+def remove_bookmark_in_bookmarks():
+    """Remove a bookmark in bookmarks page."""
 
     user_id = session["user_id"]
-    bookmark_id = request.form.get("#")
-    note = request.form.get("#")
+    cafe_id = request.form.get("cafe-id")
+    cafe = crud.get_cafe_by_id(cafe_id)
 
-    new_note = crud.create_note(user_id, bookmark_id, note)
-    db.session.add(new_note)
+    bookmark = crud.get_bookmark_by_user_and_cafe_id(user_id, cafe_id)
+    db.session.delete(bookmark)
     db.session.commit()
 
+    flash(f"You have successfully removed {cafe.name} from My Bookmarks.")
+    return redirect("/mybookmarks")
+
+
+### ROUTES FOR NOTES ###
+@app.route("/note/<bookmark_id>", methods=["POST"])
+def add_note(bookmark_id):
+    """Create a note for a bookmark.
+
+    Three options for a note:
+    1. Create a new note.
+    2. Update a note.
+    3. Delete a note.
+
+    - To create a new note, we need to make sure a note does not exist already.
+    - If a note exists and the updated note is not empty, we can update the note.
+    - If a note exists and the updated note is empty, we can delete the note. 
+    """
+
+    existing_note = crud.get_note_by_bookmark_id(bookmark_id)
+    cafe = crud.get_cafe_by_bookmark_id(bookmark_id)
+    user_id = session["user_id"]
+    note = request.form.get("cafe-note")
+
+    if not existing_note:
+        new_note = crud.create_note(user_id, bookmark_id, note)
+        db.session.add(new_note)
+        db.session.commit()
+
+    elif existing_note and note != "":
+        crud.update_note(existing_note, note)
+
+    elif existing_note and note == "":
+        crud.delete_note(existing_note)
+
+    flash(f"You have successfully saved your note for {cafe.name}.")
+    return redirect("/mybookmarks")
+    
 
 if __name__ == "__main__":
     connect_to_db(app)
