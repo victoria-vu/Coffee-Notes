@@ -3,6 +3,12 @@
 {% block title %}{{ user.fname }} {{ user.lname }}{% endblock %}
 
 {% block body %}
+<img src="/static/img/profilepic.jpeg" height="100" width="100" alt="Profile picture" />
 <h1>{{ user.fname }} {{ user.lname }}</h1>
 <h3>{{ user.fname }}'s Bookmarks</h3>
+
+{% for bookmark in bookmarks %}
+    <p><a href="/cafe/{{ bookmark.cafe.cafe_id }}">{{ bookmark.cafe.name }}</a></p>
+{% endfor %}
+
 {% endblock %}
