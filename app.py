@@ -110,8 +110,9 @@ def profile_page(user_id):
     """View user profile page."""
 
     user = crud.get_user_by_id(user_id)
+    bookmarks = user.bookmarks
 
-    return render_template("profile.html", user=user)
+    return render_template("profile.html", user=user, bookmarks=bookmarks)
 
 
 ### ROUTES FOR CAFE SEARCH/DETAILS ###
@@ -165,7 +166,7 @@ def cafe_page(id):
     if not cafe_in_db:
         new_cafe = crud.create_cafe(id,
                     data["name"], 
-                    data["location"]["address1"] + ", " + data["location"]["city"] + "," + data["location"]["state"] + " " + data["location"]["zip_code"],
+                    data["location"]["address1"] + ", " + data["location"]["city"] + ", " + data["location"]["state"] + " " + data["location"]["zip_code"],
                     data["location"]["city"],
                     data["location"]["state"],
                     data["display_phone"], 
