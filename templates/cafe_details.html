@@ -2,6 +2,11 @@
 
 {% block title %}{{ cafe.name }}{% endblock %}
 
+{% block head %}
+    <link rel="stylesheet" href="/static/css/maps.css"/>
+
+{% endblock %}
+
 {% block body %}
 <img src="{{ cafe.img_url }}" alt="Image from {{ cafe.name }}">
 
@@ -26,5 +31,20 @@
     </form>
 {% endif %}
 
+<section class="map">
+    <h1>Location</h1>
+    <div id="map">
+        <input type="hidden" id="map-lat" name="map-lat" value="{{ cafe.latitude }}" />
+        <input type="hidden" id="map-lng" name="map-lng" value="{{ cafe.longitude }}" />
+    </div>
+</section>
+
+<p hidden id="cafe-name">{{ cafe.name }}</p>
+
+<script src="/static/js/cafeDetails.js"></script>
+<script
+    async
+    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC-Jh72sPHFvdtUJfmEI3MBbfmtYFt8mPw&callback=initMap">
+</script>
 
 {% endblock %}
