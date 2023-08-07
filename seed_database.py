@@ -20,7 +20,8 @@ with open("data/cafes.json") as f:
 # Create cafes and store them in a list
 cafes_in_db = []
 for cafe in cafe_data:
-    name, address, city, state, phone, latitude, longitude, img_url = (
+    id, name, address, city, state, phone, latitude, longitude, img_url = (
+    cafe["id"],
     cafe["name"], 
     cafe["location"]["display_address"][0] + " " + cafe["location"]["display_address"][1],
     cafe["location"]["city"],
@@ -28,9 +29,10 @@ for cafe in cafe_data:
     cafe["display_phone"], 
     cafe["coordinates"]["latitude"], 
     cafe["coordinates"]["longitude"], 
-    cafe["image_url"])
+    cafe["image_url"]
+    )
 
-    db_cafe = crud.create_cafe(name, address, city, state, phone, latitude, longitude, img_url)
+    db_cafe = crud.create_cafe(id, name, address, city, state, phone, latitude, longitude, img_url)
     cafes_in_db.append(db_cafe)
 
 model.db.session.add_all(cafes_in_db)
