@@ -1,6 +1,6 @@
 """CRUD Operations: Functions to create, retrieve, update, or delete data from the database."""
 
-from model import db, User, Cafe, Bookmark, Note, connect_to_db
+from model import db, User, Cafe, BusinessHours, Bookmark, Note, connect_to_db
 from flask import flash
 
 
@@ -21,6 +21,14 @@ def create_cafe(id, name, address, city, state, phone, latitude, longitude, img_
     cafe = Cafe(cafe_id=id, name=name, address=address, city=city , state=state, phone=phone, latitude=latitude, longitude=longitude, img_url=img_url)
 
     return cafe
+
+
+def create_businesshours(day, hours, cafe):
+    """Create and return a business hour."""
+
+    business_hour = BusinessHours(day=day, hours=hours, cafe_id=cafe)
+
+    return business_hour
 
 
 def create_bookmark(user, cafe): 
