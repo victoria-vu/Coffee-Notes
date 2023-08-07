@@ -40,12 +40,31 @@ class Cafe(db.Model):
     img_url = db.Column(db.String, nullable=True)
 
     bookmarks = db.relationship("Bookmark", back_populates="cafe")
+    business_hours = db.relationship("BusinessHours", back_populates="cafe")
 
     def __repr__(self):
         """Return cafe id and name of a Cafe object."""
 
-        return f"<Cafe cafe_id={self.cafe_id} name={self.name}>"
-    
+        return f"<Cafe cafe_id={self.cafe_id} name={self.name}>"   
+
+
+class BusinessHours(db.Model):
+    """Business hours for a cafe."""
+
+    __tablename__ = "business_hours"
+
+    businesshour_id = db.Column(db.Integer, primary_key=True, autoincrement=True)
+    day = db.Column(db.Integer, nullable=False)
+    hours = db.Column(db.String, nullable=False)
+    cafe_id = db.Column(db.String, db.ForeignKey("cafes.cafe_id"), nullable=False)
+
+    cafe = db.relationship("Cafe", back_populates="business_hours")
+
+    def __repr__(self):
+        """Return cafe id, day, and hours of a BusinessHours object."""
+
+        return f"<BusinessHours cafe_id={self.cafe_id} day={self.day} hours={self.hours}>"
+
 
 class Bookmark(db.Model):
     """A bookmark for a cafe by a user."""
