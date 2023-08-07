@@ -163,6 +163,7 @@ def cafe_page(id):
 
     cafe_in_db = crud.get_cafe_by_id(id)
 
+    # Creates a cafe object to add into database
     if not cafe_in_db:
         new_cafe = crud.create_cafe(id,
                     data["name"], 
@@ -177,6 +178,25 @@ def cafe_page(id):
         
         db.session.add(new_cafe)
         db.session.commit()
+
+        # Adds business hours for the cafe
+        hours = data["hours"][0]["open"]
+        business_hours = {}
+
+        for day_num in range(0, 7):
+            day_data = next((item for item in hours if item["day"]== day_num), None)
+            if day_data is None:
+                business_hours[day_num] = "Closed"
+            else:
+                start_time = day_data["start"]
+                end_time = day_data["end"]
+                business_hours[day_num] = f"{start_time}-{end_time}"
+
+        for day, hours in business_hours.items():
+            business_hour = crud.create_businesshours(day, hours, id)
+            db.session.add(business_hour)
+            db.session.commit()
+            print("Successfully added business hours")
 
     cafe = crud.get_cafe_by_id(id)
     user_id = session["user_id"]
