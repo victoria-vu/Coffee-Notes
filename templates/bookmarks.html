@@ -12,19 +12,23 @@
         {% for note in bookmark.note %}
             <p>{{ note.note }}</p>
             <button class="show-textbox" id="show-{{ bookmark.bookmark_id }}">Edit Note</button>
-            <form action="/note/{{ bookmark.bookmark_id }}" class="notes-textbox" id="notes-{{ bookmark.bookmark_id }}" method="POST">
+            <div class="notes-textbox" id="notes-{{ bookmark.bookmark_id }}">
+            <form action="/note/{{ bookmark.bookmark_id }}" method="POST">
                 <textarea name="cafe-note">{{ note.note }}</textarea><br>
                 <button type="submit">Update Note</button>
-                <button class="close-textbox" id="close-{{ bookmark.bookmark_id }}">Cancel</button>
             </form>
+            <button class=close-textbox" id="close-{{ bookmark.bookmark_id }}">Cancel</button>
+            </div>
         {% endfor %}
     {% else %}
         <button class="show-textbox" id="show-{{ bookmark.bookmark_id }}">Add Note</button>
-        <form action="/note/{{ bookmark.bookmark_id }}" class="notes-textbox" id="notes-{{ bookmark.bookmark_id }}" method="POST">
+        <div class="notes-textbox" id="notes-{{ bookmark.bookmark_id }}">
+        <form action="/note/{{ bookmark.bookmark_id }}" method="POST">
             <textarea name="cafe-note"></textarea><br>
             <button type="submit">Update Note</button>
-            <button class="close-textbox" id="close-{{ bookmark.bookmark_id }}">Cancel</button>
         </form>
+        <button class="close-textbox" id="close-{{ bookmark.bookmark_id }}">Cancel</button>
+        </div>
     {% endif %}
 
     <!-- Remove Bookmark -->

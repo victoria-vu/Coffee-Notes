@@ -7,7 +7,7 @@ const closeNotesButtons = document.querySelectorAll('.close-textbox');
 // Hides all forms
 if (forms) {
     for (const form of forms) { 
-    form.hidden = true;
+        form.hidden = true;
     }
 };
 
