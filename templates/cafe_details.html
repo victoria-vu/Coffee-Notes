@@ -18,6 +18,16 @@
 <p>{{ cafe.address }}</p>
 <h4>Phone:</h4>
 <p>{{ cafe.phone }}</p>
+<h4>Hours:</h4>
+<table>
+{% for day, hours in cafe_hours.items() %}
+    <tr>
+        <td>{{ day }}</td>
+        <td>{{ hours }}</td>
+    </tr>
+{% endfor %}
+</table><br>
+
 
 {% if not bookmarked %}
     <form action="/bookmark" method="POST">
