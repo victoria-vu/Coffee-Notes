@@ -199,10 +199,11 @@ def cafe_page(id):
             print("Successfully added business hours")
 
     cafe = crud.get_cafe_by_id(id)
+    cafe_hours = crud.get_business_hours_by_cafe_id(id)
     user_id = session["user_id"]
     bookmarked = crud.get_bookmark_by_user_and_cafe_id(user_id, id)
 
-    return render_template("cafe_details.html", cafe=cafe, bookmarked=bookmarked)
+    return render_template("cafe_details.html", cafe=cafe, cafe_hours=cafe_hours, bookmarked=bookmarked)
 
 
 ### ROUTES FOR BOOKMARKS ###
