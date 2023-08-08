@@ -2,6 +2,8 @@
 
 from model import db, User, Cafe, BusinessHours, Bookmark, Note, connect_to_db
 from flask import flash
+from datetime import datetime
+import calendar
 
 
 ### FUNCTIONS TO CREATE ####
@@ -74,6 +76,28 @@ def get_cafe_by_bookmark_id(bookmark_id):
     bookmark = Bookmark.query.filter(Bookmark.bookmark_id == bookmark_id).first()
 
     return bookmark.cafe
+
+
+def get_business_hours_by_cafe_id(cafe_id):
+    """Return cafe business hours dictionary by cafe id."""
+
+    cafe_hours = {}
+
+    business_hours = BusinessHours.query.filter_by(cafe_id = cafe_id).all()
+    
+    for business_hour in business_hours:
+        if business_hour.hours != "Closed":
+            military_times = business_hour.hours.split("-")
+            standard_times = []
+            for time in military_times:
+                dt = datetime.strptime(time, "%H%M")
+                standard_time = dt.strftime("%I:%M%p")
+                standard_times.append(standard_time.lstrip("0"))
+            cafe_hours[calendar.day_abbr[business_hour.day]] = f"{standard_times[0]}-{standard_times[1]}"
+        else: 
+            cafe_hours[calendar.day_abbr[business_hour.day]] = business_hour.hours
+
+    return cafe_hours
 
 
 def get_all_user_bookmarks(user_id):
