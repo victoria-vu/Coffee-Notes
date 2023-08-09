@@ -123,14 +123,20 @@ def search_cafes():
     term = request.args.get("term", "coffee shop")
     location = request.args.get("location")
 
+    page = int(request.args.get("page", 1)) 
+    cafes_per_page = 10
+    offset = (page - 1) * cafes_per_page
+
     url = "https://api.yelp.com/v3/businesses/search"
     payload = {
         "term": term,
         "location": location,
         "radius": 40000,
         "categories": "coffee",
-        "limit": 50
+        "limit": 50,
+        "offset": offset
     }
+
     headers = {
         "accept": "application/json",
         "Authorization": API_KEY
@@ -140,12 +146,20 @@ def search_cafes():
     data = res.json()
 
     if "businesses" in data:
-        cafes = data["businesses"]
-        total = len(data["businesses"])
-        return render_template("search_results.html", term=term, total=total, results=cafes)
+        cafes = data["businesses"][:50] # Limit to 50 coffee shops for search results.
+        total = len(cafes)
+        total_pages = (total + cafes_per_page - 1) // cafes_per_page
+        cafes_pages = [cafes[i:i + cafes_per_page] for i in range(0, total, cafes_per_page)]
+
+        return render_template("search_results.html", 
+                               term=term, 
+                               location=location, 
+                               total=total, 
+                               total_pages=total_pages, 
+                               cafes_pages=cafes_pages,  
+                               page=page)
     else:
-        flash("Sorry, but nothing matched your search criteria. Please try again.")
-        return redirect("/dashboard")
+        return render_template("search_results.html", term=term, location=location, total=0)
 
 
 @app.route("/cafe/<id>")
