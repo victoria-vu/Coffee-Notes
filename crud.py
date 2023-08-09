@@ -1,6 +1,7 @@
 """CRUD Operations: Functions to create, retrieve, update, or delete data from the database."""
 
 from model import db, User, Cafe, BusinessHours, Bookmark, Note, connect_to_db
+from werkzeug.security import generate_password_hash
 from flask import flash
 from datetime import datetime
 import calendar
@@ -12,7 +13,12 @@ import calendar
 def create_user(email, password, fname, lname):
     """Create and return a new user."""
 
-    user = User(email=email, password=password, fname=fname, lname=lname)
+    user = User(
+        email=email, 
+        password=generate_password_hash(password, method="scrypt"), 
+        fname=fname, 
+        lname=lname
+    )
 
     return user
 
@@ -20,7 +26,17 @@ def create_user(email, password, fname, lname):
 def create_cafe(id, name, address, city, state, phone, latitude, longitude, img_url):
     """Create and return a cafe."""
 
-    cafe = Cafe(cafe_id=id, name=name, address=address, city=city , state=state, phone=phone, latitude=latitude, longitude=longitude, img_url=img_url)
+    cafe = Cafe(
+        cafe_id=id, 
+        name=name, 
+        address=address, 
+        city=city , 
+        state=state, 
+        phone=phone, 
+        latitude=latitude, 
+        longitude=longitude, 
+        img_url=img_url
+    )
 
     return cafe
 

@@ -3,6 +3,7 @@
 from flask import (Flask, render_template, request, flash, session, redirect)
 from jinja2 import StrictUndefined
 from model import connect_to_db, db
+from werkzeug.security import check_password_hash
 import crud
 import requests
 import os
@@ -73,7 +74,7 @@ def login_user():
     if not user:
         flash("The email you typed in does not exist. Please sign up for an account or try again.")
     elif user:
-        if password != password:
+        if not check_password_hash(user.password, password):
             flash("Incorrect password. Please try again.")
         else:
             session["user_id"] = user.user_id
@@ -151,13 +152,15 @@ def search_cafes():
         total_pages = (total + cafes_per_page - 1) // cafes_per_page
         cafes_pages = [cafes[i:i + cafes_per_page] for i in range(0, total, cafes_per_page)]
 
-        return render_template("search_results.html", 
-                               term=term, 
-                               location=location, 
-                               total=total, 
-                               total_pages=total_pages, 
-                               cafes_pages=cafes_pages,  
-                               page=page)
+        return render_template(
+                        "search_results.html", 
+                        term=term, 
+                        location=location, 
+                        total=total, 
+                        total_pages=total_pages, 
+                        cafes_pages=cafes_pages,  
+                        page=page
+        )
     else:
         return render_template("search_results.html", term=term, location=location, total=0)
 
@@ -179,16 +182,17 @@ def cafe_page(id):
 
     # Creates a cafe object to add into database
     if not cafe_in_db:
-        new_cafe = crud.create_cafe(id,
-                    data["name"], 
-                    data["location"]["address1"] + ", " + data["location"]["city"] + ", " + data["location"]["state"] + " " + data["location"]["zip_code"],
-                    data["location"]["city"],
-                    data["location"]["state"],
-                    data["display_phone"], 
-                    data["coordinates"]["latitude"], 
-                    data["coordinates"]["longitude"], 
-                    data["image_url"]
-                    )
+        new_cafe = crud.create_cafe(
+                id,
+                data["name"], 
+                data["location"]["address1"] + ", " + data["location"]["city"] + ", " + data["location"]["state"] + " " + data["location"]["zip_code"],
+                data["location"]["city"],
+                data["location"]["state"],
+                data["display_phone"], 
+                data["coordinates"]["latitude"], 
+                data["coordinates"]["longitude"], 
+                data["image_url"]
+        )
         
         db.session.add(new_cafe)
         db.session.commit()
