@@ -3,14 +3,23 @@
 {% block title %}Cafe Search Results{% endblock %}
 
 {% block body %}
-{% if term %}
-    Your search for "{{ term }}" has {{ total }} matches.  
-{% else %}
-    Your search has {{ total }} matches.
+{% if total == 0 %}
+    Sorry, but nothing matched your search criteria. Please try again.
+{% elif term and location %}
+    Your search for "{{ term }}" in {{ location }} has {{ total }} matches.
+{% elif location %}
+    Your search for coffee shops in "{{ location }}" has {{ total }} matches.
 {% endif %}
 
-{% for cafe in results %}
+{% if total != 0 %}
+{% for cafe in cafes_pages[page - 1] %}
     <h2><a href="/cafe/{{ cafe['id'] }}">{{ cafe['name'] }}</a></h2>
     <p>{{ cafe['location']['address1'] }},  {{ cafe['location']['city'] }}, {{ cafe['location']['state'] }}  {{ cafe['location']['zip_code'] }}</p>
 {% endfor %}
+
+{% for p in range(1, total_pages + 1) %}
+    <a href="{{ url_for('search_cafes', term=term, location=location, page=p) }}">{{ p }}</a>
+{% endfor %}
+{% endif %}
+
 {% endblock %}
