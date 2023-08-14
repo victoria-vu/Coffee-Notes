@@ -3,18 +3,31 @@
 {% block title %}Cafe Search Results{% endblock %}
 
 {% block body %}
+<h1>Find a coffee shop.</h1>
+<form action="/cafe/search">
+    <input type="text" name="term" id="term" placeholder="Cafe Name or Keyword">
+    <input type="text" name="location" id="location" required="" placeholder="Location (City or Zipcode)">
+    <button type="submit">Search</button>
+</form>
+
+<h4>
 {% if total == 0 %}
     Sorry, but nothing matched your search criteria. Please try again.
 {% elif term and location %}
-    Your search for "{{ term }}" in {{ location }} has {{ total }} matches.
+    Your search for "{{ term }}" in "{{ location }} has {{ total }} matches.
 {% elif location %}
     Your search for coffee shops in "{{ location }}" has {{ total }} matches.
 {% endif %}
+</h4>
 
 {% if total != 0 %}
 {% for cafe in cafes_pages[page - 1] %}
-    <h2><a href="/cafe/{{ cafe['id'] }}">{{ cafe['name'] }}</a></h2>
+    <h2>{{ cafe['name'] }}</h2>
+    <h4>Address:</h4>
     <p>{{ cafe['location']['address1'] }},  {{ cafe['location']['city'] }}, {{ cafe['location']['state'] }}  {{ cafe['location']['zip_code'] }}</p>
+    <h4>Phone:</h4>
+    <p>{{ cafe['display_phone'] }}</p>
+    <a href="/cafe/{{ cafe['id'] }}"><button>View More Details</button></a>
 {% endfor %}
 
 {% for p in range(1, total_pages + 1) %}
