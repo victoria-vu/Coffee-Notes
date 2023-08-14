@@ -3,13 +3,10 @@
 {% block title %}{{ name }}'s Dashboard{% endblock %}
 
 {% block body %}
-<h1>Welcome Back to Coffee Notes, {{ name }}!</h1>
-<h4>Search for a coffee shop.</h4>
+<h1>Find a coffee shop.</h1>
 <form action="/cafe/search">
-    <label for="term">Enter cafe name or keyword:</label>
-    <input type="text" name="term" id="term">
-    <label for="location">Enter a location:</label>
-    <input type="text" name="location" id="location" required="">
-    <button type="submit">Search for Cafe</button>
+    <input type="text" name="term" id="term" placeholder="Cafe Name or Keyword">
+    <input type="text" name="location" id="location" required="" placeholder="Location (City or Zipcode)">
+    <button type="submit">Search</button>
 </form>
 {% endblock %}
