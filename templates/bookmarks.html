@@ -3,11 +3,14 @@
 {% block title %}{{ user.fname }}'s Bookmarks{% endblock %}
 
 {% block body %}
+<h1>My Bookmarks</h1>
 {% for bookmark in bookmarks %}
-    <h4><a href="/cafe/{{ bookmark.cafe_id }}">{{ bookmark.cafe.name }}</a></h4>
-    <p>{{ bookmark.cafe.city }}, {{ bookmark.cafe.state }}</p>
+    <h2><a href="/cafe/{{ bookmark.cafe_id }}">{{ bookmark.cafe.name }}</a></h2>
+    <p>Address:</p>
+    <p>{{ bookmark.cafe.address }}</p>
 
     <!-- Add Notes -->
+    <h4>My Notes:</h4>
     {% if bookmark.note %}
         {% for note in bookmark.note %}
             <p>{{ note.note }}</p>
