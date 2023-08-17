@@ -1,11 +1,36 @@
 {% extends "base.html" %}
 
+{% block head %}
+<style>
+    body {
+        background-image: url("/static/img/coffee-bg.jpg");
+        background-position: 20% 30%;
+        background-repeat: no-repeat;
+        background-attachment: fixed;
+    }
+</style>
+{% endblock %}
+
 {% block title %}Home{% endblock %}
 
 {% block body %}
-<h1>Coffee Notes</h1>
-<p>Keep track of your favorite spots and save coffee shops you would like to visit in the future, all in one place. Let’s find your favorite coffee note.</p>
+<section class="hero">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-9">
+                <h1>Coffee Notes</h1>
+                <div class="mb-3">  
+                    <p class="description">Keep track of your favorite spots and save coffee shops you would like to visit in the future, all in one place. Let’s find your favorite coffee note.</p>
+                </div>
+                <div class="mb-3">  
+                    <a href="/signup"><button class="btn">Get Started</button></a>
+                </div>
+                <div class="mb-3">
+                    <p>Already have an account? <a href="/login"><u>Click here to log in.</u></a></p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
 
-<a href="/signup"><button>Get Started</button></a>
-<p>Already have an account? <a href="/login"><u>Click here to log in.</u></a></p>
 {% endblock %}
