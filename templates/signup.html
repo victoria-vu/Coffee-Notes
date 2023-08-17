@@ -2,7 +2,63 @@
 
 {% block title %}Sign Up{% endblock %}
 
+{% block head %}
+<style>
+    .navbar-container {
+        overflow: visible;
+    }
+
+    .navbar {
+        position: absolute;
+    }
+</style>
+{% endblock %}
+
 {% block body %}
+    <div class="container-fluid">
+        <div class="row split-container">
+            <div class="col-md-6 color-half">
+                <div class="signup-form">
+                    <h4>Sign Up</h4>
+                    <h2>Create an Account</h2>
+                    <form action="/signup" method="POST">
+                        <div class="form-group mb-3">
+                            <label for="fname" class="form-label">First Name *</label>
+                            <input type="text" class="form-control" id="fname" name="fname" required="">
+                        </div>
+                        <div class="form-group mb-3">
+                            <label for="lname" class="form-label">Last Name *</label>
+                            <input type="text" class="form-control" id="lname" name="lname" required="">
+                        </div>
+                        <div class="form-group mb-3">
+                            <label for="email" class="form-label">Email *</label>
+                            <input type="email" class="form-control" id="email" name="email">
+                        </div>
+                        <div class="form-group mb-3">
+                            <label for="password">Password *</label>
+                            <input type="password" class="form-control" id="password" name="password" pattern=".{8,}" aria-describedby="passwordHelpBlock">
+                            <div id="passwordHelpBlock" class="form-text">
+                                Required: Your password must be at least 8 characters long.
+                            </div>
+                        </div>
+                        <div class="form-group mb-3">
+                            <button type="submit" class="btn">Sign Up</button>
+                        </div>
+                    </form>
+                    <div class="login">
+                        <span>Already have an account? <a href="/login"><u>Click here to log in.</u></a></span>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6 image-half"></div>
+        </div>
+    </div>
+
+{% endblock %}
+
+
+
+<!-- 
 <h4>Sign Up</h4>
 <h2>Create an Account</h2>
 <form action="/signup" method="POST">
@@ -18,7 +74,6 @@
     <label for="password">Password*</label>
     <input type="password" id="password" name="password" pattern=".{8,}" title="Password must be at least 8 characters." required=""><br>
     
-    <button type="submit">Create Account</button>
+    <button type="submit" class="btn">Create Account</button>
 </form>
-<p>Already have an account? <a href="/login"><u>Click here to log in.</u></a></p>
-{% endblock %}
+<p>Already have an account? <a href="/login"><u>Click here to log in.</u></a></p> -->

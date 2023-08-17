@@ -2,18 +2,61 @@
 
 {% block title %}Log In{% endblock %}
 
-{% block body %}
-<h4>Log In</h4>
-<h2>Welcome Back!</h2>
-<form action="/login" method="POST">
+{% block head %}
+<style>
+    .navbar-container {
+        overflow: visible;
+    }
 
-    <label for="email">Email*</label>
-    <input type="text" id="email" name="email" required=""><br>
-
-    <label for="password">Password*</label>
-    <input type="password" id="password" name="password" required=""><br>
-    
-    <button type="submit">Log In</button>
-</form>
-<p>Don't have an account? <a href="/signup"><u>Click here to sign up.</u></a></p>
+    .navbar {
+        position: absolute;
+    }
+</style>
 {% endblock %}
+
+{% block body %}
+<div class="container-fluid">
+    <div class="row split-container">
+        <div class="col-md-6 color-half">
+            <div class="login-form">
+                <h4>Log In</h4>
+                <h2>Welcome Back!</h2>
+                <form action="/login" method="POST">
+                    <div class="form-group mb-3">
+                        <label for="email" class="form-label">Email *</label>
+                        <input type="email" class="form-control" id="email" name="email">
+                    </div>
+                    <div class="form-group mb-3">
+                        <label for="password">Password *</label>
+                        <input type="password" class="form-control" id="password" name="password">
+                    </div>
+                    <div class="form-group mb-3">
+                        <button type="submit" class="btn">Log In</button>
+                    </div>
+                </form>
+                <div class="signup">
+                    <span>Don't have an account yet? <a href="/signup"><u>Click here to sign up.</u></a></span>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6 image-half"></div>
+    </div>
+</div>
+
+{% endblock %}
+
+
+<!-- <form action="/login" method="POST">
+    <div class="mb-3">
+        <label for="email" class="form-label">Email *</label>
+        <input type="email" class="form-control" id="email">
+    </div>
+
+    <div class="mb-3">
+        <label for="password">Password *</label>
+        <input type="password" class="form-control" id="password" aria-describedby="passwordHelpBlock">
+        <div id="passwordHelpBlock" class="form-text">
+            Your password must be at least 8 characters long.
+          </div>
+    </div>
+</form> -->
