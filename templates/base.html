@@ -7,26 +7,53 @@
         Coffee Notes: {% block title %}{% endblock %}
     </title>
 
+    <!-- CSS and Bootstrap -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
+    <link href="/static/css/style.css" rel="stylesheet">
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lora:wght@500;600;700&family=Plus+Jakarta+Sans:wght@500;600&display=swap" rel="stylesheet">
+
+    <!-- Font Awesome Kit -->
+    <script src="https://kit.fontawesome.com/f68f433991.js" crossorigin="anonymous"></script>
+   
     {% block head %}{% endblock %}
+
 </head>
+
 <body>
-    <nav>
-        <ul>
-            {% if not 'user_id' in session.keys() %}
-                <a href="/"><li>Home</li></a>
-                <a href="/login"><li>Log In</li></a>
-                <a href="/signup"><li>Sign Up</li></a>
-            {% endif %}
+    <div class="navbar-container">
+        <nav class="navbar navbar-expand-lg bg-transparent">
+            <div class="container-fluid">
+                {% if not 'user_id' in session.keys() %}
+                    <a class="navbar-brand" href="/">Coffee Notes</a>
+                {% endif %}
+                {% if 'user_id' in session.keys() %}
+                    <a class="navbar-brand" href="/dashboard">Coffee Notes</a>
+                {% endif %}
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+                    <div class="navbar-nav ms-auto">
+                        {% if not 'user_id' in session.keys() %}
+                            <a href="/login" class="nav-link">Log In</a>
+                            <a href="/signup" class="nav-link">Sign Up</a>
+                        {% endif %}
 
-            {% if 'user_id' in session.keys() %}
-                <a href="/dashboard"><li>Home</li></a>
-                <a href="/profile/{{ session['user_id'] }}"><li>Profile</li></a>
-                <a href="/mybookmarks"><li>My Bookmarks</li></a>
-                <a href="/logout"><li>Sign Out</li></a>
-            {% endif %}
-        </ul>
-    </nav>
-
+                        {% if 'user_id' in session.keys() %}
+                            <a href="/profile/{{ session['user_id'] }}" class="nav-link">Profile</a>
+                            <a href="/mybookmarks" class="nav-link">My Bookmarks</a>
+                            <a href="/logout" class="nav-link">Sign Out</a>
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
+        </nav>
+    </div>
+ 
     {% for msg in get_flashed_messages() %}
         <p class="flash-msg">
             {{ msg }}
@@ -34,5 +61,8 @@
     {% endfor %}
 
     {% block body %}{% endblock %}
+    
+    <!-- Bootstrap Script -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm" crossorigin="anonymous"></script>
 </body>
 </html>
