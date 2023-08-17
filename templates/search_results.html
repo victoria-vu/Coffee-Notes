@@ -2,37 +2,74 @@
 
 {% block title %}Cafe Search Results{% endblock %}
 
+{% block head %}
+<style>
+    input {
+        border: none;
+        width: 16vw;
+        height: 40px;
+        font-size: 14px;
+    }
+</style>
+{% endblock %}
+
 {% block body %}
-<h1>Find a coffee shop.</h1>
-<form action="/cafe/search">
-    <input type="text" name="term" id="term" placeholder="Cafe Name or Keyword">
-    <input type="text" name="location" id="location" required="" placeholder="Location (City or Zipcode)">
-    <button type="submit">Search</button>
-</form>
+    <section class="search-form">
+        <div class="container">
+            <div class="searchbar-container">
+                <h2>Find a coffee shop.</h2>
+                <div class="mt-4 align-items-center searchbar">
+                    <form action="/cafe/search">
+                        <div class="input-container">
+                            <i class="fa-solid fa-magnifying-glass" style="color: #32221a;"></i><input type="text" name="term" id="term" placeholder="Cafe Name or Keyword">
+                            <div class="separator"></div>
+                            <i class="fa-solid fa-location-dot" style="color: #32221a;"></i><input type="text" name="location" id="location" required="" placeholder="Location (City or Zipcode)">
+                            <button type="submit" class="btn search-btn">Search</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
 
-<h4>
-{% if total == 0 %}
-    Sorry, but nothing matched your search criteria. Please try again.
-{% elif term and location %}
-    Your search for "{{ term }}" in "{{ location }} has {{ total }} matches.
-{% elif location %}
-    Your search for coffee shops in "{{ location }}" has {{ total }} matches.
-{% endif %}
-</h4>
-
-{% if total != 0 %}
-{% for cafe in cafes_pages[page - 1] %}
-    <h2>{{ cafe['name'] }}</h2>
-    <h4>Address:</h4>
-    <p>{{ cafe['location']['address1'] }},  {{ cafe['location']['city'] }}, {{ cafe['location']['state'] }}  {{ cafe['location']['zip_code'] }}</p>
-    <h4>Phone:</h4>
-    <p>{{ cafe['display_phone'] }}</p>
-    <a href="/cafe/{{ cafe['id'] }}"><button>View More Details</button></a>
-{% endfor %}
-
-{% for p in range(1, total_pages + 1) %}
-    <a href="{{ url_for('search_cafes', term=term, location=location, page=p) }}">{{ p }}</a>
-{% endfor %}
-{% endif %}
+    <section class="search-results">
+        <div class="container">
+            <div class="cafe-results-container">
+                <h6 class="mb-5">
+                    {% if total == 0 %}
+                        Sorry, but nothing matched your search criteria. Please try again.
+                    {% elif term and location %}
+                        Your search for "{{ term }}" in "{{ location }} has {{ total }} matches.
+                    {% elif location %}
+                        Your search for coffee shops in "{{ location }}" has {{ total }} matches.
+                    {% endif %}
+                </h6>
+                {% if total != 0 %}
+                    {% for cafe in cafes_pages[page - 1] %}
+                        <div class="row mb-5 cafe">
+                            <div class="col-md-6 cafe-img">
+                                <img src="{{ cafe['image_url']}}" alt="Image of {{ cafe['name'] }}">
+                            </div>
+                            <div class="col-md-6">
+                                <div class="cafe-details">
+                                    <h2>{{ cafe['name'] }}</h2>
+                                    <p>Address:<br />
+                                    {{ cafe['location']['address1'] }},  {{ cafe['location']['city'] }}, {{ cafe['location']['state'] }}  {{ cafe['location']['zip_code'] }}</p>
+                                    <p>Phone:<br />
+                                    {{ cafe['display_phone'] }}</p>
+                                    <a href="/cafe/{{ cafe['id'] }}"><button class="btn results-btn">View More Details</button></a>
+                                </div>
+                            </div>
+                        </div>
+                    {% endfor %}
+                    <div class="mb-5 pages">
+                        {% for p in range(1, total_pages + 1) %}
+                                <a href="{{ url_for('search_cafes', term=term, location=location, page=p) }}">{{ p }}</a>
+                        {% endfor %}
+                    </div>
+                {% endif %}
+            </div>
+        </div>
+    </section>
 
 {% endblock %}
