@@ -55,9 +55,12 @@
     </div>
  
     {% for msg in get_flashed_messages() %}
-        <p class="flash-msg">
+        <div class="alert alert-dismissible fade show flash-msg" role="alert">
+            <div>
             {{ msg }}
-        </p>
+            </div>
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
     {% endfor %}
 
     {% block body %}{% endblock %}
