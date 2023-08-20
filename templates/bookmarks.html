@@ -3,44 +3,57 @@
 {% block title %}{{ user.fname }}'s Bookmarks{% endblock %}
 
 {% block body %}
-<h1>My Bookmarks</h1>
-{% for bookmark in bookmarks %}
-    <h2><a href="/cafe/{{ bookmark.cafe_id }}">{{ bookmark.cafe.name }}</a></h2>
-    <p>Address:</p>
-    <p>{{ bookmark.cafe.address }}</p>
-
-    <!-- Add Notes -->
-    <h4>My Notes:</h4>
-    {% if bookmark.note %}
-        {% for note in bookmark.note %}
-            <p>{{ note.note }}</p>
-            <button class="show-textbox" id="show-{{ bookmark.bookmark_id }}">Edit Note</button>
-            <div class="notes-textbox" id="notes-{{ bookmark.bookmark_id }}">
-            <form action="/note/{{ bookmark.bookmark_id }}" method="POST">
-                <textarea name="cafe-note">{{ note.note }}</textarea><br>
-                <button type="submit">Update Note</button>
-            </form>
-            <button class=close-textbox" id="close-{{ bookmark.bookmark_id }}">Cancel</button>
+    <section class="m-5 all-bookmarks">
+        <div class="container">
+            <div class="d-flex flex-column align-items-center bookmark-container">
+                <h2>My Bookmarks</h2>
+                {% for bookmark in bookmarks %}
+                    <div class="d-flex flex-row flex-wrap m-4 bookmark">
+                        <div class="col-md-5 bookmark-img">
+                            <img src="{{ bookmark.cafe.img_url }}" alt="Image of {{ bookmark.cafe.name }}">
+                        </div>
+                        <div class="col-md-7">
+                            <div class="mb-3">
+                                <h2><a href="/cafe/{{ bookmark.cafe_id }}">{{ bookmark.cafe.name }}</a></h2>
+                                <p>Address:<br />
+                                {{ bookmark.cafe.address }}</p>
+                            </div>
+                            <div class="mb-3 cafe-notes">
+                                <h4>My Notes:</h4>
+                                {% if bookmark.note %}
+                                    {% for note in bookmark.note %}
+                                        <span class="notes-content">{{ note.note }} <button class="show-textbox" id="show-{{ bookmark.bookmark_id }}"><i class="fa-solid fa-pen-to-square" style="color: #32221a;"></i></button></span>
+                                        <div class="notes-textbox" id="notes-{{ bookmark.bookmark_id }}">
+                                            <form action="/note/{{ bookmark.bookmark_id }}" method="POST">
+                                                <textarea name="cafe-note">{{ note.note }}</textarea>
+                                                <button type="submit" class="btn update-note-btn">Update Note</button>
+                                                <button type="button" class="close-textbox" id="close-{{ bookmark.bookmark_id }}"><u>Cancel</u></button>
+                                            </form>
+                                        </div>
+                                    {% endfor %}
+                                {% else %}
+                                    <button class="show-textbox add-note" id="show-{{ bookmark.bookmark_id }}"><u>Add a Note</u></button>
+                                    <div class="notes-textbox" id="notes-{{ bookmark.bookmark_id }}">
+                                        <form action="/note/{{ bookmark.bookmark_id }}" method="POST">
+                                            <textarea name="cafe-note"></textarea>
+                                            <button type="submit" class="btn update-note-btn">Update Note</button>
+                                            <button type="button" class="close-textbox" id="close-{{ bookmark.bookmark_id }}"><u>Cancel</u></button>
+                                        </form>
+                                    </div>
+                                {% endif %}
+                            </div>
+                            <div class="remove-bookmark">
+                                <form action="/mybookmarks/removebookmark" method="POST">
+                                    <input type="hidden" name="cafe-id" value="{{ bookmark.cafe.cafe_id }}">
+                                    <button type="submit" class="btn">Remove From Bookmarks</button>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                    <hr class="divider" />
+                {% endfor %}
             </div>
-        {% endfor %}
-    {% else %}
-        <button class="show-textbox" id="show-{{ bookmark.bookmark_id }}">Add Note</button>
-        <div class="notes-textbox" id="notes-{{ bookmark.bookmark_id }}">
-        <form action="/note/{{ bookmark.bookmark_id }}" method="POST">
-            <textarea name="cafe-note"></textarea><br>
-            <button type="submit">Update Note</button>
-        </form>
-        <button class="close-textbox" id="close-{{ bookmark.bookmark_id }}">Cancel</button>
         </div>
-    {% endif %}
-
-    <!-- Remove Bookmark -->
-    <form action="/mybookmarks/removebookmark" method="POST">
-        <input type="hidden" name="cafe-id" value="{{ bookmark.cafe.cafe_id }}">
-        <button type="submit">Remove From Bookmarks</button>
-    </form>
-
-{% endfor %}
-
-<script src="/static/js/bookmarks.js"></script>
+    </section>
+    <script src="/static/js/bookmarks.js"></script>
 {% endblock %}
