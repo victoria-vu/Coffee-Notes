@@ -8,53 +8,78 @@
 {% endblock %}
 
 {% block body %}
-<img src="{{ cafe.img_url }}" alt="Image from {{ cafe.name }}">
+    <section class="mt-5 cafe-details">
+        <div class="container">
+            <div class="d-flex flex-column align-items-center cafe-details-container">
 
-<h1>{{ cafe.name }}</h1>
+                <!-- Cafe Details -->
+                <div class="d-flex flex-row flex-nowrap row">
 
-<h4>{{ cafe.name }} is a coffee shop located in {{ cafe.city }}, {{ cafe.state }}.</h4>
+                    <!-- Cafe Image -->
+                    <div class="mb-4 cafe-details-img">
+                        <img src="{{ cafe.img_url }}" alt="Image from {{ cafe.name }}">
+                    </div>
 
-<h4>Address:</h4>
-<p>{{ cafe.address }}</p>
-<h4>Phone:</h4>
-<p>{{ cafe.phone }}</p>
-<h4>Hours:</h4>
-<table>
-{% for day, hours in cafe_hours.items() %}
-    <tr>
-        <td>{{ day }}</td>
-        <td>{{ hours }}</td>
-    </tr>
-{% endfor %}
-</table><br>
+                    <!-- Cafe Info -->
+                    <div class="mb-8">
+                        <h2 class="mb-3">{{ cafe.name }}</h2>
+                        <h6 class="mb-3">{{ cafe.name }} is a coffee shop located in {{ cafe.city }}, {{ cafe.state }}.</h6>
+                        <table>
+                            <tr>
+                                <td class="first-row t1">Address:</td>
+                                <td class="second-row t1">{{ cafe.address }}</td>
+                            </tr>
+                            <tr>
+                                <td class="first-row t1">Phone:</td>
+                                <td class="second-row t1">{{ cafe.phone }}</td>
+                            </tr>
+                        </table>
+                        <table class="mb-3">
+                            <tr>
+                                <td class="first-row t2">Hours:</td>
+                                <td class="second-row t2">Mon</td>
+                                <td class="third-row t2">{{ cafe_hours['Mon'] }}</td>
+                            </tr>
+                            {% for day, hours in cafe_hours.items() %}
+                                {% if day != 'Mon' %}
+                                <tr>
+                                    <td class="first-row t2"></td>
+                                    <td class="second-row t2">{{ day }}</td>
+                                    <td class="third-row t2">{{ hours }}</td>
+                                </tr>
+                                {% endif %}
+                            {% endfor %}
+                        </table>
+                        {% if not bookmarked %}
+                            <form action="/bookmark" method="POST">
+                                <input type="hidden" name="cafe-id" value="{{ cafe.cafe_id }}">
+                                <button type="submit" class="btn">Add to Bookmarks</button>
+                            </form>
+                        {% else %}
+                            <form action="/removebookmark" method="POST">
+                                <input type="hidden" name="cafe-id" value="{{ cafe.cafe_id }}">
+                                <button type="submit" class="btn">Remove From Bookmarks</button>
+                            </form>
+                        {% endif %}
+                    </div>   
+                </div>
+            </div>
+        </div>
+    </section>
 
+    <section class="d-flex flex-column map container align-items-center">
+        <h2 class="mb-5">Location</h2>
+        <div id="map">
+            <input type="hidden" id="map-lat" name="map-lat" value="{{ cafe.latitude }}" />
+            <input type="hidden" id="map-lng" name="map-lng" value="{{ cafe.longitude }}" />
+        </div>
+    </section>
+    <p hidden id="cafe-name">{{ cafe.name }}</p>
 
-{% if not bookmarked %}
-    <form action="/bookmark" method="POST">
-        <input type="hidden" name="cafe-id" value="{{ cafe.cafe_id }}">
-        <button type="submit">Add to Bookmarks</button>
-    </form>
-{% else %}
-    <form action="/removebookmark" method="POST">
-        <input type="hidden" name="cafe-id" value="{{ cafe.cafe_id }}">
-        <button type="submit">Remove From Bookmarks</button>
-    </form>
-{% endif %}
-
-<h1>Location</h1>
-<section class="map">
-    <div id="map">
-        <input type="hidden" id="map-lat" name="map-lat" value="{{ cafe.latitude }}" />
-        <input type="hidden" id="map-lng" name="map-lng" value="{{ cafe.longitude }}" />
-    </div>
-</section>
-
-<p hidden id="cafe-name">{{ cafe.name }}</p>
-
-<script src="/static/js/cafeDetails.js"></script>
-<script
-    async
-    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC-Jh72sPHFvdtUJfmEI3MBbfmtYFt8mPw&callback=initMap">
-</script>
+    <script src="/static/js/cafeDetails.js"></script>
+    <script
+        async
+        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC-Jh72sPHFvdtUJfmEI3MBbfmtYFt8mPw&callback=initMap">
+    </script>
 
 {% endblock %}
