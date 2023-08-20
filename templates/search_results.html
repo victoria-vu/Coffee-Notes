@@ -14,13 +14,13 @@
 {% endblock %}
 
 {% block body %}
-    <section class="search-form">
+    <section class="mt-5 search-form">
         <div class="container">
-            <div class="searchbar-container">
+            <div class="d-flex flex-column align-items-center searchbar-container">
                 <h2>Find a coffee shop.</h2>
-                <div class="mt-4 align-items-center searchbar">
+                <div class="d-flex flex-row mt-4 align-items-center searchbar">
                     <form action="/cafe/search">
-                        <div class="input-container">
+                        <div class="d-flex flex-wrap align-items-center input-container">
                             <i class="fa-solid fa-magnifying-glass" style="color: #32221a;"></i><input type="text" name="term" id="term" placeholder="Cafe Name or Keyword">
                             <div class="separator"></div>
                             <i class="fa-solid fa-location-dot" style="color: #32221a;"></i><input type="text" name="location" id="location" required="" placeholder="Location (City or Zipcode)">
@@ -34,7 +34,7 @@
 
     <section class="search-results">
         <div class="container">
-            <div class="cafe-results-container">
+            <div class="d-flex flex-column align-items-center cafe-results-container">
                 <h6 class="mb-5">
                     {% if total == 0 %}
                         Sorry, but nothing matched your search criteria. Please try again.
@@ -46,7 +46,7 @@
                 </h6>
                 {% if total != 0 %}
                     {% for cafe in cafes_pages[page - 1] %}
-                        <div class="row mb-5 cafe">
+                        <div class="d-flex flex-row flex-wrap align-items-center mb-5 cafe">
                             <div class="col-md-6 cafe-img">
                                 <img src="{{ cafe['image_url']}}" alt="Image of {{ cafe['name'] }}">
                             </div>
@@ -57,7 +57,7 @@
                                     {{ cafe['location']['address1'] }},  {{ cafe['location']['city'] }}, {{ cafe['location']['state'] }}  {{ cafe['location']['zip_code'] }}</p>
                                     <p>Phone:<br />
                                     {{ cafe['display_phone'] }}</p>
-                                    <a href="/cafe/{{ cafe['id'] }}"><button class="btn results-btn">View More Details</button></a>
+                                    <a href="/cafe/{{ cafe['id'] }}"><button class="btn">View More Details</button></a>
                                 </div>
                             </div>
                         </div>
@@ -71,5 +71,4 @@
             </div>
         </div>
     </section>
-
 {% endblock %}
