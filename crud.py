@@ -8,8 +8,6 @@ import calendar
 
 
 ### FUNCTIONS TO CREATE ####
-
-
 def create_user(email, password, fname, lname):
     """Create and return a new user."""
 
@@ -66,8 +64,6 @@ def create_note(user, bookmark, note):
 
 
 ### FUNCTIONS TO RETRIEVE ###
-
-
 def get_user_by_id(user_id):
     """Return a user by user id."""
 
@@ -135,8 +131,6 @@ def get_note_by_bookmark_id(bookmark_id):
 
 
 ### FUNCTIONS TO UPDATE ###
-
-
 def update_note(existing_note, new_note):
     """Update an existing note."""
 
@@ -150,8 +144,6 @@ def update_note(existing_note, new_note):
 
 
 ### FUNCTIONS TO DELETE ###
-
-
 def delete_note(existing_note):
     """Delete an existing note."""
 
