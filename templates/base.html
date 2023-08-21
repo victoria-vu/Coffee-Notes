@@ -28,10 +28,16 @@
         <nav class="navbar navbar-expand-lg bg-transparent">
             <div class="container-fluid">
                 {% if not 'user_id' in session.keys() %}
-                    <a class="navbar-brand" href="/">Coffee Notes</a>
+                    <a class="navbar-brand" href="/">
+                        <img src="/static/img/coffee.png" width="25" height="25" class="d-inline-block" alt="Coffee Notes Logo" />
+                        Coffee Notes
+                    </a>
                 {% endif %}
                 {% if 'user_id' in session.keys() %}
-                    <a class="navbar-brand" href="/dashboard">Coffee Notes</a>
+                    <a class="navbar-brand" href="/dashboard">
+                        <img src="/static/img/coffee.png" width="25" height="25" class="d-inline-block" alt="Coffee Notes Logo" />
+                        Coffee Notes
+                    </a>
                 {% endif %}
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
