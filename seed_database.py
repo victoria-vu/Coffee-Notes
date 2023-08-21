@@ -17,8 +17,7 @@ model.db.create_all()
 with open("data/cafes.json") as f:
     cafe_data = json.loads(f.read())
 
-# Create cafes and store them in a list
-cafes_in_db = []
+# Create cafes and business hours for database
 for cafe in cafe_data:
     id, name, address, city, state, phone, latitude, longitude, img_url = (
     cafe["id"],
@@ -33,11 +32,28 @@ for cafe in cafe_data:
     )
 
     db_cafe = crud.create_cafe(id, name, address, city, state, phone, latitude, longitude, img_url)
-    cafes_in_db.append(db_cafe)
+    model.db.session.add(db_cafe)
+    model.db.session.commit()
 
-model.db.session.add_all(cafes_in_db)
-model.db.session.commit()
+    # Adds business hours for the cafe
+    hours = cafe["hours"][0]["open"]
+    business_hours = {}
 
-user = crud.create_user("janedoe123@gmail.com", "janedoe123", "Jane", "Doe")
+    for day_num in range(0, 7):
+        day_data = next((item for item in hours if item["day"]== day_num), None)
+        if day_data is None:
+            business_hours[day_num] = "Closed"
+        else:
+            start_time = day_data["start"]
+            end_time = day_data["end"]
+            business_hours[day_num] = f"{start_time}-{end_time}"
+
+    for day, hours in business_hours.items():
+        business_hour = crud.create_businesshours(day, hours, id)
+        model.db.session.add(business_hour)
+        model.db.session.commit()
+
+# Create a fake user
+user = crud.create_user("janedoe@gmail.com", "janedoe", "Jane", "Doe")
 model.db.session.add(user)
 model.db.session.commit()
