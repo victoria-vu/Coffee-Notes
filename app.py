@@ -214,7 +214,6 @@ def cafe_page(id):
             business_hour = crud.create_businesshours(day, hours, id)
             db.session.add(business_hour)
             db.session.commit()
-            print("Successfully added business hours")
 
     cafe = crud.get_cafe_by_id(id)
     cafe_hours = crud.get_business_hours_by_cafe_id(id)
@@ -277,6 +276,11 @@ def remove_bookmark_in_bookmarks():
     cafe = crud.get_cafe_by_id(cafe_id)
 
     bookmark = crud.get_bookmark_by_user_and_cafe_id(user_id, cafe_id)
+    existing_note = crud.get_note_by_bookmark_id(bookmark.bookmark_id)
+
+    if existing_note:
+        crud.delete_note(existing_note)
+    
     db.session.delete(bookmark)
     db.session.commit()
 
