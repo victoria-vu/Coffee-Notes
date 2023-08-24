@@ -1,5 +1,5 @@
 # Coffee Notes ☕️
-Coffee Notes is an dynamic full-stack application that allows users to search for coffee shops by coffee shop name or keyword and location parameters. Users can curate their own collection of favorite coffee shops through a bookmarking feature and craft personalized notes to each of their bookmarks. Whether users are on the hunt for a new brew or want to remember their past orders, Coffee Notes offers a seamless and organized way to savor every sip.
+Coffee Notes is a full-stack application that allows users to search for coffee shops by coffee shop name or keyword and location parameters. Users can curate their own collection of favorite coffee shops through a bookmarking feature and craft personalized notes to each of their bookmarks. Whether users are on the hunt for a new brew or want to remember their past orders, Coffee Notes offers a seamless and organized way to savor every sip.
 
 ## Table of Contents
 1. [Technologies Used](#technologies-used)
