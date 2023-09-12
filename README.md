@@ -39,7 +39,7 @@ export YELP_KEY="[your-key-goes-here]"
 ```
 6. Add the secrets.sh file to .gitignore and load the API key to the shell environment:
 ```
-$ source secrets.sh
+source secrets.sh
 ```
 7. Add the secured Google Maps API Key to cafe_details.html:
 ```
