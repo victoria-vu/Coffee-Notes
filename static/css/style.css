@@ -93,7 +93,6 @@ button {
 }
 
 .flash-msg {
-    background-color: hsl(22, 42%, 59%, 0.1);
     font-family: var(--ff-PlusJakartaSans);
     font-weight: var(--fw-semibold);
 }
@@ -139,6 +138,7 @@ button {
 
 /* NAVBAR */
 .navbar-container {
+    background-color: hsl(22, 42%, 59%, 0.8);
     position: relative;
     overflow: hidden;
 }
